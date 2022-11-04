@@ -22,25 +22,36 @@ namespace SocketServer
             controllerDict.Add(userController.GetRequestCode, userController);
         }
 
-        public void HandleRequest(MainPack mainPack, Client client)
+        public void HandleRequest(MainPack mainPack, Client client, bool isUDP = false)
         {
             if(controllerDict.TryGetValue(mainPack.RequestCode, out BaseController controller))
             {
                 Console.WriteLine("处理消息中");
                 string methodName = mainPack.ActionCode.ToString();
-                Console.WriteLine(methodName);
                 MethodInfo method = controller.GetType().GetMethod(methodName);
                 if( method == null)
                 {
                     Console.WriteLine("未找到对应的处理方法");
                     return;
                 }
-                object[] obj = new object[] {server, client, mainPack };
-                object ret = method.Invoke(controller, obj);
-                if(ret != null)
+
+                object[] obj;
+
+                if (isUDP)
                 {
-                    client.Send(ret as MainPack);
+                    obj = new object[] { client, mainPack };
+                    method.Invoke(controller, obj);
                 }
+                else
+                {
+                    obj = new object[] { server, client, mainPack };
+                    object ret = method.Invoke(controller, obj);
+                    if (ret != null)
+                    {
+                        client.TcpSend(ret as MainPack);
+                    }
+                }
+                
             }
             else
             {

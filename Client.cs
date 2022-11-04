@@ -10,6 +10,9 @@ namespace SocketServer
     internal class Client
     {
         Socket clientSocket;
+        Socket udpClient;
+        public EndPoint endPoint;
+        UDPServer udpServer;
         Message message;
         UserData userData;
         Server server;
@@ -20,6 +23,8 @@ namespace SocketServer
         {
             get { return userData; }
         }
+
+        public PlayerInfo GetPlayerInfo { get; set; }
 
         public Client(Socket clientSocket, Server server)
         {
@@ -67,9 +72,25 @@ namespace SocketServer
             return GetUserData.Login(mainPack, connection);
         }
 
-        public void Send(MainPack mainPack)
+        public void TcpSend(MainPack mainPack)
         {
-            clientSocket?.Send(Message.PackData(mainPack));
+            if (clientSocket == null || clientSocket.Connected == false) return;
+            try
+            {
+                clientSocket.Send(Message.TcpPackData(mainPack));
+            }
+            catch
+            {
+
+            }
+        }
+
+        public void UdpSend(MainPack mainPack)
+        {
+            if (IEP)
+            {
+
+            }
         }
 
         void HandleRequest(MainPack mainPack)
