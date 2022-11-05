@@ -31,7 +31,7 @@ namespace SocketServer
 
         public MainPack Login(Client client, MainPack mainPack)
         {
-            if (client.Login(mainPack))
+            if (client.Login(mainPack) != null)
             {
                 Console.WriteLine("Success");
                 mainPack.ReturnCode = ReturnCode.Success;
@@ -42,6 +42,21 @@ namespace SocketServer
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
 
+            return mainPack;
+        }
+
+        public MainPack InitPlayerInfo(Client client, MainPack mainPack)
+        {
+            if (client.InitPlayerInfo(mainPack) != null)
+            {
+                Console.WriteLine("Success");
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                Console.WriteLine("Failed");
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
             return mainPack;
         }
     }

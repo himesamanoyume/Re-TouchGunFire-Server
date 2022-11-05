@@ -24,36 +24,86 @@ namespace SocketProtocol {
     static SocketProtocolReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChRTb2NrZXRQcm90b2NvbC5wcm90bxIOU29ja2V0UHJvdG9jb2wiywIKCE1h",
+            "ChRTb2NrZXRQcm90b2NvbC5wcm90bxIOU29ja2V0UHJvdG9jb2wiwwIKCE1h",
             "aW5QYWNrEjAKC1JlcXVlc3RDb2RlGAEgASgOMhsuU29ja2V0UHJvdG9jb2wu",
             "UmVxdWVzdENvZGUSLgoKQWN0aW9uQ29kZRgCIAEoDjIaLlNvY2tldFByb3Rv",
             "Y29sLkFjdGlvbkNvZGUSLgoKUmV0dXJuQ29kZRgDIAEoDjIaLlNvY2tldFBy",
             "b3RvY29sLlJldHVybkNvZGUSMgoMUmVnaXN0ZXJQYWNrGAQgASgLMhwuU29j",
             "a2V0UHJvdG9jb2wuUmVnaXN0ZXJQYWNrEiwKCUxvZ2luUGFjaxgFIAEoCzIZ",
-            "LlNvY2tldFByb3RvY29sLkxvZ2luUGFjaxILCgNVaWQYBiABKAUSPgoSSW5p",
-            "dFBsYXllckluZm9QYWNrGAcgASgLMiIuU29ja2V0UHJvdG9jb2wuSW5pdFBs",
-            "YXllckluZm9QYWNrIkUKDFJlZ2lzdGVyUGFjaxIPCgdBY2NvdW50GAEgASgJ",
-            "EhAKCFBhc3N3b3JkGAIgASgJEhIKClBsYXllck5hbWUYAyABKAkiOwoJTG9n",
-            "aW5QYWNrEgsKA1VpZBgBIAEoBRIPCgdBY2NvdW50GAIgASgJEhAKCFBhc3N3",
-            "b3JkGAMgASgJIo4BChJJbml0UGxheWVySW5mb1BhY2sSCwoDVWlkGAEgASgF",
-            "EhIKClBsYXllck5hbWUYAiABKAkSDQoFTGV2ZWwYAyABKAUSDgoGTWF4RXhw",
-            "GAQgASgCEhIKCkN1cnJlbnRFeHAYBSABKAISEQoJTWF4SGVhbHRoGAYgASgC",
-            "EhEKCU1heFNoaWVsZBgHIAEoAio+CgtSZXF1ZXN0Q29kZRIPCgtSZXF1ZXN0",
-            "Tm9uZRAAEggKBFVzZXIQARIKCgZHYW1pbmcQAhIICgRUZWFtEAMq6QEKCkFj",
-            "dGlvbkNvZGUSDgoKQWN0aW9uTm9uZRAAEgwKCFJlZ2lzdGVyEAESCQoFTG9n",
-            "aW4QAhISCg5Jbml0UGxheWVySW5mbxADEgwKCEpvaW5UZWFtEAQSDgoKVXBk",
-            "YXRlVGVhbRAFEg0KCUxldmVsVGVhbRAGEhQKEFVwZGF0ZVBsYXllckluZm8Q",
-            "BxIPCgtSZWFkeUF0dGFjaxAIEg8KC1N0YXJ0QXR0YWNrEAkSDQoJTmV4dEVu",
-            "ZW15EAoSDQoJRW5kQXR0YWNrEAsSDAoIRXhpdEdhbWUQDBINCglCcmVha1Rl",
-            "YW0QDSozCgpSZXR1cm5Db2RlEg4KClJldHVybk5vbmUQABILCgdTdWNjZXNz",
-            "EAESCAoERmFpbBACYgZwcm90bzM="));
+            "LlNvY2tldFByb3RvY29sLkxvZ2luUGFjaxILCgNVaWQYBiABKAUSNgoOUGxh",
+            "eWVySW5mb1BhY2sYByABKAsyHi5Tb2NrZXRQcm90b2NvbC5QbGF5ZXJJbmZv",
+            "UGFjayJFCgxSZWdpc3RlclBhY2sSDwoHQWNjb3VudBgBIAEoCRIQCghQYXNz",
+            "d29yZBgCIAEoCRISCgpQbGF5ZXJOYW1lGAMgASgJIjsKCUxvZ2luUGFjaxIL",
+            "CgNVaWQYASABKAUSDwoHQWNjb3VudBgCIAEoCRIQCghQYXNzd29yZBgDIAEo",
+            "CSLVAQoOUGxheWVySW5mb1BhY2sSCwoDVWlkGAEgASgFEhIKClBsYXllck5h",
+            "bWUYAiABKAkSDQoFTGV2ZWwYAyABKAUSEgoKQ3VycmVudEV4cBgEIAEoAhI1",
+            "Cg5FcXVpcG1lbnRQYWNrcxgFIAMoCzIdLlNvY2tldFByb3RvY29sLkVxdWlw",
+            "bWVudFBhY2sSKQoIR3VuUGFja3MYBiADKAsyFy5Tb2NrZXRQcm90b2NvbC5H",
+            "dW5QYWNrEg8KB0RpYW1vbmQYByABKAMSDAoEQ29pbhgIIAEoAyKlBAoNRXF1",
+            "aXBtZW50UGFjaxITCgtFcXVpcG1lbnRJZBgBIAEoBRI1Cg1FcXVpcG1lbnRO",
+            "YW1lGAIgASgOMh4uU29ja2V0UHJvdG9jb2wuRUVxdWlwbWVudE5hbWUSNQoN",
+            "RXF1aXBtZW50U3VpdBgDIAEoDjIeLlNvY2tldFByb3RvY29sLkVFcXVpcG1l",
+            "bnRTdWl0EjsKEEVxdWlwbWVudFF1YWxpdHkYBCABKA4yIS5Tb2NrZXRQcm90",
+            "b2NvbC5FRXF1aXBtZW50UXVhbGl0eRIqCghTdWJQcm9wMRgFIAEoDjIYLlNv",
+            "Y2tldFByb3RvY29sLkVTdWJQcm9wEhUKDVN1YlByb3AxVmFsdWUYBiABKAIS",
+            "KgoIU3ViUHJvcDIYByABKA4yGC5Tb2NrZXRQcm90b2NvbC5FU3ViUHJvcBIV",
+            "Cg1TdWJQcm9wMlZhbHVlGAggASgCEioKCFN1YlByb3AzGAkgASgOMhguU29j",
+            "a2V0UHJvdG9jb2wuRVN1YlByb3ASFQoNU3ViUHJvcDNWYWx1ZRgKIAEoAhIx",
+            "CgdUYWxlbnQxGAsgASgOMiAuU29ja2V0UHJvdG9jb2wuRUVxdWlwbWVudFRh",
+            "bGVudBIxCgdUYWxlbnQyGAwgASgOMiAuU29ja2V0UHJvdG9jb2wuRUVxdWlw",
+            "bWVudFRhbGVudBIlCgVVc2luZxgNIAEoDjIWLlNvY2tldFByb3RvY29sLkVV",
+            "c2luZyKXBAoHR3VuUGFjaxINCgVHdW5JZBgBIAEoBRIpCgdHdW5OYW1lGAIg",
+            "ASgOMhguU29ja2V0UHJvdG9jb2wuRUd1bk5hbWUSKQoHR3VuVHlwZRgDIAEo",
+            "DjIYLlNvY2tldFByb3RvY29sLkVHdW5UeXBlEg8KB0Jhc2VETUcYBCABKAIS",
+            "EgoKRmlyaW5nUmF0ZRgFIAEoAhIiChpDdXJyZW50RmlyaW5nUmF0ZVBlclNl",
+            "Y29uZBgGIAEoAhIQCghNYWdhemluZRgHIAEoBRIVCg1NYWdhemluZUNvdW50",
+            "GAggASgFEi4KCENvcmVQcm9wGAkgASgOMhwuU29ja2V0UHJvdG9jb2wuRUd1",
+            "bkNvcmVQcm9wEhUKDUNvcmVQcm9wVmFsdWUYCiABKAISKgoIU3ViUHJvcDEY",
+            "CyABKA4yGC5Tb2NrZXRQcm90b2NvbC5FU3ViUHJvcBIVCg1TdWJQcm9wMVZh",
+            "bHVlGAwgASgCEioKCFN1YlByb3AyGA0gASgOMhguU29ja2V0UHJvdG9jb2wu",
+            "RVN1YlByb3ASFQoNU3ViUHJvcDJWYWx1ZRgOIAEoAhIqCghTdWJQcm9wMxgP",
+            "IAEoDjIYLlNvY2tldFByb3RvY29sLkVTdWJQcm9wEhUKDVN1YlByb3AzVmFs",
+            "dWUYECABKAISJQoFVXNpbmcYESABKA4yFi5Tb2NrZXRQcm90b2NvbC5FVXNp",
+            "bmcqPgoLUmVxdWVzdENvZGUSDwoLUmVxdWVzdE5vbmUQABIICgRVc2VyEAES",
+            "CgoGR2FtaW5nEAISCAoEVGVhbRADKukBCgpBY3Rpb25Db2RlEg4KCkFjdGlv",
+            "bk5vbmUQABIMCghSZWdpc3RlchABEgkKBUxvZ2luEAISEgoOSW5pdFBsYXll",
+            "ckluZm8QAxIMCghKb2luVGVhbRAEEg4KClVwZGF0ZVRlYW0QBRINCglMZXZl",
+            "bFRlYW0QBhIUChBVcGRhdGVQbGF5ZXJJbmZvEAcSDwoLUmVhZHlBdHRhY2sQ",
+            "CBIPCgtTdGFydEF0dGFjaxAJEg0KCU5leHRFbmVteRAKEg0KCUVuZEF0dGFj",
+            "axALEgwKCEV4aXRHYW1lEAwSDQoJQnJlYWtUZWFtEA0qMwoKUmV0dXJuQ29k",
+            "ZRIOCgpSZXR1cm5Ob25lEAASCwoHU3VjY2VzcxABEggKBEZhaWwQAioZCgZF",
+            "VXNpbmcSBgoCTm8QABIHCgNZZXMQASpQCghFR3VuTmFtZRIICgRBSzQ3EAAS",
+            "BwoDU0w3EAESBwoDTVA1EAISCAoETTcwMBADEgcKA002MBAEEgoKBlNQQVMx",
+            "MhAFEgkKBU0xOTExEAYqRAoIRUd1blR5cGUSBgoCQVIQABIHCgNETVIQARIH",
+            "CgNTTUcQAhIGCgJTRxADEgYKAlNSEAQSBgoCTUcQBRIGCgJIRxAGKtEBCgxF",
+            "R3VuQ29yZVByb3ASFwoTYWxsRG1nQm9udXNDb3JlUHJvcBAAEhYKEmFyRG1n",
+            "Qm9udXNDb3JlUHJvcBABEhcKE2RtckRtZ0JvbnVzQ29yZVByb3AQAhIXChNz",
+            "bWdEbWdCb251c0NvcmVQcm9wEAMSFgoSc2dEbWdCb251c0NvcmVQcm9wEAQS",
+            "FgoSc3JEbWdCb251c0NvcmVQcm9wEAUSFgoSbWdEbWdCb251c0NvcmVQcm9w",
+            "EAYSFgoSaGdEbWdCb251c0NvcmVQcm9wEAcqPQoORUVxdWlwbWVudFN1aXQS",
+            "DQoJVGVzdDFTdWl0EAASDQoJVGVzdDJTdWl0EAESDQoJVGVzdDNTdWl0EAIq",
+            "UAoRRUVxdWlwbWVudFF1YWxpdHkSCgoGTm9ybWFsEAASCAoER29vZBABEg0K",
+            "CUV4Y2VsbGVudBACEgwKCEFydGlmYWN0EAMSCAoERXBpYxAEKi4KDkVFcXVp",
+            "cG1lbnROYW1lEg0KCVRlc3QxTmFtZRAAEg0KCVRlc3QyTmFtZRABKtICCghF",
+            "U3ViUHJvcBIRCg1oZWFsdGhTdWJQcm9wEAASFwoTYmFzZURtZ0JvbnVzU3Vi",
+            "UHJvcBABEhgKFGNEbWdSYXRlQm9udXNTdWJQcm9wEAISFAoQY0RtZ0JvbnVz",
+            "U3ViUHJvcBADEhsKF2hlYWRzaG90RG1nQm9udXNTdWJQcm9wEAQSFQoRcFJh",
+            "dGVCb251c1N1YlByb3AQBRITCg9hYmVCb251c1N1YlByb3AQBhIVChFhckRt",
+            "Z0JvbnVzU3ViUHJvcBAHEhYKEmRtckRtZ0JvbnVzU3ViUHJvcBAIEhYKEnNt",
+            "Z0RtZ0JvbnVzU3ViUHJvcBAJEhUKEXNnRG1nQm9udXNTdWJQcm9wEAoSFQoR",
+            "c3JEbWdCb251c1N1YlByb3AQCxIVChFtZ0RtZ0JvbnVzU3ViUHJvcBAMEhUK",
+            "EWhnRG1nQm9udXNTdWJQcm9wEA0qSAoQRUVxdWlwbWVudFRhbGVudBIZChVU",
+            "ZXN0MUVxdWlwbWVudFRhbGVudDEQABIZChVUZXN0MUVxdWlwbWVudFRhbGVu",
+            "dDIQAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SocketProtocol.RequestCode), typeof(global::SocketProtocol.ActionCode), typeof(global::SocketProtocol.ReturnCode), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.MainPack), global::SocketProtocol.MainPack.Parser, new[]{ "RequestCode", "ActionCode", "ReturnCode", "RegisterPack", "LoginPack", "Uid", "InitPlayerInfoPack" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SocketProtocol.RequestCode), typeof(global::SocketProtocol.ActionCode), typeof(global::SocketProtocol.ReturnCode), typeof(global::SocketProtocol.EUsing), typeof(global::SocketProtocol.EGunName), typeof(global::SocketProtocol.EGunType), typeof(global::SocketProtocol.EGunCoreProp), typeof(global::SocketProtocol.EEquipmentSuit), typeof(global::SocketProtocol.EEquipmentQuality), typeof(global::SocketProtocol.EEquipmentName), typeof(global::SocketProtocol.ESubProp), typeof(global::SocketProtocol.EEquipmentTalent), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.MainPack), global::SocketProtocol.MainPack.Parser, new[]{ "RequestCode", "ActionCode", "ReturnCode", "RegisterPack", "LoginPack", "Uid", "PlayerInfoPack" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.RegisterPack), global::SocketProtocol.RegisterPack.Parser, new[]{ "Account", "Password", "PlayerName" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.LoginPack), global::SocketProtocol.LoginPack.Parser, new[]{ "Uid", "Account", "Password" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.InitPlayerInfoPack), global::SocketProtocol.InitPlayerInfoPack.Parser, new[]{ "Uid", "PlayerName", "Level", "MaxExp", "CurrentExp", "MaxHealth", "MaxShield" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.PlayerInfoPack), global::SocketProtocol.PlayerInfoPack.Parser, new[]{ "Uid", "PlayerName", "Level", "CurrentExp", "EquipmentPacks", "GunPacks", "Diamond", "Coin" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.EquipmentPack), global::SocketProtocol.EquipmentPack.Parser, new[]{ "EquipmentId", "EquipmentName", "EquipmentSuit", "EquipmentQuality", "SubProp1", "SubProp1Value", "SubProp2", "SubProp2Value", "SubProp3", "SubProp3Value", "Talent1", "Talent2", "Using" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.GunPack), global::SocketProtocol.GunPack.Parser, new[]{ "GunId", "GunName", "GunType", "BaseDMG", "FiringRate", "CurrentFiringRatePerSecond", "Magazine", "MagazineCount", "CoreProp", "CorePropValue", "SubProp1", "SubProp1Value", "SubProp2", "SubProp2Value", "SubProp3", "SubProp3Value", "Using" }, null, null, null, null)
           }));
     }
     #endregion
@@ -90,6 +140,83 @@ namespace SocketProtocol {
     [pbr::OriginalName("Fail")] Fail = 2,
   }
 
+  public enum EUsing {
+    [pbr::OriginalName("No")] No = 0,
+    [pbr::OriginalName("Yes")] Yes = 1,
+  }
+
+  public enum EGunName {
+    [pbr::OriginalName("AK47")] Ak47 = 0,
+    [pbr::OriginalName("SL7")] Sl7 = 1,
+    [pbr::OriginalName("MP5")] Mp5 = 2,
+    [pbr::OriginalName("M700")] M700 = 3,
+    [pbr::OriginalName("M60")] M60 = 4,
+    [pbr::OriginalName("SPAS12")] Spas12 = 5,
+    [pbr::OriginalName("M1911")] M1911 = 6,
+  }
+
+  public enum EGunType {
+    [pbr::OriginalName("AR")] Ar = 0,
+    [pbr::OriginalName("DMR")] Dmr = 1,
+    [pbr::OriginalName("SMG")] Smg = 2,
+    [pbr::OriginalName("SG")] Sg = 3,
+    [pbr::OriginalName("SR")] Sr = 4,
+    [pbr::OriginalName("MG")] Mg = 5,
+    [pbr::OriginalName("HG")] Hg = 6,
+  }
+
+  public enum EGunCoreProp {
+    [pbr::OriginalName("allDmgBonusCoreProp")] AllDmgBonusCoreProp = 0,
+    [pbr::OriginalName("arDmgBonusCoreProp")] ArDmgBonusCoreProp = 1,
+    [pbr::OriginalName("dmrDmgBonusCoreProp")] DmrDmgBonusCoreProp = 2,
+    [pbr::OriginalName("smgDmgBonusCoreProp")] SmgDmgBonusCoreProp = 3,
+    [pbr::OriginalName("sgDmgBonusCoreProp")] SgDmgBonusCoreProp = 4,
+    [pbr::OriginalName("srDmgBonusCoreProp")] SrDmgBonusCoreProp = 5,
+    [pbr::OriginalName("mgDmgBonusCoreProp")] MgDmgBonusCoreProp = 6,
+    [pbr::OriginalName("hgDmgBonusCoreProp")] HgDmgBonusCoreProp = 7,
+  }
+
+  public enum EEquipmentSuit {
+    [pbr::OriginalName("Test1Suit")] Test1Suit = 0,
+    [pbr::OriginalName("Test2Suit")] Test2Suit = 1,
+    [pbr::OriginalName("Test3Suit")] Test3Suit = 2,
+  }
+
+  public enum EEquipmentQuality {
+    [pbr::OriginalName("Normal")] Normal = 0,
+    [pbr::OriginalName("Good")] Good = 1,
+    [pbr::OriginalName("Excellent")] Excellent = 2,
+    [pbr::OriginalName("Artifact")] Artifact = 3,
+    [pbr::OriginalName("Epic")] Epic = 4,
+  }
+
+  public enum EEquipmentName {
+    [pbr::OriginalName("Test1Name")] Test1Name = 0,
+    [pbr::OriginalName("Test2Name")] Test2Name = 1,
+  }
+
+  public enum ESubProp {
+    [pbr::OriginalName("healthSubProp")] HealthSubProp = 0,
+    [pbr::OriginalName("baseDmgBonusSubProp")] BaseDmgBonusSubProp = 1,
+    [pbr::OriginalName("cDmgRateBonusSubProp")] CDmgRateBonusSubProp = 2,
+    [pbr::OriginalName("cDmgBonusSubProp")] CDmgBonusSubProp = 3,
+    [pbr::OriginalName("headshotDmgBonusSubProp")] HeadshotDmgBonusSubProp = 4,
+    [pbr::OriginalName("pRateBonusSubProp")] PRateBonusSubProp = 5,
+    [pbr::OriginalName("abeBonusSubProp")] AbeBonusSubProp = 6,
+    [pbr::OriginalName("arDmgBonusSubProp")] ArDmgBonusSubProp = 7,
+    [pbr::OriginalName("dmrDmgBonusSubProp")] DmrDmgBonusSubProp = 8,
+    [pbr::OriginalName("smgDmgBonusSubProp")] SmgDmgBonusSubProp = 9,
+    [pbr::OriginalName("sgDmgBonusSubProp")] SgDmgBonusSubProp = 10,
+    [pbr::OriginalName("srDmgBonusSubProp")] SrDmgBonusSubProp = 11,
+    [pbr::OriginalName("mgDmgBonusSubProp")] MgDmgBonusSubProp = 12,
+    [pbr::OriginalName("hgDmgBonusSubProp")] HgDmgBonusSubProp = 13,
+  }
+
+  public enum EEquipmentTalent {
+    [pbr::OriginalName("Test1EquipmentTalent1")] Test1EquipmentTalent1 = 0,
+    [pbr::OriginalName("Test1EquipmentTalent2")] Test1EquipmentTalent2 = 1,
+  }
+
   #endregion
 
   #region Messages
@@ -124,7 +251,7 @@ namespace SocketProtocol {
       registerPack_ = other.registerPack_ != null ? other.registerPack_.Clone() : null;
       loginPack_ = other.loginPack_ != null ? other.loginPack_.Clone() : null;
       uid_ = other.uid_;
-      initPlayerInfoPack_ = other.initPlayerInfoPack_ != null ? other.initPlayerInfoPack_.Clone() : null;
+      playerInfoPack_ = other.playerInfoPack_ != null ? other.playerInfoPack_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -199,14 +326,14 @@ namespace SocketProtocol {
       }
     }
 
-    /// <summary>Field number for the "InitPlayerInfoPack" field.</summary>
-    public const int InitPlayerInfoPackFieldNumber = 7;
-    private global::SocketProtocol.InitPlayerInfoPack initPlayerInfoPack_;
+    /// <summary>Field number for the "PlayerInfoPack" field.</summary>
+    public const int PlayerInfoPackFieldNumber = 7;
+    private global::SocketProtocol.PlayerInfoPack playerInfoPack_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SocketProtocol.InitPlayerInfoPack InitPlayerInfoPack {
-      get { return initPlayerInfoPack_; }
+    public global::SocketProtocol.PlayerInfoPack PlayerInfoPack {
+      get { return playerInfoPack_; }
       set {
-        initPlayerInfoPack_ = value;
+        playerInfoPack_ = value;
       }
     }
 
@@ -229,7 +356,7 @@ namespace SocketProtocol {
       if (!object.Equals(RegisterPack, other.RegisterPack)) return false;
       if (!object.Equals(LoginPack, other.LoginPack)) return false;
       if (Uid != other.Uid) return false;
-      if (!object.Equals(InitPlayerInfoPack, other.InitPlayerInfoPack)) return false;
+      if (!object.Equals(PlayerInfoPack, other.PlayerInfoPack)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -242,7 +369,7 @@ namespace SocketProtocol {
       if (registerPack_ != null) hash ^= RegisterPack.GetHashCode();
       if (loginPack_ != null) hash ^= LoginPack.GetHashCode();
       if (Uid != 0) hash ^= Uid.GetHashCode();
-      if (initPlayerInfoPack_ != null) hash ^= InitPlayerInfoPack.GetHashCode();
+      if (playerInfoPack_ != null) hash ^= PlayerInfoPack.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -280,9 +407,9 @@ namespace SocketProtocol {
         output.WriteRawTag(48);
         output.WriteInt32(Uid);
       }
-      if (initPlayerInfoPack_ != null) {
+      if (playerInfoPack_ != null) {
         output.WriteRawTag(58);
-        output.WriteMessage(InitPlayerInfoPack);
+        output.WriteMessage(PlayerInfoPack);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -310,8 +437,8 @@ namespace SocketProtocol {
       if (Uid != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Uid);
       }
-      if (initPlayerInfoPack_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(InitPlayerInfoPack);
+      if (playerInfoPack_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PlayerInfoPack);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -348,11 +475,11 @@ namespace SocketProtocol {
       if (other.Uid != 0) {
         Uid = other.Uid;
       }
-      if (other.initPlayerInfoPack_ != null) {
-        if (initPlayerInfoPack_ == null) {
-          InitPlayerInfoPack = new global::SocketProtocol.InitPlayerInfoPack();
+      if (other.playerInfoPack_ != null) {
+        if (playerInfoPack_ == null) {
+          PlayerInfoPack = new global::SocketProtocol.PlayerInfoPack();
         }
-        InitPlayerInfoPack.MergeFrom(other.InitPlayerInfoPack);
+        PlayerInfoPack.MergeFrom(other.PlayerInfoPack);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -396,10 +523,10 @@ namespace SocketProtocol {
             break;
           }
           case 58: {
-            if (initPlayerInfoPack_ == null) {
-              InitPlayerInfoPack = new global::SocketProtocol.InitPlayerInfoPack();
+            if (playerInfoPack_ == null) {
+              PlayerInfoPack = new global::SocketProtocol.PlayerInfoPack();
             }
-            input.ReadMessage(InitPlayerInfoPack);
+            input.ReadMessage(PlayerInfoPack);
             break;
           }
         }
@@ -778,11 +905,11 @@ namespace SocketProtocol {
 
   }
 
-  public sealed partial class InitPlayerInfoPack : pb::IMessage<InitPlayerInfoPack> {
-    private static readonly pb::MessageParser<InitPlayerInfoPack> _parser = new pb::MessageParser<InitPlayerInfoPack>(() => new InitPlayerInfoPack());
+  public sealed partial class PlayerInfoPack : pb::IMessage<PlayerInfoPack> {
+    private static readonly pb::MessageParser<PlayerInfoPack> _parser = new pb::MessageParser<PlayerInfoPack>(() => new PlayerInfoPack());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<InitPlayerInfoPack> Parser { get { return _parser; } }
+    public static pb::MessageParser<PlayerInfoPack> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -795,27 +922,28 @@ namespace SocketProtocol {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public InitPlayerInfoPack() {
+    public PlayerInfoPack() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public InitPlayerInfoPack(InitPlayerInfoPack other) : this() {
+    public PlayerInfoPack(PlayerInfoPack other) : this() {
       uid_ = other.uid_;
       playerName_ = other.playerName_;
       level_ = other.level_;
-      maxExp_ = other.maxExp_;
       currentExp_ = other.currentExp_;
-      maxHealth_ = other.maxHealth_;
-      maxShield_ = other.maxShield_;
+      equipmentPacks_ = other.equipmentPacks_.Clone();
+      gunPacks_ = other.gunPacks_.Clone();
+      diamond_ = other.diamond_;
+      coin_ = other.coin_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public InitPlayerInfoPack Clone() {
-      return new InitPlayerInfoPack(this);
+    public PlayerInfoPack Clone() {
+      return new PlayerInfoPack(this);
     }
 
     /// <summary>Field number for the "Uid" field.</summary>
@@ -851,19 +979,8 @@ namespace SocketProtocol {
       }
     }
 
-    /// <summary>Field number for the "MaxExp" field.</summary>
-    public const int MaxExpFieldNumber = 4;
-    private float maxExp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float MaxExp {
-      get { return maxExp_; }
-      set {
-        maxExp_ = value;
-      }
-    }
-
     /// <summary>Field number for the "CurrentExp" field.</summary>
-    public const int CurrentExpFieldNumber = 5;
+    public const int CurrentExpFieldNumber = 4;
     private float currentExp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float CurrentExp {
@@ -873,35 +990,55 @@ namespace SocketProtocol {
       }
     }
 
-    /// <summary>Field number for the "MaxHealth" field.</summary>
-    public const int MaxHealthFieldNumber = 6;
-    private float maxHealth_;
+    /// <summary>Field number for the "EquipmentPacks" field.</summary>
+    public const int EquipmentPacksFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::SocketProtocol.EquipmentPack> _repeated_equipmentPacks_codec
+        = pb::FieldCodec.ForMessage(42, global::SocketProtocol.EquipmentPack.Parser);
+    private readonly pbc::RepeatedField<global::SocketProtocol.EquipmentPack> equipmentPacks_ = new pbc::RepeatedField<global::SocketProtocol.EquipmentPack>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float MaxHealth {
-      get { return maxHealth_; }
+    public pbc::RepeatedField<global::SocketProtocol.EquipmentPack> EquipmentPacks {
+      get { return equipmentPacks_; }
+    }
+
+    /// <summary>Field number for the "GunPacks" field.</summary>
+    public const int GunPacksFieldNumber = 6;
+    private static readonly pb::FieldCodec<global::SocketProtocol.GunPack> _repeated_gunPacks_codec
+        = pb::FieldCodec.ForMessage(50, global::SocketProtocol.GunPack.Parser);
+    private readonly pbc::RepeatedField<global::SocketProtocol.GunPack> gunPacks_ = new pbc::RepeatedField<global::SocketProtocol.GunPack>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::SocketProtocol.GunPack> GunPacks {
+      get { return gunPacks_; }
+    }
+
+    /// <summary>Field number for the "Diamond" field.</summary>
+    public const int DiamondFieldNumber = 7;
+    private long diamond_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long Diamond {
+      get { return diamond_; }
       set {
-        maxHealth_ = value;
+        diamond_ = value;
       }
     }
 
-    /// <summary>Field number for the "MaxShield" field.</summary>
-    public const int MaxShieldFieldNumber = 7;
-    private float maxShield_;
+    /// <summary>Field number for the "Coin" field.</summary>
+    public const int CoinFieldNumber = 8;
+    private long coin_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float MaxShield {
-      get { return maxShield_; }
+    public long Coin {
+      get { return coin_; }
       set {
-        maxShield_ = value;
+        coin_ = value;
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as InitPlayerInfoPack);
+      return Equals(other as PlayerInfoPack);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(InitPlayerInfoPack other) {
+    public bool Equals(PlayerInfoPack other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -911,10 +1048,11 @@ namespace SocketProtocol {
       if (Uid != other.Uid) return false;
       if (PlayerName != other.PlayerName) return false;
       if (Level != other.Level) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(MaxExp, other.MaxExp)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(CurrentExp, other.CurrentExp)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(MaxHealth, other.MaxHealth)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(MaxShield, other.MaxShield)) return false;
+      if(!equipmentPacks_.Equals(other.equipmentPacks_)) return false;
+      if(!gunPacks_.Equals(other.gunPacks_)) return false;
+      if (Diamond != other.Diamond) return false;
+      if (Coin != other.Coin) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -924,10 +1062,11 @@ namespace SocketProtocol {
       if (Uid != 0) hash ^= Uid.GetHashCode();
       if (PlayerName.Length != 0) hash ^= PlayerName.GetHashCode();
       if (Level != 0) hash ^= Level.GetHashCode();
-      if (MaxExp != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(MaxExp);
       if (CurrentExp != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(CurrentExp);
-      if (MaxHealth != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(MaxHealth);
-      if (MaxShield != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(MaxShield);
+      hash ^= equipmentPacks_.GetHashCode();
+      hash ^= gunPacks_.GetHashCode();
+      if (Diamond != 0L) hash ^= Diamond.GetHashCode();
+      if (Coin != 0L) hash ^= Coin.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -953,21 +1092,19 @@ namespace SocketProtocol {
         output.WriteRawTag(24);
         output.WriteInt32(Level);
       }
-      if (MaxExp != 0F) {
-        output.WriteRawTag(37);
-        output.WriteFloat(MaxExp);
-      }
       if (CurrentExp != 0F) {
-        output.WriteRawTag(45);
+        output.WriteRawTag(37);
         output.WriteFloat(CurrentExp);
       }
-      if (MaxHealth != 0F) {
-        output.WriteRawTag(53);
-        output.WriteFloat(MaxHealth);
+      equipmentPacks_.WriteTo(output, _repeated_equipmentPacks_codec);
+      gunPacks_.WriteTo(output, _repeated_gunPacks_codec);
+      if (Diamond != 0L) {
+        output.WriteRawTag(56);
+        output.WriteInt64(Diamond);
       }
-      if (MaxShield != 0F) {
-        output.WriteRawTag(61);
-        output.WriteFloat(MaxShield);
+      if (Coin != 0L) {
+        output.WriteRawTag(64);
+        output.WriteInt64(Coin);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -986,17 +1123,16 @@ namespace SocketProtocol {
       if (Level != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Level);
       }
-      if (MaxExp != 0F) {
-        size += 1 + 4;
-      }
       if (CurrentExp != 0F) {
         size += 1 + 4;
       }
-      if (MaxHealth != 0F) {
-        size += 1 + 4;
+      size += equipmentPacks_.CalculateSize(_repeated_equipmentPacks_codec);
+      size += gunPacks_.CalculateSize(_repeated_gunPacks_codec);
+      if (Diamond != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Diamond);
       }
-      if (MaxShield != 0F) {
-        size += 1 + 4;
+      if (Coin != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Coin);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1005,7 +1141,7 @@ namespace SocketProtocol {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(InitPlayerInfoPack other) {
+    public void MergeFrom(PlayerInfoPack other) {
       if (other == null) {
         return;
       }
@@ -1018,17 +1154,16 @@ namespace SocketProtocol {
       if (other.Level != 0) {
         Level = other.Level;
       }
-      if (other.MaxExp != 0F) {
-        MaxExp = other.MaxExp;
-      }
       if (other.CurrentExp != 0F) {
         CurrentExp = other.CurrentExp;
       }
-      if (other.MaxHealth != 0F) {
-        MaxHealth = other.MaxHealth;
+      equipmentPacks_.Add(other.equipmentPacks_);
+      gunPacks_.Add(other.gunPacks_);
+      if (other.Diamond != 0L) {
+        Diamond = other.Diamond;
       }
-      if (other.MaxShield != 0F) {
-        MaxShield = other.MaxShield;
+      if (other.Coin != 0L) {
+        Coin = other.Coin;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1054,19 +1189,1065 @@ namespace SocketProtocol {
             break;
           }
           case 37: {
-            MaxExp = input.ReadFloat();
-            break;
-          }
-          case 45: {
             CurrentExp = input.ReadFloat();
             break;
           }
-          case 53: {
-            MaxHealth = input.ReadFloat();
+          case 42: {
+            equipmentPacks_.AddEntriesFrom(input, _repeated_equipmentPacks_codec);
             break;
           }
-          case 61: {
-            MaxShield = input.ReadFloat();
+          case 50: {
+            gunPacks_.AddEntriesFrom(input, _repeated_gunPacks_codec);
+            break;
+          }
+          case 56: {
+            Diamond = input.ReadInt64();
+            break;
+          }
+          case 64: {
+            Coin = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class EquipmentPack : pb::IMessage<EquipmentPack> {
+    private static readonly pb::MessageParser<EquipmentPack> _parser = new pb::MessageParser<EquipmentPack>(() => new EquipmentPack());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<EquipmentPack> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::SocketProtocol.SocketProtocolReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public EquipmentPack() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public EquipmentPack(EquipmentPack other) : this() {
+      equipmentId_ = other.equipmentId_;
+      equipmentName_ = other.equipmentName_;
+      equipmentSuit_ = other.equipmentSuit_;
+      equipmentQuality_ = other.equipmentQuality_;
+      subProp1_ = other.subProp1_;
+      subProp1Value_ = other.subProp1Value_;
+      subProp2_ = other.subProp2_;
+      subProp2Value_ = other.subProp2Value_;
+      subProp3_ = other.subProp3_;
+      subProp3Value_ = other.subProp3Value_;
+      talent1_ = other.talent1_;
+      talent2_ = other.talent2_;
+      using_ = other.using_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public EquipmentPack Clone() {
+      return new EquipmentPack(this);
+    }
+
+    /// <summary>Field number for the "EquipmentId" field.</summary>
+    public const int EquipmentIdFieldNumber = 1;
+    private int equipmentId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int EquipmentId {
+      get { return equipmentId_; }
+      set {
+        equipmentId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "EquipmentName" field.</summary>
+    public const int EquipmentNameFieldNumber = 2;
+    private global::SocketProtocol.EEquipmentName equipmentName_ = global::SocketProtocol.EEquipmentName.Test1Name;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::SocketProtocol.EEquipmentName EquipmentName {
+      get { return equipmentName_; }
+      set {
+        equipmentName_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "EquipmentSuit" field.</summary>
+    public const int EquipmentSuitFieldNumber = 3;
+    private global::SocketProtocol.EEquipmentSuit equipmentSuit_ = global::SocketProtocol.EEquipmentSuit.Test1Suit;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::SocketProtocol.EEquipmentSuit EquipmentSuit {
+      get { return equipmentSuit_; }
+      set {
+        equipmentSuit_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "EquipmentQuality" field.</summary>
+    public const int EquipmentQualityFieldNumber = 4;
+    private global::SocketProtocol.EEquipmentQuality equipmentQuality_ = global::SocketProtocol.EEquipmentQuality.Normal;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::SocketProtocol.EEquipmentQuality EquipmentQuality {
+      get { return equipmentQuality_; }
+      set {
+        equipmentQuality_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SubProp1" field.</summary>
+    public const int SubProp1FieldNumber = 5;
+    private global::SocketProtocol.ESubProp subProp1_ = global::SocketProtocol.ESubProp.HealthSubProp;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::SocketProtocol.ESubProp SubProp1 {
+      get { return subProp1_; }
+      set {
+        subProp1_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SubProp1Value" field.</summary>
+    public const int SubProp1ValueFieldNumber = 6;
+    private float subProp1Value_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float SubProp1Value {
+      get { return subProp1Value_; }
+      set {
+        subProp1Value_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SubProp2" field.</summary>
+    public const int SubProp2FieldNumber = 7;
+    private global::SocketProtocol.ESubProp subProp2_ = global::SocketProtocol.ESubProp.HealthSubProp;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::SocketProtocol.ESubProp SubProp2 {
+      get { return subProp2_; }
+      set {
+        subProp2_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SubProp2Value" field.</summary>
+    public const int SubProp2ValueFieldNumber = 8;
+    private float subProp2Value_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float SubProp2Value {
+      get { return subProp2Value_; }
+      set {
+        subProp2Value_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SubProp3" field.</summary>
+    public const int SubProp3FieldNumber = 9;
+    private global::SocketProtocol.ESubProp subProp3_ = global::SocketProtocol.ESubProp.HealthSubProp;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::SocketProtocol.ESubProp SubProp3 {
+      get { return subProp3_; }
+      set {
+        subProp3_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SubProp3Value" field.</summary>
+    public const int SubProp3ValueFieldNumber = 10;
+    private float subProp3Value_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float SubProp3Value {
+      get { return subProp3Value_; }
+      set {
+        subProp3Value_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Talent1" field.</summary>
+    public const int Talent1FieldNumber = 11;
+    private global::SocketProtocol.EEquipmentTalent talent1_ = global::SocketProtocol.EEquipmentTalent.Test1EquipmentTalent1;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::SocketProtocol.EEquipmentTalent Talent1 {
+      get { return talent1_; }
+      set {
+        talent1_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Talent2" field.</summary>
+    public const int Talent2FieldNumber = 12;
+    private global::SocketProtocol.EEquipmentTalent talent2_ = global::SocketProtocol.EEquipmentTalent.Test1EquipmentTalent1;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::SocketProtocol.EEquipmentTalent Talent2 {
+      get { return talent2_; }
+      set {
+        talent2_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Using" field.</summary>
+    public const int UsingFieldNumber = 13;
+    private global::SocketProtocol.EUsing using_ = global::SocketProtocol.EUsing.No;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::SocketProtocol.EUsing Using {
+      get { return using_; }
+      set {
+        using_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as EquipmentPack);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(EquipmentPack other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (EquipmentId != other.EquipmentId) return false;
+      if (EquipmentName != other.EquipmentName) return false;
+      if (EquipmentSuit != other.EquipmentSuit) return false;
+      if (EquipmentQuality != other.EquipmentQuality) return false;
+      if (SubProp1 != other.SubProp1) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(SubProp1Value, other.SubProp1Value)) return false;
+      if (SubProp2 != other.SubProp2) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(SubProp2Value, other.SubProp2Value)) return false;
+      if (SubProp3 != other.SubProp3) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(SubProp3Value, other.SubProp3Value)) return false;
+      if (Talent1 != other.Talent1) return false;
+      if (Talent2 != other.Talent2) return false;
+      if (Using != other.Using) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (EquipmentId != 0) hash ^= EquipmentId.GetHashCode();
+      if (EquipmentName != global::SocketProtocol.EEquipmentName.Test1Name) hash ^= EquipmentName.GetHashCode();
+      if (EquipmentSuit != global::SocketProtocol.EEquipmentSuit.Test1Suit) hash ^= EquipmentSuit.GetHashCode();
+      if (EquipmentQuality != global::SocketProtocol.EEquipmentQuality.Normal) hash ^= EquipmentQuality.GetHashCode();
+      if (SubProp1 != global::SocketProtocol.ESubProp.HealthSubProp) hash ^= SubProp1.GetHashCode();
+      if (SubProp1Value != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SubProp1Value);
+      if (SubProp2 != global::SocketProtocol.ESubProp.HealthSubProp) hash ^= SubProp2.GetHashCode();
+      if (SubProp2Value != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SubProp2Value);
+      if (SubProp3 != global::SocketProtocol.ESubProp.HealthSubProp) hash ^= SubProp3.GetHashCode();
+      if (SubProp3Value != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SubProp3Value);
+      if (Talent1 != global::SocketProtocol.EEquipmentTalent.Test1EquipmentTalent1) hash ^= Talent1.GetHashCode();
+      if (Talent2 != global::SocketProtocol.EEquipmentTalent.Test1EquipmentTalent1) hash ^= Talent2.GetHashCode();
+      if (Using != global::SocketProtocol.EUsing.No) hash ^= Using.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (EquipmentId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(EquipmentId);
+      }
+      if (EquipmentName != global::SocketProtocol.EEquipmentName.Test1Name) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) EquipmentName);
+      }
+      if (EquipmentSuit != global::SocketProtocol.EEquipmentSuit.Test1Suit) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) EquipmentSuit);
+      }
+      if (EquipmentQuality != global::SocketProtocol.EEquipmentQuality.Normal) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) EquipmentQuality);
+      }
+      if (SubProp1 != global::SocketProtocol.ESubProp.HealthSubProp) {
+        output.WriteRawTag(40);
+        output.WriteEnum((int) SubProp1);
+      }
+      if (SubProp1Value != 0F) {
+        output.WriteRawTag(53);
+        output.WriteFloat(SubProp1Value);
+      }
+      if (SubProp2 != global::SocketProtocol.ESubProp.HealthSubProp) {
+        output.WriteRawTag(56);
+        output.WriteEnum((int) SubProp2);
+      }
+      if (SubProp2Value != 0F) {
+        output.WriteRawTag(69);
+        output.WriteFloat(SubProp2Value);
+      }
+      if (SubProp3 != global::SocketProtocol.ESubProp.HealthSubProp) {
+        output.WriteRawTag(72);
+        output.WriteEnum((int) SubProp3);
+      }
+      if (SubProp3Value != 0F) {
+        output.WriteRawTag(85);
+        output.WriteFloat(SubProp3Value);
+      }
+      if (Talent1 != global::SocketProtocol.EEquipmentTalent.Test1EquipmentTalent1) {
+        output.WriteRawTag(88);
+        output.WriteEnum((int) Talent1);
+      }
+      if (Talent2 != global::SocketProtocol.EEquipmentTalent.Test1EquipmentTalent1) {
+        output.WriteRawTag(96);
+        output.WriteEnum((int) Talent2);
+      }
+      if (Using != global::SocketProtocol.EUsing.No) {
+        output.WriteRawTag(104);
+        output.WriteEnum((int) Using);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (EquipmentId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(EquipmentId);
+      }
+      if (EquipmentName != global::SocketProtocol.EEquipmentName.Test1Name) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) EquipmentName);
+      }
+      if (EquipmentSuit != global::SocketProtocol.EEquipmentSuit.Test1Suit) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) EquipmentSuit);
+      }
+      if (EquipmentQuality != global::SocketProtocol.EEquipmentQuality.Normal) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) EquipmentQuality);
+      }
+      if (SubProp1 != global::SocketProtocol.ESubProp.HealthSubProp) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SubProp1);
+      }
+      if (SubProp1Value != 0F) {
+        size += 1 + 4;
+      }
+      if (SubProp2 != global::SocketProtocol.ESubProp.HealthSubProp) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SubProp2);
+      }
+      if (SubProp2Value != 0F) {
+        size += 1 + 4;
+      }
+      if (SubProp3 != global::SocketProtocol.ESubProp.HealthSubProp) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SubProp3);
+      }
+      if (SubProp3Value != 0F) {
+        size += 1 + 4;
+      }
+      if (Talent1 != global::SocketProtocol.EEquipmentTalent.Test1EquipmentTalent1) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Talent1);
+      }
+      if (Talent2 != global::SocketProtocol.EEquipmentTalent.Test1EquipmentTalent1) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Talent2);
+      }
+      if (Using != global::SocketProtocol.EUsing.No) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Using);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(EquipmentPack other) {
+      if (other == null) {
+        return;
+      }
+      if (other.EquipmentId != 0) {
+        EquipmentId = other.EquipmentId;
+      }
+      if (other.EquipmentName != global::SocketProtocol.EEquipmentName.Test1Name) {
+        EquipmentName = other.EquipmentName;
+      }
+      if (other.EquipmentSuit != global::SocketProtocol.EEquipmentSuit.Test1Suit) {
+        EquipmentSuit = other.EquipmentSuit;
+      }
+      if (other.EquipmentQuality != global::SocketProtocol.EEquipmentQuality.Normal) {
+        EquipmentQuality = other.EquipmentQuality;
+      }
+      if (other.SubProp1 != global::SocketProtocol.ESubProp.HealthSubProp) {
+        SubProp1 = other.SubProp1;
+      }
+      if (other.SubProp1Value != 0F) {
+        SubProp1Value = other.SubProp1Value;
+      }
+      if (other.SubProp2 != global::SocketProtocol.ESubProp.HealthSubProp) {
+        SubProp2 = other.SubProp2;
+      }
+      if (other.SubProp2Value != 0F) {
+        SubProp2Value = other.SubProp2Value;
+      }
+      if (other.SubProp3 != global::SocketProtocol.ESubProp.HealthSubProp) {
+        SubProp3 = other.SubProp3;
+      }
+      if (other.SubProp3Value != 0F) {
+        SubProp3Value = other.SubProp3Value;
+      }
+      if (other.Talent1 != global::SocketProtocol.EEquipmentTalent.Test1EquipmentTalent1) {
+        Talent1 = other.Talent1;
+      }
+      if (other.Talent2 != global::SocketProtocol.EEquipmentTalent.Test1EquipmentTalent1) {
+        Talent2 = other.Talent2;
+      }
+      if (other.Using != global::SocketProtocol.EUsing.No) {
+        Using = other.Using;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            EquipmentId = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            EquipmentName = (global::SocketProtocol.EEquipmentName) input.ReadEnum();
+            break;
+          }
+          case 24: {
+            EquipmentSuit = (global::SocketProtocol.EEquipmentSuit) input.ReadEnum();
+            break;
+          }
+          case 32: {
+            EquipmentQuality = (global::SocketProtocol.EEquipmentQuality) input.ReadEnum();
+            break;
+          }
+          case 40: {
+            SubProp1 = (global::SocketProtocol.ESubProp) input.ReadEnum();
+            break;
+          }
+          case 53: {
+            SubProp1Value = input.ReadFloat();
+            break;
+          }
+          case 56: {
+            SubProp2 = (global::SocketProtocol.ESubProp) input.ReadEnum();
+            break;
+          }
+          case 69: {
+            SubProp2Value = input.ReadFloat();
+            break;
+          }
+          case 72: {
+            SubProp3 = (global::SocketProtocol.ESubProp) input.ReadEnum();
+            break;
+          }
+          case 85: {
+            SubProp3Value = input.ReadFloat();
+            break;
+          }
+          case 88: {
+            Talent1 = (global::SocketProtocol.EEquipmentTalent) input.ReadEnum();
+            break;
+          }
+          case 96: {
+            Talent2 = (global::SocketProtocol.EEquipmentTalent) input.ReadEnum();
+            break;
+          }
+          case 104: {
+            Using = (global::SocketProtocol.EUsing) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GunPack : pb::IMessage<GunPack> {
+    private static readonly pb::MessageParser<GunPack> _parser = new pb::MessageParser<GunPack>(() => new GunPack());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GunPack> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::SocketProtocol.SocketProtocolReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GunPack() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GunPack(GunPack other) : this() {
+      gunId_ = other.gunId_;
+      gunName_ = other.gunName_;
+      gunType_ = other.gunType_;
+      baseDMG_ = other.baseDMG_;
+      firingRate_ = other.firingRate_;
+      currentFiringRatePerSecond_ = other.currentFiringRatePerSecond_;
+      magazine_ = other.magazine_;
+      magazineCount_ = other.magazineCount_;
+      coreProp_ = other.coreProp_;
+      corePropValue_ = other.corePropValue_;
+      subProp1_ = other.subProp1_;
+      subProp1Value_ = other.subProp1Value_;
+      subProp2_ = other.subProp2_;
+      subProp2Value_ = other.subProp2Value_;
+      subProp3_ = other.subProp3_;
+      subProp3Value_ = other.subProp3Value_;
+      using_ = other.using_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GunPack Clone() {
+      return new GunPack(this);
+    }
+
+    /// <summary>Field number for the "GunId" field.</summary>
+    public const int GunIdFieldNumber = 1;
+    private int gunId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int GunId {
+      get { return gunId_; }
+      set {
+        gunId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "GunName" field.</summary>
+    public const int GunNameFieldNumber = 2;
+    private global::SocketProtocol.EGunName gunName_ = global::SocketProtocol.EGunName.Ak47;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::SocketProtocol.EGunName GunName {
+      get { return gunName_; }
+      set {
+        gunName_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "GunType" field.</summary>
+    public const int GunTypeFieldNumber = 3;
+    private global::SocketProtocol.EGunType gunType_ = global::SocketProtocol.EGunType.Ar;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::SocketProtocol.EGunType GunType {
+      get { return gunType_; }
+      set {
+        gunType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "BaseDMG" field.</summary>
+    public const int BaseDMGFieldNumber = 4;
+    private float baseDMG_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float BaseDMG {
+      get { return baseDMG_; }
+      set {
+        baseDMG_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "FiringRate" field.</summary>
+    public const int FiringRateFieldNumber = 5;
+    private float firingRate_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float FiringRate {
+      get { return firingRate_; }
+      set {
+        firingRate_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "CurrentFiringRatePerSecond" field.</summary>
+    public const int CurrentFiringRatePerSecondFieldNumber = 6;
+    private float currentFiringRatePerSecond_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float CurrentFiringRatePerSecond {
+      get { return currentFiringRatePerSecond_; }
+      set {
+        currentFiringRatePerSecond_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Magazine" field.</summary>
+    public const int MagazineFieldNumber = 7;
+    private int magazine_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Magazine {
+      get { return magazine_; }
+      set {
+        magazine_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "MagazineCount" field.</summary>
+    public const int MagazineCountFieldNumber = 8;
+    private int magazineCount_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int MagazineCount {
+      get { return magazineCount_; }
+      set {
+        magazineCount_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "CoreProp" field.</summary>
+    public const int CorePropFieldNumber = 9;
+    private global::SocketProtocol.EGunCoreProp coreProp_ = global::SocketProtocol.EGunCoreProp.AllDmgBonusCoreProp;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::SocketProtocol.EGunCoreProp CoreProp {
+      get { return coreProp_; }
+      set {
+        coreProp_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "CorePropValue" field.</summary>
+    public const int CorePropValueFieldNumber = 10;
+    private float corePropValue_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float CorePropValue {
+      get { return corePropValue_; }
+      set {
+        corePropValue_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SubProp1" field.</summary>
+    public const int SubProp1FieldNumber = 11;
+    private global::SocketProtocol.ESubProp subProp1_ = global::SocketProtocol.ESubProp.HealthSubProp;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::SocketProtocol.ESubProp SubProp1 {
+      get { return subProp1_; }
+      set {
+        subProp1_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SubProp1Value" field.</summary>
+    public const int SubProp1ValueFieldNumber = 12;
+    private float subProp1Value_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float SubProp1Value {
+      get { return subProp1Value_; }
+      set {
+        subProp1Value_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SubProp2" field.</summary>
+    public const int SubProp2FieldNumber = 13;
+    private global::SocketProtocol.ESubProp subProp2_ = global::SocketProtocol.ESubProp.HealthSubProp;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::SocketProtocol.ESubProp SubProp2 {
+      get { return subProp2_; }
+      set {
+        subProp2_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SubProp2Value" field.</summary>
+    public const int SubProp2ValueFieldNumber = 14;
+    private float subProp2Value_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float SubProp2Value {
+      get { return subProp2Value_; }
+      set {
+        subProp2Value_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SubProp3" field.</summary>
+    public const int SubProp3FieldNumber = 15;
+    private global::SocketProtocol.ESubProp subProp3_ = global::SocketProtocol.ESubProp.HealthSubProp;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::SocketProtocol.ESubProp SubProp3 {
+      get { return subProp3_; }
+      set {
+        subProp3_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SubProp3Value" field.</summary>
+    public const int SubProp3ValueFieldNumber = 16;
+    private float subProp3Value_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float SubProp3Value {
+      get { return subProp3Value_; }
+      set {
+        subProp3Value_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Using" field.</summary>
+    public const int UsingFieldNumber = 17;
+    private global::SocketProtocol.EUsing using_ = global::SocketProtocol.EUsing.No;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::SocketProtocol.EUsing Using {
+      get { return using_; }
+      set {
+        using_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GunPack);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GunPack other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (GunId != other.GunId) return false;
+      if (GunName != other.GunName) return false;
+      if (GunType != other.GunType) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(BaseDMG, other.BaseDMG)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(FiringRate, other.FiringRate)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(CurrentFiringRatePerSecond, other.CurrentFiringRatePerSecond)) return false;
+      if (Magazine != other.Magazine) return false;
+      if (MagazineCount != other.MagazineCount) return false;
+      if (CoreProp != other.CoreProp) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(CorePropValue, other.CorePropValue)) return false;
+      if (SubProp1 != other.SubProp1) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(SubProp1Value, other.SubProp1Value)) return false;
+      if (SubProp2 != other.SubProp2) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(SubProp2Value, other.SubProp2Value)) return false;
+      if (SubProp3 != other.SubProp3) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(SubProp3Value, other.SubProp3Value)) return false;
+      if (Using != other.Using) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (GunId != 0) hash ^= GunId.GetHashCode();
+      if (GunName != global::SocketProtocol.EGunName.Ak47) hash ^= GunName.GetHashCode();
+      if (GunType != global::SocketProtocol.EGunType.Ar) hash ^= GunType.GetHashCode();
+      if (BaseDMG != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(BaseDMG);
+      if (FiringRate != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(FiringRate);
+      if (CurrentFiringRatePerSecond != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(CurrentFiringRatePerSecond);
+      if (Magazine != 0) hash ^= Magazine.GetHashCode();
+      if (MagazineCount != 0) hash ^= MagazineCount.GetHashCode();
+      if (CoreProp != global::SocketProtocol.EGunCoreProp.AllDmgBonusCoreProp) hash ^= CoreProp.GetHashCode();
+      if (CorePropValue != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(CorePropValue);
+      if (SubProp1 != global::SocketProtocol.ESubProp.HealthSubProp) hash ^= SubProp1.GetHashCode();
+      if (SubProp1Value != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SubProp1Value);
+      if (SubProp2 != global::SocketProtocol.ESubProp.HealthSubProp) hash ^= SubProp2.GetHashCode();
+      if (SubProp2Value != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SubProp2Value);
+      if (SubProp3 != global::SocketProtocol.ESubProp.HealthSubProp) hash ^= SubProp3.GetHashCode();
+      if (SubProp3Value != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SubProp3Value);
+      if (Using != global::SocketProtocol.EUsing.No) hash ^= Using.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (GunId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(GunId);
+      }
+      if (GunName != global::SocketProtocol.EGunName.Ak47) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) GunName);
+      }
+      if (GunType != global::SocketProtocol.EGunType.Ar) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) GunType);
+      }
+      if (BaseDMG != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(BaseDMG);
+      }
+      if (FiringRate != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(FiringRate);
+      }
+      if (CurrentFiringRatePerSecond != 0F) {
+        output.WriteRawTag(53);
+        output.WriteFloat(CurrentFiringRatePerSecond);
+      }
+      if (Magazine != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(Magazine);
+      }
+      if (MagazineCount != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(MagazineCount);
+      }
+      if (CoreProp != global::SocketProtocol.EGunCoreProp.AllDmgBonusCoreProp) {
+        output.WriteRawTag(72);
+        output.WriteEnum((int) CoreProp);
+      }
+      if (CorePropValue != 0F) {
+        output.WriteRawTag(85);
+        output.WriteFloat(CorePropValue);
+      }
+      if (SubProp1 != global::SocketProtocol.ESubProp.HealthSubProp) {
+        output.WriteRawTag(88);
+        output.WriteEnum((int) SubProp1);
+      }
+      if (SubProp1Value != 0F) {
+        output.WriteRawTag(101);
+        output.WriteFloat(SubProp1Value);
+      }
+      if (SubProp2 != global::SocketProtocol.ESubProp.HealthSubProp) {
+        output.WriteRawTag(104);
+        output.WriteEnum((int) SubProp2);
+      }
+      if (SubProp2Value != 0F) {
+        output.WriteRawTag(117);
+        output.WriteFloat(SubProp2Value);
+      }
+      if (SubProp3 != global::SocketProtocol.ESubProp.HealthSubProp) {
+        output.WriteRawTag(120);
+        output.WriteEnum((int) SubProp3);
+      }
+      if (SubProp3Value != 0F) {
+        output.WriteRawTag(133, 1);
+        output.WriteFloat(SubProp3Value);
+      }
+      if (Using != global::SocketProtocol.EUsing.No) {
+        output.WriteRawTag(136, 1);
+        output.WriteEnum((int) Using);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (GunId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(GunId);
+      }
+      if (GunName != global::SocketProtocol.EGunName.Ak47) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) GunName);
+      }
+      if (GunType != global::SocketProtocol.EGunType.Ar) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) GunType);
+      }
+      if (BaseDMG != 0F) {
+        size += 1 + 4;
+      }
+      if (FiringRate != 0F) {
+        size += 1 + 4;
+      }
+      if (CurrentFiringRatePerSecond != 0F) {
+        size += 1 + 4;
+      }
+      if (Magazine != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Magazine);
+      }
+      if (MagazineCount != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(MagazineCount);
+      }
+      if (CoreProp != global::SocketProtocol.EGunCoreProp.AllDmgBonusCoreProp) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CoreProp);
+      }
+      if (CorePropValue != 0F) {
+        size += 1 + 4;
+      }
+      if (SubProp1 != global::SocketProtocol.ESubProp.HealthSubProp) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SubProp1);
+      }
+      if (SubProp1Value != 0F) {
+        size += 1 + 4;
+      }
+      if (SubProp2 != global::SocketProtocol.ESubProp.HealthSubProp) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SubProp2);
+      }
+      if (SubProp2Value != 0F) {
+        size += 1 + 4;
+      }
+      if (SubProp3 != global::SocketProtocol.ESubProp.HealthSubProp) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SubProp3);
+      }
+      if (SubProp3Value != 0F) {
+        size += 2 + 4;
+      }
+      if (Using != global::SocketProtocol.EUsing.No) {
+        size += 2 + pb::CodedOutputStream.ComputeEnumSize((int) Using);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GunPack other) {
+      if (other == null) {
+        return;
+      }
+      if (other.GunId != 0) {
+        GunId = other.GunId;
+      }
+      if (other.GunName != global::SocketProtocol.EGunName.Ak47) {
+        GunName = other.GunName;
+      }
+      if (other.GunType != global::SocketProtocol.EGunType.Ar) {
+        GunType = other.GunType;
+      }
+      if (other.BaseDMG != 0F) {
+        BaseDMG = other.BaseDMG;
+      }
+      if (other.FiringRate != 0F) {
+        FiringRate = other.FiringRate;
+      }
+      if (other.CurrentFiringRatePerSecond != 0F) {
+        CurrentFiringRatePerSecond = other.CurrentFiringRatePerSecond;
+      }
+      if (other.Magazine != 0) {
+        Magazine = other.Magazine;
+      }
+      if (other.MagazineCount != 0) {
+        MagazineCount = other.MagazineCount;
+      }
+      if (other.CoreProp != global::SocketProtocol.EGunCoreProp.AllDmgBonusCoreProp) {
+        CoreProp = other.CoreProp;
+      }
+      if (other.CorePropValue != 0F) {
+        CorePropValue = other.CorePropValue;
+      }
+      if (other.SubProp1 != global::SocketProtocol.ESubProp.HealthSubProp) {
+        SubProp1 = other.SubProp1;
+      }
+      if (other.SubProp1Value != 0F) {
+        SubProp1Value = other.SubProp1Value;
+      }
+      if (other.SubProp2 != global::SocketProtocol.ESubProp.HealthSubProp) {
+        SubProp2 = other.SubProp2;
+      }
+      if (other.SubProp2Value != 0F) {
+        SubProp2Value = other.SubProp2Value;
+      }
+      if (other.SubProp3 != global::SocketProtocol.ESubProp.HealthSubProp) {
+        SubProp3 = other.SubProp3;
+      }
+      if (other.SubProp3Value != 0F) {
+        SubProp3Value = other.SubProp3Value;
+      }
+      if (other.Using != global::SocketProtocol.EUsing.No) {
+        Using = other.Using;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            GunId = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            GunName = (global::SocketProtocol.EGunName) input.ReadEnum();
+            break;
+          }
+          case 24: {
+            GunType = (global::SocketProtocol.EGunType) input.ReadEnum();
+            break;
+          }
+          case 37: {
+            BaseDMG = input.ReadFloat();
+            break;
+          }
+          case 45: {
+            FiringRate = input.ReadFloat();
+            break;
+          }
+          case 53: {
+            CurrentFiringRatePerSecond = input.ReadFloat();
+            break;
+          }
+          case 56: {
+            Magazine = input.ReadInt32();
+            break;
+          }
+          case 64: {
+            MagazineCount = input.ReadInt32();
+            break;
+          }
+          case 72: {
+            CoreProp = (global::SocketProtocol.EGunCoreProp) input.ReadEnum();
+            break;
+          }
+          case 85: {
+            CorePropValue = input.ReadFloat();
+            break;
+          }
+          case 88: {
+            SubProp1 = (global::SocketProtocol.ESubProp) input.ReadEnum();
+            break;
+          }
+          case 101: {
+            SubProp1Value = input.ReadFloat();
+            break;
+          }
+          case 104: {
+            SubProp2 = (global::SocketProtocol.ESubProp) input.ReadEnum();
+            break;
+          }
+          case 117: {
+            SubProp2Value = input.ReadFloat();
+            break;
+          }
+          case 120: {
+            SubProp3 = (global::SocketProtocol.ESubProp) input.ReadEnum();
+            break;
+          }
+          case 133: {
+            SubProp3Value = input.ReadFloat();
+            break;
+          }
+          case 136: {
+            Using = (global::SocketProtocol.EUsing) input.ReadEnum();
             break;
           }
         }

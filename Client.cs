@@ -74,9 +74,14 @@ namespace SocketServer
             return GetUserData.Reigster(mainPack, connection);
         }
 
-        public bool Login(MainPack mainPack)
+        public MainPack Login(MainPack mainPack)
         {
             return GetUserData.Login(mainPack, connection);
+        }
+
+        public MainPack InitPlayerInfo(MainPack mainPack)
+        {
+            return GetUserData.InitPlayerInfo(mainPack, connection);
         }
 
         public void TcpSend(MainPack mainPack)

@@ -26,7 +26,7 @@ namespace SocketServer
         {
             if(controllerDict.TryGetValue(mainPack.RequestCode, out BaseController controller))
             {
-                Console.WriteLine("处理消息中");
+                Console.WriteLine("处理消息中：" + mainPack.ActionCode.ToString());
                 string methodName = mainPack.ActionCode.ToString();
                 MethodInfo method = controller.GetType().GetMethod(methodName);
                 if( method == null)
