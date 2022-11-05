@@ -44,7 +44,7 @@ namespace SocketServer
                 }
                 else
                 {
-                    obj = new object[] { server, client, mainPack };
+                    obj = new object[] { client, mainPack };
                     object ret = method.Invoke(controller, obj);
                     if (ret != null)
                     {

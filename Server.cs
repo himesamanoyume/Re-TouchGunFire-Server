@@ -33,6 +33,7 @@ namespace SocketServer
 
         ~Server()
         {
+            Console.WriteLine("Server关闭");
             if (thread != null)
             {
                 thread.Abort();

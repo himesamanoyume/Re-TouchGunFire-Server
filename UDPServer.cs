@@ -59,7 +59,6 @@ namespace SocketServer
             {
                 client.endPoint = endPoint;
             }
-
             controllerManager.HandleRequest(mainPack, client, true);
         }
 

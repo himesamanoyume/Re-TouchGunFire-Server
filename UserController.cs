@@ -14,20 +14,22 @@ namespace SocketServer
             requestCode = RequestCode.User;
         }
         
-        public MainPack Register(Server server ,Client client, MainPack mainPack)
+        public MainPack Register(Client client, MainPack mainPack)
         {
             if(client.Register(mainPack))
             {
+                Console.WriteLine("Success");
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else
             {
+                Console.WriteLine("Failed");
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
             return mainPack;
         }
 
-        public MainPack Login(Server server, Client client, MainPack mainPack)
+        public MainPack Login(Client client, MainPack mainPack)
         {
             if (client.Login(mainPack))
             {

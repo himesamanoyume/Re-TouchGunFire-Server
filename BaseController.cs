@@ -13,11 +13,10 @@ namespace SocketServer
         {
             get { return requestCode; }
         }
-        //protected ActionCode m_actionCode  = ActionCode.ActionNone;
+        //protected ActionCode actionCode = ActionCode.ActionNone;
         //public ActionCode GetActionCode
         //{
-        //    get { return m_actionCode; }
+        //    get { return actionCode; }
         //}
-        //protected ReturnCode m_returnCode;
     }
 }

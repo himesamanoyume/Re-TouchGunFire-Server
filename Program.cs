@@ -11,7 +11,13 @@ namespace SocketServer
         static void Main(string[] args)
         {
             Server server = new Server(4567);
-            Console.Read();
+            if (Console.ReadLine() == "stop")
+            {
+                Console.WriteLine("服务器关闭中");
+                server = null;
+                GC.Collect();
+                
+            }
         }
 
     }

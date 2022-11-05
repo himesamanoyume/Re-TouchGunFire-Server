@@ -11,7 +11,7 @@ namespace SocketServer
     internal class Teammate
     {
         Server server;
-        Client masterClient;
+        Client masterClient = null;
         public UDPServer udpServer;
         List<Client> teammates = new List<Client>();
 
@@ -31,39 +31,47 @@ namespace SocketServer
 
         public void UdpBroadcast(Client client, MainPack mainPack)
         {
-            for (int i = 0; i < teammates.Count; i++)
+            foreach (Client c in teammates)
             {
-                if (teammates[i].GetPlayerInfo.UID == client.GetPlayerInfo.UID)
+                if (c.Equals(client))
                 {
                     continue;
                 }
-                udpServer.UdpSend(mainPack, teammates[i].endPoint);
+                c.UdpSend(mainPack);
             }
         }
 
-        public void TcpBroadcast(Server server, Client client, MainPack mainPack)
+        public void TcpBroadcast(Client client, MainPack mainPack)
         {
-
+            foreach (Client c in teammates)
+            {
+                if (c.Equals(client))
+                {
+                    continue;
+                }
+                c.TcpSend(mainPack);
+            }
         }
 
         public void LeaveTeam(Client client)
         {
             MainPack mainPack = new MainPack();
-            if (client == teammates[0])
+            mainPack.ActionCode = ActionCode.LevelTeam;
+            mainPack.Uid = client.GetPlayerInfo.UID;
+            client.isTeammate = false;
+            client.teammate = null;
+            TcpBroadcast(client, mainPack);
+            if (client.Equals(teammates[0]))
             {
-                mainPack.ActionCode = ActionCode.LevelTeam;
-                mainPack.Uid = client.GetPlayerInfo.UID;
-                TcpBroadcast(server, client, mainPack);
                 teammates.Remove(teammates[0]);
                 if (teammates.Count == 0)
-                {
                     BreakTeam();
-                }
                 else
-                {
                     masterClient = teammates[0];
-                }
-                //该方法未完善
+            }
+            else
+            {
+                teammates.Remove(client);
             }
         }
 
@@ -76,6 +84,18 @@ namespace SocketServer
                 mainPack.Uid = client.GetPlayerInfo.UID;
             }
             
+        }
+
+        public void JoinTeam(Client client)
+        {
+            client.isTeammate = true;
+            client.teammate = this;
+            //...
+        }
+
+        public void UpdateTeammateInfo()
+        {
+
         }
     }
 }

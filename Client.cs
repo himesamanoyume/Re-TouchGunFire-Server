@@ -9,15 +9,17 @@ namespace SocketServer
 {
     internal class Client
     {
-        Socket clientSocket;
-        Socket udpClient;
+        Socket tcpSocket;
+        Socket udpSocket;
         public EndPoint endPoint;
         UDPServer udpServer;
         Message message;
         UserData userData;
+        public bool isTeammate = false;
+        public Teammate teammate;
         Server server;
         MySqlConnection connection;
-        string connectStr = "database=(数据库名称); data source=(IP);user=();password=();pooling=false;charset=utf8;port=3306";
+        string connectStr = "database=hime; data source=princessdreamland.design; user=lzp; password=lzp19990510; pooling=false;charset=utf8;port=3306";
 
         public UserData GetUserData
         {
@@ -31,25 +33,30 @@ namespace SocketServer
             userData = new UserData();
             message = new Message();
             connection = new MySqlConnection(connectStr);
-            //m_connection.Open();
+            connection.Open();
 
             this.server = server;
-            this.clientSocket = clientSocket;
+            this.tcpSocket = clientSocket;
             
             StartReceive();
         }
 
+        ~Client()
+        {
+            Close();
+        }
+
         void StartReceive()
         {
-            clientSocket.BeginReceive(message.Buffer, message.StartIndex, message.Remsize, SocketFlags.None, ReceiveCallback, null);
+            tcpSocket.BeginReceive(message.Buffer, message.StartIndex, message.Remsize, SocketFlags.None, ReceiveCallback, null);
         }
 
         void ReceiveCallback(IAsyncResult iar)
         {
             try
             {
-                if (clientSocket == null || clientSocket.Connected == false) return;
-                int length = clientSocket.EndReceive(iar);
+                if (tcpSocket == null || tcpSocket.Connected == false) return;
+                int length = tcpSocket.EndReceive(iar);
                 if (length == 0) return;
 
                 message.ReadBuffer(length, HandleRequest);
@@ -74,10 +81,10 @@ namespace SocketServer
 
         public void TcpSend(MainPack mainPack)
         {
-            if (clientSocket == null || clientSocket.Connected == false) return;
+            if (tcpSocket == null || tcpSocket.Connected == false) return;
             try
             {
-                clientSocket.Send(Message.TcpPackData(mainPack));
+                tcpSocket.Send(Message.TcpPackData(mainPack));
             }
             catch
             {
@@ -87,10 +94,8 @@ namespace SocketServer
 
         public void UdpSend(MainPack mainPack)
         {
-            if (IEP)
-            {
-
-            }
+            if (endPoint == null) return;
+            udpServer.UdpSend(mainPack, endPoint);
         }
 
         void HandleRequest(MainPack mainPack)
@@ -101,7 +106,12 @@ namespace SocketServer
         void Close()
         {
             server.RemoveClient(this);
-            clientSocket.Close();
+            Console.WriteLine("断开连接");
+            if (isTeammate && teammate != null)
+            {
+                teammate.LeaveTeam(this);
+            }
+            tcpSocket.Close();
             connection.Close();
         }
     }

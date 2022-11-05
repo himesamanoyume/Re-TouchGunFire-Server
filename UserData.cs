@@ -13,31 +13,46 @@ namespace SocketServer
 
         public bool Reigster(MainPack mainPack, MySqlConnection mySqlConnection)
         {
-            string userName = mainPack.RegisterPack.UserName;
+            string playerName = mainPack.RegisterPack.PlayerName;
+            string account = mainPack.RegisterPack.Account;
             string password = mainPack.RegisterPack.Password;
 
-            //string sql = "INSERT INTO `databaseName`. `userdata` (`uid`,`username`, `password`) VALUES (`@uid`, `@username`, `@password`)";
-            //MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
-            //try
-            //{
-            //    cmd.ExecuteNonQuery();
-            //    return true;
-            //}
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine(e.Message);
-            //    return false;
-            //}
+            try
+            {
+                string sql = "INSERT INTO `hime`.`user_info` ( `account`, `password`, `player_name`) VALUES ('" + account + "', '" + password + "','" + playerName + "')";
+                MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
 
-            return true;
+            return false;
 
         }
 
         public bool Login(MainPack mainPack, MySqlConnection mySqlConnection)
         {
-            string userName = mainPack.LoginPack.UserName;
+            string account = mainPack.LoginPack.Account;
             string password = mainPack.LoginPack.Password;
-            return true;
+            
+            try
+            {
+                string sql = "SELECT * FROM hime.user_info where account='" + account + "' and password='" + password + "'";
+                MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+
+            return false;
         }
     }
 }

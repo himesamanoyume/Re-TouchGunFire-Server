@@ -38,15 +38,15 @@ namespace SocketProtocol {
             "b3JkGAMgASgJIo4BChJJbml0UGxheWVySW5mb1BhY2sSCwoDVWlkGAEgASgF",
             "EhIKClBsYXllck5hbWUYAiABKAkSDQoFTGV2ZWwYAyABKAUSDgoGTWF4RXhw",
             "GAQgASgCEhIKCkN1cnJlbnRFeHAYBSABKAISEQoJTWF4SGVhbHRoGAYgASgC",
-            "EhEKCU1heFNoaWVsZBgHIAEoAio0CgtSZXF1ZXN0Q29kZRIPCgtSZXF1ZXN0",
-            "Tm9uZRAAEggKBFVzZXIQARIKCgZHYW1pbmcQAirpAQoKQWN0aW9uQ29kZRIO",
-            "CgpBY3Rpb25Ob25lEAASDAoIUmVnaXN0ZXIQARIJCgVMb2dpbhACEhIKDklu",
-            "aXRQbGF5ZXJJbmZvEAMSDAoISm9pblRlYW0QBBIOCgpVcGRhdGVUZWFtEAUS",
-            "DQoJTGV2ZWxUZWFtEAYSFAoQVXBkYXRlUGxheWVySW5mbxAHEg8KC1JlYWR5",
-            "QXR0YWNrEAgSDwoLU3RhcnRBdHRhY2sQCRINCglOZXh0RW5lbXkQChINCglF",
-            "bmRBdHRhY2sQCxIMCghFeGl0R2FtZRAMEg0KCUJyZWFrVGVhbRANKjMKClJl",
-            "dHVybkNvZGUSDgoKUmV0dXJuTm9uZRAAEgsKB1N1Y2Nlc3MQARIICgRGYWls",
-            "EAJiBnByb3RvMw=="));
+            "EhEKCU1heFNoaWVsZBgHIAEoAio+CgtSZXF1ZXN0Q29kZRIPCgtSZXF1ZXN0",
+            "Tm9uZRAAEggKBFVzZXIQARIKCgZHYW1pbmcQAhIICgRUZWFtEAMq6QEKCkFj",
+            "dGlvbkNvZGUSDgoKQWN0aW9uTm9uZRAAEgwKCFJlZ2lzdGVyEAESCQoFTG9n",
+            "aW4QAhISCg5Jbml0UGxheWVySW5mbxADEgwKCEpvaW5UZWFtEAQSDgoKVXBk",
+            "YXRlVGVhbRAFEg0KCUxldmVsVGVhbRAGEhQKEFVwZGF0ZVBsYXllckluZm8Q",
+            "BxIPCgtSZWFkeUF0dGFjaxAIEg8KC1N0YXJ0QXR0YWNrEAkSDQoJTmV4dEVu",
+            "ZW15EAoSDQoJRW5kQXR0YWNrEAsSDAoIRXhpdEdhbWUQDBINCglCcmVha1Rl",
+            "YW0QDSozCgpSZXR1cm5Db2RlEg4KClJldHVybk5vbmUQABILCgdTdWNjZXNz",
+            "EAESCAoERmFpbBACYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SocketProtocol.RequestCode), typeof(global::SocketProtocol.ActionCode), typeof(global::SocketProtocol.ReturnCode), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -64,6 +64,7 @@ namespace SocketProtocol {
     [pbr::OriginalName("RequestNone")] RequestNone = 0,
     [pbr::OriginalName("User")] User = 1,
     [pbr::OriginalName("Gaming")] Gaming = 2,
+    [pbr::OriginalName("Team")] Team = 3,
   }
 
   public enum ActionCode {
