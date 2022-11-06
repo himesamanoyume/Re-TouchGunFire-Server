@@ -49,8 +49,8 @@ namespace SocketServer
         void AcceptCallback(IAsyncResult iar)
         {
             Socket client = serverSocket.EndAccept(iar);
-            Console.WriteLine("新的连接");
             clientSockets.Add(new Client(client, this));
+            Console.WriteLine("新的连接, 当前客户端人数: " + clientSockets.Count);
             StartAccept();
         }
 

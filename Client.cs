@@ -41,11 +41,6 @@ namespace SocketServer
             StartReceive();
         }
 
-        ~Client()
-        {
-            Close();
-        }
-
         void StartReceive()
         {
             tcpSocket.BeginReceive(message.Buffer, message.StartIndex, message.Remsize, SocketFlags.None, ReceiveCallback, null);
@@ -57,14 +52,18 @@ namespace SocketServer
             {
                 if (tcpSocket == null || tcpSocket.Connected == false) return;
                 int length = tcpSocket.EndReceive(iar);
-                if (length == 0) return;
+                if (length == 0)
+                {
+                    Close();
+                    return;
+                }
 
                 message.ReadBuffer(length, HandleRequest);
                 StartReceive();
             }
-            catch (Exception)
+            catch
             {
-                throw;
+                Close();
             }
 
         }

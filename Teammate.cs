@@ -29,7 +29,13 @@ namespace SocketServer
             set { teammates = value; }
         }
 
-        public void UdpBroadcast(Client client, MainPack mainPack)
+        /// <summary>
+        /// 广播消息 默认TCP转发
+        /// </summary>
+        /// <param name="client"></param>
+        /// <param name="mainPack"></param>
+        /// <param name="isUDP"></param>
+        public void Broadcast(Client client, MainPack mainPack, bool isUDP = false)
         {
             foreach (Client c in teammates)
             {
@@ -37,19 +43,10 @@ namespace SocketServer
                 {
                     continue;
                 }
-                c.UdpSend(mainPack);
-            }
-        }
-
-        public void TcpBroadcast(Client client, MainPack mainPack)
-        {
-            foreach (Client c in teammates)
-            {
-                if (c.Equals(client))
-                {
-                    continue;
-                }
-                c.TcpSend(mainPack);
+                if (isUDP)
+                    c.UdpSend(mainPack);
+                else
+                    c.TcpSend(mainPack);
             }
         }
 
@@ -60,7 +57,7 @@ namespace SocketServer
             mainPack.Uid = client.GetPlayerInfo.UID;
             client.isTeammate = false;
             client.teammate = null;
-            TcpBroadcast(client, mainPack);
+            Broadcast(client, mainPack);
             if (client.Equals(teammates[0]))
             {
                 teammates.Remove(teammates[0]);
