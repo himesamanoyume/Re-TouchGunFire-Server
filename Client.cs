@@ -19,7 +19,7 @@ namespace SocketServer
         public Teammate teammate;
         Server server;
         MySqlConnection connection;
-        string connectStr = "database=hime; data source=princessdreamland.design; user=lzp; password=lzp19990510; pooling=false;charset=utf8;port=3306";
+        string connectStr = "database=hime; data source=47.106.183.112; user=lzp; password=lzp19990510; pooling=false;charset=utf8;port=3306";
 
         public UserData GetUserData
         {
@@ -81,6 +81,11 @@ namespace SocketServer
         public MainPack InitPlayerInfo(MainPack mainPack)
         {
             return GetUserData.InitPlayerInfo(mainPack, connection);
+        }
+
+        public int SendRequestFriend(MainPack mainPack)
+        {
+            return GetUserData.SendRequestFriend(mainPack, connection);
         }
 
         public void TcpSend(MainPack mainPack)

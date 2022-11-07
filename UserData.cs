@@ -20,7 +20,7 @@ namespace SocketServer
 
             try
             {
-                string sql = "INSERT INTO `hime`.`user_info` ( `account`, `password`, `player_name`) VALUES ('" + account + "', '" + password + "','" + playerName + "')";
+                string sql = "insert into hime.user_info ( account, password, player_name) values (" + account + ", " + password + "," + playerName + ")";
                 MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
                 cmd.ExecuteNonQuery();
                 return true;
@@ -42,7 +42,7 @@ namespace SocketServer
             
             try
             {
-                string sql = "SELECT * FROM hime.user_info where account='" + account + "' and password='" + password + "'";
+                string sql = "select * from hime.user_info where account='" + account + "' and password='" + password + "'";
                 MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
                 MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
                 mySqlDataReader.Read();
@@ -64,7 +64,7 @@ namespace SocketServer
             //登陆游戏时一次性查询完全部信息
             try
             {
-                string sql = "SELECT * FROM hime.user_info where uid='" + mainPack.Uid + "'";
+                string sql = "select * from hime.user_info where uid='" + mainPack.Uid + "'";
                 MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
                 MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
                 mySqlDataReader.Read();
@@ -126,6 +126,71 @@ namespace SocketServer
         public MainPack GetPlayerGun(MainPack mainPack, MySqlConnection mySqlConnection)
         {
             return null;
+        }
+
+        public MainPack GetFriendRequest(MainPack mainPack, MySqlConnection mySqlConnection)
+        {
+
+            return null;
+        }
+
+        public MainPack GetFriends(MainPack mainPack, MySqlConnection mySqlConnection)
+        {
+            try
+            {
+                string sql = "select * from hime.user_friends where player1_uid = "+ mainPack.Uid +" or player2_uid =" + mainPack.Uid + " and is_friend = 1";
+                MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
+                MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
+                foreach (var item in mySqlDataReader)
+                {
+                    mySqlDataReader.Read();
+                    Console.WriteLine(mySqlDataReader.GetInt32(1) + "_" + mySqlDataReader.GetInt32(1));
+                    FriendsPack friendsPack = new FriendsPack();
+                }
+
+                mySqlDataReader.Close();
+                return mainPack;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+            return null;
+        }
+
+        public MainPack SearchFriend(MainPack mainPack, MySqlConnection mySqlConnection)
+        {
+
+            return null;
+        }
+
+        public int SendRequestFriend(MainPack mainPack, MySqlConnection mySqlConnection)
+        {
+            int senderUid = mainPack.Uid;
+            int targetUid = mainPack.SendRequestFriendPack.TargetPlayerUid;
+            try
+            {
+                string sql = "select * from hime.user_friends where player1_uid =" + senderUid + " and player2_uid =" + targetUid + " or player1_uid = " + targetUid +" and player2_uid = " + senderUid;
+                MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
+                MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
+                if (mySqlDataReader.Read())
+                {
+                    mySqlDataReader.Close();
+                    return 2;
+                }
+                mySqlDataReader.Close();
+                sql = "insert into user_friends (player1_uid, player2_uid) values (" + senderUid + ", " + targetUid +")";
+                cmd = new MySqlCommand(sql, mySqlConnection);
+                cmd.ExecuteNonQuery();
+                return 1;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return 0;
+            }
+            return 0;
         }
     }
 

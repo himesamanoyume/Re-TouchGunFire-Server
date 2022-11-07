@@ -20,6 +20,12 @@ namespace SocketServer
             this.server = server;
             UserController userController = new UserController();
             controllerDict.Add(userController.GetRequestCode, userController);
+
+            TeamController teamController = new TeamController();
+            controllerDict.Add(teamController.GetRequestCode, teamController);
+
+            FriendController friendController = new FriendController();
+            controllerDict.Add(friendController.GetRequestCode, friendController);
         }
 
         public void HandleRequest(MainPack mainPack, Client client, bool isUDP = false)

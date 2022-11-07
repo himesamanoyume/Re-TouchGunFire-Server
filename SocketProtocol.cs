@@ -24,7 +24,7 @@ namespace SocketProtocol {
     static SocketProtocolReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChRTb2NrZXRQcm90b2NvbC5wcm90bxIOU29ja2V0UHJvdG9jb2wiwwIKCE1h",
+            "ChRTb2NrZXRQcm90b2NvbC5wcm90bxIOU29ja2V0UHJvdG9jb2wiuwMKCE1h",
             "aW5QYWNrEjAKC1JlcXVlc3RDb2RlGAEgASgOMhsuU29ja2V0UHJvdG9jb2wu",
             "UmVxdWVzdENvZGUSLgoKQWN0aW9uQ29kZRgCIAEoDjIaLlNvY2tldFByb3Rv",
             "Y29sLkFjdGlvbkNvZGUSLgoKUmV0dXJuQ29kZRgDIAEoDjIaLlNvY2tldFBy",
@@ -32,78 +32,88 @@ namespace SocketProtocol {
             "a2V0UHJvdG9jb2wuUmVnaXN0ZXJQYWNrEiwKCUxvZ2luUGFjaxgFIAEoCzIZ",
             "LlNvY2tldFByb3RvY29sLkxvZ2luUGFjaxILCgNVaWQYBiABKAUSNgoOUGxh",
             "eWVySW5mb1BhY2sYByABKAsyHi5Tb2NrZXRQcm90b2NvbC5QbGF5ZXJJbmZv",
-            "UGFjayJFCgxSZWdpc3RlclBhY2sSDwoHQWNjb3VudBgBIAEoCRIQCghQYXNz",
-            "d29yZBgCIAEoCRISCgpQbGF5ZXJOYW1lGAMgASgJIjsKCUxvZ2luUGFjaxIL",
-            "CgNVaWQYASABKAUSDwoHQWNjb3VudBgCIAEoCRIQCghQYXNzd29yZBgDIAEo",
-            "CSLVAQoOUGxheWVySW5mb1BhY2sSCwoDVWlkGAEgASgFEhIKClBsYXllck5h",
-            "bWUYAiABKAkSDQoFTGV2ZWwYAyABKAUSEgoKQ3VycmVudEV4cBgEIAEoAhI1",
-            "Cg5FcXVpcG1lbnRQYWNrcxgFIAMoCzIdLlNvY2tldFByb3RvY29sLkVxdWlw",
-            "bWVudFBhY2sSKQoIR3VuUGFja3MYBiADKAsyFy5Tb2NrZXRQcm90b2NvbC5H",
-            "dW5QYWNrEg8KB0RpYW1vbmQYByABKAMSDAoEQ29pbhgIIAEoAyKlBAoNRXF1",
-            "aXBtZW50UGFjaxITCgtFcXVpcG1lbnRJZBgBIAEoBRI1Cg1FcXVpcG1lbnRO",
-            "YW1lGAIgASgOMh4uU29ja2V0UHJvdG9jb2wuRUVxdWlwbWVudE5hbWUSNQoN",
-            "RXF1aXBtZW50U3VpdBgDIAEoDjIeLlNvY2tldFByb3RvY29sLkVFcXVpcG1l",
-            "bnRTdWl0EjsKEEVxdWlwbWVudFF1YWxpdHkYBCABKA4yIS5Tb2NrZXRQcm90",
-            "b2NvbC5FRXF1aXBtZW50UXVhbGl0eRIqCghTdWJQcm9wMRgFIAEoDjIYLlNv",
-            "Y2tldFByb3RvY29sLkVTdWJQcm9wEhUKDVN1YlByb3AxVmFsdWUYBiABKAIS",
-            "KgoIU3ViUHJvcDIYByABKA4yGC5Tb2NrZXRQcm90b2NvbC5FU3ViUHJvcBIV",
-            "Cg1TdWJQcm9wMlZhbHVlGAggASgCEioKCFN1YlByb3AzGAkgASgOMhguU29j",
-            "a2V0UHJvdG9jb2wuRVN1YlByb3ASFQoNU3ViUHJvcDNWYWx1ZRgKIAEoAhIx",
-            "CgdUYWxlbnQxGAsgASgOMiAuU29ja2V0UHJvdG9jb2wuRUVxdWlwbWVudFRh",
-            "bGVudBIxCgdUYWxlbnQyGAwgASgOMiAuU29ja2V0UHJvdG9jb2wuRUVxdWlw",
-            "bWVudFRhbGVudBIlCgVVc2luZxgNIAEoDjIWLlNvY2tldFByb3RvY29sLkVV",
-            "c2luZyKXBAoHR3VuUGFjaxINCgVHdW5JZBgBIAEoBRIpCgdHdW5OYW1lGAIg",
-            "ASgOMhguU29ja2V0UHJvdG9jb2wuRUd1bk5hbWUSKQoHR3VuVHlwZRgDIAEo",
-            "DjIYLlNvY2tldFByb3RvY29sLkVHdW5UeXBlEg8KB0Jhc2VETUcYBCABKAIS",
-            "EgoKRmlyaW5nUmF0ZRgFIAEoAhIiChpDdXJyZW50RmlyaW5nUmF0ZVBlclNl",
-            "Y29uZBgGIAEoAhIQCghNYWdhemluZRgHIAEoBRIVCg1NYWdhemluZUNvdW50",
-            "GAggASgFEi4KCENvcmVQcm9wGAkgASgOMhwuU29ja2V0UHJvdG9jb2wuRUd1",
-            "bkNvcmVQcm9wEhUKDUNvcmVQcm9wVmFsdWUYCiABKAISKgoIU3ViUHJvcDEY",
-            "CyABKA4yGC5Tb2NrZXRQcm90b2NvbC5FU3ViUHJvcBIVCg1TdWJQcm9wMVZh",
-            "bHVlGAwgASgCEioKCFN1YlByb3AyGA0gASgOMhguU29ja2V0UHJvdG9jb2wu",
-            "RVN1YlByb3ASFQoNU3ViUHJvcDJWYWx1ZRgOIAEoAhIqCghTdWJQcm9wMxgP",
-            "IAEoDjIYLlNvY2tldFByb3RvY29sLkVTdWJQcm9wEhUKDVN1YlByb3AzVmFs",
-            "dWUYECABKAISJQoFVXNpbmcYESABKA4yFi5Tb2NrZXRQcm90b2NvbC5FVXNp",
-            "bmcqPgoLUmVxdWVzdENvZGUSDwoLUmVxdWVzdE5vbmUQABIICgRVc2VyEAES",
-            "CgoGR2FtaW5nEAISCAoEVGVhbRADKukBCgpBY3Rpb25Db2RlEg4KCkFjdGlv",
-            "bk5vbmUQABIMCghSZWdpc3RlchABEgkKBUxvZ2luEAISEgoOSW5pdFBsYXll",
-            "ckluZm8QAxIMCghKb2luVGVhbRAEEg4KClVwZGF0ZVRlYW0QBRINCglMZXZl",
-            "bFRlYW0QBhIUChBVcGRhdGVQbGF5ZXJJbmZvEAcSDwoLUmVhZHlBdHRhY2sQ",
-            "CBIPCgtTdGFydEF0dGFjaxAJEg0KCU5leHRFbmVteRAKEg0KCUVuZEF0dGFj",
-            "axALEgwKCEV4aXRHYW1lEAwSDQoJQnJlYWtUZWFtEA0qMwoKUmV0dXJuQ29k",
-            "ZRIOCgpSZXR1cm5Ob25lEAASCwoHU3VjY2VzcxABEggKBEZhaWwQAioZCgZF",
-            "VXNpbmcSBgoCTm8QABIHCgNZZXMQASpQCghFR3VuTmFtZRIICgRBSzQ3EAAS",
-            "BwoDU0w3EAESBwoDTVA1EAISCAoETTcwMBADEgcKA002MBAEEgoKBlNQQVMx",
-            "MhAFEgkKBU0xOTExEAYqRAoIRUd1blR5cGUSBgoCQVIQABIHCgNETVIQARIH",
-            "CgNTTUcQAhIGCgJTRxADEgYKAlNSEAQSBgoCTUcQBRIGCgJIRxAGKtEBCgxF",
-            "R3VuQ29yZVByb3ASFwoTYWxsRG1nQm9udXNDb3JlUHJvcBAAEhYKEmFyRG1n",
-            "Qm9udXNDb3JlUHJvcBABEhcKE2RtckRtZ0JvbnVzQ29yZVByb3AQAhIXChNz",
-            "bWdEbWdCb251c0NvcmVQcm9wEAMSFgoSc2dEbWdCb251c0NvcmVQcm9wEAQS",
-            "FgoSc3JEbWdCb251c0NvcmVQcm9wEAUSFgoSbWdEbWdCb251c0NvcmVQcm9w",
-            "EAYSFgoSaGdEbWdCb251c0NvcmVQcm9wEAcqPQoORUVxdWlwbWVudFN1aXQS",
-            "DQoJVGVzdDFTdWl0EAASDQoJVGVzdDJTdWl0EAESDQoJVGVzdDNTdWl0EAIq",
-            "UAoRRUVxdWlwbWVudFF1YWxpdHkSCgoGTm9ybWFsEAASCAoER29vZBABEg0K",
-            "CUV4Y2VsbGVudBACEgwKCEFydGlmYWN0EAMSCAoERXBpYxAEKi4KDkVFcXVp",
-            "cG1lbnROYW1lEg0KCVRlc3QxTmFtZRAAEg0KCVRlc3QyTmFtZRABKtICCghF",
-            "U3ViUHJvcBIRCg1oZWFsdGhTdWJQcm9wEAASFwoTYmFzZURtZ0JvbnVzU3Vi",
-            "UHJvcBABEhgKFGNEbWdSYXRlQm9udXNTdWJQcm9wEAISFAoQY0RtZ0JvbnVz",
-            "U3ViUHJvcBADEhsKF2hlYWRzaG90RG1nQm9udXNTdWJQcm9wEAQSFQoRcFJh",
-            "dGVCb251c1N1YlByb3AQBRITCg9hYmVCb251c1N1YlByb3AQBhIVChFhckRt",
-            "Z0JvbnVzU3ViUHJvcBAHEhYKEmRtckRtZ0JvbnVzU3ViUHJvcBAIEhYKEnNt",
-            "Z0RtZ0JvbnVzU3ViUHJvcBAJEhUKEXNnRG1nQm9udXNTdWJQcm9wEAoSFQoR",
-            "c3JEbWdCb251c1N1YlByb3AQCxIVChFtZ0RtZ0JvbnVzU3ViUHJvcBAMEhUK",
-            "EWhnRG1nQm9udXNTdWJQcm9wEA0qSAoQRUVxdWlwbWVudFRhbGVudBIZChVU",
-            "ZXN0MUVxdWlwbWVudFRhbGVudDEQABIZChVUZXN0MUVxdWlwbWVudFRhbGVu",
-            "dDIQAWIGcHJvdG8z"));
+            "UGFjaxIwCgtGcmllbmRzUGFjaxgIIAMoCzIbLlNvY2tldFByb3RvY29sLkZy",
+            "aWVuZHNQYWNrEkQKFVNlbmRSZXF1ZXN0RnJpZW5kUGFjaxgJIAEoCzIlLlNv",
+            "Y2tldFByb3RvY29sLlNlbmRSZXF1ZXN0RnJpZW5kUGFjayJFCgxSZWdpc3Rl",
+            "clBhY2sSDwoHQWNjb3VudBgBIAEoCRIQCghQYXNzd29yZBgCIAEoCRISCgpQ",
+            "bGF5ZXJOYW1lGAMgASgJIjsKCUxvZ2luUGFjaxILCgNVaWQYASABKAUSDwoH",
+            "QWNjb3VudBgCIAEoCRIQCghQYXNzd29yZBgDIAEoCSLVAQoOUGxheWVySW5m",
+            "b1BhY2sSCwoDVWlkGAEgASgFEhIKClBsYXllck5hbWUYAiABKAkSDQoFTGV2",
+            "ZWwYAyABKAUSEgoKQ3VycmVudEV4cBgEIAEoAhI1Cg5FcXVpcG1lbnRQYWNr",
+            "cxgFIAMoCzIdLlNvY2tldFByb3RvY29sLkVxdWlwbWVudFBhY2sSKQoIR3Vu",
+            "UGFja3MYBiADKAsyFy5Tb2NrZXRQcm90b2NvbC5HdW5QYWNrEg8KB0RpYW1v",
+            "bmQYByABKAMSDAoEQ29pbhgIIAEoAyKlBAoNRXF1aXBtZW50UGFjaxITCgtF",
+            "cXVpcG1lbnRJZBgBIAEoBRI1Cg1FcXVpcG1lbnROYW1lGAIgASgOMh4uU29j",
+            "a2V0UHJvdG9jb2wuRUVxdWlwbWVudE5hbWUSNQoNRXF1aXBtZW50U3VpdBgD",
+            "IAEoDjIeLlNvY2tldFByb3RvY29sLkVFcXVpcG1lbnRTdWl0EjsKEEVxdWlw",
+            "bWVudFF1YWxpdHkYBCABKA4yIS5Tb2NrZXRQcm90b2NvbC5FRXF1aXBtZW50",
+            "UXVhbGl0eRIqCghTdWJQcm9wMRgFIAEoDjIYLlNvY2tldFByb3RvY29sLkVT",
+            "dWJQcm9wEhUKDVN1YlByb3AxVmFsdWUYBiABKAISKgoIU3ViUHJvcDIYByAB",
+            "KA4yGC5Tb2NrZXRQcm90b2NvbC5FU3ViUHJvcBIVCg1TdWJQcm9wMlZhbHVl",
+            "GAggASgCEioKCFN1YlByb3AzGAkgASgOMhguU29ja2V0UHJvdG9jb2wuRVN1",
+            "YlByb3ASFQoNU3ViUHJvcDNWYWx1ZRgKIAEoAhIxCgdUYWxlbnQxGAsgASgO",
+            "MiAuU29ja2V0UHJvdG9jb2wuRUVxdWlwbWVudFRhbGVudBIxCgdUYWxlbnQy",
+            "GAwgASgOMiAuU29ja2V0UHJvdG9jb2wuRUVxdWlwbWVudFRhbGVudBIlCgVV",
+            "c2luZxgNIAEoDjIWLlNvY2tldFByb3RvY29sLkVVc2luZyKXBAoHR3VuUGFj",
+            "axINCgVHdW5JZBgBIAEoBRIpCgdHdW5OYW1lGAIgASgOMhguU29ja2V0UHJv",
+            "dG9jb2wuRUd1bk5hbWUSKQoHR3VuVHlwZRgDIAEoDjIYLlNvY2tldFByb3Rv",
+            "Y29sLkVHdW5UeXBlEg8KB0Jhc2VETUcYBCABKAISEgoKRmlyaW5nUmF0ZRgF",
+            "IAEoAhIiChpDdXJyZW50RmlyaW5nUmF0ZVBlclNlY29uZBgGIAEoAhIQCghN",
+            "YWdhemluZRgHIAEoBRIVCg1NYWdhemluZUNvdW50GAggASgFEi4KCENvcmVQ",
+            "cm9wGAkgASgOMhwuU29ja2V0UHJvdG9jb2wuRUd1bkNvcmVQcm9wEhUKDUNv",
+            "cmVQcm9wVmFsdWUYCiABKAISKgoIU3ViUHJvcDEYCyABKA4yGC5Tb2NrZXRQ",
+            "cm90b2NvbC5FU3ViUHJvcBIVCg1TdWJQcm9wMVZhbHVlGAwgASgCEioKCFN1",
+            "YlByb3AyGA0gASgOMhguU29ja2V0UHJvdG9jb2wuRVN1YlByb3ASFQoNU3Vi",
+            "UHJvcDJWYWx1ZRgOIAEoAhIqCghTdWJQcm9wMxgPIAEoDjIYLlNvY2tldFBy",
+            "b3RvY29sLkVTdWJQcm9wEhUKDVN1YlByb3AzVmFsdWUYECABKAISJQoFVXNp",
+            "bmcYESABKA4yFi5Tb2NrZXRQcm90b2NvbC5FVXNpbmciRwoLRnJpZW5kc1Bh",
+            "Y2sSEgoKUGxheWVyMVVpZBgBIAEoBRISCgpQbGF5ZXIyVWlkGAIgASgFEhAK",
+            "CElzRnJpZW5kGAMgASgFIjAKFVNlbmRSZXF1ZXN0RnJpZW5kUGFjaxIXCg9U",
+            "YXJnZXRQbGF5ZXJVaWQYASABKAUqSgoLUmVxdWVzdENvZGUSDwoLUmVxdWVz",
+            "dE5vbmUQABIICgRVc2VyEAESCgoGR2FtaW5nEAISCAoEVGVhbRADEgoKBkZy",
+            "aWVuZBAEKrgCCgpBY3Rpb25Db2RlEg4KCkFjdGlvbk5vbmUQABIMCghSZWdp",
+            "c3RlchABEgkKBUxvZ2luEAISEgoOSW5pdFBsYXllckluZm8QAxIMCghKb2lu",
+            "VGVhbRAEEg4KClVwZGF0ZVRlYW0QBRINCglMZXZlbFRlYW0QBhIUChBVcGRh",
+            "dGVQbGF5ZXJJbmZvEAcSDwoLUmVhZHlBdHRhY2sQCBIPCgtTdGFydEF0dGFj",
+            "axAJEg0KCU5leHRFbmVteRAKEg0KCUVuZEF0dGFjaxALEgwKCEV4aXRHYW1l",
+            "EAwSDQoJQnJlYWtUZWFtEA0SDgoKR2V0RnJpZW5kcxAOEhQKEEdldEZyaWVu",
+            "ZFJlcXVlc3QQDxIQCgxTZWFyY2hGcmllbmQQEBIVChFTZW5kUmVxdWVzdEZy",
+            "aWVuZBARKkgKClJldHVybkNvZGUSDgoKUmV0dXJuTm9uZRAAEgsKB1N1Y2Nl",
+            "c3MQARIICgRGYWlsEAISEwoPUmVwZWF0ZWRSZXF1ZXN0EAMqGQoGRVVzaW5n",
+            "EgYKAk5vEAASBwoDWWVzEAEqUAoIRUd1bk5hbWUSCAoEQUs0NxAAEgcKA1NM",
+            "NxABEgcKA01QNRACEggKBE03MDAQAxIHCgNNNjAQBBIKCgZTUEFTMTIQBRIJ",
+            "CgVNMTkxMRAGKkQKCEVHdW5UeXBlEgYKAkFSEAASBwoDRE1SEAESBwoDU01H",
+            "EAISBgoCU0cQAxIGCgJTUhAEEgYKAk1HEAUSBgoCSEcQBirRAQoMRUd1bkNv",
+            "cmVQcm9wEhcKE2FsbERtZ0JvbnVzQ29yZVByb3AQABIWChJhckRtZ0JvbnVz",
+            "Q29yZVByb3AQARIXChNkbXJEbWdCb251c0NvcmVQcm9wEAISFwoTc21nRG1n",
+            "Qm9udXNDb3JlUHJvcBADEhYKEnNnRG1nQm9udXNDb3JlUHJvcBAEEhYKEnNy",
+            "RG1nQm9udXNDb3JlUHJvcBAFEhYKEm1nRG1nQm9udXNDb3JlUHJvcBAGEhYK",
+            "EmhnRG1nQm9udXNDb3JlUHJvcBAHKj0KDkVFcXVpcG1lbnRTdWl0Eg0KCVRl",
+            "c3QxU3VpdBAAEg0KCVRlc3QyU3VpdBABEg0KCVRlc3QzU3VpdBACKlAKEUVF",
+            "cXVpcG1lbnRRdWFsaXR5EgoKBk5vcm1hbBAAEggKBEdvb2QQARINCglFeGNl",
+            "bGxlbnQQAhIMCghBcnRpZmFjdBADEggKBEVwaWMQBCouCg5FRXF1aXBtZW50",
+            "TmFtZRINCglUZXN0MU5hbWUQABINCglUZXN0Mk5hbWUQASrSAgoIRVN1YlBy",
+            "b3ASEQoNaGVhbHRoU3ViUHJvcBAAEhcKE2Jhc2VEbWdCb251c1N1YlByb3AQ",
+            "ARIYChRjRG1nUmF0ZUJvbnVzU3ViUHJvcBACEhQKEGNEbWdCb251c1N1YlBy",
+            "b3AQAxIbChdoZWFkc2hvdERtZ0JvbnVzU3ViUHJvcBAEEhUKEXBSYXRlQm9u",
+            "dXNTdWJQcm9wEAUSEwoPYWJlQm9udXNTdWJQcm9wEAYSFQoRYXJEbWdCb251",
+            "c1N1YlByb3AQBxIWChJkbXJEbWdCb251c1N1YlByb3AQCBIWChJzbWdEbWdC",
+            "b251c1N1YlByb3AQCRIVChFzZ0RtZ0JvbnVzU3ViUHJvcBAKEhUKEXNyRG1n",
+            "Qm9udXNTdWJQcm9wEAsSFQoRbWdEbWdCb251c1N1YlByb3AQDBIVChFoZ0Rt",
+            "Z0JvbnVzU3ViUHJvcBANKkgKEEVFcXVpcG1lbnRUYWxlbnQSGQoVVGVzdDFF",
+            "cXVpcG1lbnRUYWxlbnQxEAASGQoVVGVzdDFFcXVpcG1lbnRUYWxlbnQyEAFi",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SocketProtocol.RequestCode), typeof(global::SocketProtocol.ActionCode), typeof(global::SocketProtocol.ReturnCode), typeof(global::SocketProtocol.EUsing), typeof(global::SocketProtocol.EGunName), typeof(global::SocketProtocol.EGunType), typeof(global::SocketProtocol.EGunCoreProp), typeof(global::SocketProtocol.EEquipmentSuit), typeof(global::SocketProtocol.EEquipmentQuality), typeof(global::SocketProtocol.EEquipmentName), typeof(global::SocketProtocol.ESubProp), typeof(global::SocketProtocol.EEquipmentTalent), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.MainPack), global::SocketProtocol.MainPack.Parser, new[]{ "RequestCode", "ActionCode", "ReturnCode", "RegisterPack", "LoginPack", "Uid", "PlayerInfoPack" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.MainPack), global::SocketProtocol.MainPack.Parser, new[]{ "RequestCode", "ActionCode", "ReturnCode", "RegisterPack", "LoginPack", "Uid", "PlayerInfoPack", "FriendsPack", "SendRequestFriendPack" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.RegisterPack), global::SocketProtocol.RegisterPack.Parser, new[]{ "Account", "Password", "PlayerName" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.LoginPack), global::SocketProtocol.LoginPack.Parser, new[]{ "Uid", "Account", "Password" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.PlayerInfoPack), global::SocketProtocol.PlayerInfoPack.Parser, new[]{ "Uid", "PlayerName", "Level", "CurrentExp", "EquipmentPacks", "GunPacks", "Diamond", "Coin" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.EquipmentPack), global::SocketProtocol.EquipmentPack.Parser, new[]{ "EquipmentId", "EquipmentName", "EquipmentSuit", "EquipmentQuality", "SubProp1", "SubProp1Value", "SubProp2", "SubProp2Value", "SubProp3", "SubProp3Value", "Talent1", "Talent2", "Using" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.GunPack), global::SocketProtocol.GunPack.Parser, new[]{ "GunId", "GunName", "GunType", "BaseDMG", "FiringRate", "CurrentFiringRatePerSecond", "Magazine", "MagazineCount", "CoreProp", "CorePropValue", "SubProp1", "SubProp1Value", "SubProp2", "SubProp2Value", "SubProp3", "SubProp3Value", "Using" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.GunPack), global::SocketProtocol.GunPack.Parser, new[]{ "GunId", "GunName", "GunType", "BaseDMG", "FiringRate", "CurrentFiringRatePerSecond", "Magazine", "MagazineCount", "CoreProp", "CorePropValue", "SubProp1", "SubProp1Value", "SubProp2", "SubProp2Value", "SubProp3", "SubProp3Value", "Using" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.FriendsPack), global::SocketProtocol.FriendsPack.Parser, new[]{ "Player1Uid", "Player2Uid", "IsFriend" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.SendRequestFriendPack), global::SocketProtocol.SendRequestFriendPack.Parser, new[]{ "TargetPlayerUid" }, null, null, null, null)
           }));
     }
     #endregion
@@ -115,6 +125,7 @@ namespace SocketProtocol {
     [pbr::OriginalName("User")] User = 1,
     [pbr::OriginalName("Gaming")] Gaming = 2,
     [pbr::OriginalName("Team")] Team = 3,
+    [pbr::OriginalName("Friend")] Friend = 4,
   }
 
   public enum ActionCode {
@@ -132,12 +143,17 @@ namespace SocketProtocol {
     [pbr::OriginalName("EndAttack")] EndAttack = 11,
     [pbr::OriginalName("ExitGame")] ExitGame = 12,
     [pbr::OriginalName("BreakTeam")] BreakTeam = 13,
+    [pbr::OriginalName("GetFriends")] GetFriends = 14,
+    [pbr::OriginalName("GetFriendRequest")] GetFriendRequest = 15,
+    [pbr::OriginalName("SearchFriend")] SearchFriend = 16,
+    [pbr::OriginalName("SendRequestFriend")] SendRequestFriend = 17,
   }
 
   public enum ReturnCode {
     [pbr::OriginalName("ReturnNone")] ReturnNone = 0,
     [pbr::OriginalName("Success")] Success = 1,
     [pbr::OriginalName("Fail")] Fail = 2,
+    [pbr::OriginalName("RepeatedRequest")] RepeatedRequest = 3,
   }
 
   public enum EUsing {
@@ -252,6 +268,8 @@ namespace SocketProtocol {
       loginPack_ = other.loginPack_ != null ? other.loginPack_.Clone() : null;
       uid_ = other.uid_;
       playerInfoPack_ = other.playerInfoPack_ != null ? other.playerInfoPack_.Clone() : null;
+      friendsPack_ = other.friendsPack_.Clone();
+      sendRequestFriendPack_ = other.sendRequestFriendPack_ != null ? other.sendRequestFriendPack_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -337,6 +355,27 @@ namespace SocketProtocol {
       }
     }
 
+    /// <summary>Field number for the "FriendsPack" field.</summary>
+    public const int FriendsPackFieldNumber = 8;
+    private static readonly pb::FieldCodec<global::SocketProtocol.FriendsPack> _repeated_friendsPack_codec
+        = pb::FieldCodec.ForMessage(66, global::SocketProtocol.FriendsPack.Parser);
+    private readonly pbc::RepeatedField<global::SocketProtocol.FriendsPack> friendsPack_ = new pbc::RepeatedField<global::SocketProtocol.FriendsPack>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::SocketProtocol.FriendsPack> FriendsPack {
+      get { return friendsPack_; }
+    }
+
+    /// <summary>Field number for the "SendRequestFriendPack" field.</summary>
+    public const int SendRequestFriendPackFieldNumber = 9;
+    private global::SocketProtocol.SendRequestFriendPack sendRequestFriendPack_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::SocketProtocol.SendRequestFriendPack SendRequestFriendPack {
+      get { return sendRequestFriendPack_; }
+      set {
+        sendRequestFriendPack_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as MainPack);
@@ -357,6 +396,8 @@ namespace SocketProtocol {
       if (!object.Equals(LoginPack, other.LoginPack)) return false;
       if (Uid != other.Uid) return false;
       if (!object.Equals(PlayerInfoPack, other.PlayerInfoPack)) return false;
+      if(!friendsPack_.Equals(other.friendsPack_)) return false;
+      if (!object.Equals(SendRequestFriendPack, other.SendRequestFriendPack)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -370,6 +411,8 @@ namespace SocketProtocol {
       if (loginPack_ != null) hash ^= LoginPack.GetHashCode();
       if (Uid != 0) hash ^= Uid.GetHashCode();
       if (playerInfoPack_ != null) hash ^= PlayerInfoPack.GetHashCode();
+      hash ^= friendsPack_.GetHashCode();
+      if (sendRequestFriendPack_ != null) hash ^= SendRequestFriendPack.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -411,6 +454,11 @@ namespace SocketProtocol {
         output.WriteRawTag(58);
         output.WriteMessage(PlayerInfoPack);
       }
+      friendsPack_.WriteTo(output, _repeated_friendsPack_codec);
+      if (sendRequestFriendPack_ != null) {
+        output.WriteRawTag(74);
+        output.WriteMessage(SendRequestFriendPack);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -439,6 +487,10 @@ namespace SocketProtocol {
       }
       if (playerInfoPack_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(PlayerInfoPack);
+      }
+      size += friendsPack_.CalculateSize(_repeated_friendsPack_codec);
+      if (sendRequestFriendPack_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(SendRequestFriendPack);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -480,6 +532,13 @@ namespace SocketProtocol {
           PlayerInfoPack = new global::SocketProtocol.PlayerInfoPack();
         }
         PlayerInfoPack.MergeFrom(other.PlayerInfoPack);
+      }
+      friendsPack_.Add(other.friendsPack_);
+      if (other.sendRequestFriendPack_ != null) {
+        if (sendRequestFriendPack_ == null) {
+          SendRequestFriendPack = new global::SocketProtocol.SendRequestFriendPack();
+        }
+        SendRequestFriendPack.MergeFrom(other.SendRequestFriendPack);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -527,6 +586,17 @@ namespace SocketProtocol {
               PlayerInfoPack = new global::SocketProtocol.PlayerInfoPack();
             }
             input.ReadMessage(PlayerInfoPack);
+            break;
+          }
+          case 66: {
+            friendsPack_.AddEntriesFrom(input, _repeated_friendsPack_codec);
+            break;
+          }
+          case 74: {
+            if (sendRequestFriendPack_ == null) {
+              SendRequestFriendPack = new global::SocketProtocol.SendRequestFriendPack();
+            }
+            input.ReadMessage(SendRequestFriendPack);
             break;
           }
         }
@@ -2248,6 +2318,320 @@ namespace SocketProtocol {
           }
           case 136: {
             Using = (global::SocketProtocol.EUsing) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class FriendsPack : pb::IMessage<FriendsPack> {
+    private static readonly pb::MessageParser<FriendsPack> _parser = new pb::MessageParser<FriendsPack>(() => new FriendsPack());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<FriendsPack> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::SocketProtocol.SocketProtocolReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public FriendsPack() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public FriendsPack(FriendsPack other) : this() {
+      player1Uid_ = other.player1Uid_;
+      player2Uid_ = other.player2Uid_;
+      isFriend_ = other.isFriend_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public FriendsPack Clone() {
+      return new FriendsPack(this);
+    }
+
+    /// <summary>Field number for the "Player1Uid" field.</summary>
+    public const int Player1UidFieldNumber = 1;
+    private int player1Uid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Player1Uid {
+      get { return player1Uid_; }
+      set {
+        player1Uid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Player2Uid" field.</summary>
+    public const int Player2UidFieldNumber = 2;
+    private int player2Uid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Player2Uid {
+      get { return player2Uid_; }
+      set {
+        player2Uid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "IsFriend" field.</summary>
+    public const int IsFriendFieldNumber = 3;
+    private int isFriend_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int IsFriend {
+      get { return isFriend_; }
+      set {
+        isFriend_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as FriendsPack);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(FriendsPack other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Player1Uid != other.Player1Uid) return false;
+      if (Player2Uid != other.Player2Uid) return false;
+      if (IsFriend != other.IsFriend) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Player1Uid != 0) hash ^= Player1Uid.GetHashCode();
+      if (Player2Uid != 0) hash ^= Player2Uid.GetHashCode();
+      if (IsFriend != 0) hash ^= IsFriend.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Player1Uid != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Player1Uid);
+      }
+      if (Player2Uid != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Player2Uid);
+      }
+      if (IsFriend != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(IsFriend);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Player1Uid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Player1Uid);
+      }
+      if (Player2Uid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Player2Uid);
+      }
+      if (IsFriend != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(IsFriend);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(FriendsPack other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Player1Uid != 0) {
+        Player1Uid = other.Player1Uid;
+      }
+      if (other.Player2Uid != 0) {
+        Player2Uid = other.Player2Uid;
+      }
+      if (other.IsFriend != 0) {
+        IsFriend = other.IsFriend;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Player1Uid = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Player2Uid = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            IsFriend = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class SendRequestFriendPack : pb::IMessage<SendRequestFriendPack> {
+    private static readonly pb::MessageParser<SendRequestFriendPack> _parser = new pb::MessageParser<SendRequestFriendPack>(() => new SendRequestFriendPack());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<SendRequestFriendPack> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::SocketProtocol.SocketProtocolReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SendRequestFriendPack() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SendRequestFriendPack(SendRequestFriendPack other) : this() {
+      targetPlayerUid_ = other.targetPlayerUid_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SendRequestFriendPack Clone() {
+      return new SendRequestFriendPack(this);
+    }
+
+    /// <summary>Field number for the "TargetPlayerUid" field.</summary>
+    public const int TargetPlayerUidFieldNumber = 1;
+    private int targetPlayerUid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int TargetPlayerUid {
+      get { return targetPlayerUid_; }
+      set {
+        targetPlayerUid_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as SendRequestFriendPack);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(SendRequestFriendPack other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (TargetPlayerUid != other.TargetPlayerUid) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (TargetPlayerUid != 0) hash ^= TargetPlayerUid.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (TargetPlayerUid != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(TargetPlayerUid);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (TargetPlayerUid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TargetPlayerUid);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(SendRequestFriendPack other) {
+      if (other == null) {
+        return;
+      }
+      if (other.TargetPlayerUid != 0) {
+        TargetPlayerUid = other.TargetPlayerUid;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            TargetPlayerUid = input.ReadInt32();
             break;
           }
         }
