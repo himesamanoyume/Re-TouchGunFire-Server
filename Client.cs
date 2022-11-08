@@ -57,7 +57,6 @@ namespace SocketServer
                     Close();
                     return;
                 }
-
                 message.ReadBuffer(length, HandleRequest);
                 StartReceive();
             }
@@ -65,7 +64,6 @@ namespace SocketServer
             {
                 Close();
             }
-
         }
 
         public bool Register(MainPack mainPack)
@@ -86,6 +84,21 @@ namespace SocketServer
         public int SendRequestFriend(MainPack mainPack)
         {
             return GetUserData.SendRequestFriend(mainPack, connection);
+        }
+
+        public MainPack SearchFriend(MainPack mainPack)
+        {
+            return GetUserData.SearchFriend(mainPack, connection);
+        }
+
+        public MainPack GetFriends(MainPack mainPack)
+        {
+            return GetUserData.GetFriends(mainPack, connection);
+        }
+
+        public MainPack GetFriendRequest(MainPack mainPack)
+        {
+            return GetUserData.GetFriendRequest(mainPack, connection);
         }
 
         public void TcpSend(MainPack mainPack)

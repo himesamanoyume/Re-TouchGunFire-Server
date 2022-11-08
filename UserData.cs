@@ -20,7 +20,7 @@ namespace SocketServer
 
             try
             {
-                string sql = "insert into hime.user_info ( account, password, player_name) values (" + account + ", " + password + "," + playerName + ")";
+                string sql = "insert into hime.user_info ( account, password, player_name) values ('" + account + "', '" + password + "','" + playerName + "')";
                 MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
                 cmd.ExecuteNonQuery();
                 return true;
@@ -64,7 +64,7 @@ namespace SocketServer
             //登陆游戏时一次性查询完全部信息
             try
             {
-                string sql = "select * from hime.user_info where uid='" + mainPack.Uid + "'";
+                string sql = "select * from hime.user_info where uid = " + mainPack.Uid;
                 MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
                 MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
                 mySqlDataReader.Read();
@@ -130,7 +130,28 @@ namespace SocketServer
 
         public MainPack GetFriendRequest(MainPack mainPack, MySqlConnection mySqlConnection)
         {
-
+            try
+            {
+                string sql = "select * from hime.user_friends where player2_uid =" + mainPack.Uid + " and is_friend = 0";
+                MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
+                MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
+                while (mySqlDataReader.Read())
+                {
+                    Console.WriteLine(mySqlDataReader.GetInt32(1) + "_" + mySqlDataReader.GetInt32(2));
+                    FriendsPack friendsPack = new FriendsPack();
+                    friendsPack.Player1Uid = mySqlDataReader.GetInt32(1);
+                    friendsPack.Player2Uid = mySqlDataReader.GetInt32(2);
+                    friendsPack.IsFriend = mySqlDataReader.GetInt32(3);
+                    mainPack.FriendsPack.Add(friendsPack);
+                }
+                mySqlDataReader.Close();
+                return mainPack;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
             return null;
         }
 
@@ -144,7 +165,7 @@ namespace SocketServer
                 foreach (var item in mySqlDataReader)
                 {
                     mySqlDataReader.Read();
-                    Console.WriteLine(mySqlDataReader.GetInt32(1) + "_" + mySqlDataReader.GetInt32(1));
+                    Console.WriteLine(mySqlDataReader.GetInt32(1) + "_" + mySqlDataReader.GetInt32(2));
                     FriendsPack friendsPack = new FriendsPack();
                 }
 
@@ -161,7 +182,29 @@ namespace SocketServer
 
         public MainPack SearchFriend(MainPack mainPack, MySqlConnection mySqlConnection)
         {
-
+            int targetPlayerUid = mainPack.PlayerInfoPack.Uid;
+            try
+            {
+                string sql = "select * from hime.user_info where uid =" + targetPlayerUid;
+                MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
+                MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
+                mySqlDataReader.Read();
+                PlayerInfoPack playerInfoPack = new PlayerInfoPack();
+                if (targetPlayerUid != mySqlDataReader.GetInt32(0))
+                {
+                    return null;
+                }
+                playerInfoPack.PlayerName = mySqlDataReader.GetString(3);
+                playerInfoPack.Level = mySqlDataReader.GetInt32(4);
+                mainPack.PlayerInfoPack = playerInfoPack;
+                mySqlDataReader.Close();
+                return mainPack;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
             return null;
         }
 

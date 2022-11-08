@@ -16,19 +16,46 @@ namespace SocketServer
 
         public MainPack GetFriendRequest(Client client, MainPack mainPack)
         {
-
+            if (client.GetFriendRequest(mainPack) != null)
+            {
+                Console.WriteLine("Success");
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                Console.WriteLine("Failed");
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
             return mainPack;
         }
 
         public MainPack GetFriends(Client client, MainPack mainPack)
         {
-
+            if (client.GetFriends(mainPack) != null)
+            {
+                Console.WriteLine("Success");
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                Console.WriteLine("Failed");
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
             return mainPack;
         }
 
         public MainPack SearchFriend(Client client, MainPack mainPack)
         {
-
+            if (client.SearchFriend(mainPack) != null)
+            {
+                Console.WriteLine("Success");
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                Console.WriteLine("Failed");
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
             return mainPack;
         }
 
