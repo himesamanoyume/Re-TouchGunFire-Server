@@ -39,7 +39,7 @@ namespace SocketServer
         {
             string account = mainPack.LoginPack.Account;
             string password = mainPack.LoginPack.Password;
-            
+
             try
             {
                 string sql = "select * from hime.user_info where account='" + account + "' and password='" + password + "'";
@@ -50,13 +50,13 @@ namespace SocketServer
                 mySqlDataReader.Close();
                 return mainPack;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 return null;
             }
 
-            return  null;
+            return null;
         }
 
         public MainPack InitPlayerInfo(MainPack mainPack, MySqlConnection mySqlConnection)
@@ -128,6 +128,28 @@ namespace SocketServer
             return null;
         }
 
+        public MainPack GetPlayerBaseInfo(MainPack mainPack, MySqlConnection mySqlConnection)
+        {
+            try
+            {
+                string sql = "select * from hime.user_info where uid = " + mainPack.PlayerInfoPack.Uid;
+                MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
+                MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
+                mySqlDataReader.Read();
+                mainPack.PlayerInfoPack.PlayerName = mySqlDataReader.GetString(3);
+                mainPack.PlayerInfoPack.Level = mySqlDataReader.GetInt32(4);
+                mySqlDataReader.Close();
+                return mainPack;
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+            return null;
+        }
+
         public MainPack GetFriendRequest(MainPack mainPack, MySqlConnection mySqlConnection)
         {
             try
@@ -159,7 +181,7 @@ namespace SocketServer
         {
             try
             {
-                string sql = "select * from hime.user_friends where player1_uid = "+ mainPack.Uid +" or player2_uid =" + mainPack.Uid + " and is_friend = 1";
+                string sql = "select * from hime.user_friends where player1_uid = "+ mainPack.Uid + " and is_friend = 1 or player2_uid =" + mainPack.Uid + " and is_friend = 1";
                 MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
                 MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
                 foreach (var item in mySqlDataReader)

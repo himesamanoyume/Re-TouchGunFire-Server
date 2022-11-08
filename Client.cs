@@ -101,6 +101,11 @@ namespace SocketServer
             return GetUserData.GetFriendRequest(mainPack, connection);
         }
 
+        public MainPack GetPlayerBaseInfo(MainPack mainPack)
+        {
+            return GetUserData.GetPlayerBaseInfo(mainPack, connection);
+        }
+
         public void TcpSend(MainPack mainPack)
         {
             if (tcpSocket == null || tcpSocket.Connected == false) return;

@@ -59,5 +59,20 @@ namespace SocketServer
             }
             return mainPack;
         }
+
+        public MainPack GetPlayerBaseInfo(Client client, MainPack mainPack)
+        {
+            if (client.GetPlayerBaseInfo(mainPack) != null)
+            {
+                Console.WriteLine("Success");
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                Console.WriteLine("Failed");
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            return mainPack;
+        }
     }
 }
