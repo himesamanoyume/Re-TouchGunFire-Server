@@ -54,7 +54,7 @@ namespace SocketServer
         {
             MainPack mainPack = new MainPack();
             mainPack.ActionCode = ActionCode.LevelTeam;
-            mainPack.Uid = client.GetPlayerInfo.UID;
+            mainPack.Uid = client.clientPlayerUid;
             client.isTeammate = false;
             client.teammate = null;
             Broadcast(client, mainPack);
@@ -78,7 +78,7 @@ namespace SocketServer
             {
                 MainPack mainPack = new MainPack();
                 mainPack.ActionCode = ActionCode.BreakTeam;
-                mainPack.Uid = client.GetPlayerInfo.UID;
+                mainPack.Uid = client.clientPlayerUid;
             }
             
         }

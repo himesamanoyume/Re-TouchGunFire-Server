@@ -32,7 +32,7 @@ namespace SocketServer
             get { return friendFunction; }
         }
 
-        public PlayerInfo GetPlayerInfo { get; set; }
+        public int clientPlayerUid;
 
         public Client(Socket clientSocket, Server server)
         {
@@ -43,7 +43,7 @@ namespace SocketServer
             connection.Open();
 
             this.server = server;
-            this.tcpSocket = clientSocket;
+            tcpSocket = clientSocket;
             
             StartReceive();
         }
@@ -80,7 +80,9 @@ namespace SocketServer
 
         public MainPack Login(MainPack mainPack)
         {
-            return GetUserFunction.Login(mainPack, connection);
+            MainPack mainPack1 = GetUserFunction.Login(mainPack, connection);
+            clientPlayerUid = mainPack1.Uid;
+            return mainPack1;
         }
 
         public MainPack InitPlayerInfo(MainPack mainPack)
@@ -115,12 +117,26 @@ namespace SocketServer
 
         public MainPack GetPlayerBaseInfo(MainPack mainPack)
         {
-            return GetUserFunction.GetPlayerBaseInfo(mainPack, connection);
+            MainPack _mainPack = GetUserFunction.GetPlayerBaseInfo(mainPack, connection);
+            if (server.ClientByUID(_mainPack.PlayerInfoPack.Uid) == null)
+            {
+                _mainPack.PlayerInfoPack.IsOnline = false;
+            }
+            else
+            {
+                _mainPack.PlayerInfoPack.IsOnline = true;
+            }
+            return _mainPack;
         }
 
         public int RefuseFriendRequest(MainPack mainPack)
         {
             return GetFriendFunction.RefuseFriendRequest(mainPack, connection);
+        }
+
+        public bool DeleteFriend(MainPack mainPack)
+        {
+            return GetFriendFunction.DeleteFriend(mainPack, connection);
         }
 
         public void TcpSend(MainPack mainPack)

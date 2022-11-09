@@ -117,5 +117,20 @@ namespace SocketServer
             }
             return mainPack;
         }
+
+        public MainPack DeleteFriend(Client client, MainPack mainPack)
+        {
+            if (client.DeleteFriend(mainPack))
+            {
+                Console.WriteLine("Success");
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                Console.WriteLine("Failed");
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            return mainPack;
+        }
     }
 }

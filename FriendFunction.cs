@@ -43,6 +43,7 @@ namespace SocketServer
                 string sql = "select * from hime.user_friends where player1_uid = " + mainPack.Uid + " and is_friend = 1";
                 MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
                 MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
+                //player1_uid永远是好友 player2_uid永远是自己
                 foreach (var item in mySqlDataReader)
                 {
                     mySqlDataReader.Read();
@@ -205,7 +206,6 @@ namespace SocketServer
                 Console.WriteLine(e.Message);
                 return false;
             }
-            return false;
         }
     }
 }

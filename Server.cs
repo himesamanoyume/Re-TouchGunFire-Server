@@ -68,7 +68,7 @@ namespace SocketServer
         {
             foreach (Client client in clientSockets)
             {
-                if (client.GetPlayerInfo.UID == uid)
+                if (client.clientPlayerUid == uid)
                 {
                     client.endPoint = endPoint;
                     return true;
@@ -77,11 +77,11 @@ namespace SocketServer
             return false;
         }
 
-        public Client ClientFromUID(int uid)
+        public Client ClientByUID(int uid)
         {
             foreach (Client client in clientSockets)
             {
-                if (client.GetPlayerInfo.UID == uid)
+                if (client.clientPlayerUid == uid)
                 {
                     return client;
                 }

@@ -36,7 +36,6 @@ namespace SocketServer
         {
             string account = mainPack.LoginPack.Account;
             string password = mainPack.LoginPack.Password;
-
             try
             {
                 string sql = "select * from hime.user_info where account='" + account + "' and password='" + password + "'";

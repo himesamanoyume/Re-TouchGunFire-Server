@@ -54,7 +54,7 @@ namespace SocketServer
 
         public void HandleRequest(MainPack mainPack, EndPoint endPoint)
         {
-            Client client = server.ClientFromUID(mainPack.Uid);
+            Client client = server.ClientByUID(mainPack.Uid);
             if (client.endPoint == null)
             {
                 client.endPoint = endPoint;
