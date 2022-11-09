@@ -78,5 +78,44 @@ namespace SocketServer
             }
             return mainPack;
         }
+
+        public MainPack AcceptFriendRequest(Client client, MainPack mainPack)
+        {
+            if (client.AcceptFriendRequest(mainPack) == 1)
+            {
+                Console.WriteLine("Success");
+                mainPack.ReturnCode = ReturnCode.Success;
+            }else if (client.AcceptFriendRequest(mainPack) == 2)
+            {
+                Console.WriteLine("NotFound");
+                mainPack.ReturnCode = ReturnCode.NotFound;
+            }
+            else
+            {
+                Console.WriteLine("Failed");
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            return mainPack;
+        }
+
+        public MainPack RefuseFriendRequest(Client client, MainPack mainPack)
+        {
+            if (client.RefuseFriendRequest(mainPack) == 1)
+            {
+                Console.WriteLine("Success");
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else if (client.RefuseFriendRequest(mainPack) == 2)
+            {
+                Console.WriteLine("NotFound");
+                mainPack.ReturnCode = ReturnCode.NotFound;
+            }
+            else
+            {
+                Console.WriteLine("Failed");
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            return mainPack;
+        }
     }
 }

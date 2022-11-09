@@ -14,23 +14,30 @@ namespace SocketServer
         public EndPoint endPoint;
         UDPServer udpServer;
         Message message;
-        UserData userData;
+        UserFunction userFunction;
+        FriendFunction friendFunction;
         public bool isTeammate = false;
         public Teammate teammate;
         Server server;
         MySqlConnection connection;
         string connectStr = "database=hime; data source=47.106.183.112; user=lzp; password=lzp19990510; pooling=false;charset=utf8;port=3306";
 
-        public UserData GetUserData
+        public UserFunction GetUserFunction
         {
-            get { return userData; }
+            get { return userFunction; }
+        }
+
+        public FriendFunction GetFriendFunction
+        {
+            get { return friendFunction; }
         }
 
         public PlayerInfo GetPlayerInfo { get; set; }
 
         public Client(Socket clientSocket, Server server)
         {
-            userData = new UserData();
+            userFunction = new UserFunction();
+            friendFunction = new FriendFunction();
             message = new Message();
             connection = new MySqlConnection(connectStr);
             connection.Open();
@@ -68,42 +75,52 @@ namespace SocketServer
 
         public bool Register(MainPack mainPack)
         {
-            return GetUserData.Reigster(mainPack, connection);
+            return GetUserFunction.Reigster(mainPack, connection);
         }
 
         public MainPack Login(MainPack mainPack)
         {
-            return GetUserData.Login(mainPack, connection);
+            return GetUserFunction.Login(mainPack, connection);
         }
 
         public MainPack InitPlayerInfo(MainPack mainPack)
         {
-            return GetUserData.InitPlayerInfo(mainPack, connection);
+            return GetUserFunction.InitPlayerInfo(mainPack, connection);
         }
 
         public int SendRequestFriend(MainPack mainPack)
         {
-            return GetUserData.SendRequestFriend(mainPack, connection);
+            return GetFriendFunction.SendRequestFriend(mainPack, connection);
         }
 
         public MainPack SearchFriend(MainPack mainPack)
         {
-            return GetUserData.SearchFriend(mainPack, connection);
+            return GetFriendFunction.SearchFriend(mainPack, connection);
         }
 
         public MainPack GetFriends(MainPack mainPack)
         {
-            return GetUserData.GetFriends(mainPack, connection);
+            return GetFriendFunction.GetFriends(mainPack, connection);
         }
 
         public MainPack GetFriendRequest(MainPack mainPack)
         {
-            return GetUserData.GetFriendRequest(mainPack, connection);
+            return GetFriendFunction.GetFriendRequest(mainPack, connection);
+        }
+
+        public int AcceptFriendRequest(MainPack mainPack)
+        {
+            return GetFriendFunction.AcceptFriendRequest(mainPack, connection);
         }
 
         public MainPack GetPlayerBaseInfo(MainPack mainPack)
         {
-            return GetUserData.GetPlayerBaseInfo(mainPack, connection);
+            return GetUserFunction.GetPlayerBaseInfo(mainPack, connection);
+        }
+
+        public int RefuseFriendRequest(MainPack mainPack)
+        {
+            return GetFriendFunction.RefuseFriendRequest(mainPack, connection);
         }
 
         public void TcpSend(MainPack mainPack)

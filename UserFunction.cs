@@ -9,7 +9,7 @@ using SocketProtocol;
 
 namespace SocketServer
 {
-    internal class UserData
+    internal class UserFunction
     {
 
         public bool Reigster(MainPack mainPack, MySqlConnection mySqlConnection)
@@ -30,9 +30,6 @@ namespace SocketServer
                 Console.WriteLine(e.Message);
                 return false;
             }
-
-            return false;
-
         }
 
         public MainPack Login(MainPack mainPack, MySqlConnection mySqlConnection)
@@ -55,8 +52,6 @@ namespace SocketServer
                 Console.WriteLine(e.Message);
                 return null;
             }
-
-            return null;
         }
 
         public MainPack InitPlayerInfo(MainPack mainPack, MySqlConnection mySqlConnection)
@@ -89,7 +84,6 @@ namespace SocketServer
                 Console.WriteLine(e.Message);
                 return null;
             }
-            return null;
         }
 
         //只更新玩家信息
@@ -147,117 +141,6 @@ namespace SocketServer
                 Console.WriteLine(e.Message);
                 return null;
             }
-            return null;
-        }
-
-        public MainPack GetFriendRequest(MainPack mainPack, MySqlConnection mySqlConnection)
-        {
-            try
-            {
-                string sql = "select * from hime.user_friends where player2_uid =" + mainPack.Uid + " and is_friend = 0";
-                MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
-                MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
-                while (mySqlDataReader.Read())
-                {
-                    Console.WriteLine(mySqlDataReader.GetInt32(1) + "_" + mySqlDataReader.GetInt32(2));
-                    FriendsPack friendsPack = new FriendsPack();
-                    friendsPack.Player1Uid = mySqlDataReader.GetInt32(1);
-                    friendsPack.Player2Uid = mySqlDataReader.GetInt32(2);
-                    friendsPack.IsFriend = mySqlDataReader.GetInt32(3);
-                    mainPack.FriendsPack.Add(friendsPack);
-                }
-                mySqlDataReader.Close();
-                return mainPack;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return null;
-            }
-            return null;
-        }
-
-        public MainPack GetFriends(MainPack mainPack, MySqlConnection mySqlConnection)
-        {
-            try
-            {
-                string sql = "select * from hime.user_friends where player1_uid = "+ mainPack.Uid + " and is_friend = 1 or player2_uid =" + mainPack.Uid + " and is_friend = 1";
-                MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
-                MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
-                foreach (var item in mySqlDataReader)
-                {
-                    mySqlDataReader.Read();
-                    Console.WriteLine(mySqlDataReader.GetInt32(1) + "_" + mySqlDataReader.GetInt32(2));
-                    FriendsPack friendsPack = new FriendsPack();
-                }
-
-                mySqlDataReader.Close();
-                return mainPack;
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return null;
-            }
-            return null;
-        }
-
-        public MainPack SearchFriend(MainPack mainPack, MySqlConnection mySqlConnection)
-        {
-            int targetPlayerUid = mainPack.PlayerInfoPack.Uid;
-            try
-            {
-                string sql = "select * from hime.user_info where uid =" + targetPlayerUid;
-                MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
-                MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
-                mySqlDataReader.Read();
-                PlayerInfoPack playerInfoPack = new PlayerInfoPack();
-                if (targetPlayerUid != mySqlDataReader.GetInt32(0))
-                {
-                    return null;
-                }
-                playerInfoPack.PlayerName = mySqlDataReader.GetString(3);
-                playerInfoPack.Level = mySqlDataReader.GetInt32(4);
-                mainPack.PlayerInfoPack = playerInfoPack;
-                mySqlDataReader.Close();
-                return mainPack;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return null;
-            }
-            return null;
-        }
-
-        public int SendRequestFriend(MainPack mainPack, MySqlConnection mySqlConnection)
-        {
-            int senderUid = mainPack.Uid;
-            int targetUid = mainPack.SendRequestFriendPack.TargetPlayerUid;
-            try
-            {
-                string sql = "select * from hime.user_friends where player1_uid =" + senderUid + " and player2_uid =" + targetUid + " or player1_uid = " + targetUid +" and player2_uid = " + senderUid;
-                MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
-                MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
-                if (mySqlDataReader.Read())
-                {
-                    mySqlDataReader.Close();
-                    return 2;
-                }
-                mySqlDataReader.Close();
-                sql = "insert into user_friends (player1_uid, player2_uid) values (" + senderUid + ", " + targetUid +")";
-                cmd = new MySqlCommand(sql, mySqlConnection);
-                cmd.ExecuteNonQuery();
-                return 1;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return 0;
-            }
-            return 0;
         }
     }
-
-    
 }
