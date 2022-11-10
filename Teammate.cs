@@ -43,17 +43,23 @@ namespace SocketServer
                 {
                     continue;
                 }
+                mainPack.Uid = c.clientPlayerUid;
                 if (isUDP)
+                {
                     c.UdpSend(mainPack);
+                }
                 else
+                {
                     c.TcpSend(mainPack);
+                }
+                    
             }
         }
 
         public void LeaveTeam(Client client)
         {
             MainPack mainPack = new MainPack();
-            mainPack.ActionCode = ActionCode.LevelTeam;
+            mainPack.ActionCode = ActionCode.LeaveTeam;
             mainPack.Uid = client.clientPlayerUid;
             client.isTeammate = false;
             client.teammate = null;
@@ -90,7 +96,12 @@ namespace SocketServer
             //...
         }
 
-        public void UpdateTeammateInfo()
+        public void UpdateTeam()
+        {
+
+        }
+
+        public void InviteTeam()
         {
 
         }

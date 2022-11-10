@@ -26,9 +26,6 @@ namespace SocketServer
             Console.WriteLine("初始化结束");
 
             udpServer = new UDPServer(6678, this, controllerManager);
-            //Thread threadListen = new Thread(StartListen);
-            //threadListen.IsBackground = true;
-            //threadListen.Start();
         }
 
         ~Server()
@@ -49,7 +46,7 @@ namespace SocketServer
         void AcceptCallback(IAsyncResult iar)
         {
             Socket client = serverSocket.EndAccept(iar);
-            clientSockets.Add(new Client(client, this));
+            clientSockets.Add(new Client(client, this, udpServer));
             Console.WriteLine("新的连接, 当前客户端人数: " + clientSockets.Count);
             StartAccept();
         }
@@ -88,6 +85,5 @@ namespace SocketServer
             }
             return null;
         }
-
     }
 }

@@ -16,8 +16,9 @@ namespace SocketServer
         Message message;
         UserFunction userFunction;
         FriendFunction friendFunction;
+        TeamFunction teamFunction;
         public bool isTeammate = false;
-        public Teammate teammate;
+        public Teammate teammate = null;
         Server server;
         MySqlConnection connection;
         string connectStr = "database=hime; data source=47.106.183.112; user=lzp; password=lzp19990510; pooling=false;charset=utf8;port=3306";
@@ -32,19 +33,26 @@ namespace SocketServer
             get { return friendFunction; }
         }
 
+        public TeamFunction GetTeamFunction
+        {
+            get { return teamFunction; }
+        }
+
         public int clientPlayerUid;
 
-        public Client(Socket clientSocket, Server server)
+        public Client(Socket clientSocket, Server server, UDPServer udpServer)
         {
             userFunction = new UserFunction();
             friendFunction = new FriendFunction();
+            teamFunction = new TeamFunction();
             message = new Message();
             connection = new MySqlConnection(connectStr);
             connection.Open();
 
+            this.udpServer = udpServer;
             this.server = server;
             tcpSocket = clientSocket;
-            
+
             StartReceive();
         }
 
@@ -137,6 +145,160 @@ namespace SocketServer
         public bool DeleteFriend(MainPack mainPack)
         {
             return GetFriendFunction.DeleteFriend(mainPack, connection);
+        }
+
+        public int InviteTeam(MainPack mainPack)
+        {
+            if (mainPack.TeammatePack.SenderUid == mainPack.Uid && teammate == null && mainPack.TeammatePack.State == 0)
+            {
+                if (server.ClientByUID(mainPack.TeammatePack.TargetUid) == null)
+                {
+                    return 2;//不在线
+                }
+                Client target = server.ClientByUID(mainPack.TeammatePack.TargetUid);
+                MainPack mainPack1 = new MainPack();
+                mainPack1.Uid = mainPack.TeammatePack.TargetUid;
+                TeammatePack teammatePack = new TeammatePack();
+                teammatePack.SenderUid = mainPack.TeammatePack.SenderUid;
+                teammatePack.TargetUid = mainPack.TeammatePack.TargetUid;
+                mainPack1.TeammatePack = teammatePack;
+                target.InvitedTeam(mainPack1);
+                
+                return 1;//成功
+            }
+            else
+            {
+                return 0;//失败
+            }
+        }
+
+        public int InvitedTeam(MainPack mainPack)//被邀请者
+        {
+            //Console.WriteLine("进入InvitedTeam方法");
+            if (mainPack.TeammatePack.TargetUid == mainPack.Uid && mainPack.TeammatePack.State == 0)
+            {
+                if (teammate!=null)
+                {
+                    mainPack.TeammatePack.State = 2;
+                    mainPack.Uid = mainPack.TeammatePack.SenderUid;
+                    Client sender = server.ClientByUID(mainPack.TeammatePack.SenderUid);
+                    mainPack.ActionCode = ActionCode.RefusedInviteTeam;
+                    sender.RefusedInviteTeam(mainPack);
+                    return 2;//已有队伍
+                }
+                else
+                {
+                    //Console.WriteLine("已向对方成功发送");
+                    try
+                    {
+                        Console.WriteLine(clientPlayerUid+"即将发送InvitedTeam包");
+                        mainPack.Uid = mainPack.TeammatePack.TargetUid;
+                        mainPack.ActionCode = ActionCode.InvitedTeam;
+                        mainPack.ReturnCode = ReturnCode.Success;
+                        TcpSend(mainPack);
+                        return 1;//成功接收消息
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                        mainPack.ReturnCode = ReturnCode.Fail;
+                        TcpSend(mainPack);
+                        return 0;
+                    }
+                    
+                }
+            }
+            else
+            {
+                Console.WriteLine("失败");
+                return 0;//失败
+            }
+        }
+
+        public bool AcceptInviteTeam(MainPack mainPack)
+        {
+            if (mainPack.TeammatePack.State == 0 && mainPack.TeammatePack.TargetUid == mainPack.Uid)
+            {
+                Client sender = server.ClientByUID(mainPack.TeammatePack.SenderUid);
+                mainPack.TeammatePack.State = 1;
+                mainPack.Uid = mainPack.TeammatePack.SenderUid;
+                //JoinTeam(mainPack, sender.teammate);
+
+                mainPack.ActionCode = ActionCode.AcceptedInviteTeam;
+                sender.TcpSend(mainPack);
+                //sender.AcceptedInviteTeam(mainPack);
+                return true;
+            }
+            else
+            {
+                //Console.WriteLine("AcceptInviteTeam 不正常情况");
+                return false;
+            }
+        }
+
+        public bool AcceptedInviteTeam(MainPack mainPack)
+        {
+            if (mainPack.TeammatePack.State == 1 && mainPack.TeammatePack.SenderUid == mainPack.Uid)
+            {
+                teammate = new Teammate(this, udpServer, server);
+                return true;
+            }
+            else
+            {
+                //Console.WriteLine("AcceptedInviteTeam 不正常情况");
+                return false;
+            }
+        }
+
+        public bool RefuseInviteTeam(MainPack mainPack)
+        {
+            if (mainPack.TeammatePack.State == 0 && mainPack.Uid == mainPack.TeammatePack.TargetUid)
+            {
+                teammate = null;
+                Client sender = server.ClientByUID(mainPack.TeammatePack.SenderUid);
+                mainPack.Uid = mainPack.TeammatePack.SenderUid;
+                mainPack.TeammatePack.State = 2;
+                sender.RefusedInviteTeam(mainPack);
+                return true;
+            }
+            else
+            {
+                //Console.WriteLine("RefuseInviteTeam 不正常情况");
+                return false;
+            }
+        }
+
+        public bool RefusedInviteTeam(MainPack mainPack)
+        {
+            if (mainPack.TeammatePack.State == 2 && mainPack.Uid == mainPack.TeammatePack.SenderUid)
+            {
+                return true;
+            }
+            else
+            {
+                //Console.WriteLine("RefusedInviteTeam 不正常情况");
+                return false;
+            }
+        }
+
+        public void JoinTeam(MainPack mainPack)
+        {
+
+        }
+
+        public void JoinTeam(MainPack mainPack, Teammate teammate)
+        {
+            if (mainPack.TeammatePack.State == 1 && mainPack.Uid == mainPack.TeammatePack.TargetUid)
+            {
+                this.teammate = teammate;
+                mainPack.Uid = mainPack.TeammatePack.TargetUid;
+                this.teammate.Broadcast(this, mainPack);
+                //return true;
+            }
+            else
+            {
+
+            }
         }
 
         public void TcpSend(MainPack mainPack)

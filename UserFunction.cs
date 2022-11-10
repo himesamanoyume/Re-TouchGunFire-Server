@@ -11,7 +11,6 @@ namespace SocketServer
 {
     internal class UserFunction
     {
-
         public bool Reigster(MainPack mainPack, MySqlConnection mySqlConnection)
         {
             string playerName = mainPack.RegisterPack.PlayerName;
