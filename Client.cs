@@ -4,6 +4,7 @@ using System.Net.Sockets;
 using SocketProtocol;
 using Google.Protobuf;
 using MySql.Data.MySqlClient;
+using System.Diagnostics;
 
 namespace SocketServer
 {
@@ -90,6 +91,7 @@ namespace SocketServer
         {
             MainPack mainPack1 = GetUserFunction.Login(mainPack, connection);
             clientPlayerUid = mainPack1.Uid;
+            server.AddClientToDict(this);
             return mainPack1;
         }
 
@@ -126,7 +128,7 @@ namespace SocketServer
         public MainPack GetPlayerBaseInfo(MainPack mainPack)
         {
             MainPack _mainPack = GetUserFunction.GetPlayerBaseInfo(mainPack, connection);
-            if (server.ClientByUID(_mainPack.PlayerInfoPack.Uid) == null)
+            if (server.GetClientFromDictByUid(_mainPack.PlayerInfoPack.Uid) == null)
             {
                 _mainPack.PlayerInfoPack.IsOnline = false;
             }
@@ -151,11 +153,11 @@ namespace SocketServer
         {
             if (mainPack.TeammatePack.SenderUid == mainPack.Uid && teammate == null && mainPack.TeammatePack.State == 0)
             {
-                if (server.ClientByUID(mainPack.TeammatePack.TargetUid) == null)
+                if (server.GetClientFromDictByUid(mainPack.TeammatePack.TargetUid) == null)
                 {
                     return 2;//不在线
                 }
-                Client target = server.ClientByUID(mainPack.TeammatePack.TargetUid);
+                Client target = server.GetClientFromDictByUid(mainPack.TeammatePack.TargetUid);
                 MainPack mainPack1 = new MainPack();
                 mainPack1.Uid = mainPack.TeammatePack.TargetUid;
                 TeammatePack teammatePack = new TeammatePack();
@@ -174,24 +176,22 @@ namespace SocketServer
 
         public int InvitedTeam(MainPack mainPack)//被邀请者
         {
-            //Console.WriteLine("进入InvitedTeam方法");
             if (mainPack.TeammatePack.TargetUid == mainPack.Uid && mainPack.TeammatePack.State == 0)
             {
                 if (teammate!=null)
                 {
                     mainPack.TeammatePack.State = 2;
                     mainPack.Uid = mainPack.TeammatePack.SenderUid;
-                    Client sender = server.ClientByUID(mainPack.TeammatePack.SenderUid);
+                    Client sender = server.GetClientFromDictByUid(mainPack.TeammatePack.SenderUid);
                     mainPack.ActionCode = ActionCode.RefusedInviteTeam;
                     sender.RefusedInviteTeam(mainPack);
                     return 2;//已有队伍
                 }
                 else
                 {
-                    //Console.WriteLine("已向对方成功发送");
                     try
                     {
-                        Console.WriteLine(clientPlayerUid+"即将发送InvitedTeam包");
+                        Debug.Log(new StackFrame(true), "即将发送InvitedTeam包");
                         mainPack.Uid = mainPack.TeammatePack.TargetUid;
                         mainPack.ActionCode = ActionCode.InvitedTeam;
                         mainPack.ReturnCode = ReturnCode.Success;
@@ -200,7 +200,7 @@ namespace SocketServer
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine(e.Message);
+                        Debug.Log(new StackFrame(true), e.Message);
                         mainPack.ReturnCode = ReturnCode.Fail;
                         TcpSend(mainPack);
                         return 0;
@@ -210,7 +210,7 @@ namespace SocketServer
             }
             else
             {
-                Console.WriteLine("失败");
+                Debug.Log(new StackFrame(true), "失败");
                 return 0;//失败
             }
         }
@@ -219,7 +219,7 @@ namespace SocketServer
         {
             if (mainPack.TeammatePack.State == 0 && mainPack.TeammatePack.TargetUid == mainPack.Uid)
             {
-                Client sender = server.ClientByUID(mainPack.TeammatePack.SenderUid);
+                Client sender = server.GetClientFromDictByUid(mainPack.TeammatePack.SenderUid);
                 mainPack.TeammatePack.State = 1;
                 mainPack.Uid = mainPack.TeammatePack.SenderUid;
                 //JoinTeam(mainPack, sender.teammate);
@@ -231,7 +231,6 @@ namespace SocketServer
             }
             else
             {
-                //Console.WriteLine("AcceptInviteTeam 不正常情况");
                 return false;
             }
         }
@@ -245,7 +244,6 @@ namespace SocketServer
             }
             else
             {
-                //Console.WriteLine("AcceptedInviteTeam 不正常情况");
                 return false;
             }
         }
@@ -255,7 +253,7 @@ namespace SocketServer
             if (mainPack.TeammatePack.State == 0 && mainPack.Uid == mainPack.TeammatePack.TargetUid)
             {
                 teammate = null;
-                Client sender = server.ClientByUID(mainPack.TeammatePack.SenderUid);
+                Client sender = server.GetClientFromDictByUid(mainPack.TeammatePack.SenderUid);
                 mainPack.Uid = mainPack.TeammatePack.SenderUid;
                 mainPack.TeammatePack.State = 2;
                 sender.RefusedInviteTeam(mainPack);
@@ -263,7 +261,6 @@ namespace SocketServer
             }
             else
             {
-                //Console.WriteLine("RefuseInviteTeam 不正常情况");
                 return false;
             }
         }
@@ -276,7 +273,6 @@ namespace SocketServer
             }
             else
             {
-                //Console.WriteLine("RefusedInviteTeam 不正常情况");
                 return false;
             }
         }
@@ -328,7 +324,7 @@ namespace SocketServer
         void Close()
         {
             server.RemoveClient(this);
-            Console.WriteLine("断开连接");
+            Debug.Log(new StackFrame(true), "断开连接");
             if (isTeammate && teammate != null)
             {
                 teammate.LeaveTeam(this);

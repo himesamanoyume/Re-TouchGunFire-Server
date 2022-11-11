@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,12 +19,13 @@ namespace SocketServer
         {
             if(client.Register(mainPack))
             {
-                Console.WriteLine("Success");
+                Debug.Log(new StackFrame(true), "Success");
+                //Debug.Log(new StackFrame(true), "Success");
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else
             {
-                Console.WriteLine("Failed");
+                Debug.Log(new StackFrame(true), "Failed");
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
             return mainPack;
@@ -33,12 +35,12 @@ namespace SocketServer
         {
             if (client.Login(mainPack) != null)
             {
-                Console.WriteLine("Success");
+                Debug.Log(new StackFrame(true), "Success");
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else
             {
-                Console.WriteLine("Failed");
+                Debug.Log(new StackFrame(true), "Failed");
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
 
@@ -49,12 +51,12 @@ namespace SocketServer
         {
             if (client.InitPlayerInfo(mainPack) != null)
             {
-                Console.WriteLine("Success");
+                Debug.Log(new StackFrame(true), "Success");
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else
             {
-                Console.WriteLine("Failed");
+                Debug.Log(new StackFrame(true), "Failed");
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
             return mainPack;
@@ -64,12 +66,12 @@ namespace SocketServer
         {
             if (client.GetPlayerBaseInfo(mainPack) != null)
             {
-                Console.WriteLine("Success");
+                Debug.Log(new StackFrame(true), "Success");
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else
             {
-                Console.WriteLine("Failed");
+                Debug.Log(new StackFrame(true), "Failed");
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
             return mainPack;

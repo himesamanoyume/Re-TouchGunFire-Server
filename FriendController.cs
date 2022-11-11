@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,12 +19,12 @@ namespace SocketServer
         {
             if (client.GetFriendRequest(mainPack) != null)
             {
-                Console.WriteLine("Success");
+                Debug.Log(new StackFrame(true), "Success");
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else
             {
-                Console.WriteLine("Failed");
+                Debug.Log(new StackFrame(true), "Failed");
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
             return mainPack;
@@ -33,12 +34,12 @@ namespace SocketServer
         {
             if (client.GetFriends(mainPack) != null)
             {
-                Console.WriteLine("Success");
+                Debug.Log(new StackFrame(true), "Success");
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else
             {
-                Console.WriteLine("Failed");
+                Debug.Log(new StackFrame(true), "Failed");
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
             return mainPack;
@@ -48,12 +49,12 @@ namespace SocketServer
         {
             if (client.SearchFriend(mainPack) != null)
             {
-                Console.WriteLine("Success");
+                Debug.Log(new StackFrame(true), "Success");
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else
             {
-                Console.WriteLine("Failed");
+                Debug.Log(new StackFrame(true), "Failed");
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
             return mainPack;
@@ -63,17 +64,17 @@ namespace SocketServer
         {
             if (client.SendRequestFriend(mainPack) == 1)
             {
-                Console.WriteLine("Success");
+                Debug.Log(new StackFrame(true), "Success");
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else if(client.SendRequestFriend(mainPack) == 2)
             {
-                Console.WriteLine("Repeated");
+                Debug.Log(new StackFrame(true), "Repeated");
                 mainPack.ReturnCode = ReturnCode.RepeatedRequest;
             }
             else
             {
-                Console.WriteLine("Failed");
+                Debug.Log(new StackFrame(true), "Failed");
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
             return mainPack;
@@ -83,16 +84,16 @@ namespace SocketServer
         {
             if (client.AcceptFriendRequest(mainPack) == 1)
             {
-                Console.WriteLine("Success");
+                Debug.Log(new StackFrame(true), "Success");
                 mainPack.ReturnCode = ReturnCode.Success;
             }else if (client.AcceptFriendRequest(mainPack) == 2)
             {
-                Console.WriteLine("NotFound");
+                Debug.Log(new StackFrame(true), "NotFound");
                 mainPack.ReturnCode = ReturnCode.NotFound;
             }
             else
             {
-                Console.WriteLine("Failed");
+                Debug.Log(new StackFrame(true), "Failed");
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
             return mainPack;
@@ -102,17 +103,17 @@ namespace SocketServer
         {
             if (client.RefuseFriendRequest(mainPack) == 1)
             {
-                Console.WriteLine("Success");
+                Debug.Log(new StackFrame(true), "Success");
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else if (client.RefuseFriendRequest(mainPack) == 2)
             {
-                Console.WriteLine("NotFound");
+                Debug.Log(new StackFrame(true), "NotFound");
                 mainPack.ReturnCode = ReturnCode.NotFound;
             }
             else
             {
-                Console.WriteLine("Failed");
+                Debug.Log(new StackFrame(true), "Failed");
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
             return mainPack;
@@ -122,12 +123,12 @@ namespace SocketServer
         {
             if (client.DeleteFriend(mainPack))
             {
-                Console.WriteLine("Success");
+                Debug.Log(new StackFrame(true), "Success");
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else
             {
-                Console.WriteLine("Failed");
+                Debug.Log(new StackFrame(true), "Failed");
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
             return mainPack;

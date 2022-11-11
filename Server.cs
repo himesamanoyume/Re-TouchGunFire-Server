@@ -4,6 +4,8 @@ using System.Net.Sockets;
 using SocketProtocol;
 using Google.Protobuf;
 using MySql.Data;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace SocketServer
 {
@@ -12,8 +14,10 @@ namespace SocketServer
         Socket serverSocket;
         UDPServer udpServer;
         Thread thread;
-        List<Client> clientSockets = new List<Client>();
+        List<Client> clientList = new List<Client>();
         ControllerManager controllerManager;
+        Dictionary<int, Client> clientDict = new Dictionary<int, Client>();
+        
 
         public Server(int port)
         {
@@ -23,14 +27,14 @@ namespace SocketServer
             serverSocket.Bind(new IPEndPoint(IPAddress.Any, port));
             serverSocket.Listen(0);
             StartAccept();
-            Console.WriteLine("初始化结束");
+            Debug.Log(new StackFrame(true), "初始化结束");
 
             udpServer = new UDPServer(6678, this, controllerManager);
         }
 
         ~Server()
         {
-            Console.WriteLine("Server关闭");
+            Debug.Log(new StackFrame(true), "Server关闭");
             if (thread != null)
             {
                 thread.Abort();
@@ -46,8 +50,8 @@ namespace SocketServer
         void AcceptCallback(IAsyncResult iar)
         {
             Socket client = serverSocket.EndAccept(iar);
-            clientSockets.Add(new Client(client, this, udpServer));
-            Console.WriteLine("新的连接, 当前客户端人数: " + clientSockets.Count);
+            clientList.Add(new Client(client, this, udpServer));
+            Debug.Log(new StackFrame(true), "新的连接, 当前客户端人数: " + clientList.Count);
             StartAccept();
         }
 
@@ -58,12 +62,16 @@ namespace SocketServer
 
         public void RemoveClient(Client client)
         {
-            clientSockets.Remove(client);
+            clientList.Remove(client);
+            if (clientDict.TryGetValue(client.clientPlayerUid, out Client clientAtDict))
+            {
+                clientDict.Remove(clientAtDict.clientPlayerUid);
+            }
         }
 
         public bool SetEndPoint(EndPoint endPoint, int uid)
         {
-            foreach (Client client in clientSockets)
+            foreach (Client client in clientList)
             {
                 if (client.clientPlayerUid == uid)
                 {
@@ -74,9 +82,9 @@ namespace SocketServer
             return false;
         }
 
-        public Client ClientByUID(int uid)
+        public Client GetClientFromListByUid(int uid)
         {
-            foreach (Client client in clientSockets)
+            foreach (Client client in clientList)
             {
                 if (client.clientPlayerUid == uid)
                 {
@@ -84,6 +92,23 @@ namespace SocketServer
                 }
             }
             return null;
+        }
+
+        public Client GetClientFromDictByUid(int uid)
+        {
+            if (clientDict.TryGetValue(uid, out Client client) && client.clientPlayerUid  == uid)
+            {
+                return client;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public void AddClientToDict(Client c)
+        {
+            clientDict.Add(c.clientPlayerUid, c);
         }
     }
 }

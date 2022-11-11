@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using SocketProtocol;
 using Google.Protobuf;
+using System.Diagnostics;
 
 namespace SocketServer
 {
@@ -13,7 +14,7 @@ namespace SocketServer
             Server server = new Server(4567);
             if (Console.ReadLine() == "stop")
             {
-                Console.WriteLine("服务器关闭中");
+                Debug.Log(new StackFrame(true), "服务器关闭中");
                 server = null;
                 GC.Collect();
                 

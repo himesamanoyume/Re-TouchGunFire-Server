@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SocketProtocol;
 using System.Reflection;
+using System.Diagnostics;
 
 
 namespace SocketServer
@@ -32,12 +33,12 @@ namespace SocketServer
         {
             if(controllerDict.TryGetValue(mainPack.RequestCode, out BaseController controller))
             {
-                Console.WriteLine("处理消息中：" + mainPack.ActionCode.ToString());
+                Debug.Log(new StackFrame(true), "接收到消息,处理中");
                 string methodName = mainPack.ActionCode.ToString();
                 MethodInfo method = controller.GetType().GetMethod(methodName);
                 if( method == null)
                 {
-                    Console.WriteLine("未找到对应的处理方法");
+                    Debug.Log(new StackFrame(true), "未找到对应的处理方法");
                     return;
                 }
 
@@ -61,7 +62,7 @@ namespace SocketServer
             }
             else
             {
-                Console.WriteLine("没有找到对应的controller");
+                Debug.Log(new StackFrame(true), "没有找到对应的controller");
             }
         }
     }

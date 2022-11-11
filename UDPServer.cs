@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using SocketProtocol;
+using System.Diagnostics;
 
 namespace SocketServer
 {
@@ -31,7 +32,7 @@ namespace SocketServer
             udpServer.Bind(bindEP);
             receiveThread = new Thread(RecevieMsg);
             receiveThread.Start();
-            Console.WriteLine("udp start.");
+            Debug.Log(new StackFrame(true), "udp start.");
         }
 
         ~UDPServer(){
@@ -54,7 +55,7 @@ namespace SocketServer
 
         public void HandleRequest(MainPack mainPack, EndPoint endPoint)
         {
-            Client client = server.ClientByUID(mainPack.Uid);
+            Client client = server.GetClientFromListByUid(mainPack.Uid);
             if (client.endPoint == null)
             {
                 client.endPoint = endPoint;

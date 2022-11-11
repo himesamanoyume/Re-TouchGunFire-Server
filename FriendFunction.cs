@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
@@ -31,7 +32,7 @@ namespace SocketServer
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Debug.Log(new StackFrame(true), e.Message);
                 return null;
             }
         }
@@ -70,7 +71,7 @@ namespace SocketServer
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Debug.Log(new StackFrame(true), e.Message);
                 return null;
             }
         }
@@ -97,7 +98,7 @@ namespace SocketServer
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Debug.Log(new StackFrame(true), e.Message);
                 return null;
             }
         }
@@ -124,7 +125,7 @@ namespace SocketServer
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Debug.Log(new StackFrame(true), e.Message);
                 return 0;
             }
         }
@@ -155,7 +156,7 @@ namespace SocketServer
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Debug.Log(new StackFrame(true), e.Message);
                 return 0;
             }
         }
@@ -185,7 +186,7 @@ namespace SocketServer
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Debug.Log(new StackFrame(true), e.Message);
                 return 0;
             }
         }
@@ -203,7 +204,7 @@ namespace SocketServer
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Debug.Log(new StackFrame(true), e.Message);
                 return false;
             }
         }

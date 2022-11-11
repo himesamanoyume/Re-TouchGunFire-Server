@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,17 +29,17 @@ namespace SocketServer
         {
             if (client.InviteTeam(mainPack) == 1)
             {
-                Console.WriteLine("InviteTeam Success");
+                Debug.Log(new StackFrame(true), "InviteTeam Success");
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else if(client.InviteTeam(mainPack) == 0)
             {
-                Console.WriteLine("Failed");
+                Debug.Log(new StackFrame(true), "Failed");
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
             else
             {
-                Console.WriteLine("No Online");
+                Debug.Log(new StackFrame(true), "No Online");
                 mainPack.ReturnCode = ReturnCode.RepeatedRequest;
             }
             return mainPack;
@@ -46,19 +47,19 @@ namespace SocketServer
 
         public MainPack InvitedTeam(Client client, MainPack mainPack)
         {
-            Console.WriteLine("处理InvitedTeam");
+            
             if (client.InvitedTeam(mainPack) == 2)//已有队伍
             {
-                Console.WriteLine("Repeated");
+                Debug.Log(new StackFrame(true), "Repeated");
                 mainPack.ReturnCode = ReturnCode.RepeatedRequest;
             }
             else if(client.InvitedTeam(mainPack) == 1)
             {
-                Console.WriteLine("Success");
+                Debug.Log(new StackFrame(true), "Success");
                 mainPack.ReturnCode = ReturnCode.Success;
             }else if(client.InvitedTeam(mainPack) == 0)
             {
-                Console.WriteLine("Failed");
+                Debug.Log(new StackFrame(true), "Failed");
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
             return mainPack;
@@ -68,12 +69,12 @@ namespace SocketServer
         {
             if (client.AcceptInviteTeam(mainPack))
             {
-                Console.WriteLine("Success");
+                Debug.Log(new StackFrame(true), "Success");
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else
             {
-                Console.WriteLine("Failed");
+                Debug.Log(new StackFrame(true), "Failed");
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
             return mainPack;
@@ -83,12 +84,12 @@ namespace SocketServer
         {
             if (client.AcceptedInviteTeam(mainPack))
             {
-                Console.WriteLine("Success");
+                Debug.Log(new StackFrame(true), "Success");
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else
             {
-                Console.WriteLine("Failed");
+                Debug.Log(new StackFrame(true), "Failed");
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
             return mainPack;
@@ -98,12 +99,12 @@ namespace SocketServer
         {
             if (client.RefuseInviteTeam(mainPack))
             {
-                Console.WriteLine("Success");
+                Debug.Log(new StackFrame(true), "Success");
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else
             {
-                Console.WriteLine("Failed");
+                Debug.Log(new StackFrame(true), "Failed");
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
             return mainPack;
@@ -113,12 +114,12 @@ namespace SocketServer
         {
             if (client.RefusedInviteTeam(mainPack))
             {
-                Console.WriteLine("Success");
+                Debug.Log(new StackFrame(true), "Success");
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else
             {
-                Console.WriteLine("Failed");
+                Debug.Log(new StackFrame(true), "Failed");
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
             return mainPack;
