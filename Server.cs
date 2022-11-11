@@ -12,7 +12,7 @@ namespace SocketServer
     internal class Server
     {
         Socket serverSocket;
-        UDPServer udpServer;
+        UdpServer udpServer;
         Thread thread;
         List<Client> clientList = new List<Client>();
         ControllerManager controllerManager;
@@ -29,7 +29,7 @@ namespace SocketServer
             StartAccept();
             Debug.Log(new StackFrame(true), "初始化结束");
 
-            udpServer = new UDPServer(6678, this, controllerManager);
+            udpServer = new UdpServer(6678, this, controllerManager);
         }
 
         ~Server()

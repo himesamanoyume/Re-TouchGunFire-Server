@@ -49,8 +49,15 @@ namespace SocketServer
         {
             if (client.SearchFriend(mainPack) != null)
             {
-                Debug.Log(new StackFrame(true), "Success");
-                mainPack.ReturnCode = ReturnCode.Success;
+                if (mainPack.ReturnCode == ReturnCode.RepeatedRequest)
+                {
+                    Debug.Log(new StackFrame(true), "Repeated");
+                }
+                else
+                {
+                    Debug.Log(new StackFrame(true), "Success");
+                    mainPack.ReturnCode = ReturnCode.Success;
+                }  
             }
             else
             {

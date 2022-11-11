@@ -44,23 +44,22 @@ namespace SocketServer
                 string sql = "select * from hime.user_friends where player1_uid = " + mainPack.Uid + " and is_friend = 1";
                 MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
                 MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
+
                 //player1_uid永远是好友 player2_uid永远是自己
-                foreach (var item in mySqlDataReader)
+                while (mySqlDataReader.Read())
                 {
-                    mySqlDataReader.Read();
                     FriendsPack friendsPack = new FriendsPack();
                     friendsPack.Player2Uid = mySqlDataReader.GetInt32(1);
                     friendsPack.Player1Uid = mySqlDataReader.GetInt32(2);
                     mainPack.FriendsPack.Add(friendsPack);
+                    
                 }
-
+                mySqlDataReader.Close();
                 sql = "select * from hime.user_friends where player2_uid = " + mainPack.Uid + " and is_friend = 1";
                 cmd = new MySqlCommand(sql, mySqlConnection);
-                mySqlDataReader.Close();
                 mySqlDataReader = cmd.ExecuteReader();
-                foreach (var item in mySqlDataReader)
+                while (mySqlDataReader.Read())
                 {
-                    mySqlDataReader.Read();
                     FriendsPack friendsPack = new FriendsPack();
                     friendsPack.Player1Uid = mySqlDataReader.GetInt32(1);
                     friendsPack.Player2Uid = mySqlDataReader.GetInt32(2);
@@ -78,6 +77,11 @@ namespace SocketServer
 
         public MainPack SearchFriend(MainPack mainPack, MySqlConnection mySqlConnection)
         {
+            if (mainPack.PlayerInfoPack.Uid == mainPack.Uid)
+            {
+                mainPack.ReturnCode = ReturnCode.RepeatedRequest;
+                return mainPack;
+            }
             int targetPlayerUid = mainPack.PlayerInfoPack.Uid;
             try
             {

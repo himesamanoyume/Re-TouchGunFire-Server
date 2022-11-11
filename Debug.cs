@@ -16,9 +16,9 @@ namespace SocketServer
         public static void Log(StackFrame sf ,string n)
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write("[{0}", sf.GetFileName().Split('\\')[sf.GetFileName().Split('\\').Length - 1]);
+            Console.Write("[{0}:", sf.GetFileName().Split('\\')[sf.GetFileName().Split('\\').Length - 1]);
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write(":{0}", sf.GetMethod().Name);
+            Console.Write("{0}", sf.GetMethod().Name);
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write(":Line.{0}]\n", sf.GetFileLineNumber());
             Console.Write("[{0}] ", DateTime.Now.ToLongTimeString());

@@ -8,14 +8,14 @@ using SocketProtocol;
 
 namespace SocketServer
 {
-    internal class Teammate
+    internal class Team
     {
         Server server;
         Client masterClient = null;
-        public UDPServer udpServer;
+        public UdpServer udpServer;
         List<Client> teammates = new List<Client>();
 
-        public Teammate(Client masterClient, UDPServer udpServer, Server server)
+        public Team(Client masterClient, UdpServer udpServer, Server server)
         {
             this.udpServer = udpServer;
             teammates.Add(masterClient);
@@ -61,8 +61,8 @@ namespace SocketServer
             MainPack mainPack = new MainPack();
             mainPack.ActionCode = ActionCode.LeaveTeam;
             mainPack.Uid = client.clientPlayerUid;
-            client.isTeammate = false;
-            client.teammate = null;
+            client.isInTheTeam = false;
+            client.team = null;
             Broadcast(client, mainPack);
             if (client.Equals(teammates[0]))
             {
@@ -91,8 +91,8 @@ namespace SocketServer
 
         public void JoinTeam(Client client)
         {
-            client.isTeammate = true;
-            client.teammate = this;
+            client.isInTheTeam = true;
+            client.team = this;
             //...
         }
 

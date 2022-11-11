@@ -82,6 +82,7 @@ namespace SocketServer
 
         public MainPack AcceptedInviteTeam(Client client, MainPack mainPack)
         {
+
             if (client.AcceptedInviteTeam(mainPack))
             {
                 Debug.Log(new StackFrame(true), "Success");

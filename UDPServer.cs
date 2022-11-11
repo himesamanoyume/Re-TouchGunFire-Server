@@ -10,7 +10,7 @@ using System.Diagnostics;
 
 namespace SocketServer
 {
-    internal class UDPServer
+    internal class UdpServer
     {
         Socket udpServer;
         IPEndPoint bindEP;
@@ -22,7 +22,7 @@ namespace SocketServer
         byte[] buffer = new byte[1024];
         Thread receiveThread;
 
-        public UDPServer(int port, Server server, ControllerManager controllerManager)
+        public UdpServer(int port, Server server, ControllerManager controllerManager)
         {
             this.server = server;
             this.controllerManager = controllerManager;
@@ -32,10 +32,10 @@ namespace SocketServer
             udpServer.Bind(bindEP);
             receiveThread = new Thread(RecevieMsg);
             receiveThread.Start();
-            Debug.Log(new StackFrame(true), "udp start.");
+            Debug.Log(new StackFrame(true), "UDP服务器已启动");
         }
 
-        ~UDPServer(){
+        ~UdpServer(){
             if (receiveThread != null)
             {
                 receiveThread.Abort();

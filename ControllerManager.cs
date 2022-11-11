@@ -33,12 +33,12 @@ namespace SocketServer
         {
             if(controllerDict.TryGetValue(mainPack.RequestCode, out BaseController controller))
             {
-                Debug.Log(new StackFrame(true), "接收到消息,处理中");
+                Debug.Log(new StackFrame(true), "接收到"+ mainPack.RequestCode +"消息,处理中");
                 string methodName = mainPack.ActionCode.ToString();
                 MethodInfo method = controller.GetType().GetMethod(methodName);
                 if( method == null)
                 {
-                    Debug.Log(new StackFrame(true), "未找到对应的处理方法");
+                    Debug.Log(new StackFrame(true), "未找到对应的处理方法,请检查MainPack是否填入ActionCode");
                     return;
                 }
 
