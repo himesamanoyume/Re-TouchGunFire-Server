@@ -33,7 +33,7 @@ namespace SocketServer
         {
             if(controllerDict.TryGetValue(mainPack.RequestCode, out BaseController controller))
             {
-                Debug.Log(new StackFrame(true), "接收到"+ mainPack.RequestCode +"消息,处理中");
+                Debug.Log(new StackFrame(true), "接收到UID"+mainPack.Uid +"的"+mainPack.ActionCode +"消息,处理中");
                 string methodName = mainPack.ActionCode.ToString();
                 MethodInfo method = controller.GetType().GetMethod(methodName);
                 if( method == null)

@@ -179,6 +179,11 @@ namespace SocketServer
             return GetTeamFunction.RefusedInviteTeam(mainPack, this);
         }
 
+        public MainPack GetTeammates(MainPack mainPack)
+        {
+            return GetTeamFunction.GetTeammates(mainPack, this);
+        }
+
         public void JoinTeam(MainPack mainPack)
         {
 
@@ -204,18 +209,27 @@ namespace SocketServer
             if (tcpSocket == null || tcpSocket.Connected == false) return;
             try
             {
+                Debug.Log(new StackFrame(true), "TCP发送至UID:"+ mainPack.Uid +",ActionCode:"+ mainPack.ActionCode);
                 tcpSocket.Send(Message.TcpPackData(mainPack));
             }
-            catch
+            catch(Exception e)
             {
-
+                Debug.Log(new StackFrame(true), e.Message);
             }
         }
 
         public void UdpSend(MainPack mainPack)
         {
             if (endPoint == null) return;
-            udpServer.UdpSend(mainPack, endPoint);
+            try
+            {
+                Debug.Log(new StackFrame(true), "UDP发送:"+ mainPack.Uid + ",ActionCode:" + mainPack.ActionCode);
+                udpServer.UdpSend(mainPack, endPoint);
+            }
+            catch (Exception e)
+            {
+                Debug.Log(new StackFrame(true), e.Message);
+            }
         }
 
         void HandleRequest(MainPack mainPack)

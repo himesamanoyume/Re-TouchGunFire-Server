@@ -13,10 +13,5 @@ namespace SocketServer
         {
             get { return requestCode; }
         }
-        //protected ActionCode actionCode = ActionCode.ActionNone;
-        //public ActionCode GetActionCode
-        //{
-        //    get { return actionCode; }
-        //}
     }
 }

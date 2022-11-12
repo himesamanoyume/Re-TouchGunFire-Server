@@ -23,7 +23,12 @@ namespace SocketServer
             this.server = server;
         }
 
-        public List<Client> GetTeammates
+        public Client GetTeamMasterClient
+        {
+            get { return masterClient; }
+        }
+
+        public List<Client> Teammates
         {
             get { return teammates; }
             set { teammates = value; }
@@ -86,24 +91,14 @@ namespace SocketServer
                 mainPack.ActionCode = ActionCode.BreakTeam;
                 mainPack.Uid = client.clientPlayerUid;
             }
-            
-        }
-
-        public void JoinTeam(Client client)
-        {
-            client.isInTheTeam = true;
-            client.team = this;
-            //...
-        }
-
-        public void UpdateTeam()
-        {
 
         }
 
-        public void InviteTeam()
-        {
-
-        }
+        //public void JoinTeam(Client client)
+        //{
+        //    client.isInTheTeam = true;
+        //    client.team = this;
+        //    //...
+        //}
     }
 }

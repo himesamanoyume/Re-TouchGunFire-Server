@@ -129,6 +129,7 @@ namespace SocketServer
                 MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
                 MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
                 mySqlDataReader.Read();
+                mainPack.PlayerInfoPack.Uid = mySqlDataReader.GetInt32(0);
                 mainPack.PlayerInfoPack.PlayerName = mySqlDataReader.GetString(3);
                 mainPack.PlayerInfoPack.Level = mySqlDataReader.GetInt32(4);
                 mySqlDataReader.Close();

@@ -34,7 +34,7 @@ namespace SocketServer
             }
             else if(client.InviteTeam(mainPack) == 0)
             {
-                Debug.Log(new StackFrame(true), "Failed");
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
             else
@@ -50,16 +50,16 @@ namespace SocketServer
             
             if (client.InvitedTeam(mainPack) == 2)//已有队伍
             {
-                Debug.Log(new StackFrame(true), "Repeated");
+                Debug.Log(new StackFrame(true), ReturnCode.RepeatedRequest.ToString());
                 mainPack.ReturnCode = ReturnCode.RepeatedRequest;
             }
             else if(client.InvitedTeam(mainPack) == 1)
             {
-                Debug.Log(new StackFrame(true), "Success");
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
             }else if(client.InvitedTeam(mainPack) == 0)
             {
-                Debug.Log(new StackFrame(true), "Failed");
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
             return mainPack;
@@ -69,12 +69,12 @@ namespace SocketServer
         {
             if (client.AcceptInviteTeam(mainPack))
             {
-                Debug.Log(new StackFrame(true), "Success");
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else
             {
-                Debug.Log(new StackFrame(true), "Failed");
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
             return mainPack;
@@ -85,12 +85,12 @@ namespace SocketServer
 
             if (client.AcceptedInviteTeam(mainPack))
             {
-                Debug.Log(new StackFrame(true), "Success");
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else
             {
-                Debug.Log(new StackFrame(true), "Failed");
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
             return mainPack;
@@ -100,12 +100,12 @@ namespace SocketServer
         {
             if (client.RefuseInviteTeam(mainPack))
             {
-                Debug.Log(new StackFrame(true), "Success");
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else
             {
-                Debug.Log(new StackFrame(true), "Failed");
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
                 mainPack.ReturnCode = ReturnCode.Fail;
             }
             return mainPack;
@@ -115,13 +115,33 @@ namespace SocketServer
         {
             if (client.RefusedInviteTeam(mainPack))
             {
-                Debug.Log(new StackFrame(true), "Success");
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else
             {
-                Debug.Log(new StackFrame(true), "Failed");
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
                 mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            return mainPack;
+        }
+
+        public MainPack GetTeammates(Client client, MainPack mainPack)
+        {
+            mainPack = client.GetTeamFunction.GetTeammates(mainPack, client);
+            if (mainPack == null)
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            else if (mainPack.ReturnCode == ReturnCode.NotFound)
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.NotFound.ToString());
+            }
+            else
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
             }
             return mainPack;
         }

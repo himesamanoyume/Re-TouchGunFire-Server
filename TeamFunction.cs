@@ -100,11 +100,16 @@ namespace SocketServer
             {
                 client.team = new Team(client, udpServer, server);
                 Client target = server.GetClientFromDictByUid(mainPack.TeammatePack.TargetUid);
+                client.team.Teammates.Add(target);
                 target.team = client.team;
+                mainPack.ReturnCode = ReturnCode.Success;
+                client.TcpSend(mainPack);
                 return true;
             }
             else
             {
+                mainPack.ReturnCode = ReturnCode.Fail;
+                client.TcpSend(mainPack);
                 return false;
             }
         }
@@ -145,6 +150,39 @@ namespace SocketServer
             {
                 Debug.Log(new StackFrame(true), "失败");
                 return false;
+            }
+        }
+
+        public MainPack GetTeammates(MainPack mainPack, Client client)
+        {
+            try
+            {
+                if (client.team == null)
+                {
+                    mainPack.ReturnCode = ReturnCode.NotFound;
+                    return mainPack;
+                }
+                foreach (Client item in client.team.Teammates)
+                {
+                    if (mainPack.Uid == item.clientPlayerUid)
+                    {
+                        continue;
+                    }
+                    FriendsPack friendsPack = new FriendsPack();
+                    friendsPack.Player1Uid = item.clientPlayerUid;
+                    friendsPack.Player2Uid = mainPack.Uid;
+                    mainPack.FriendsPack.Add(friendsPack);
+                }
+                //PlayerInfoPack充当队长uid信息的包
+                PlayerInfoPack playerInfoPack = new PlayerInfoPack();
+                playerInfoPack.Uid = client.team.GetTeamMasterClient.clientPlayerUid;
+                mainPack.PlayerInfoPack = playerInfoPack;
+                return mainPack;
+            }
+            catch (Exception e)
+            {
+                Debug.Log(new StackFrame(true), e.Message);
+                return null;
             }
         }
     }
