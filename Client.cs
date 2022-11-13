@@ -208,9 +208,9 @@ namespace SocketServer
             return GetTeamFunction.GetTeammates(mainPack, this);
         }
 
-        public void JoinTeam(MainPack mainPack)
+        public MainPack LeaveTeam(MainPack mainPack)
         {
-
+            return GetTeamFunction.LeaveTeam(mainPack, this);
         }
 
         public void JoinTeam(MainPack mainPack, Team team)
@@ -267,7 +267,9 @@ namespace SocketServer
             Debug.Log(new StackFrame(true), "断开连接");
             if (isInTheTeam && team != null)
             {
-                team.LeaveTeam(this);
+                MainPack mainPack = new MainPack();
+                mainPack.ActionCode = ActionCode.LeaveTeam;
+                GetTeamFunction.LeaveTeam(mainPack, this);
             }
             tcpSocket.Close();
             connection.Close();

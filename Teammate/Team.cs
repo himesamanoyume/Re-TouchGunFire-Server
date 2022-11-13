@@ -26,6 +26,7 @@ namespace SocketServer.Teammate
         public Client GetTeamMasterClient
         {
             get { return masterClient; }
+            set { masterClient = value; }
         }
 
         public List<Client> Teammates
@@ -49,6 +50,7 @@ namespace SocketServer.Teammate
                     continue;
                 }
                 mainPack.Uid = c.clientPlayerUid;
+                mainPack.ReturnCode = ReturnCode.Success;
                 if (isUDP)
                 {
                     c.UdpSend(mainPack);
@@ -61,38 +63,7 @@ namespace SocketServer.Teammate
             }
         }
 
-        public void LeaveTeam(Client client)
-        {
-            MainPack mainPack = new MainPack();
-            mainPack.ActionCode = ActionCode.LeaveTeam;
-            mainPack.Uid = client.clientPlayerUid;
-            client.isInTheTeam = false;
-            client.team = null;
-            Broadcast(client, mainPack);
-            if (client.Equals(teammates[0]))
-            {
-                teammates.Remove(teammates[0]);
-                if (teammates.Count == 0)
-                    BreakTeam();
-                else
-                    masterClient = teammates[0];
-            }
-            else
-            {
-                teammates.Remove(client);
-            }
-        }
-
-        public void BreakTeam(Client client = null)
-        {
-            if (client != null)
-            {
-                MainPack mainPack = new MainPack();
-                mainPack.ActionCode = ActionCode.BreakTeam;
-                mainPack.Uid = client.clientPlayerUid;
-            }
-
-        }
+       
 
         //public void JoinTeam(Client client)
         //{

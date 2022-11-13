@@ -187,5 +187,54 @@ namespace SocketServer.Teammate
                 return null;
             }
         }
+
+        public MainPack LeaveTeam(MainPack mainPack, Client client)
+        {
+            try
+            {
+                
+                PlayerInfoPack playerInfoPack = new PlayerInfoPack();
+                playerInfoPack.Uid = client.clientPlayerUid;//告知退队的人uid
+                mainPack.PlayerInfoPack = playerInfoPack;
+                MainPack mainPack1 = new MainPack();
+                mainPack1.Uid = mainPack.Uid;
+                mainPack1.ActionCode = mainPack.ActionCode;
+                mainPack1.PlayerInfoPack = playerInfoPack;
+                client.team.Broadcast(client, mainPack1);
+
+                if (client.Equals(client.team.Teammates[0]))
+                {
+                    client.team.Teammates.Remove(client.team.Teammates[0]);
+                    if (client.team.Teammates.Count == 1)
+                        BreakTeam();
+                    else
+                        client.team.GetTeamMasterClient = client.team.Teammates[0];
+                }
+                else
+                {
+                    client.team.Teammates.Remove(client);
+                }
+                client.isInTheTeam = false;
+                client.team = null;
+                return mainPack;
+            }
+            catch (Exception e)
+            {
+                Debug.Log(new StackFrame(true), e.Message);
+                return null;
+            }
+
+        }
+
+        public void BreakTeam(Client client = null)
+        {
+            if (client != null)
+            {
+                MainPack mainPack = new MainPack();
+                mainPack.ActionCode = ActionCode.BreakTeam;
+                mainPack.Uid = client.clientPlayerUid;
+            }
+
+        }
     }
 }

@@ -18,11 +18,17 @@ namespace SocketServer.Teammate
 
         public MainPack LeaveTeam(Client client, MainPack mainPack)
         {
-            //if ()
-            //{
-
-            //}
-            return null;
+            if (client.LeaveTeam(mainPack) != null)
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            return mainPack;
         }
 
         public MainPack InviteTeam(Client client, MainPack mainPack)
