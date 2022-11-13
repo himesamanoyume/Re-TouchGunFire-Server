@@ -4,7 +4,7 @@ using System.Net.Sockets;
 using SocketProtocol;
 using Google.Protobuf;
 
-namespace SocketServer
+namespace SocketServer.Utils
 {
     internal class Message
     {
@@ -29,7 +29,7 @@ namespace SocketServer
         public void ReadBuffer(int length, Action<MainPack> handleRequest)
         {
             m_startIndex += length;
-            
+
             while (true)
             {
                 if (m_startIndex <= 4) return;
@@ -39,7 +39,7 @@ namespace SocketServer
                     MainPack mainPack = (MainPack)MainPack.Descriptor.Parser.ParseFrom(m_buffer, 4, count);
                     handleRequest(mainPack);
                     Array.Copy(m_buffer, count + 4, m_buffer, 0, m_startIndex - count - 4);
-                    m_startIndex -= (count + 4);
+                    m_startIndex -= count + 4;
                 }
                 else
                 {

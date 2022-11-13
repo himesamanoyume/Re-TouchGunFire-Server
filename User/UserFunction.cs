@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using SocketProtocol;
 
-namespace SocketServer
+namespace SocketServer.User
 {
     internal class UserFunction
     {

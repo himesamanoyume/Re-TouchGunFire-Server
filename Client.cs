@@ -2,9 +2,12 @@
 using System.Net;
 using System.Net.Sockets;
 using SocketProtocol;
-using Google.Protobuf;
 using MySql.Data.MySqlClient;
 using System.Diagnostics;
+using SocketServer.Friend;
+using SocketServer.User;
+using SocketServer.Utils;
+using SocketServer.Teammate;
 
 namespace SocketServer
 {
@@ -127,16 +130,37 @@ namespace SocketServer
 
         public MainPack GetPlayerBaseInfo(MainPack mainPack)
         {
-            MainPack _mainPack = GetUserFunction.GetPlayerBaseInfo(mainPack, connection);
-            if (server.GetClientFromDictByUid(_mainPack.PlayerInfoPack.Uid) == null)
+            mainPack = GetUserFunction.GetPlayerBaseInfo(mainPack, connection);
+            Client client = server.GetClientFromDictByUid(mainPack.PlayerInfoPack.Uid);
+            if (client == null)
             {
-                _mainPack.PlayerInfoPack.IsOnline = false;
+                mainPack.PlayerInfoPack.IsOnline = false;
+                mainPack.PlayerInfoPack.IsTeam = false;
             }
             else
             {
-                _mainPack.PlayerInfoPack.IsOnline = true;
+                if (client.isInTheTeam)
+                {
+                    if (client.team == team)
+                    {
+                        if (client.team.GetTeamMasterClient.clientPlayerUid == mainPack.PlayerInfoPack.Uid)
+                        {
+                            mainPack.PlayerInfoPack.IsTeamMaster = true;
+                        }
+                        else
+                        {
+                            mainPack.PlayerInfoPack.IsTeamMaster = false;
+                        }
+                    }
+                    mainPack.PlayerInfoPack.IsTeam = true;
+                }
+                else
+                {
+                    mainPack.PlayerInfoPack.IsTeam = false;
+                }
+                mainPack.PlayerInfoPack.IsOnline = true;
             }
-            return _mainPack;
+            return mainPack;
         }
 
         public int RefuseFriendRequest(MainPack mainPack)

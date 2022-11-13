@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SocketProtocol;
 
-namespace SocketServer
+namespace SocketServer.User
 {
     internal class UserController : BaseController
     {
@@ -14,13 +14,12 @@ namespace SocketServer
         {
             requestCode = RequestCode.User;
         }
-        
+
         public MainPack Register(Client client, MainPack mainPack)
         {
-            if(client.Register(mainPack))
+            if (client.Register(mainPack))
             {
                 Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
-                //Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else

@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SocketProtocol;
+using SocketServer.Utils;
 
-namespace SocketServer
+namespace SocketServer.Gaming
 {
     internal class GameController : BaseController
     {

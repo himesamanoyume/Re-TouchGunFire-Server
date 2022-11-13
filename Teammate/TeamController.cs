@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SocketProtocol;
 
-namespace SocketServer
+namespace SocketServer.Teammate
 {
     internal class TeamController : BaseController
     {
@@ -29,7 +29,7 @@ namespace SocketServer
         {
             if (client.InviteTeam(mainPack) == 1)
             {
-                Debug.Log(new StackFrame(true), "InviteTeam Success");
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else if(client.InviteTeam(mainPack) == 0)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using SocketProtocol;
 
-namespace SocketServer
+namespace SocketServer.Teammate
 {
     internal class Team
     {

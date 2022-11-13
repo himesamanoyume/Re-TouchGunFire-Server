@@ -6,6 +6,7 @@ using Google.Protobuf;
 using MySql.Data;
 using System.Collections.Generic;
 using System.Diagnostics;
+using SocketServer.Utils;
 
 namespace SocketServer
 {

@@ -4,6 +4,7 @@ using System.Net.Sockets;
 using SocketProtocol;
 using Google.Protobuf;
 using System.Diagnostics;
+using SocketServer.Utils;
 
 namespace SocketServer
 {

@@ -5,8 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SocketProtocol;
+using SocketServer.Utils;
 
-namespace SocketServer
+namespace SocketServer.Friend
 {
     internal class FriendController : BaseController
     {
@@ -57,7 +58,7 @@ namespace SocketServer
                 {
                     Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                     mainPack.ReturnCode = ReturnCode.Success;
-                }  
+                }
             }
             else
             {
@@ -74,7 +75,7 @@ namespace SocketServer
                 Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
             }
-            else if(client.SendRequestFriend(mainPack) == 2)
+            else if (client.SendRequestFriend(mainPack) == 2)
             {
                 Debug.Log(new StackFrame(true), ReturnCode.RepeatedRequest.ToString());
                 mainPack.ReturnCode = ReturnCode.RepeatedRequest;
@@ -93,7 +94,8 @@ namespace SocketServer
             {
                 Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
-            }else if (client.AcceptFriendRequest(mainPack) == 2)
+            }
+            else if (client.AcceptFriendRequest(mainPack) == 2)
             {
                 Debug.Log(new StackFrame(true), ReturnCode.NotFound.ToString());
                 mainPack.ReturnCode = ReturnCode.NotFound;

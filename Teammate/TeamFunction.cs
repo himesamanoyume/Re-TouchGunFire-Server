@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using SocketProtocol;
 
-namespace SocketServer
+namespace SocketServer.Teammate
 {
     internal class TeamFunction
     {
@@ -37,7 +37,7 @@ namespace SocketServer
             }
         }
 
-        public int InvitedTeam(MainPack mainPack, Server server,  Client client, Team team)
+        public int InvitedTeam(MainPack mainPack, Server server, Client client, Team team)
         {
             if (mainPack.TeammatePack.TargetUid == mainPack.Uid && mainPack.TeammatePack.State == 0)
             {
@@ -102,6 +102,8 @@ namespace SocketServer
                 Client target = server.GetClientFromDictByUid(mainPack.TeammatePack.TargetUid);
                 client.team.Teammates.Add(target);
                 target.team = client.team;
+                client.isInTheTeam = true;
+                target.isInTheTeam = true;
                 mainPack.ReturnCode = ReturnCode.Success;
                 client.TcpSend(mainPack);
                 return true;
