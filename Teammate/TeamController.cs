@@ -31,14 +31,31 @@ namespace SocketServer.Teammate
             return mainPack;
         }
 
-        public MainPack InviteTeam(Client client, MainPack mainPack)
+        public MainPack BreakTeam(Client client, MainPack mainPack)
         {
-            if (client.InviteTeam(mainPack) == 1)
+            mainPack = client.GetTeamFunction.BreakTeam(client, mainPack);
+            if (mainPack != null)
             {
                 Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
             }
-            else if(client.InviteTeam(mainPack) == 0)
+            else
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            return mainPack;
+        }
+
+        public MainPack InviteTeam(Client client, MainPack mainPack)
+        {
+            int code = client.InviteTeam(mainPack);
+            if (code == 1)
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else if(code == 0)
             {
                 Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
                 mainPack.ReturnCode = ReturnCode.Fail;
@@ -53,17 +70,17 @@ namespace SocketServer.Teammate
 
         public MainPack InvitedTeam(Client client, MainPack mainPack)
         {
-            
-            if (client.InvitedTeam(mainPack) == 2)//已有队伍
+            int code = client.InvitedTeam(mainPack);
+            if (code == 2)//已有队伍
             {
                 Debug.Log(new StackFrame(true), ReturnCode.RepeatedRequest.ToString());
                 mainPack.ReturnCode = ReturnCode.RepeatedRequest;
             }
-            else if(client.InvitedTeam(mainPack) == 1)
+            else if(code == 1)
             {
                 Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
-            }else if(client.InvitedTeam(mainPack) == 0)
+            }else if(code == 0)
             {
                 Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
                 mainPack.ReturnCode = ReturnCode.Fail;

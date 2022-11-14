@@ -70,12 +70,13 @@ namespace SocketServer.Friend
 
         public MainPack SendRequestFriend(Client client, MainPack mainPack)
         {
-            if (client.SendRequestFriend(mainPack) == 1)
+            int code = client.SendRequestFriend(mainPack);
+            if (code == 1)
             {
                 Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
             }
-            else if (client.SendRequestFriend(mainPack) == 2)
+            else if (code == 2)
             {
                 Debug.Log(new StackFrame(true), ReturnCode.RepeatedRequest.ToString());
                 mainPack.ReturnCode = ReturnCode.RepeatedRequest;
@@ -90,12 +91,13 @@ namespace SocketServer.Friend
 
         public MainPack AcceptFriendRequest(Client client, MainPack mainPack)
         {
-            if (client.AcceptFriendRequest(mainPack) == 1)
+            int code = client.AcceptFriendRequest(mainPack);
+            if (code == 1)
             {
                 Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
             }
-            else if (client.AcceptFriendRequest(mainPack) == 2)
+            else if (code == 2)
             {
                 Debug.Log(new StackFrame(true), ReturnCode.NotFound.ToString());
                 mainPack.ReturnCode = ReturnCode.NotFound;
@@ -110,12 +112,13 @@ namespace SocketServer.Friend
 
         public MainPack RefuseFriendRequest(Client client, MainPack mainPack)
         {
-            if (client.RefuseFriendRequest(mainPack) == 1)
+            int code = client.RefuseFriendRequest(mainPack);
+            if (code == 1)
             {
                 Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
             }
-            else if (client.RefuseFriendRequest(mainPack) == 2)
+            else if (code == 2)
             {
                 Debug.Log(new StackFrame(true), ReturnCode.NotFound.ToString());
                 mainPack.ReturnCode = ReturnCode.NotFound;

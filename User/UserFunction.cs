@@ -41,9 +41,19 @@ namespace SocketServer.User
                 string sql = "select * from hime.user_info where account='" + account + "' and password='" + password + "'";
                 MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
                 MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
-                mySqlDataReader.Read();
-                mainPack.Uid = mySqlDataReader.GetInt32(0);
+                
+                if (mySqlDataReader.HasRows)
+                {
+                    mySqlDataReader.Read();
+                    mainPack.Uid = mySqlDataReader.GetInt32(0);
+                    
+                }
+                else
+                {
+                    mainPack.ReturnCode = ReturnCode.Incorrect;
+                }
                 mySqlDataReader.Close();
+
                 return mainPack;
             }
             catch (Exception e)

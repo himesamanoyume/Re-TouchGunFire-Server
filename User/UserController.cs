@@ -32,15 +32,21 @@ namespace SocketServer.User
 
         public MainPack Login(Client client, MainPack mainPack)
         {
-            if (client.Login(mainPack) != null)
+            mainPack = client.Login(mainPack);
+            if (mainPack.ReturnCode == ReturnCode.Incorrect)
             {
-                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
-                mainPack.ReturnCode = ReturnCode.Success;
+                Debug.Log(new StackFrame(true), ReturnCode.Incorrect.ToString());
+            }
+            else if(mainPack == null)
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ActionCode = ActionCode.Login;
+                mainPack.ReturnCode = ReturnCode.Fail;
             }
             else
             {
-                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
-                mainPack.ReturnCode = ReturnCode.Fail;
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
             }
 
             return mainPack;

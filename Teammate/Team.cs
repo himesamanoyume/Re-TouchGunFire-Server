@@ -58,8 +58,7 @@ namespace SocketServer.Teammate
                 else
                 {
                     c.TcpSend(mainPack);
-                }
-                    
+                } 
             }
         }
 

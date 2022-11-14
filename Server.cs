@@ -109,7 +109,10 @@ namespace SocketServer
 
         public void AddClientToDict(Client c)
         {
-            clientDict.Add(c.clientPlayerUid, c);
+            if (c.clientPlayerUid != 0)
+            {
+                clientDict.Add(c.clientPlayerUid, c);
+            }
         }
     }
 }
