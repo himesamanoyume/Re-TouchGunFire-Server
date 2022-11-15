@@ -64,9 +64,9 @@ namespace SocketServer
         public void RemoveClient(Client client)
         {
             clientList.Remove(client);
-            if (clientDict.TryGetValue(client.clientPlayerUid, out Client clientAtDict))
+            if (clientDict.TryGetValue(client.PlayerInfo.Uid, out Client clientAtDict))
             {
-                clientDict.Remove(clientAtDict.clientPlayerUid);
+                clientDict.Remove(clientAtDict.PlayerInfo.Uid);
             }
         }
 
@@ -74,7 +74,7 @@ namespace SocketServer
         {
             foreach (Client client in clientList)
             {
-                if (client.clientPlayerUid == uid)
+                if (client.PlayerInfo.Uid == uid)
                 {
                     client.endPoint = endPoint;
                     return true;
@@ -87,7 +87,7 @@ namespace SocketServer
         {
             foreach (Client client in clientList)
             {
-                if (client.clientPlayerUid == uid)
+                if (client.PlayerInfo.Uid == uid)
                 {
                     return client;
                 }
@@ -97,7 +97,7 @@ namespace SocketServer
 
         public Client GetClientFromDictByUid(int uid)
         {
-            if (clientDict.TryGetValue(uid, out Client client) && client.clientPlayerUid  == uid)
+            if (clientDict.TryGetValue(uid, out Client client) && client.PlayerInfo.Uid == uid)
             {
                 return client;
             }
@@ -109,9 +109,9 @@ namespace SocketServer
 
         public void AddClientToDict(Client c)
         {
-            if (c.clientPlayerUid != 0)
+            if (c.PlayerInfo.Uid != 0)
             {
-                clientDict.Add(c.clientPlayerUid, c);
+                clientDict.Add(c.PlayerInfo.Uid, c);
             }
         }
     }

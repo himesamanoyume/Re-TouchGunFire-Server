@@ -21,10 +21,11 @@ namespace SocketServer
         UserFunction userFunction;
         FriendFunction friendFunction;
         TeamFunction teamFunction;
-        public bool isInTheTeam = false;
+        public bool IsInTheTeam = false;
         public Team team = null;
         Server server;
         MySqlConnection connection;
+        
         string connectStr = "database=hime; data source=47.106.183.112; user=lzp; password=lzp19990510; pooling=false;charset=utf8;port=3306";
 
         public UserFunction GetUserFunction
@@ -42,7 +43,16 @@ namespace SocketServer
             get { return teamFunction; }
         }
 
-        public int clientPlayerUid;
+        public PlayerInfo PlayerInfo;
+        public delegate void Buff(PlayerInfo playerInfo);
+        public Buff buff;
+        public void UpdatePlayerInfo()
+        {
+            PlayerInfo defaultPlayerInfo = new PlayerInfo();
+            buff?.Invoke(defaultPlayerInfo);
+            PlayerInfo = defaultPlayerInfo;
+        }
+        //public int clientPlayerUid;
 
         public Client(Socket clientSocket, Server server, UdpServer udpServer)
         {
@@ -52,6 +62,7 @@ namespace SocketServer
             message = new Message();
             connection = new MySqlConnection(connectStr);
             connection.Open();
+            PlayerInfo = new PlayerInfo();
 
             this.udpServer = udpServer;
             this.server = server;
@@ -93,14 +104,26 @@ namespace SocketServer
         public MainPack Login(MainPack mainPack)
         {
             MainPack mainPack1 = GetUserFunction.Login(mainPack, connection);
-            clientPlayerUid = mainPack1.Uid;
+            PlayerInfo.Uid = mainPack1.Uid;
             server.AddClientToDict(this);
             return mainPack1;
         }
 
         public MainPack InitPlayerInfo(MainPack mainPack)
         {
-            return GetUserFunction.InitPlayerInfo(mainPack, connection);
+            mainPack = GetUserFunction.InitPlayerInfo(mainPack, connection);
+            PlayerInfo.PlayerName = mainPack.PlayerInfoPack.PlayerName;
+            PlayerInfo.Level = mainPack.PlayerInfoPack.Level;
+            PlayerInfo.CurrentExp = mainPack.PlayerInfoPack.CurrentExp;
+            PlayerInfo.Coin = mainPack.PlayerInfoPack.Coin;
+            PlayerInfo.Diamond = mainPack.PlayerInfoPack.Diamond;
+            //查装备
+
+            //end
+            //查武器
+
+            //end
+            return mainPack;
         }
 
         public int SendRequestFriend(MainPack mainPack)
@@ -139,11 +162,11 @@ namespace SocketServer
             }
             else
             {
-                if (client.isInTheTeam)
+                if (client.IsInTheTeam)
                 {
                     if (client.team == team)
                     {
-                        if (client.team.GetTeamMasterClient.clientPlayerUid == mainPack.PlayerInfoPack.Uid)
+                        if (client.team.GetTeamMasterClient.PlayerInfo.Uid == mainPack.PlayerInfoPack.Uid)
                         {
                             mainPack.PlayerInfoPack.IsTeamMaster = true;
                         }
@@ -265,7 +288,7 @@ namespace SocketServer
         {
             server.RemoveClient(this);
             Debug.Log(new StackFrame(true), "断开连接");
-            if (isInTheTeam && team != null)
+            if (IsInTheTeam && team != null)
             {
                 MainPack mainPack = new MainPack();
                 mainPack.ActionCode = ActionCode.LeaveTeam;

@@ -8,7 +8,7 @@ using SocketServer.Utils;
 
 namespace SocketServer
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
@@ -18,9 +18,12 @@ namespace SocketServer
                 Debug.Log(new StackFrame(true), "服务器关闭中");
                 server = null;
                 GC.Collect();
-                
             }
+
+
         }
 
     }
+
+    
 }

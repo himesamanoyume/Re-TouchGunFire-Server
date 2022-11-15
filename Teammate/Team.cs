@@ -49,7 +49,7 @@ namespace SocketServer.Teammate
                 {
                     continue;
                 }
-                mainPack.Uid = c.clientPlayerUid;
+                mainPack.Uid = c.PlayerInfo.Uid;
                 mainPack.ReturnCode = ReturnCode.Success;
                 if (isUDP)
                 {

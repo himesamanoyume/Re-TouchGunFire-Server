@@ -81,6 +81,8 @@ namespace SocketServer.User
                 playerInfoPack.Coin = mySqlDataReader.GetInt64(7);
                 //查装备
 
+
+                //end
                 //查武器
 
                 //end

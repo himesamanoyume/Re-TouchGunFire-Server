@@ -102,8 +102,8 @@ namespace SocketServer.Teammate
                 Client target = server.GetClientFromDictByUid(mainPack.TeammatePack.TargetUid);
                 client.team.Teammates.Add(target);
                 target.team = client.team;
-                client.isInTheTeam = true;
-                target.isInTheTeam = true;
+                client.IsInTheTeam = true;
+                target.IsInTheTeam = true;
                 mainPack.ReturnCode = ReturnCode.Success;
                 client.TcpSend(mainPack);
                 return true;
@@ -166,18 +166,18 @@ namespace SocketServer.Teammate
                 }
                 foreach (Client item in client.team.Teammates)
                 {
-                    if (mainPack.Uid == item.clientPlayerUid)
+                    if (mainPack.Uid == item.PlayerInfo.Uid)
                     {
                         continue;
                     }
                     FriendsPack friendsPack = new FriendsPack();
-                    friendsPack.Player1Uid = item.clientPlayerUid;
+                    friendsPack.Player1Uid = item.PlayerInfo.Uid;
                     friendsPack.Player2Uid = mainPack.Uid;
                     mainPack.FriendsPack.Add(friendsPack);
                 }
                 //PlayerInfoPack充当队长uid信息的包
                 TeammatePack teammatePack = new TeammatePack();
-                teammatePack.TeamMasterUid = client.team.GetTeamMasterClient.clientPlayerUid;
+                teammatePack.TeamMasterUid = client.team.GetTeamMasterClient.PlayerInfo.Uid;
                 mainPack.TeammatePack = teammatePack;
                 return mainPack;
             }
@@ -194,12 +194,12 @@ namespace SocketServer.Teammate
             {
                 
                 TeammatePack teammatePack = new TeammatePack();
-                teammatePack.LeaveTeamPlayerUid = client.clientPlayerUid;//告知退队的人uid
+                teammatePack.LeaveTeamPlayerUid = client.PlayerInfo.Uid;//告知退队的人uid
                 teammatePack.TeammateCount = client.team.Teammates.Count - 1;
                 mainPack.TeammatePack = teammatePack;
 
                 TeammatePack teammatePack1 = new TeammatePack();
-                teammatePack1.LeaveTeamPlayerUid = client.clientPlayerUid;
+                teammatePack1.LeaveTeamPlayerUid = client.PlayerInfo.Uid;
                 teammatePack1.TeammateCount = client.team.Teammates.Count - 1;
                 MainPack mainPack1 = new MainPack();
                 mainPack1.Uid = mainPack.Uid;
@@ -210,21 +210,21 @@ namespace SocketServer.Teammate
                 {
                     client.team.GetTeamMasterClient = client.team.Teammates[1];
 
-                    mainPack1.TeammatePack.TeamMasterUid = client.team.GetTeamMasterClient.clientPlayerUid;
+                    mainPack1.TeammatePack.TeamMasterUid = client.team.GetTeamMasterClient.PlayerInfo.Uid;
                     client.team.Broadcast(client, mainPack1);
 
                     client.team.Teammates.Remove(client.team.Teammates[0]);
                 }
                 else
                 {
-                    mainPack1.TeammatePack.TeamMasterUid = client.team.GetTeamMasterClient.clientPlayerUid;
+                    mainPack1.TeammatePack.TeamMasterUid = client.team.GetTeamMasterClient.PlayerInfo.Uid;
 
                     client.team.Broadcast(client, mainPack1);
 
                     client.team.Teammates.Remove(client);
                 }
 
-                client.isInTheTeam = false;
+                client.IsInTheTeam = false;
                 client.team = null;
                 return mainPack;
             }
@@ -240,7 +240,7 @@ namespace SocketServer.Teammate
         {
             try
             {
-                client.isInTheTeam = false;
+                client.IsInTheTeam = false;
                 client.team = null;
                 return mainPack;
             }

@@ -47,6 +47,11 @@ namespace SocketServer.User
             {
                 Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
+                //=========temp========
+                client.buff += client.PlayerInfo.TempGunBuff1;
+                client.buff += client.PlayerInfo.TempGunBuff2;
+                client.UpdatePlayerInfo();
+                //end
             }
 
             return mainPack;
