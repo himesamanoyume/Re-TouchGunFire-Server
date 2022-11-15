@@ -159,7 +159,13 @@ namespace SocketServer
                 critDmgRateBonus = value;
             }
         }
-        float headshotDmgBonus = 0.5f;
+        float critDmgBonus;
+        public float CritDmgBonus
+        {
+            get { return critDmgBonus; }
+            set { critDmgBonus = value; }
+        }
+        float headshotDmgBonus;
         public float HeadshotDmgRateBonus
         {
             get { return headshotDmgBonus; }
@@ -275,6 +281,7 @@ namespace SocketServer
             maxArmor = 1000f;
             baseDmgBonus = 0;
             critDmgRateBonus = 0.05f;
+            critDmgBonus = 0.5f;
             headshotDmgBonus = 0.5f;
             pRateBonus = 0;//穿透率加成
             abeBonus = 0;//破甲效率加成

@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using SocketProtocol;
 
+using SocketServer.Teammate;
+
 namespace SocketServer.User
 {
     internal class UserFunction
@@ -98,9 +100,49 @@ namespace SocketServer.User
         }
 
         //只更新玩家信息
-        public MainPack UpdatePlayerInfo(MainPack mainPack, MySqlConnection mySqlConnection)
+        public MainPack UpdatePlayerInfo(MainPack mainPack, Client client)
         {
-            return null;
+            try
+            {
+                foreach (var c in client.team.Teammates)
+                {
+                    UpdatePlayerInfoPack updatePlayerInfoPack = new UpdatePlayerInfoPack();
+                    updatePlayerInfoPack.Uid = c.PlayerInfo.Uid;
+                    updatePlayerInfoPack.PlayerName = c.PlayerInfo.PlayerName;
+                    updatePlayerInfoPack.Level = c.PlayerInfo.Level;
+                    updatePlayerInfoPack.MaxHealth = c.PlayerInfo.MaxHealth;
+                    updatePlayerInfoPack.CurrentHealth = c.PlayerInfo.CurrentHealth;
+                    updatePlayerInfoPack.MaxArmor = c.PlayerInfo.MaxArmor;
+                    updatePlayerInfoPack.CurrentArmor = c.PlayerInfo.CurrentArmor;
+                    if (c.PlayerInfo.Uid == client.PlayerInfo.Uid)
+                    {
+                        updatePlayerInfoPack.MaxExp = c.PlayerInfo.MaxExp;
+                        updatePlayerInfoPack.CurrentExp = c.PlayerInfo.CurrentExp;
+                        updatePlayerInfoPack.Diamond = c.PlayerInfo.Diamond;
+                        updatePlayerInfoPack.Coin = c.PlayerInfo.Coin;
+                        updatePlayerInfoPack.BaseDmgRateBonus = c.PlayerInfo.BaseDmgBonus;
+                        updatePlayerInfoPack.CritDmgRateBonus = c.PlayerInfo.CritDmgRateBonus;
+                        updatePlayerInfoPack.CritDmgBonus = c.PlayerInfo.CritDmgBonus;
+                        updatePlayerInfoPack.HeadshotDmgBonus = c.PlayerInfo.HeadshotDmgRateBonus;
+                        updatePlayerInfoPack.PRateBonus = c.PlayerInfo.PRateBonus;
+                        updatePlayerInfoPack.AbeBonus = c.PlayerInfo.AbeBonus;
+                        updatePlayerInfoPack.ArDmgBonus = c.PlayerInfo.ArDmgBonus;
+                        updatePlayerInfoPack.DmrDmgBonus = c.PlayerInfo.DmrDmgBonus;
+                        updatePlayerInfoPack.SmgDmgBonus = c.PlayerInfo.SmgDmgBonus;
+                        updatePlayerInfoPack.SgDmgBonus = c.PlayerInfo.SgDmgBonus;
+                        updatePlayerInfoPack.MgDmgBonus = c.PlayerInfo.MgDmgBonus;
+                        updatePlayerInfoPack.SrDmgBonus = c.PlayerInfo.SrDmgBonus;
+                        updatePlayerInfoPack.HgDmgBonus = c.PlayerInfo.HgDmgBonus;
+                    }
+                    mainPack.UpdatePlayerInfoPack.Add(updatePlayerInfoPack);
+                }
+                return mainPack;
+            }
+            catch (Exception e)
+            {
+                Debug.Log(new StackFrame(true), e.Message);
+                return null;
+            }
         }
 
         //只查询玩家信息
