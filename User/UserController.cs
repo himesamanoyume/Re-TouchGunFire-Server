@@ -50,7 +50,7 @@ namespace SocketServer.User
                 //=========temp========
                 client.buff += client.PlayerInfo.TempGunBuff1;
                 client.buff += client.PlayerInfo.TempGunBuff2;
-                client.UpdatePlayerInfo();
+                client.ChangePlayerInfo();
                 //end
             }
 
@@ -77,6 +77,21 @@ namespace SocketServer.User
             if (client.GetPlayerBaseInfo(mainPack) != null)
             {
                 Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            return mainPack;
+        }
+
+        public MainPack UpdatePlayerInfo(Client client, MainPack mainPack)
+        {
+            if (client.UpdatePlayerInfo(mainPack, client) != null)
+            {
+                //Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else

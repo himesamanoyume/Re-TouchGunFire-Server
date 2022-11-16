@@ -46,7 +46,7 @@ namespace SocketServer
         public PlayerInfo PlayerInfo;
         public delegate void Buff(PlayerInfo playerInfo);
         public Buff buff;
-        public void UpdatePlayerInfo()
+        public void ChangePlayerInfo()
         {
             PlayerInfo defaultPlayerInfo = new PlayerInfo();
             buff?.Invoke(defaultPlayerInfo);
@@ -112,6 +112,7 @@ namespace SocketServer
         public MainPack InitPlayerInfo(MainPack mainPack)
         {
             mainPack = GetUserFunction.InitPlayerInfo(mainPack, connection);
+            PlayerInfo.Uid = mainPack.PlayerInfoPack.Uid;
             PlayerInfo.PlayerName = mainPack.PlayerInfoPack.PlayerName;
             PlayerInfo.Level = mainPack.PlayerInfoPack.Level;
             PlayerInfo.CurrentExp = mainPack.PlayerInfoPack.CurrentExp;
@@ -124,6 +125,11 @@ namespace SocketServer
 
             //end
             return mainPack;
+        }
+
+        public MainPack UpdatePlayerInfo(MainPack mainPack, Client client)
+        {
+            return GetUserFunction.UpdatePlayerInfo(mainPack, this);
         }
 
         public int SendRequestFriend(MainPack mainPack)
@@ -270,7 +276,7 @@ namespace SocketServer
             if (endPoint == null) return;
             try
             {
-                Debug.Log(new StackFrame(true), "UDP发送:"+ mainPack.Uid + ",ActionCode:" + mainPack.ActionCode);
+                //Debug.Log(new StackFrame(true), "UDP发送:"+ mainPack.Uid + ",ActionCode:" + mainPack.ActionCode);
                 udpServer.UdpSend(mainPack, endPoint);
             }
             catch (Exception e)

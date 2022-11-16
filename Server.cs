@@ -111,7 +111,15 @@ namespace SocketServer
         {
             if (c.PlayerInfo.Uid != 0)
             {
-                clientDict.Add(c.PlayerInfo.Uid, c);
+                if (clientDict.TryGetValue(c.PlayerInfo.Uid, out Client client))
+                {
+                    clientDict.Remove(c.PlayerInfo.Uid);
+                    clientDict.Add(c.PlayerInfo.Uid, c);
+                }
+                else
+                {
+                    clientDict.Add(c.PlayerInfo.Uid, c);
+                }
             }
         }
     }

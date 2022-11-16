@@ -104,37 +104,51 @@ namespace SocketServer.User
         {
             try
             {
-                foreach (var c in client.team.Teammates)
+                UpdatePlayerInfoPack updatePlayerInfoPack = new UpdatePlayerInfoPack();
+                updatePlayerInfoPack.Uid = client.PlayerInfo.Uid;
+                updatePlayerInfoPack.PlayerName = client.PlayerInfo.PlayerName;
+                updatePlayerInfoPack.Level = client.PlayerInfo.Level;
+                updatePlayerInfoPack.MaxHealth = client.PlayerInfo.MaxHealth;
+                updatePlayerInfoPack.CurrentHealth = client.PlayerInfo.CurrentHealth;
+                updatePlayerInfoPack.MaxArmor = client.PlayerInfo.MaxArmor;
+                updatePlayerInfoPack.CurrentArmor = client.PlayerInfo.CurrentArmor;
+                updatePlayerInfoPack.MaxExp = client.PlayerInfo.MaxExp;
+                updatePlayerInfoPack.CurrentExp = client.PlayerInfo.CurrentExp;
+                updatePlayerInfoPack.Diamond = client.PlayerInfo.Diamond;
+                updatePlayerInfoPack.Coin = client.PlayerInfo.Coin;
+                updatePlayerInfoPack.BaseDmgRateBonus = client.PlayerInfo.BaseDmgBonus;
+                updatePlayerInfoPack.CritDmgRateBonus = client.PlayerInfo.CritDmgRateBonus;
+                updatePlayerInfoPack.CritDmgBonus = client.PlayerInfo.CritDmgBonus;
+                updatePlayerInfoPack.HeadshotDmgBonus = client.PlayerInfo.HeadshotDmgRateBonus;
+                updatePlayerInfoPack.PRateBonus = client.PlayerInfo.PRateBonus;
+                updatePlayerInfoPack.AbeBonus = client.PlayerInfo.AbeBonus;
+                updatePlayerInfoPack.ArDmgBonus = client.PlayerInfo.ArDmgBonus;
+                updatePlayerInfoPack.DmrDmgBonus = client.PlayerInfo.DmrDmgBonus;
+                updatePlayerInfoPack.SmgDmgBonus = client.PlayerInfo.SmgDmgBonus;
+                updatePlayerInfoPack.SgDmgBonus = client.PlayerInfo.SgDmgBonus;
+                updatePlayerInfoPack.MgDmgBonus = client.PlayerInfo.MgDmgBonus;
+                updatePlayerInfoPack.SrDmgBonus = client.PlayerInfo.SrDmgBonus;
+                updatePlayerInfoPack.HgDmgBonus = client.PlayerInfo.HgDmgBonus;
+                mainPack.UpdatePlayerInfoPack.Add(updatePlayerInfoPack);
+
+                if (client.IsInTheTeam)
                 {
-                    UpdatePlayerInfoPack updatePlayerInfoPack = new UpdatePlayerInfoPack();
-                    updatePlayerInfoPack.Uid = c.PlayerInfo.Uid;
-                    updatePlayerInfoPack.PlayerName = c.PlayerInfo.PlayerName;
-                    updatePlayerInfoPack.Level = c.PlayerInfo.Level;
-                    updatePlayerInfoPack.MaxHealth = c.PlayerInfo.MaxHealth;
-                    updatePlayerInfoPack.CurrentHealth = c.PlayerInfo.CurrentHealth;
-                    updatePlayerInfoPack.MaxArmor = c.PlayerInfo.MaxArmor;
-                    updatePlayerInfoPack.CurrentArmor = c.PlayerInfo.CurrentArmor;
-                    if (c.PlayerInfo.Uid == client.PlayerInfo.Uid)
+                    foreach (var c in client.team.Teammates)
                     {
-                        updatePlayerInfoPack.MaxExp = c.PlayerInfo.MaxExp;
-                        updatePlayerInfoPack.CurrentExp = c.PlayerInfo.CurrentExp;
-                        updatePlayerInfoPack.Diamond = c.PlayerInfo.Diamond;
-                        updatePlayerInfoPack.Coin = c.PlayerInfo.Coin;
-                        updatePlayerInfoPack.BaseDmgRateBonus = c.PlayerInfo.BaseDmgBonus;
-                        updatePlayerInfoPack.CritDmgRateBonus = c.PlayerInfo.CritDmgRateBonus;
-                        updatePlayerInfoPack.CritDmgBonus = c.PlayerInfo.CritDmgBonus;
-                        updatePlayerInfoPack.HeadshotDmgBonus = c.PlayerInfo.HeadshotDmgRateBonus;
-                        updatePlayerInfoPack.PRateBonus = c.PlayerInfo.PRateBonus;
-                        updatePlayerInfoPack.AbeBonus = c.PlayerInfo.AbeBonus;
-                        updatePlayerInfoPack.ArDmgBonus = c.PlayerInfo.ArDmgBonus;
-                        updatePlayerInfoPack.DmrDmgBonus = c.PlayerInfo.DmrDmgBonus;
-                        updatePlayerInfoPack.SmgDmgBonus = c.PlayerInfo.SmgDmgBonus;
-                        updatePlayerInfoPack.SgDmgBonus = c.PlayerInfo.SgDmgBonus;
-                        updatePlayerInfoPack.MgDmgBonus = c.PlayerInfo.MgDmgBonus;
-                        updatePlayerInfoPack.SrDmgBonus = c.PlayerInfo.SrDmgBonus;
-                        updatePlayerInfoPack.HgDmgBonus = c.PlayerInfo.HgDmgBonus;
+                        if (c.PlayerInfo.Uid == client.PlayerInfo.Uid)
+                        {
+                            continue;
+                        }
+                        UpdatePlayerInfoPack updatePlayerInfoPack1 = new UpdatePlayerInfoPack();
+                        updatePlayerInfoPack1.Uid = c.PlayerInfo.Uid;
+                        updatePlayerInfoPack1.PlayerName = c.PlayerInfo.PlayerName;
+                        updatePlayerInfoPack1.Level = c.PlayerInfo.Level;
+                        updatePlayerInfoPack1.MaxHealth = c.PlayerInfo.MaxHealth;
+                        updatePlayerInfoPack1.CurrentHealth = c.PlayerInfo.CurrentHealth;
+                        updatePlayerInfoPack1.MaxArmor = c.PlayerInfo.MaxArmor;
+                        updatePlayerInfoPack1.CurrentArmor = c.PlayerInfo.CurrentArmor;
+                        mainPack.UpdatePlayerInfoPack.Add(updatePlayerInfoPack1);
                     }
-                    mainPack.UpdatePlayerInfoPack.Add(updatePlayerInfoPack);
                 }
                 return mainPack;
             }

@@ -36,7 +36,10 @@ namespace SocketServer
         {
             if(controllerDict.TryGetValue(mainPack.RequestCode, out BaseController controller))
             {
-                Debug.Log(new StackFrame(true), "接收到UID"+mainPack.Uid +"的"+mainPack.ActionCode +"消息,处理中");
+                if (!isUDP)
+                {
+                    Debug.Log(new StackFrame(true), "接收到UID" + mainPack.Uid + "的" + mainPack.ActionCode + "消息,处理中");
+                }
                 string methodName = mainPack.ActionCode.ToString();
                 MethodInfo method = controller.GetType().GetMethod(methodName);
                 if( method == null)
@@ -50,7 +53,12 @@ namespace SocketServer
                 if (isUDP)
                 {
                     obj = new object[] { client, mainPack };
-                    method.Invoke(controller, obj);
+                    //method.Invoke(controller, obj);
+                    object ret = method.Invoke(controller, obj);
+                    if (ret != null)
+                    {
+                        client.UdpSend(ret as MainPack);
+                    }
                 }
                 else
                 {
