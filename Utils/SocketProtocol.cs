@@ -90,45 +90,46 @@ namespace SocketProtocol {
             "ZW5kGAMgASgFIjAKFVNlbmRSZXF1ZXN0RnJpZW5kUGFjaxIXCg9UYXJnZXRQ",
             "bGF5ZXJVaWQYASABKAUqSgoLUmVxdWVzdENvZGUSDwoLUmVxdWVzdE5vbmUQ",
             "ABIICgRVc2VyEAESCgoGR2FtaW5nEAISCAoEVGVhbRADEgoKBkZyaWVuZBAE",
-            "Kt0ECgpBY3Rpb25Db2RlEg4KCkFjdGlvbk5vbmUQABIMCghSZWdpc3RlchAB",
-            "EgkKBUxvZ2luEAISEgoOSW5pdFBsYXllckluZm8QAxIMCghKb2luVGVhbRAE",
-            "Eg4KClVwZGF0ZVRlYW0QBRINCglMZWF2ZVRlYW0QBhIUChBVcGRhdGVQbGF5",
-            "ZXJJbmZvEAcSDwoLUmVhZHlBdHRhY2sQCBIPCgtTdGFydEF0dGFjaxAJEg0K",
-            "CU5leHRFbmVteRAKEg0KCUVuZEF0dGFjaxALEgwKCEV4aXRHYW1lEAwSDQoJ",
-            "QnJlYWtUZWFtEA0SDgoKR2V0RnJpZW5kcxAOEhQKEEdldEZyaWVuZFJlcXVl",
-            "c3QQDxIQCgxTZWFyY2hGcmllbmQQEBIVChFTZW5kUmVxdWVzdEZyaWVuZBAR",
-            "EhUKEUdldFBsYXllckJhc2VJbmZvEBISEAoMRGVsZXRlRnJpZW5kEBMSFwoT",
-            "QWNjZXB0RnJpZW5kUmVxdWVzdBAUEhcKE1JlZnVzZUZyaWVuZFJlcXVlc3QQ",
-            "FRIOCgpJbnZpdGVUZWFtEBYSDwoLSW52aXRlZFRlYW0QFxITCg9Kb2luVGVh",
-            "bVJlcXVlc3QQGBIUChBBY2NlcHRJbnZpdGVUZWFtEBkSFgoSQWNjZXB0ZWRJ",
-            "bnZpdGVUZWFtEBoSFAoQUmVmdXNlSW52aXRlVGVhbRAbEhUKEVJlZnVzZWRJ",
-            "bnZpdGVUZWFtEBwSDgoKS2lja1BsYXllchAdEhAKDEdldFRlYW1tYXRlcxAe",
-            "EhUKEVRlYW1tYXRlTGVhdmVUZWFtEB8qZQoKUmV0dXJuQ29kZRIOCgpSZXR1",
-            "cm5Ob25lEAASCwoHU3VjY2VzcxABEggKBEZhaWwQAhITCg9SZXBlYXRlZFJl",
-            "cXVlc3QQAxIMCghOb3RGb3VuZBAEEg0KCUluY29ycmVjdBAFKhkKBkVVc2lu",
-            "ZxIGCgJObxAAEgcKA1llcxABKlAKCEVHdW5OYW1lEggKBEFLNDcQABIHCgNT",
-            "TDcQARIHCgNNUDUQAhIICgRNNzAwEAMSBwoDTTYwEAQSCgoGU1BBUzEyEAUS",
-            "CQoFTTE5MTEQBipECghFR3VuVHlwZRIGCgJBUhAAEgcKA0RNUhABEgcKA1NN",
-            "RxACEgYKAlNHEAMSBgoCU1IQBBIGCgJNRxAFEgYKAkhHEAYq0QEKDEVHdW5D",
-            "b3JlUHJvcBIXChNhbGxEbWdCb251c0NvcmVQcm9wEAASFgoSYXJEbWdCb251",
-            "c0NvcmVQcm9wEAESFwoTZG1yRG1nQm9udXNDb3JlUHJvcBACEhcKE3NtZ0Rt",
-            "Z0JvbnVzQ29yZVByb3AQAxIWChJzZ0RtZ0JvbnVzQ29yZVByb3AQBBIWChJz",
-            "ckRtZ0JvbnVzQ29yZVByb3AQBRIWChJtZ0RtZ0JvbnVzQ29yZVByb3AQBhIW",
-            "ChJoZ0RtZ0JvbnVzQ29yZVByb3AQByo9Cg5FRXF1aXBtZW50U3VpdBINCglU",
-            "ZXN0MVN1aXQQABINCglUZXN0MlN1aXQQARINCglUZXN0M1N1aXQQAipQChFF",
-            "RXF1aXBtZW50UXVhbGl0eRIKCgZOb3JtYWwQABIICgRHb29kEAESDQoJRXhj",
-            "ZWxsZW50EAISDAoIQXJ0aWZhY3QQAxIICgRFcGljEAQqLgoORUVxdWlwbWVu",
-            "dE5hbWUSDQoJVGVzdDFOYW1lEAASDQoJVGVzdDJOYW1lEAEq0gIKCEVTdWJQ",
-            "cm9wEhEKDWhlYWx0aFN1YlByb3AQABIXChNiYXNlRG1nQm9udXNTdWJQcm9w",
-            "EAESGAoUY0RtZ1JhdGVCb251c1N1YlByb3AQAhIUChBjRG1nQm9udXNTdWJQ",
-            "cm9wEAMSGwoXaGVhZHNob3REbWdCb251c1N1YlByb3AQBBIVChFwUmF0ZUJv",
-            "bnVzU3ViUHJvcBAFEhMKD2FiZUJvbnVzU3ViUHJvcBAGEhUKEWFyRG1nQm9u",
-            "dXNTdWJQcm9wEAcSFgoSZG1yRG1nQm9udXNTdWJQcm9wEAgSFgoSc21nRG1n",
-            "Qm9udXNTdWJQcm9wEAkSFQoRc2dEbWdCb251c1N1YlByb3AQChIVChFzckRt",
-            "Z0JvbnVzU3ViUHJvcBALEhUKEW1nRG1nQm9udXNTdWJQcm9wEAwSFQoRaGdE",
-            "bWdCb251c1N1YlByb3AQDSpIChBFRXF1aXBtZW50VGFsZW50EhkKFVRlc3Qx",
-            "RXF1aXBtZW50VGFsZW50MRAAEhkKFVRlc3QxRXF1aXBtZW50VGFsZW50MhAB",
-            "YgZwcm90bzM="));
+            "Ko0FCgpBY3Rpb25Db2RlEg4KCkFjdGlvbk5vbmUQABIMCghSZWdpc3RlchAB",
+            "EgkKBUxvZ2luEAISEgoOSW5pdFBsYXllckluZm8QAxISCg5BY2NlcHRKb2lu",
+            "VGVhbRAEEg4KClVwZGF0ZVRlYW0QBRINCglMZWF2ZVRlYW0QBhIUChBVcGRh",
+            "dGVQbGF5ZXJJbmZvEAcSDwoLUmVhZHlBdHRhY2sQCBIPCgtTdGFydEF0dGFj",
+            "axAJEg0KCU5leHRFbmVteRAKEg0KCUVuZEF0dGFjaxALEgwKCEV4aXRHYW1l",
+            "EAwSDQoJQnJlYWtUZWFtEA0SDgoKR2V0RnJpZW5kcxAOEhQKEEdldEZyaWVu",
+            "ZFJlcXVlc3QQDxIQCgxTZWFyY2hGcmllbmQQEBIVChFTZW5kUmVxdWVzdEZy",
+            "aWVuZBAREhUKEUdldFBsYXllckJhc2VJbmZvEBISEAoMRGVsZXRlRnJpZW5k",
+            "EBMSFwoTQWNjZXB0RnJpZW5kUmVxdWVzdBAUEhcKE1JlZnVzZUZyaWVuZFJl",
+            "cXVlc3QQFRIOCgpJbnZpdGVUZWFtEBYSDwoLSW52aXRlZFRlYW0QFxITCg9K",
+            "b2luVGVhbVJlcXVlc3QQGBIUChBBY2NlcHRJbnZpdGVUZWFtEBkSFgoSQWNj",
+            "ZXB0ZWRJbnZpdGVUZWFtEBoSFAoQUmVmdXNlSW52aXRlVGVhbRAbEhUKEVJl",
+            "ZnVzZWRJbnZpdGVUZWFtEBwSDgoKS2lja1BsYXllchAdEhAKDEdldFRlYW1t",
+            "YXRlcxAeEhUKEVRlYW1tYXRlTGVhdmVUZWFtEB8SEgoOUGxheWVySm9pblRl",
+            "YW0QIBIUChBBY2NlcHRlZEpvaW5UZWFtECEqZQoKUmV0dXJuQ29kZRIOCgpS",
+            "ZXR1cm5Ob25lEAASCwoHU3VjY2VzcxABEggKBEZhaWwQAhITCg9SZXBlYXRl",
+            "ZFJlcXVlc3QQAxIMCghOb3RGb3VuZBAEEg0KCUluY29ycmVjdBAFKhkKBkVV",
+            "c2luZxIGCgJObxAAEgcKA1llcxABKlAKCEVHdW5OYW1lEggKBEFLNDcQABIH",
+            "CgNTTDcQARIHCgNNUDUQAhIICgRNNzAwEAMSBwoDTTYwEAQSCgoGU1BBUzEy",
+            "EAUSCQoFTTE5MTEQBipECghFR3VuVHlwZRIGCgJBUhAAEgcKA0RNUhABEgcK",
+            "A1NNRxACEgYKAlNHEAMSBgoCU1IQBBIGCgJNRxAFEgYKAkhHEAYq0QEKDEVH",
+            "dW5Db3JlUHJvcBIXChNhbGxEbWdCb251c0NvcmVQcm9wEAASFgoSYXJEbWdC",
+            "b251c0NvcmVQcm9wEAESFwoTZG1yRG1nQm9udXNDb3JlUHJvcBACEhcKE3Nt",
+            "Z0RtZ0JvbnVzQ29yZVByb3AQAxIWChJzZ0RtZ0JvbnVzQ29yZVByb3AQBBIW",
+            "ChJzckRtZ0JvbnVzQ29yZVByb3AQBRIWChJtZ0RtZ0JvbnVzQ29yZVByb3AQ",
+            "BhIWChJoZ0RtZ0JvbnVzQ29yZVByb3AQByo9Cg5FRXF1aXBtZW50U3VpdBIN",
+            "CglUZXN0MVN1aXQQABINCglUZXN0MlN1aXQQARINCglUZXN0M1N1aXQQAipQ",
+            "ChFFRXF1aXBtZW50UXVhbGl0eRIKCgZOb3JtYWwQABIICgRHb29kEAESDQoJ",
+            "RXhjZWxsZW50EAISDAoIQXJ0aWZhY3QQAxIICgRFcGljEAQqLgoORUVxdWlw",
+            "bWVudE5hbWUSDQoJVGVzdDFOYW1lEAASDQoJVGVzdDJOYW1lEAEq0gIKCEVT",
+            "dWJQcm9wEhEKDWhlYWx0aFN1YlByb3AQABIXChNiYXNlRG1nQm9udXNTdWJQ",
+            "cm9wEAESGAoUY0RtZ1JhdGVCb251c1N1YlByb3AQAhIUChBjRG1nQm9udXNT",
+            "dWJQcm9wEAMSGwoXaGVhZHNob3REbWdCb251c1N1YlByb3AQBBIVChFwUmF0",
+            "ZUJvbnVzU3ViUHJvcBAFEhMKD2FiZUJvbnVzU3ViUHJvcBAGEhUKEWFyRG1n",
+            "Qm9udXNTdWJQcm9wEAcSFgoSZG1yRG1nQm9udXNTdWJQcm9wEAgSFgoSc21n",
+            "RG1nQm9udXNTdWJQcm9wEAkSFQoRc2dEbWdCb251c1N1YlByb3AQChIVChFz",
+            "ckRtZ0JvbnVzU3ViUHJvcBALEhUKEW1nRG1nQm9udXNTdWJQcm9wEAwSFQoR",
+            "aGdEbWdCb251c1N1YlByb3AQDSpIChBFRXF1aXBtZW50VGFsZW50EhkKFVRl",
+            "c3QxRXF1aXBtZW50VGFsZW50MRAAEhkKFVRlc3QxRXF1aXBtZW50VGFsZW50",
+            "MhABYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SocketProtocol.RequestCode), typeof(global::SocketProtocol.ActionCode), typeof(global::SocketProtocol.ReturnCode), typeof(global::SocketProtocol.EUsing), typeof(global::SocketProtocol.EGunName), typeof(global::SocketProtocol.EGunType), typeof(global::SocketProtocol.EGunCoreProp), typeof(global::SocketProtocol.EEquipmentSuit), typeof(global::SocketProtocol.EEquipmentQuality), typeof(global::SocketProtocol.EEquipmentName), typeof(global::SocketProtocol.ESubProp), typeof(global::SocketProtocol.EEquipmentTalent), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -173,7 +174,7 @@ namespace SocketProtocol {
     /// <summary>
     ///加入小队
     /// </summary>
-    [pbr::OriginalName("JoinTeam")] JoinTeam = 4,
+    [pbr::OriginalName("AcceptJoinTeam")] AcceptJoinTeam = 4,
     /// <summary>
     ///更新小队内信息
     /// </summary>
@@ -282,6 +283,14 @@ namespace SocketProtocol {
     ///小队其他成员离开小队
     /// </summary>
     [pbr::OriginalName("TeammateLeaveTeam")] TeammateLeaveTeam = 31,
+    /// <summary>
+    ///通知给队长有人想入队
+    /// </summary>
+    [pbr::OriginalName("PlayerJoinTeam")] PlayerJoinTeam = 32,
+    /// <summary>
+    ///目标玩家被同意入队
+    /// </summary>
+    [pbr::OriginalName("AcceptedJoinTeam")] AcceptedJoinTeam = 33,
   }
 
   public enum ReturnCode {

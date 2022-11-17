@@ -204,7 +204,7 @@ namespace SocketServer
 
         public int InviteTeam(MainPack mainPack)
         {
-            return GetTeamFunction.InviteTeam(mainPack, server, team);
+            return GetTeamFunction.InviteTeam(mainPack, server, server.GetClientFromDictByUid(mainPack.TeammatePack.TargetUid).team);
         }
 
         public int InvitedTeam(MainPack mainPack)//被邀请者
@@ -242,19 +242,24 @@ namespace SocketServer
             return GetTeamFunction.LeaveTeam(mainPack, this);
         }
 
-        public void JoinTeam(MainPack mainPack, Team team)
+        public int JoinTeamRequest(MainPack mainPack)
         {
-            if (mainPack.TeammatePack.State == 1 && mainPack.Uid == mainPack.TeammatePack.TargetUid)
-            {
-                this.team = team;
-                mainPack.Uid = mainPack.TeammatePack.TargetUid;
-                this.team.Broadcast(this, mainPack);
-                //return true;
-            }
-            else
-            {
+            return GetTeamFunction.JoinTeamRequest(mainPack, server, this);
+        }
 
-            }
+        public int PlayerJoinTeam(MainPack mainPack)
+        {
+            return GetTeamFunction.PlayerJoinTeam(mainPack, server, this);
+        }
+
+        public bool AcceptJoinTeam(MainPack mainPack)
+        {
+            return GetTeamFunction.AcceptInviteTeam(mainPack, server);
+        }
+
+        public bool AcceptedJoinTeam(MainPack mainPack)
+        {
+            return GetTeamFunction.AcceptedJoinTeam(mainPack, this, server);
         }
 
         public void TcpSend(MainPack mainPack)
@@ -297,6 +302,7 @@ namespace SocketServer
             if (IsInTheTeam && team != null)
             {
                 MainPack mainPack = new MainPack();
+                mainPack.Uid = PlayerInfo.Uid;
                 mainPack.ActionCode = ActionCode.LeaveTeam;
                 GetTeamFunction.LeaveTeam(mainPack, this);
             }

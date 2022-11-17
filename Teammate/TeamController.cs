@@ -88,6 +88,56 @@ namespace SocketServer.Teammate
             return mainPack;
         }
 
+        public MainPack JoinTeamRequest(Client client, MainPack mainPack)
+        {
+            int code = client.JoinTeamRequest(mainPack);
+            if (code == 1)
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else if (code == 0)
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            else if (code == 2)//不在线
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.NotFound.ToString());
+                mainPack.ReturnCode = ReturnCode.NotFound;
+            }
+            else if (code == 3)//不正常
+            {
+                
+            }
+            return mainPack;
+        }
+
+        public MainPack PlayerJoinTeam(Client client, MainPack mainPack)
+        {
+            int code = client.JoinTeamRequest(mainPack);
+            if (code == 1)
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else if (code == 0)
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            else if (code == 2)//不在线
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.NotFound.ToString());
+                mainPack.ReturnCode = ReturnCode.NotFound;
+            }
+            else if (code == 3)//不正常
+            {
+
+            }
+            return mainPack;
+        }
+
         public MainPack AcceptInviteTeam(Client client, MainPack mainPack)
         {
             if (client.AcceptInviteTeam(mainPack))
@@ -167,16 +217,6 @@ namespace SocketServer.Teammate
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             return mainPack;
-        }
-
-        public MainPack JoinTeam(Client client, MainPack mainPack)
-        {
-            return null;
-        }
-
-        public MainPack UpdateTeam(Client client, MainPack mainPack)
-        {
-            return null;
         }
     }
 }
