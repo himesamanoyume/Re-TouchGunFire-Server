@@ -129,19 +129,14 @@ namespace SocketServer.Teammate
                     //发送给队长
                     try
                     {
-                        MainPack mainPack1 = new MainPack();
-                        mainPack1.Uid = mainPack.TeammatePack.TeamMemberUid;
-                        mainPack1.ActionCode = ActionCode.PlayerJoinTeam;
-                        mainPack1.ReturnCode = ReturnCode.Success;
-                        client.TcpSend(mainPack1);
+                        mainPack.ReturnCode = ReturnCode.Success;
+                        client.TcpSend(mainPack);
                     }
                     catch (Exception e)
                     {
-                        MainPack mainPack1 = new MainPack();
-                        mainPack1.Uid = mainPack.TeammatePack.TeamMemberUid;
-                        mainPack1.ActionCode = ActionCode.PlayerJoinTeam;
-                        mainPack1.ReturnCode = ReturnCode.Fail;
-                        client.TcpSend(mainPack1);
+                        
+                        mainPack.ReturnCode = ReturnCode.Fail;
+                        client.TcpSend(mainPack);
                         Debug.Log(new StackFrame(true), e.Message);
                         return 0;
                     }

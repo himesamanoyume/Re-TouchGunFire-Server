@@ -180,6 +180,11 @@ namespace SocketServer
                         {
                             mainPack.PlayerInfoPack.IsTeamMaster = false;
                         }
+                        mainPack.PlayerInfoPack.IsSameTeam = true;
+                    }
+                    else
+                    {
+                        mainPack.PlayerInfoPack.IsSameTeam = false;
                     }
                     mainPack.PlayerInfoPack.IsTeam = true;
                 }
@@ -254,7 +259,7 @@ namespace SocketServer
 
         public bool AcceptJoinTeam(MainPack mainPack)
         {
-            return GetTeamFunction.AcceptInviteTeam(mainPack, server);
+            return GetTeamFunction.AcceptJoinTeam(mainPack, server, this);
         }
 
         public bool AcceptedJoinTeam(MainPack mainPack)
