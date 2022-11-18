@@ -262,6 +262,16 @@ namespace SocketServer
             return GetTeamFunction.AcceptedJoinTeam(mainPack, this, server);
         }
 
+        public bool RefuseJoinTeam(MainPack mainPack)
+        {
+            return GetTeamFunction.RefuseJoinTeam(mainPack, this, server);
+        }
+
+        public bool RefusedJoinTeam(MainPack mainPack)
+        {
+            return GetTeamFunction.RefusedJoinTeam(mainPack, this);
+        }
+
         public void TcpSend(MainPack mainPack)
         {
             if (tcpSocket == null || tcpSocket.Connected == false) return;

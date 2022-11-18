@@ -138,6 +138,66 @@ namespace SocketServer.Teammate
             return mainPack;
         }
 
+        public MainPack RefuseJoinTeam(Client client, MainPack mainPack)
+        {
+            if (client.RefuseJoinTeam(mainPack))
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            return mainPack;
+        }
+
+        public MainPack RefusedJoinTeam(Client client, MainPack mainPack)
+        {
+            if (client.RefusedJoinTeam(mainPack))
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            return mainPack;
+        }
+
+        public MainPack AcceptJoinTeam(Client client, MainPack mainPack)
+        {
+            if (client.AcceptJoinTeam(mainPack))
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            return mainPack;
+        }
+
+        public MainPack AcceptedJoinTeam(Client client, MainPack mainPack)
+        {
+            if (client.AcceptedJoinTeam(mainPack))
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            return mainPack;
+        }
+
         public MainPack AcceptInviteTeam(Client client, MainPack mainPack)
         {
             if (client.AcceptInviteTeam(mainPack))

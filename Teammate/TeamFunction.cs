@@ -26,6 +26,8 @@ namespace SocketServer.Teammate
                 TeammatePack teammatePack = new TeammatePack();
                 teammatePack.SenderUid = mainPack.TeammatePack.SenderUid;
                 teammatePack.TargetUid = mainPack.TeammatePack.TargetUid;
+                teammatePack.SenderName = server.GetClientFromDictByUid(mainPack.TeammatePack.SenderUid).PlayerInfo.PlayerName;
+                teammatePack.TargetName = target.PlayerInfo.PlayerName;
                 mainPack1.TeammatePack = teammatePack;
                 target.InvitedTeam(mainPack1);
 
@@ -54,10 +56,12 @@ namespace SocketServer.Teammate
                 {
                     try
                     {
-                        mainPack.Uid = mainPack.TeammatePack.TargetUid;
-                        mainPack.ActionCode = ActionCode.InvitedTeam;
-                        mainPack.ReturnCode = ReturnCode.Success;
-                        client.TcpSend(mainPack);
+                        MainPack mainPack1 = new MainPack();
+                        mainPack1.Uid = mainPack.TeammatePack.TargetUid;
+                        mainPack1.ActionCode = ActionCode.InvitedTeam;
+                        mainPack1.ReturnCode = ReturnCode.Success;
+                        mainPack1.TeammatePack = mainPack.TeammatePack;
+                        client.TcpSend(mainPack1);
                         return 1;//成功接收消息
                     }
                     catch (Exception e)
@@ -82,19 +86,21 @@ namespace SocketServer.Teammate
             {
                 if (mainPack.TeammatePack.JoinTeamPlayerUid == mainPack.Uid && client.IsInTheTeam == false && mainPack.TeammatePack.State == 0)
                 {
-                    if (server.GetClientFromDictByUid(mainPack.TeammatePack.TeamMasterUid) == null)
+                    if (server.GetClientFromDictByUid(mainPack.TeammatePack.TeamMemberUid) == null)
                     {
                         return 2;//不在线
                     }
-                    Client target = server.GetClientFromDictByUid(mainPack.TeammatePack.TargetUid);
+                    Client teamMaster = server.GetClientFromDictByUid(mainPack.TeammatePack.TeamMemberUid);
                     MainPack mainPack1 = new MainPack();
                     mainPack1.ActionCode = ActionCode.PlayerJoinTeam;
-                    mainPack1.Uid = mainPack.TeammatePack.TargetUid;
+                    mainPack1.Uid = mainPack.TeammatePack.TeamMemberUid;
                     TeammatePack teammatePack = new TeammatePack();
                     teammatePack.JoinTeamPlayerUid = mainPack.TeammatePack.JoinTeamPlayerUid;
-                    teammatePack.TeamMasterUid = mainPack.TeammatePack.TeamMasterUid;
+                    teammatePack.TeamMemberUid = mainPack.TeammatePack.TeamMemberUid;
+                    teammatePack.SenderName = client.PlayerInfo.PlayerName;
+                    teammatePack.TargetName = teamMaster.PlayerInfo.PlayerName;
                     mainPack1.TeammatePack = teammatePack;
-                    target.PlayerJoinTeam(mainPack1);
+                    teamMaster.PlayerJoinTeam(mainPack1);
                     return 1;//成功
                 }
                 else
@@ -114,14 +120,31 @@ namespace SocketServer.Teammate
         {
             try
             {
-                if (mainPack.TeammatePack.TeamMasterUid == client.PlayerInfo.Uid)
+                if (mainPack.TeammatePack.TeamMemberUid == client.PlayerInfo.Uid)
                 {
                     if (server.GetClientFromDictByUid(mainPack.TeammatePack.JoinTeamPlayerUid) == null)
                     {
                         return 2;//不在线
                     }
                     //发送给队长
-
+                    try
+                    {
+                        MainPack mainPack1 = new MainPack();
+                        mainPack1.Uid = mainPack.TeammatePack.TeamMemberUid;
+                        mainPack1.ActionCode = ActionCode.PlayerJoinTeam;
+                        mainPack1.ReturnCode = ReturnCode.Success;
+                        client.TcpSend(mainPack1);
+                    }
+                    catch (Exception e)
+                    {
+                        MainPack mainPack1 = new MainPack();
+                        mainPack1.Uid = mainPack.TeammatePack.TeamMemberUid;
+                        mainPack1.ActionCode = ActionCode.PlayerJoinTeam;
+                        mainPack1.ReturnCode = ReturnCode.Fail;
+                        client.TcpSend(mainPack1);
+                        Debug.Log(new StackFrame(true), e.Message);
+                        return 0;
+                    }
                     return 1;
                 }
                 else
@@ -141,15 +164,18 @@ namespace SocketServer.Teammate
         {
             try
             {
-                if (mainPack.TeammatePack.State == 1 && mainPack.TeammatePack.TeamMasterUid == mainPack.Uid)
+                if (mainPack.TeammatePack.State == 1 && mainPack.TeammatePack.TeamMemberUid == mainPack.Uid)
                 {
                     Client joinTarget = server.GetClientFromDictByUid(mainPack.TeammatePack.JoinTeamPlayerUid);
-                    if (joinTarget != null && client.PlayerInfo.Uid == mainPack.TeammatePack.TeamMasterUid)
+                    if (joinTarget != null && client.PlayerInfo.Uid == mainPack.TeammatePack.TeamMemberUid)
                     {
                         MainPack mainPack1 = new MainPack();
                         mainPack1.ActionCode = ActionCode.AcceptedJoinTeam;
-                        mainPack1.Uid = mainPack.TeammatePack.TeamMasterUid;
+                        mainPack1.Uid = mainPack.TeammatePack.TeamMemberUid;
+                        mainPack.TeammatePack.SenderName = joinTarget.PlayerInfo.PlayerName;
+                        mainPack.TeammatePack.TargetName = client.PlayerInfo.PlayerName;
                         mainPack1.TeammatePack = mainPack.TeammatePack;
+                        
                         joinTarget.AcceptedJoinTeam(mainPack1);
                         return true;
                     }
@@ -177,7 +203,7 @@ namespace SocketServer.Teammate
             {
                 if (mainPack.TeammatePack.State == 1 && mainPack.TeammatePack.JoinTeamPlayerUid == client.PlayerInfo.Uid && client.team == null)
                 {
-                    Client teamMaster = server.GetClientFromDictByUid(mainPack.TeammatePack.TeamMasterUid);
+                    Client teamMaster = server.GetClientFromDictByUid(mainPack.TeammatePack.TeamMemberUid);
                     teamMaster.team.Teammates.Add(client);
                     client.team = teamMaster.team;
                     client.IsInTheTeam = true;
@@ -197,6 +223,41 @@ namespace SocketServer.Teammate
                 mainPack.ReturnCode = ReturnCode.Fail;
                 client.TcpSend(mainPack);
                 Debug.Log(new StackFrame(true), e.Message);
+                return false;
+            }
+        }
+
+        public bool RefuseJoinTeam(MainPack mainPack, Client client, Server server)
+        {
+            if (mainPack.TeammatePack.State == 2 && mainPack.Uid == mainPack.TeammatePack.TeamMemberUid)
+            {
+                Client sender = server.GetClientFromDictByUid(mainPack.TeammatePack.JoinTeamPlayerUid);
+                MainPack mainPack1 = new MainPack();
+                mainPack1.ActionCode = ActionCode.RefusedJoinTeam;
+                mainPack1.Uid = mainPack.TeammatePack.JoinTeamPlayerUid;
+                mainPack.TeammatePack.SenderName = sender.PlayerInfo.PlayerName;
+                mainPack.TeammatePack.TargetName = client.PlayerInfo.PlayerName;
+                mainPack1.TeammatePack = mainPack.TeammatePack;
+                sender.RefusedJoinTeam(mainPack1);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool RefusedJoinTeam(MainPack mainPack, Client client)
+        {
+            if (mainPack.TeammatePack.State == 2 && mainPack.Uid == mainPack.TeammatePack.JoinTeamPlayerUid && client.PlayerInfo.Uid == mainPack.Uid)
+            {
+                mainPack.ReturnCode = ReturnCode.Success;
+                client.TcpSend(mainPack);
+                return true;
+            }
+            else
+            {
+                Debug.Log(new StackFrame(true), "失败");
                 return false;
             }
         }
@@ -310,7 +371,7 @@ namespace SocketServer.Teammate
                 }
                 //PlayerInfoPack充当队长uid信息的包
                 TeammatePack teammatePack = new TeammatePack();
-                teammatePack.TeamMasterUid = client.team.GetTeamMasterClient.PlayerInfo.Uid;
+                teammatePack.TeamMemberUid = client.team.GetTeamMasterClient.PlayerInfo.Uid;
                 mainPack.TeammatePack = teammatePack;
                 return mainPack;
             }
@@ -343,14 +404,14 @@ namespace SocketServer.Teammate
                 {
                     client.team.GetTeamMasterClient = client.team.Teammates[1];
 
-                    mainPack1.TeammatePack.TeamMasterUid = client.team.GetTeamMasterClient.PlayerInfo.Uid;
+                    mainPack1.TeammatePack.TeamMemberUid = client.team.GetTeamMasterClient.PlayerInfo.Uid;
                     client.team.Broadcast(client, mainPack1);
 
                     client.team.Teammates.Remove(client.team.Teammates[0]);
                 }
                 else
                 {
-                    mainPack1.TeammatePack.TeamMasterUid = client.team.GetTeamMasterClient.PlayerInfo.Uid;
+                    mainPack1.TeammatePack.TeamMemberUid = client.team.GetTeamMasterClient.PlayerInfo.Uid;
 
                     client.team.Broadcast(client, mainPack1);
 
