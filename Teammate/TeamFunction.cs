@@ -377,11 +377,10 @@ namespace SocketServer.Teammate
             }
         }
 
-        public MainPack LeaveTeam(MainPack mainPack, Client client)//自身退队
+        public MainPack LeaveTeam(MainPack mainPack, Client client)//退队
         {
             try
             {
-                
                 TeammatePack teammatePack = new TeammatePack();
                 teammatePack.LeaveTeamPlayerUid = client.PlayerInfo.Uid;//告知退队的人uid
                 teammatePack.TeammateCount = client.team.Teammates.Count - 1;
@@ -423,6 +422,33 @@ namespace SocketServer.Teammate
                 return null;
             }
 
+        }
+
+        public bool KickPlayer(MainPack mainPack, Client client, Server server)
+        {
+            if (mainPack.TeammatePack.SenderUid == client.PlayerInfo.Uid && mainPack.Uid == client.PlayerInfo.Uid && mainPack.Uid == client.team.GetTeamMasterClient.PlayerInfo.Uid)
+            {
+                Client target = server.GetClientFromDictByUid(mainPack.TeammatePack.TargetUid);
+                if (target != null)
+                {
+                    MainPack mainPack1 = new MainPack();
+                    mainPack1.ActionCode = ActionCode.LeaveTeam;
+                    mainPack1.RequestCode = RequestCode.Team;
+                    mainPack1.Uid = mainPack.TeammatePack.TargetUid;
+                    mainPack1.ReturnCode = ReturnCode.Success;
+                    target.LeaveTeam(mainPack1);
+                    target.TcpSend(mainPack1);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public MainPack BreakTeam(Client client, MainPack mainPack)

@@ -265,16 +265,31 @@ namespace SocketServer.Teammate
             if (mainPack == null)
             {
                 Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
-                mainPack.ReturnCode = ReturnCode.Fail;
             }
             else if (mainPack.ReturnCode == ReturnCode.NotFound)
             {
                 Debug.Log(new StackFrame(true), ReturnCode.NotFound.ToString());
+                mainPack.ReturnCode = ReturnCode.NotFound;
             }
             else
             {
                 Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
+            }
+            return mainPack;
+        }
+
+        public MainPack KickPlayer(Client client, MainPack mainPack)
+        {
+            if (client.KickPlayer(mainPack))
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
             }
             return mainPack;
         }

@@ -277,6 +277,11 @@ namespace SocketServer
             return GetTeamFunction.RefusedJoinTeam(mainPack, this);
         }
 
+        public bool KickPlayer(MainPack mainPack)
+        {
+            return GetTeamFunction.KickPlayer(mainPack, this, server);
+        }
+
         public void TcpSend(MainPack mainPack)
         {
             if (tcpSocket == null || tcpSocket.Connected == false) return;
