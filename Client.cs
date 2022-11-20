@@ -8,6 +8,7 @@ using SocketServer.Friend;
 using SocketServer.User;
 using SocketServer.Utils;
 using SocketServer.Teammate;
+using SocketServer.Gaming;
 
 namespace SocketServer
 {
@@ -21,6 +22,7 @@ namespace SocketServer
         UserFunction userFunction;
         FriendFunction friendFunction;
         TeamFunction teamFunction;
+        GameFunction gameFunction;
         public bool IsInTheTeam = false;
         public Team team = null;
         Server server;
@@ -43,6 +45,11 @@ namespace SocketServer
             get { return teamFunction; }
         }
 
+        public GameFunction GetGameFunction
+        {
+            get { return gameFunction; }
+        }
+
         public PlayerInfo PlayerInfo;
         public delegate void Buff(PlayerInfo playerInfo);
         public Buff buff;
@@ -59,6 +66,7 @@ namespace SocketServer
             userFunction = new UserFunction();
             friendFunction = new FriendFunction();
             teamFunction = new TeamFunction();
+            gameFunction = new GameFunction();
             message = new Message();
             connection = new MySqlConnection(connectStr);
             connection.Open();
@@ -129,7 +137,12 @@ namespace SocketServer
 
         public MainPack UpdatePlayerInfo(MainPack mainPack, Client client)
         {
-            return GetUserFunction.UpdatePlayerInfo(mainPack, this);
+            return GetGameFunction.UpdatePlayerInfo(mainPack, this);
+        }
+
+        public bool Regeneration(MainPack mainPack)
+        {
+            return GetGameFunction.Regeneration(mainPack, this);
         }
 
         public int SendRequestFriend(MainPack mainPack)

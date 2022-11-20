@@ -10,6 +10,7 @@ using SocketServer.Friend;
 using SocketServer.User;
 using SocketServer.Utils;
 using SocketServer.Teammate;
+using SocketServer.Gaming;
 
 namespace SocketServer
 {
@@ -30,6 +31,9 @@ namespace SocketServer
 
             FriendController friendController = new FriendController();
             controllerDict.Add(friendController.GetRequestCode, friendController);
+
+            GameController gameController = new GameController();
+            controllerDict.Add(gameController.GetRequestCode, gameController);
         }
 
         public void HandleRequest(MainPack mainPack, Client client, bool isUDP = false)

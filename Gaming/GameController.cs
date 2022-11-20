@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,15 +28,34 @@ namespace SocketServer.Gaming
             return null;
         }
 
-        /// <summary>
-        /// 没有的为UDP
-        /// </summary>
-        /// <param name="client"></param>
-        /// <param name="mainPack"></param>
-        /// <returns></returns>
         public MainPack UpdatePlayerInfo(Client client, MainPack mainPack)
         {
-            return null;
+            if (client.UpdatePlayerInfo(mainPack, client) != null)
+            {
+                //Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            return mainPack;
+        }
+
+        public MainPack Regeneration(Client client, MainPack mainPack)
+        {
+            if (client.Regeneration(mainPack))
+            {
+                //Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            return mainPack;
         }
     }
 }
