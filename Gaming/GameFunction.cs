@@ -77,8 +77,16 @@ namespace SocketServer.Gaming
             {
                 if (mainPack.Uid == client.PlayerInfo.Uid)
                 {
-                    float hp = (client.PlayerInfo.MaxHealth / 20) / 10;
-                    client.PlayerInfo.CurrentHealth += hp;
+                    if (client.PlayerInfo.CurrentHealth < client.PlayerInfo.MaxHealth && client.PlayerInfo.CurrentHealth > 0)
+                    {
+                        float hp = (client.PlayerInfo.MaxHealth / 20) / 10;
+                        client.PlayerInfo.CurrentHealth += hp;
+                    }
+                    if (client.PlayerInfo.CurrentArmor < client.PlayerInfo.MaxArmor && client.PlayerInfo.CurrentArmor > 0)
+                    {
+                        float armor = (client.PlayerInfo.MaxArmor / 40) / 10;
+                        client.PlayerInfo.CurrentArmor += armor;
+                    }
                     return true;
                 }
                 else

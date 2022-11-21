@@ -304,8 +304,9 @@ namespace SocketServer
 
         public void TempGunBuff2(PlayerInfo playerInfo)
         {
-            playerInfo.MaxHealth += 10;
+            playerInfo.MaxHealth += 300;
             playerInfo.CurrentHealth -= 900;
+            playerInfo.CurrentArmor -= 900;
         }
 
     //end
