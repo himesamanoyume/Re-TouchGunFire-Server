@@ -75,7 +75,6 @@ namespace SocketServer
             this.udpServer = udpServer;
             this.server = server;
             tcpSocket = clientSocket;
-
             StartReceive();
         }
 

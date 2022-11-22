@@ -63,87 +63,83 @@ namespace SocketProtocol {
             "Qm9udXMYESABKAISEgoKU2dEbWdCb251cxgSIAEoAhISCgpNZ0RtZ0JvbnVz",
             "GBMgASgCEhIKClNyRG1nQm9udXMYFCABKAISEgoKSGdEbWdCb251cxgVIAEo",
             "AhIPCgdEaWFtb25kGBYgASgDEgwKBENvaW4YFyABKAMSFAoMQ3JpdERtZ0Jv",
-            "bnVzGBggASgCIqUECg1FcXVpcG1lbnRQYWNrEhMKC0VxdWlwbWVudElkGAEg",
+            "bnVzGBggASgCIt0DCg1FcXVpcG1lbnRQYWNrEhMKC0VxdWlwbWVudElkGAEg",
             "ASgFEjUKDUVxdWlwbWVudE5hbWUYAiABKA4yHi5Tb2NrZXRQcm90b2NvbC5F",
             "RXF1aXBtZW50TmFtZRI1Cg1FcXVpcG1lbnRTdWl0GAMgASgOMh4uU29ja2V0",
-            "UHJvdG9jb2wuRUVxdWlwbWVudFN1aXQSOwoQRXF1aXBtZW50UXVhbGl0eRgE",
-            "IAEoDjIhLlNvY2tldFByb3RvY29sLkVFcXVpcG1lbnRRdWFsaXR5EioKCFN1",
-            "YlByb3AxGAUgASgOMhguU29ja2V0UHJvdG9jb2wuRVN1YlByb3ASFQoNU3Vi",
-            "UHJvcDFWYWx1ZRgGIAEoAhIqCghTdWJQcm9wMhgHIAEoDjIYLlNvY2tldFBy",
-            "b3RvY29sLkVTdWJQcm9wEhUKDVN1YlByb3AyVmFsdWUYCCABKAISKgoIU3Vi",
-            "UHJvcDMYCSABKA4yGC5Tb2NrZXRQcm90b2NvbC5FU3ViUHJvcBIVCg1TdWJQ",
-            "cm9wM1ZhbHVlGAogASgCEjEKB1RhbGVudDEYCyABKA4yIC5Tb2NrZXRQcm90",
-            "b2NvbC5FRXF1aXBtZW50VGFsZW50EjEKB1RhbGVudDIYDCABKA4yIC5Tb2Nr",
-            "ZXRQcm90b2NvbC5FRXF1aXBtZW50VGFsZW50EiUKBVVzaW5nGA0gASgOMhYu",
-            "U29ja2V0UHJvdG9jb2wuRVVzaW5nIpcECgdHdW5QYWNrEg0KBUd1bklkGAEg",
-            "ASgFEikKB0d1bk5hbWUYAiABKA4yGC5Tb2NrZXRQcm90b2NvbC5FR3VuTmFt",
-            "ZRIpCgdHdW5UeXBlGAMgASgOMhguU29ja2V0UHJvdG9jb2wuRUd1blR5cGUS",
-            "DwoHQmFzZURNRxgEIAEoAhISCgpGaXJpbmdSYXRlGAUgASgCEiIKGkN1cnJl",
-            "bnRGaXJpbmdSYXRlUGVyU2Vjb25kGAYgASgCEhAKCE1hZ2F6aW5lGAcgASgF",
-            "EhUKDU1hZ2F6aW5lQ291bnQYCCABKAUSLgoIQ29yZVByb3AYCSABKA4yHC5T",
-            "b2NrZXRQcm90b2NvbC5FR3VuQ29yZVByb3ASFQoNQ29yZVByb3BWYWx1ZRgK",
-            "IAEoAhIqCghTdWJQcm9wMRgLIAEoDjIYLlNvY2tldFByb3RvY29sLkVTdWJQ",
-            "cm9wEhUKDVN1YlByb3AxVmFsdWUYDCABKAISKgoIU3ViUHJvcDIYDSABKA4y",
-            "GC5Tb2NrZXRQcm90b2NvbC5FU3ViUHJvcBIVCg1TdWJQcm9wMlZhbHVlGA4g",
-            "ASgCEioKCFN1YlByb3AzGA8gASgOMhguU29ja2V0UHJvdG9jb2wuRVN1YlBy",
-            "b3ASFQoNU3ViUHJvcDNWYWx1ZRgQIAEoAhIlCgVVc2luZxgRIAEoDjIWLlNv",
-            "Y2tldFByb3RvY29sLkVVc2luZyJHCgtGcmllbmRzUGFjaxISCgpQbGF5ZXIx",
-            "VWlkGAEgASgFEhIKClBsYXllcjJVaWQYAiABKAUSEAoISXNGcmllbmQYAyAB",
-            "KAUiMAoVU2VuZFJlcXVlc3RGcmllbmRQYWNrEhcKD1RhcmdldFBsYXllclVp",
-            "ZBgBIAEoBSpKCgtSZXF1ZXN0Q29kZRIPCgtSZXF1ZXN0Tm9uZRAAEggKBFVz",
-            "ZXIQARIKCgZHYW1pbmcQAhIICgRUZWFtEAMSCgoGRnJpZW5kEAQq3QUKCkFj",
-            "dGlvbkNvZGUSDgoKQWN0aW9uTm9uZRAAEgwKCFJlZ2lzdGVyEAESCQoFTG9n",
-            "aW4QAhISCg5Jbml0UGxheWVySW5mbxADEhIKDkFjY2VwdEpvaW5UZWFtEAQS",
-            "DgoKVXBkYXRlVGVhbRAFEg0KCUxlYXZlVGVhbRAGEhQKEFVwZGF0ZVBsYXll",
-            "ckluZm8QBxIPCgtSZWFkeUF0dGFjaxAIEg8KC1N0YXJ0QXR0YWNrEAkSDQoJ",
-            "TmV4dEVuZW15EAoSDQoJRW5kQXR0YWNrEAsSDAoIRXhpdEdhbWUQDBINCglC",
-            "cmVha1RlYW0QDRIOCgpHZXRGcmllbmRzEA4SFAoQR2V0RnJpZW5kUmVxdWVz",
-            "dBAPEhAKDFNlYXJjaEZyaWVuZBAQEhUKEVNlbmRSZXF1ZXN0RnJpZW5kEBES",
-            "FQoRR2V0UGxheWVyQmFzZUluZm8QEhIQCgxEZWxldGVGcmllbmQQExIXChNB",
-            "Y2NlcHRGcmllbmRSZXF1ZXN0EBQSFwoTUmVmdXNlRnJpZW5kUmVxdWVzdBAV",
-            "Eg4KCkludml0ZVRlYW0QFhIPCgtJbnZpdGVkVGVhbRAXEhMKD0pvaW5UZWFt",
-            "UmVxdWVzdBAYEhQKEEFjY2VwdEludml0ZVRlYW0QGRIWChJBY2NlcHRlZElu",
-            "dml0ZVRlYW0QGhIUChBSZWZ1c2VJbnZpdGVUZWFtEBsSFQoRUmVmdXNlZElu",
-            "dml0ZVRlYW0QHBIOCgpLaWNrUGxheWVyEB0SEAoMR2V0VGVhbW1hdGVzEB4S",
-            "FQoRVGVhbW1hdGVMZWF2ZVRlYW0QHxISCg5QbGF5ZXJKb2luVGVhbRAgEhQK",
-            "EEFjY2VwdGVkSm9pblRlYW0QIRISCg5SZWZ1c2VKb2luVGVhbRAiEhMKD1Jl",
-            "ZnVzZWRKb2luVGVhbRAjEhMKD0JlS2lja2VkT3V0VGVhbRAkEhAKDFJlZ2Vu",
-            "ZXJhdGlvbhAlKmUKClJldHVybkNvZGUSDgoKUmV0dXJuTm9uZRAAEgsKB1N1",
-            "Y2Nlc3MQARIICgRGYWlsEAISEwoPUmVwZWF0ZWRSZXF1ZXN0EAMSDAoITm90",
-            "Rm91bmQQBBINCglJbmNvcnJlY3QQBSoZCgZFVXNpbmcSBgoCTm8QABIHCgNZ",
-            "ZXMQASpQCghFR3VuTmFtZRIICgRBSzQ3EAASBwoDU0w3EAESBwoDTVA1EAIS",
-            "CAoETTcwMBADEgcKA002MBAEEgoKBlNQQVMxMhAFEgkKBU0xOTExEAYqRAoI",
-            "RUd1blR5cGUSBgoCQVIQABIHCgNETVIQARIHCgNTTUcQAhIGCgJTRxADEgYK",
-            "AlNSEAQSBgoCTUcQBRIGCgJIRxAGKtEBCgxFR3VuQ29yZVByb3ASFwoTYWxs",
-            "RG1nQm9udXNDb3JlUHJvcBAAEhYKEmFyRG1nQm9udXNDb3JlUHJvcBABEhcK",
-            "E2RtckRtZ0JvbnVzQ29yZVByb3AQAhIXChNzbWdEbWdCb251c0NvcmVQcm9w",
-            "EAMSFgoSc2dEbWdCb251c0NvcmVQcm9wEAQSFgoSc3JEbWdCb251c0NvcmVQ",
-            "cm9wEAUSFgoSbWdEbWdCb251c0NvcmVQcm9wEAYSFgoSaGdEbWdCb251c0Nv",
-            "cmVQcm9wEAcqPQoORUVxdWlwbWVudFN1aXQSDQoJVGVzdDFTdWl0EAASDQoJ",
-            "VGVzdDJTdWl0EAESDQoJVGVzdDNTdWl0EAIqUAoRRUVxdWlwbWVudFF1YWxp",
-            "dHkSCgoGTm9ybWFsEAASCAoER29vZBABEg0KCUV4Y2VsbGVudBACEgwKCEFy",
-            "dGlmYWN0EAMSCAoERXBpYxAEKi4KDkVFcXVpcG1lbnROYW1lEg0KCVRlc3Qx",
-            "TmFtZRAAEg0KCVRlc3QyTmFtZRABKtICCghFU3ViUHJvcBIRCg1oZWFsdGhT",
-            "dWJQcm9wEAASFwoTYmFzZURtZ0JvbnVzU3ViUHJvcBABEhgKFGNEbWdSYXRl",
-            "Qm9udXNTdWJQcm9wEAISFAoQY0RtZ0JvbnVzU3ViUHJvcBADEhsKF2hlYWRz",
-            "aG90RG1nQm9udXNTdWJQcm9wEAQSFQoRcFJhdGVCb251c1N1YlByb3AQBRIT",
-            "Cg9hYmVCb251c1N1YlByb3AQBhIVChFhckRtZ0JvbnVzU3ViUHJvcBAHEhYK",
-            "EmRtckRtZ0JvbnVzU3ViUHJvcBAIEhYKEnNtZ0RtZ0JvbnVzU3ViUHJvcBAJ",
-            "EhUKEXNnRG1nQm9udXNTdWJQcm9wEAoSFQoRc3JEbWdCb251c1N1YlByb3AQ",
-            "CxIVChFtZ0RtZ0JvbnVzU3ViUHJvcBAMEhUKEWhnRG1nQm9udXNTdWJQcm9w",
-            "EA0qSAoQRUVxdWlwbWVudFRhbGVudBIZChVUZXN0MUVxdWlwbWVudFRhbGVu",
-            "dDEQABIZChVUZXN0MUVxdWlwbWVudFRhbGVudDIQAWIGcHJvdG8z"));
+            "UHJvdG9jb2wuRUVxdWlwbWVudFN1aXQSKgoIU3ViUHJvcDEYBCABKA4yGC5T",
+            "b2NrZXRQcm90b2NvbC5FU3ViUHJvcBIVCg1TdWJQcm9wMVZhbHVlGAUgASgC",
+            "EioKCFN1YlByb3AyGAYgASgOMhguU29ja2V0UHJvdG9jb2wuRVN1YlByb3AS",
+            "FQoNU3ViUHJvcDJWYWx1ZRgHIAEoAhIqCghTdWJQcm9wMxgIIAEoDjIYLlNv",
+            "Y2tldFByb3RvY29sLkVTdWJQcm9wEhUKDVN1YlByb3AzVmFsdWUYCSABKAIS",
+            "MQoHVGFsZW50MRgKIAEoDjIgLlNvY2tldFByb3RvY29sLkVFcXVpcG1lbnRU",
+            "YWxlbnQSMQoHVGFsZW50MhgLIAEoDjIgLlNvY2tldFByb3RvY29sLkVFcXVp",
+            "cG1lbnRUYWxlbnQSCwoDVXNlGAwgASgIEg0KBUJsb2NrGA0gASgIIowECgdH",
+            "dW5QYWNrEg0KBUd1bklkGAEgASgFEikKB0d1bk5hbWUYAiABKA4yGC5Tb2Nr",
+            "ZXRQcm90b2NvbC5FR3VuTmFtZRIpCgdHdW5UeXBlGAMgASgOMhguU29ja2V0",
+            "UHJvdG9jb2wuRUd1blR5cGUSDwoHQmFzZURNRxgEIAEoAhISCgpGaXJpbmdS",
+            "YXRlGAUgASgCEiIKGkN1cnJlbnRGaXJpbmdSYXRlUGVyU2Vjb25kGAYgASgC",
+            "EhAKCE1hZ2F6aW5lGAcgASgFEhUKDU1hZ2F6aW5lQ291bnQYCCABKAUSLgoI",
+            "Q29yZVByb3AYCSABKA4yHC5Tb2NrZXRQcm90b2NvbC5FR3VuQ29yZVByb3AS",
+            "FQoNQ29yZVByb3BWYWx1ZRgKIAEoAhIqCghTdWJQcm9wMRgLIAEoDjIYLlNv",
+            "Y2tldFByb3RvY29sLkVTdWJQcm9wEhUKDVN1YlByb3AxVmFsdWUYDCABKAIS",
+            "KgoIU3ViUHJvcDIYDSABKA4yGC5Tb2NrZXRQcm90b2NvbC5FU3ViUHJvcBIV",
+            "Cg1TdWJQcm9wMlZhbHVlGA4gASgCEioKCFN1YlByb3AzGA8gASgOMhguU29j",
+            "a2V0UHJvdG9jb2wuRVN1YlByb3ASFQoNU3ViUHJvcDNWYWx1ZRgQIAEoAhIL",
+            "CgNVc2UYESABKAgSDQoFQmxvY2sYEiABKAgiRwoLRnJpZW5kc1BhY2sSEgoK",
+            "UGxheWVyMVVpZBgBIAEoBRISCgpQbGF5ZXIyVWlkGAIgASgFEhAKCElzRnJp",
+            "ZW5kGAMgASgFIjAKFVNlbmRSZXF1ZXN0RnJpZW5kUGFjaxIXCg9UYXJnZXRQ",
+            "bGF5ZXJVaWQYASABKAUqSgoLUmVxdWVzdENvZGUSDwoLUmVxdWVzdE5vbmUQ",
+            "ABIICgRVc2VyEAESCgoGR2FtaW5nEAISCAoEVGVhbRADEgoKBkZyaWVuZBAE",
+            "Kt0FCgpBY3Rpb25Db2RlEg4KCkFjdGlvbk5vbmUQABIMCghSZWdpc3RlchAB",
+            "EgkKBUxvZ2luEAISEgoOSW5pdFBsYXllckluZm8QAxISCg5BY2NlcHRKb2lu",
+            "VGVhbRAEEg4KClVwZGF0ZVRlYW0QBRINCglMZWF2ZVRlYW0QBhIUChBVcGRh",
+            "dGVQbGF5ZXJJbmZvEAcSDwoLUmVhZHlBdHRhY2sQCBIPCgtTdGFydEF0dGFj",
+            "axAJEg0KCU5leHRFbmVteRAKEg0KCUVuZEF0dGFjaxALEgwKCEV4aXRHYW1l",
+            "EAwSDQoJQnJlYWtUZWFtEA0SDgoKR2V0RnJpZW5kcxAOEhQKEEdldEZyaWVu",
+            "ZFJlcXVlc3QQDxIQCgxTZWFyY2hGcmllbmQQEBIVChFTZW5kUmVxdWVzdEZy",
+            "aWVuZBAREhUKEUdldFBsYXllckJhc2VJbmZvEBISEAoMRGVsZXRlRnJpZW5k",
+            "EBMSFwoTQWNjZXB0RnJpZW5kUmVxdWVzdBAUEhcKE1JlZnVzZUZyaWVuZFJl",
+            "cXVlc3QQFRIOCgpJbnZpdGVUZWFtEBYSDwoLSW52aXRlZFRlYW0QFxITCg9K",
+            "b2luVGVhbVJlcXVlc3QQGBIUChBBY2NlcHRJbnZpdGVUZWFtEBkSFgoSQWNj",
+            "ZXB0ZWRJbnZpdGVUZWFtEBoSFAoQUmVmdXNlSW52aXRlVGVhbRAbEhUKEVJl",
+            "ZnVzZWRJbnZpdGVUZWFtEBwSDgoKS2lja1BsYXllchAdEhAKDEdldFRlYW1t",
+            "YXRlcxAeEhUKEVRlYW1tYXRlTGVhdmVUZWFtEB8SEgoOUGxheWVySm9pblRl",
+            "YW0QIBIUChBBY2NlcHRlZEpvaW5UZWFtECESEgoOUmVmdXNlSm9pblRlYW0Q",
+            "IhITCg9SZWZ1c2VkSm9pblRlYW0QIxITCg9CZUtpY2tlZE91dFRlYW0QJBIQ",
+            "CgxSZWdlbmVyYXRpb24QJSplCgpSZXR1cm5Db2RlEg4KClJldHVybk5vbmUQ",
+            "ABILCgdTdWNjZXNzEAESCAoERmFpbBACEhMKD1JlcGVhdGVkUmVxdWVzdBAD",
+            "EgwKCE5vdEZvdW5kEAQSDQoJSW5jb3JyZWN0EAUqUAoIRUd1bk5hbWUSCAoE",
+            "QUs0NxAAEgcKA1NMNxABEgcKA01QNRACEggKBE03MDAQAxIHCgNNNjAQBBIK",
+            "CgZTUEFTMTIQBRIJCgVNMTkxMRAGKkQKCEVHdW5UeXBlEgYKAkFSEAASBwoD",
+            "RE1SEAESBwoDU01HEAISBgoCU0cQAxIGCgJTUhAEEgYKAk1HEAUSBgoCSEcQ",
+            "BirRAQoMRUd1bkNvcmVQcm9wEhcKE2FsbERtZ0JvbnVzQ29yZVByb3AQABIW",
+            "ChJhckRtZ0JvbnVzQ29yZVByb3AQARIXChNkbXJEbWdCb251c0NvcmVQcm9w",
+            "EAISFwoTc21nRG1nQm9udXNDb3JlUHJvcBADEhYKEnNnRG1nQm9udXNDb3Jl",
+            "UHJvcBAEEhYKEnNyRG1nQm9udXNDb3JlUHJvcBAFEhYKEm1nRG1nQm9udXND",
+            "b3JlUHJvcBAGEhYKEmhnRG1nQm9udXNDb3JlUHJvcBAHKj0KDkVFcXVpcG1l",
+            "bnRTdWl0Eg0KCVRlc3QxU3VpdBAAEg0KCVRlc3QyU3VpdBABEg0KCVRlc3Qz",
+            "U3VpdBACKi4KDkVFcXVpcG1lbnROYW1lEg0KCVRlc3QxTmFtZRAAEg0KCVRl",
+            "c3QyTmFtZRABKtICCghFU3ViUHJvcBIRCg1oZWFsdGhTdWJQcm9wEAASFwoT",
+            "YmFzZURtZ0JvbnVzU3ViUHJvcBABEhgKFGNEbWdSYXRlQm9udXNTdWJQcm9w",
+            "EAISFAoQY0RtZ0JvbnVzU3ViUHJvcBADEhsKF2hlYWRzaG90RG1nQm9udXNT",
+            "dWJQcm9wEAQSFQoRcFJhdGVCb251c1N1YlByb3AQBRITCg9hYmVCb251c1N1",
+            "YlByb3AQBhIVChFhckRtZ0JvbnVzU3ViUHJvcBAHEhYKEmRtckRtZ0JvbnVz",
+            "U3ViUHJvcBAIEhYKEnNtZ0RtZ0JvbnVzU3ViUHJvcBAJEhUKEXNnRG1nQm9u",
+            "dXNTdWJQcm9wEAoSFQoRc3JEbWdCb251c1N1YlByb3AQCxIVChFtZ0RtZ0Jv",
+            "bnVzU3ViUHJvcBAMEhUKEWhnRG1nQm9udXNTdWJQcm9wEA0qSAoQRUVxdWlw",
+            "bWVudFRhbGVudBIZChVUZXN0MUVxdWlwbWVudFRhbGVudDEQABIZChVUZXN0",
+            "MUVxdWlwbWVudFRhbGVudDIQAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SocketProtocol.RequestCode), typeof(global::SocketProtocol.ActionCode), typeof(global::SocketProtocol.ReturnCode), typeof(global::SocketProtocol.EUsing), typeof(global::SocketProtocol.EGunName), typeof(global::SocketProtocol.EGunType), typeof(global::SocketProtocol.EGunCoreProp), typeof(global::SocketProtocol.EEquipmentSuit), typeof(global::SocketProtocol.EEquipmentQuality), typeof(global::SocketProtocol.EEquipmentName), typeof(global::SocketProtocol.ESubProp), typeof(global::SocketProtocol.EEquipmentTalent), }, null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SocketProtocol.RequestCode), typeof(global::SocketProtocol.ActionCode), typeof(global::SocketProtocol.ReturnCode), typeof(global::SocketProtocol.EGunName), typeof(global::SocketProtocol.EGunType), typeof(global::SocketProtocol.EGunCoreProp), typeof(global::SocketProtocol.EEquipmentSuit), typeof(global::SocketProtocol.EEquipmentName), typeof(global::SocketProtocol.ESubProp), typeof(global::SocketProtocol.EEquipmentTalent), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.MainPack), global::SocketProtocol.MainPack.Parser, new[]{ "RequestCode", "ActionCode", "ReturnCode", "RegisterPack", "LoginPack", "Uid", "PlayerInfoPack", "FriendsPack", "SendRequestFriendPack", "UpdatePlayerInfoPack", "TeammatePack" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.RegisterPack), global::SocketProtocol.RegisterPack.Parser, new[]{ "Account", "Password", "PlayerName" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.LoginPack), global::SocketProtocol.LoginPack.Parser, new[]{ "Uid", "Account", "Password" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.PlayerInfoPack), global::SocketProtocol.PlayerInfoPack.Parser, new[]{ "Uid", "PlayerName", "Level", "CurrentExp", "EquipmentPacks", "GunPacks", "Diamond", "Coin", "IsOnline", "IsTeam", "IsTeamMaster", "IsSameTeam" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.TeammatePack), global::SocketProtocol.TeammatePack.Parser, new[]{ "SenderUid", "TargetUid", "State", "TeamMasterUid", "LeaveTeamPlayerUid", "JoinTeamPlayerUid", "TeammateCount", "SenderName", "TargetName", "TeamMemberUid" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.UpdatePlayerInfoPack), global::SocketProtocol.UpdatePlayerInfoPack.Parser, new[]{ "Uid", "PlayerName", "Level", "MaxHealth", "MaxArmor", "CurrentHealth", "CurrentArmor", "MaxExp", "CurrentExp", "BaseDmgRateBonus", "CritDmgRateBonus", "HeadshotDmgBonus", "PRateBonus", "AbeBonus", "ArDmgBonus", "DmrDmgBonus", "SmgDmgBonus", "SgDmgBonus", "MgDmgBonus", "SrDmgBonus", "HgDmgBonus", "Diamond", "Coin", "CritDmgBonus" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.EquipmentPack), global::SocketProtocol.EquipmentPack.Parser, new[]{ "EquipmentId", "EquipmentName", "EquipmentSuit", "EquipmentQuality", "SubProp1", "SubProp1Value", "SubProp2", "SubProp2Value", "SubProp3", "SubProp3Value", "Talent1", "Talent2", "Using" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.GunPack), global::SocketProtocol.GunPack.Parser, new[]{ "GunId", "GunName", "GunType", "BaseDMG", "FiringRate", "CurrentFiringRatePerSecond", "Magazine", "MagazineCount", "CoreProp", "CorePropValue", "SubProp1", "SubProp1Value", "SubProp2", "SubProp2Value", "SubProp3", "SubProp3Value", "Using" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.EquipmentPack), global::SocketProtocol.EquipmentPack.Parser, new[]{ "EquipmentId", "EquipmentName", "EquipmentSuit", "SubProp1", "SubProp1Value", "SubProp2", "SubProp2Value", "SubProp3", "SubProp3Value", "Talent1", "Talent2", "Use", "Block" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.GunPack), global::SocketProtocol.GunPack.Parser, new[]{ "GunId", "GunName", "GunType", "BaseDMG", "FiringRate", "CurrentFiringRatePerSecond", "Magazine", "MagazineCount", "CoreProp", "CorePropValue", "SubProp1", "SubProp1Value", "SubProp2", "SubProp2Value", "SubProp3", "SubProp3Value", "Use", "Block" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.FriendsPack), global::SocketProtocol.FriendsPack.Parser, new[]{ "Player1Uid", "Player2Uid", "IsFriend" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.SendRequestFriendPack), global::SocketProtocol.SendRequestFriendPack.Parser, new[]{ "TargetPlayerUid" }, null, null, null, null)
           }));
@@ -321,11 +317,6 @@ namespace SocketProtocol {
     [pbr::OriginalName("Incorrect")] Incorrect = 5,
   }
 
-  public enum EUsing {
-    [pbr::OriginalName("No")] No = 0,
-    [pbr::OriginalName("Yes")] Yes = 1,
-  }
-
   public enum EGunName {
     [pbr::OriginalName("AK47")] Ak47 = 0,
     [pbr::OriginalName("SL7")] Sl7 = 1,
@@ -361,14 +352,6 @@ namespace SocketProtocol {
     [pbr::OriginalName("Test1Suit")] Test1Suit = 0,
     [pbr::OriginalName("Test2Suit")] Test2Suit = 1,
     [pbr::OriginalName("Test3Suit")] Test3Suit = 2,
-  }
-
-  public enum EEquipmentQuality {
-    [pbr::OriginalName("Normal")] Normal = 0,
-    [pbr::OriginalName("Good")] Good = 1,
-    [pbr::OriginalName("Excellent")] Excellent = 2,
-    [pbr::OriginalName("Artifact")] Artifact = 3,
-    [pbr::OriginalName("Epic")] Epic = 4,
   }
 
   public enum EEquipmentName {
@@ -2806,7 +2789,6 @@ namespace SocketProtocol {
       equipmentId_ = other.equipmentId_;
       equipmentName_ = other.equipmentName_;
       equipmentSuit_ = other.equipmentSuit_;
-      equipmentQuality_ = other.equipmentQuality_;
       subProp1_ = other.subProp1_;
       subProp1Value_ = other.subProp1Value_;
       subProp2_ = other.subProp2_;
@@ -2815,7 +2797,8 @@ namespace SocketProtocol {
       subProp3Value_ = other.subProp3Value_;
       talent1_ = other.talent1_;
       talent2_ = other.talent2_;
-      using_ = other.using_;
+      use_ = other.use_;
+      block_ = other.block_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2857,19 +2840,8 @@ namespace SocketProtocol {
       }
     }
 
-    /// <summary>Field number for the "EquipmentQuality" field.</summary>
-    public const int EquipmentQualityFieldNumber = 4;
-    private global::SocketProtocol.EEquipmentQuality equipmentQuality_ = global::SocketProtocol.EEquipmentQuality.Normal;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SocketProtocol.EEquipmentQuality EquipmentQuality {
-      get { return equipmentQuality_; }
-      set {
-        equipmentQuality_ = value;
-      }
-    }
-
     /// <summary>Field number for the "SubProp1" field.</summary>
-    public const int SubProp1FieldNumber = 5;
+    public const int SubProp1FieldNumber = 4;
     private global::SocketProtocol.ESubProp subProp1_ = global::SocketProtocol.ESubProp.HealthSubProp;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::SocketProtocol.ESubProp SubProp1 {
@@ -2880,7 +2852,7 @@ namespace SocketProtocol {
     }
 
     /// <summary>Field number for the "SubProp1Value" field.</summary>
-    public const int SubProp1ValueFieldNumber = 6;
+    public const int SubProp1ValueFieldNumber = 5;
     private float subProp1Value_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float SubProp1Value {
@@ -2891,7 +2863,7 @@ namespace SocketProtocol {
     }
 
     /// <summary>Field number for the "SubProp2" field.</summary>
-    public const int SubProp2FieldNumber = 7;
+    public const int SubProp2FieldNumber = 6;
     private global::SocketProtocol.ESubProp subProp2_ = global::SocketProtocol.ESubProp.HealthSubProp;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::SocketProtocol.ESubProp SubProp2 {
@@ -2902,7 +2874,7 @@ namespace SocketProtocol {
     }
 
     /// <summary>Field number for the "SubProp2Value" field.</summary>
-    public const int SubProp2ValueFieldNumber = 8;
+    public const int SubProp2ValueFieldNumber = 7;
     private float subProp2Value_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float SubProp2Value {
@@ -2913,7 +2885,7 @@ namespace SocketProtocol {
     }
 
     /// <summary>Field number for the "SubProp3" field.</summary>
-    public const int SubProp3FieldNumber = 9;
+    public const int SubProp3FieldNumber = 8;
     private global::SocketProtocol.ESubProp subProp3_ = global::SocketProtocol.ESubProp.HealthSubProp;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::SocketProtocol.ESubProp SubProp3 {
@@ -2924,7 +2896,7 @@ namespace SocketProtocol {
     }
 
     /// <summary>Field number for the "SubProp3Value" field.</summary>
-    public const int SubProp3ValueFieldNumber = 10;
+    public const int SubProp3ValueFieldNumber = 9;
     private float subProp3Value_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float SubProp3Value {
@@ -2935,7 +2907,7 @@ namespace SocketProtocol {
     }
 
     /// <summary>Field number for the "Talent1" field.</summary>
-    public const int Talent1FieldNumber = 11;
+    public const int Talent1FieldNumber = 10;
     private global::SocketProtocol.EEquipmentTalent talent1_ = global::SocketProtocol.EEquipmentTalent.Test1EquipmentTalent1;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::SocketProtocol.EEquipmentTalent Talent1 {
@@ -2946,7 +2918,7 @@ namespace SocketProtocol {
     }
 
     /// <summary>Field number for the "Talent2" field.</summary>
-    public const int Talent2FieldNumber = 12;
+    public const int Talent2FieldNumber = 11;
     private global::SocketProtocol.EEquipmentTalent talent2_ = global::SocketProtocol.EEquipmentTalent.Test1EquipmentTalent1;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::SocketProtocol.EEquipmentTalent Talent2 {
@@ -2956,14 +2928,25 @@ namespace SocketProtocol {
       }
     }
 
-    /// <summary>Field number for the "Using" field.</summary>
-    public const int UsingFieldNumber = 13;
-    private global::SocketProtocol.EUsing using_ = global::SocketProtocol.EUsing.No;
+    /// <summary>Field number for the "Use" field.</summary>
+    public const int UseFieldNumber = 12;
+    private bool use_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SocketProtocol.EUsing Using {
-      get { return using_; }
+    public bool Use {
+      get { return use_; }
       set {
-        using_ = value;
+        use_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Block" field.</summary>
+    public const int BlockFieldNumber = 13;
+    private bool block_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Block {
+      get { return block_; }
+      set {
+        block_ = value;
       }
     }
 
@@ -2983,7 +2966,6 @@ namespace SocketProtocol {
       if (EquipmentId != other.EquipmentId) return false;
       if (EquipmentName != other.EquipmentName) return false;
       if (EquipmentSuit != other.EquipmentSuit) return false;
-      if (EquipmentQuality != other.EquipmentQuality) return false;
       if (SubProp1 != other.SubProp1) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(SubProp1Value, other.SubProp1Value)) return false;
       if (SubProp2 != other.SubProp2) return false;
@@ -2992,7 +2974,8 @@ namespace SocketProtocol {
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(SubProp3Value, other.SubProp3Value)) return false;
       if (Talent1 != other.Talent1) return false;
       if (Talent2 != other.Talent2) return false;
-      if (Using != other.Using) return false;
+      if (Use != other.Use) return false;
+      if (Block != other.Block) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3002,7 +2985,6 @@ namespace SocketProtocol {
       if (EquipmentId != 0) hash ^= EquipmentId.GetHashCode();
       if (EquipmentName != global::SocketProtocol.EEquipmentName.Test1Name) hash ^= EquipmentName.GetHashCode();
       if (EquipmentSuit != global::SocketProtocol.EEquipmentSuit.Test1Suit) hash ^= EquipmentSuit.GetHashCode();
-      if (EquipmentQuality != global::SocketProtocol.EEquipmentQuality.Normal) hash ^= EquipmentQuality.GetHashCode();
       if (SubProp1 != global::SocketProtocol.ESubProp.HealthSubProp) hash ^= SubProp1.GetHashCode();
       if (SubProp1Value != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SubProp1Value);
       if (SubProp2 != global::SocketProtocol.ESubProp.HealthSubProp) hash ^= SubProp2.GetHashCode();
@@ -3011,7 +2993,8 @@ namespace SocketProtocol {
       if (SubProp3Value != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SubProp3Value);
       if (Talent1 != global::SocketProtocol.EEquipmentTalent.Test1EquipmentTalent1) hash ^= Talent1.GetHashCode();
       if (Talent2 != global::SocketProtocol.EEquipmentTalent.Test1EquipmentTalent1) hash ^= Talent2.GetHashCode();
-      if (Using != global::SocketProtocol.EUsing.No) hash ^= Using.GetHashCode();
+      if (Use != false) hash ^= Use.GetHashCode();
+      if (Block != false) hash ^= Block.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3037,45 +3020,45 @@ namespace SocketProtocol {
         output.WriteRawTag(24);
         output.WriteEnum((int) EquipmentSuit);
       }
-      if (EquipmentQuality != global::SocketProtocol.EEquipmentQuality.Normal) {
-        output.WriteRawTag(32);
-        output.WriteEnum((int) EquipmentQuality);
-      }
       if (SubProp1 != global::SocketProtocol.ESubProp.HealthSubProp) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(32);
         output.WriteEnum((int) SubProp1);
       }
       if (SubProp1Value != 0F) {
-        output.WriteRawTag(53);
+        output.WriteRawTag(45);
         output.WriteFloat(SubProp1Value);
       }
       if (SubProp2 != global::SocketProtocol.ESubProp.HealthSubProp) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(48);
         output.WriteEnum((int) SubProp2);
       }
       if (SubProp2Value != 0F) {
-        output.WriteRawTag(69);
+        output.WriteRawTag(61);
         output.WriteFloat(SubProp2Value);
       }
       if (SubProp3 != global::SocketProtocol.ESubProp.HealthSubProp) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(64);
         output.WriteEnum((int) SubProp3);
       }
       if (SubProp3Value != 0F) {
-        output.WriteRawTag(85);
+        output.WriteRawTag(77);
         output.WriteFloat(SubProp3Value);
       }
       if (Talent1 != global::SocketProtocol.EEquipmentTalent.Test1EquipmentTalent1) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(80);
         output.WriteEnum((int) Talent1);
       }
       if (Talent2 != global::SocketProtocol.EEquipmentTalent.Test1EquipmentTalent1) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(88);
         output.WriteEnum((int) Talent2);
       }
-      if (Using != global::SocketProtocol.EUsing.No) {
+      if (Use != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(Use);
+      }
+      if (Block != false) {
         output.WriteRawTag(104);
-        output.WriteEnum((int) Using);
+        output.WriteBool(Block);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -3093,9 +3076,6 @@ namespace SocketProtocol {
       }
       if (EquipmentSuit != global::SocketProtocol.EEquipmentSuit.Test1Suit) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) EquipmentSuit);
-      }
-      if (EquipmentQuality != global::SocketProtocol.EEquipmentQuality.Normal) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) EquipmentQuality);
       }
       if (SubProp1 != global::SocketProtocol.ESubProp.HealthSubProp) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SubProp1);
@@ -3121,8 +3101,11 @@ namespace SocketProtocol {
       if (Talent2 != global::SocketProtocol.EEquipmentTalent.Test1EquipmentTalent1) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Talent2);
       }
-      if (Using != global::SocketProtocol.EUsing.No) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Using);
+      if (Use != false) {
+        size += 1 + 1;
+      }
+      if (Block != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3143,9 +3126,6 @@ namespace SocketProtocol {
       }
       if (other.EquipmentSuit != global::SocketProtocol.EEquipmentSuit.Test1Suit) {
         EquipmentSuit = other.EquipmentSuit;
-      }
-      if (other.EquipmentQuality != global::SocketProtocol.EEquipmentQuality.Normal) {
-        EquipmentQuality = other.EquipmentQuality;
       }
       if (other.SubProp1 != global::SocketProtocol.ESubProp.HealthSubProp) {
         SubProp1 = other.SubProp1;
@@ -3171,8 +3151,11 @@ namespace SocketProtocol {
       if (other.Talent2 != global::SocketProtocol.EEquipmentTalent.Test1EquipmentTalent1) {
         Talent2 = other.Talent2;
       }
-      if (other.Using != global::SocketProtocol.EUsing.No) {
-        Using = other.Using;
+      if (other.Use != false) {
+        Use = other.Use;
+      }
+      if (other.Block != false) {
+        Block = other.Block;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -3198,43 +3181,43 @@ namespace SocketProtocol {
             break;
           }
           case 32: {
-            EquipmentQuality = (global::SocketProtocol.EEquipmentQuality) input.ReadEnum();
-            break;
-          }
-          case 40: {
             SubProp1 = (global::SocketProtocol.ESubProp) input.ReadEnum();
             break;
           }
-          case 53: {
+          case 45: {
             SubProp1Value = input.ReadFloat();
             break;
           }
-          case 56: {
+          case 48: {
             SubProp2 = (global::SocketProtocol.ESubProp) input.ReadEnum();
             break;
           }
-          case 69: {
+          case 61: {
             SubProp2Value = input.ReadFloat();
             break;
           }
-          case 72: {
+          case 64: {
             SubProp3 = (global::SocketProtocol.ESubProp) input.ReadEnum();
             break;
           }
-          case 85: {
+          case 77: {
             SubProp3Value = input.ReadFloat();
             break;
           }
-          case 88: {
+          case 80: {
             Talent1 = (global::SocketProtocol.EEquipmentTalent) input.ReadEnum();
             break;
           }
-          case 96: {
+          case 88: {
             Talent2 = (global::SocketProtocol.EEquipmentTalent) input.ReadEnum();
             break;
           }
+          case 96: {
+            Use = input.ReadBool();
+            break;
+          }
           case 104: {
-            Using = (global::SocketProtocol.EUsing) input.ReadEnum();
+            Block = input.ReadBool();
             break;
           }
         }
@@ -3284,7 +3267,8 @@ namespace SocketProtocol {
       subProp2Value_ = other.subProp2Value_;
       subProp3_ = other.subProp3_;
       subProp3Value_ = other.subProp3Value_;
-      using_ = other.using_;
+      use_ = other.use_;
+      block_ = other.block_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3469,14 +3453,25 @@ namespace SocketProtocol {
       }
     }
 
-    /// <summary>Field number for the "Using" field.</summary>
-    public const int UsingFieldNumber = 17;
-    private global::SocketProtocol.EUsing using_ = global::SocketProtocol.EUsing.No;
+    /// <summary>Field number for the "Use" field.</summary>
+    public const int UseFieldNumber = 17;
+    private bool use_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SocketProtocol.EUsing Using {
-      get { return using_; }
+    public bool Use {
+      get { return use_; }
       set {
-        using_ = value;
+        use_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Block" field.</summary>
+    public const int BlockFieldNumber = 18;
+    private bool block_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Block {
+      get { return block_; }
+      set {
+        block_ = value;
       }
     }
 
@@ -3509,7 +3504,8 @@ namespace SocketProtocol {
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(SubProp2Value, other.SubProp2Value)) return false;
       if (SubProp3 != other.SubProp3) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(SubProp3Value, other.SubProp3Value)) return false;
-      if (Using != other.Using) return false;
+      if (Use != other.Use) return false;
+      if (Block != other.Block) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3532,7 +3528,8 @@ namespace SocketProtocol {
       if (SubProp2Value != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SubProp2Value);
       if (SubProp3 != global::SocketProtocol.ESubProp.HealthSubProp) hash ^= SubProp3.GetHashCode();
       if (SubProp3Value != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SubProp3Value);
-      if (Using != global::SocketProtocol.EUsing.No) hash ^= Using.GetHashCode();
+      if (Use != false) hash ^= Use.GetHashCode();
+      if (Block != false) hash ^= Block.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3610,9 +3607,13 @@ namespace SocketProtocol {
         output.WriteRawTag(133, 1);
         output.WriteFloat(SubProp3Value);
       }
-      if (Using != global::SocketProtocol.EUsing.No) {
+      if (Use != false) {
         output.WriteRawTag(136, 1);
-        output.WriteEnum((int) Using);
+        output.WriteBool(Use);
+      }
+      if (Block != false) {
+        output.WriteRawTag(144, 1);
+        output.WriteBool(Block);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -3670,8 +3671,11 @@ namespace SocketProtocol {
       if (SubProp3Value != 0F) {
         size += 2 + 4;
       }
-      if (Using != global::SocketProtocol.EUsing.No) {
-        size += 2 + pb::CodedOutputStream.ComputeEnumSize((int) Using);
+      if (Use != false) {
+        size += 2 + 1;
+      }
+      if (Block != false) {
+        size += 2 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3732,8 +3736,11 @@ namespace SocketProtocol {
       if (other.SubProp3Value != 0F) {
         SubProp3Value = other.SubProp3Value;
       }
-      if (other.Using != global::SocketProtocol.EUsing.No) {
-        Using = other.Using;
+      if (other.Use != false) {
+        Use = other.Use;
+      }
+      if (other.Block != false) {
+        Block = other.Block;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -3811,7 +3818,11 @@ namespace SocketProtocol {
             break;
           }
           case 136: {
-            Using = (global::SocketProtocol.EUsing) input.ReadEnum();
+            Use = input.ReadBool();
+            break;
+          }
+          case 144: {
+            Block = input.ReadBool();
             break;
           }
         }

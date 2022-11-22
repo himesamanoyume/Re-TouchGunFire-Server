@@ -6,26 +6,23 @@ public enum EEquipmentName
     Test2Name
 }
 
-public enum EQuality
-{
-    Null,
-    Normal,
-    Good,
-    Excellent,
-    Artifact,
-    Epic
-}
-
 public enum EEquipmentUid
 {
-    aTest1Name = 30000,
-    bTest1Name,
-    cTest1Name,
-    dTest1Name,
-    eTest1Name,
-    aTest2Name,
-    bTest2Name,
-    cTest2Name,
-    dTest2Name,
-    eTest2Name,
+    Test1Name = 3000,
+    Test2Name,
+}
+
+public enum EEquipmentTalent
+{
+    Null,
+    Test1EquipmentTalent1,
+    Test1EquipmentTalent2,
+}
+
+public enum EEquipmentSuit
+{
+    Null,
+    Test1Suit,
+    Test2Suit,
+    Test3Suit
 }
