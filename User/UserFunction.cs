@@ -4,17 +4,20 @@ using System.Diagnostics;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using SocketProtocol;
-
+using Newtonsoft.Json;
 using SocketServer.Teammate;
+using Google.Protobuf.Collections;
+using SocketServer.Items;
 
 namespace SocketServer.User
 {
     internal class UserFunction
     {
-        public bool Reigster(MainPack mainPack, MySqlConnection mySqlConnection)
+        public bool Reigster(MainPack mainPack, MySqlConnection mySqlConnection, ItemController itemController)
         {
             string playerName = mainPack.RegisterPack.PlayerName;
             string account = mainPack.RegisterPack.Account;
@@ -22,7 +25,7 @@ namespace SocketServer.User
 
             try
             {
-                string sql = "insert into hime.user_info ( account, password, player_name) values ('" + account + "', '" + password + "','" + playerName + "')";
+                string sql = "insert into hime.user_info ( account, password, player_name, equipment_packs ,gun_packs) values ('" + account + "', '" + password + "','" + playerName + "','"+ itemController.InitEquipmentInfo()+"','"+itemController.InitPlayerGunInfo()+"')";
                 MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
                 cmd.ExecuteNonQuery();
                 return true;
@@ -82,11 +85,39 @@ namespace SocketServer.User
                 playerInfoPack.Diamond = mySqlDataReader.GetInt64(6);
                 playerInfoPack.Coin = mySqlDataReader.GetInt64(7);
                 //查装备
+                string equipmentPacksStr = mySqlDataReader.GetString(8);
+                if (equipmentPacksStr.Equals("") || equipmentPacksStr.Equals(null))
+                {
+
+                }
+                else
+                {
+                    List<EquipmentPack> tempList = new List<EquipmentPack>();
+                    tempList = JsonConvert.DeserializeObject<List<EquipmentPack>>(equipmentPacksStr);
+                    foreach (EquipmentPack item in tempList)
+                    {
+                        playerInfoPack.EquipmentPacks.Add(item);
+                    }
+                }
+                
 
 
                 //end
                 //查武器
+                string gunPacksStr = mySqlDataReader.GetString(9);
+                if (gunPacksStr.Equals("") || gunPacksStr.Equals(null))
+                {
 
+                }
+                else
+                {
+                    List<GunPack> tempList2 = new List<GunPack>();
+                    tempList2 = JsonConvert.DeserializeObject<List<GunPack>>(gunPacksStr);
+                    foreach (GunPack item in tempList2)
+                    {
+                        playerInfoPack.GunPacks.Add(item);
+                    }
+                }
                 //end
                 mySqlDataReader.Close();
                 mainPack.PlayerInfoPack = playerInfoPack;

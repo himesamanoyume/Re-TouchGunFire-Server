@@ -33,3 +33,4 @@ D:\Source\Test\SocketServer\SocketServer\obj\Debug\net6.0\refint\SocketServer.dl
 D:\Source\Test\SocketServer\SocketServer\obj\Debug\net6.0\SocketServer.pdb
 D:\Source\Test\SocketServer\SocketServer\obj\Debug\net6.0\SocketServer.genruntimeconfig.cache
 D:\Source\Test\SocketServer\SocketServer\obj\Debug\net6.0\ref\SocketServer.dll
+D:\Source\Test\SocketServer\SocketServer\bin\Debug\net6.0\Newtonsoft.Json.dll

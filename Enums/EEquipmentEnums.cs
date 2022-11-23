@@ -1,28 +1,78 @@
 ﻿
 public enum EEquipmentName
 {
-    Null,
-    Test1Name,
-    Test2Name
+    默认护甲,
+    默认头盔,
+    默认手套,
+    默认护膝,
+    默认护腿,
+    默认鞋,
+    测试1护甲,
+    测试1头盔,
+    测试1手套,
+    测试1护膝,
+    测试1护腿,
+    测试1鞋,
+    测试2护甲,
+    测试2头盔,
+    测试2手套,
+    测试2护膝,
+    测试2护腿,
+    测试2鞋,
 }
 
 public enum EEquipmentUid
 {
-    Test1Name = 3000,
-    Test2Name,
+    DefaultArmor = 3000,
+    DefaultHead,
+    DefaultHand,
+    DefaultKnee,
+    DefaultLeg,
+    DefaultBoots,
+    Test1Armor,
+    Test1Head,
+    Test1Hand,
+    Test1Knee,
+    Test1Leg,
+    Test1Boots,
+    Test2Armor,
+    Test2Head,
+    Test2Hand,
+    Test2Knee,
+    Test2Leg,
+    Test2Boots,
 }
 
 public enum EEquipmentTalent
 {
     Null,
-    Test1EquipmentTalent1,
-    Test1EquipmentTalent2,
+    测试1装备天赋1,
+    测试1装备天赋2,
 }
 
 public enum EEquipmentSuit
 {
+    无套装效果,
+    测试1套装,
+    测试2套装,
+    测试3套装
+}
+
+public enum ESubProp
+{
     Null,
-    Test1Suit,
-    Test2Suit,
-    Test3Suit
+    health,
+    baseDmgBonus,
+    cDmgRateBonus,
+    cDmgBonus,
+    headshotDmgBonus,
+    pRateBonus,
+    abeBonus,
+    arDmgBonus,
+    dmrDmgBonus,
+    smgDmgBonus,
+    sgDmgBonus,
+    srDmgBonus,
+    mgDmgBonus,
+    hgDmgBonus,
 }

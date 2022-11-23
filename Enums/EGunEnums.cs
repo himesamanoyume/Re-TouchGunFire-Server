@@ -27,8 +27,8 @@ public enum EGunCoreProp
 public enum EGunTalent
 {
     Null,
-    TestGunTalent1,
-    TestGunTalent2,
+    武器天赋1,
+    武器天赋2,
 }
 
 public enum EGunType

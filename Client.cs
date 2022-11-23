@@ -9,6 +9,7 @@ using SocketServer.User;
 using SocketServer.Utils;
 using SocketServer.Teammate;
 using SocketServer.Gaming;
+using SocketServer.Items;
 
 namespace SocketServer
 {
@@ -51,6 +52,7 @@ namespace SocketServer
         }
 
         public PlayerInfo PlayerInfo;
+        public ItemController ItemController;
         public delegate void Buff(PlayerInfo playerInfo);
         public Buff buff;
         public void ChangePlayerInfo()
@@ -71,7 +73,7 @@ namespace SocketServer
             connection = new MySqlConnection(connectStr);
             connection.Open();
             PlayerInfo = new PlayerInfo();
-
+            ItemController = new ItemController();
             this.udpServer = udpServer;
             this.server = server;
             tcpSocket = clientSocket;
@@ -105,7 +107,7 @@ namespace SocketServer
 
         public bool Register(MainPack mainPack)
         {
-            return GetUserFunction.Reigster(mainPack, connection);
+            return GetUserFunction.Reigster(mainPack, connection, ItemController);
         }
 
         public MainPack Login(MainPack mainPack)
@@ -123,8 +125,6 @@ namespace SocketServer
             PlayerInfo.PlayerName = mainPack.PlayerInfoPack.PlayerName;
             PlayerInfo.Level = mainPack.PlayerInfoPack.Level;
             PlayerInfo.CurrentExp = mainPack.PlayerInfoPack.CurrentExp;
-            PlayerInfo.Coin = mainPack.PlayerInfoPack.Coin;
-            PlayerInfo.Diamond = mainPack.PlayerInfoPack.Diamond;
             //查装备
 
             //end

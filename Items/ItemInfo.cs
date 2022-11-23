@@ -28,27 +28,27 @@ namespace SocketServer.Items
             this.itemController = itemController;
         }
 
-        EEquipmentSuit equipmentSuit;
-        EEquipmentName equipmentName;
-        ESubProp subProp1;
-        float subProp1Value;
-        ESubProp subProp2;
-        float subProp2Value;
-        ESubProp subProp3;
-        float subProp3Value;
-        EEquipmentTalent talent1;
-        EEquipmentTalent talent2;
+        string equipmentSuit;
+        string equipmentName;
+        string subProp1 = ESubProp.Null.ToString();
+        float subProp1Value = 0;
+        string subProp2 = ESubProp.Null.ToString();
+        float subProp2Value = 0;
+        string subProp3 = ESubProp.Null.ToString();
+        float subProp3Value = 0;
+        EEquipmentTalent talent1 = EEquipmentTalent.Null;
+        EEquipmentTalent talent2 = EEquipmentTalent.Null;
         EEquipmentUid uid;
-        bool use;
-        bool block;
+        bool use = false;
+        bool block = true;
 
-        public EEquipmentSuit EquipmentSuit { get => equipmentSuit; set => equipmentSuit = value; }
-        public EEquipmentName EquipmentName { get => equipmentName; set => equipmentName = value; }
-        public ESubProp SubProp1 { get => subProp1; set => subProp1 = value; }
+        public string EquipmentSuit { get => equipmentSuit; set => equipmentSuit = value; }
+        public string EquipmentName { get => equipmentName; set => equipmentName = value; }
+        public string SubProp1 { get => subProp1; set => subProp1 = value; }
         public float SubProp1Value { get => subProp1Value; set => subProp1Value = value; }
-        public ESubProp SubProp2 { get => subProp2; set => subProp2 = value; }
+        public string SubProp2 { get => subProp2; set => subProp2 = value; }
         public float SubProp2Value { get => subProp2Value; set => subProp2Value = value; }
-        public ESubProp SubProp3 { get => subProp3; set => subProp3 = value; }
+        public string SubProp3 { get => subProp3; set => subProp3 = value; }
         public float SubProp3Value { get => subProp3Value; set => subProp3Value = value; }
         public EEquipmentTalent Talent1 { get => talent1; set => talent1 = value; }
         public EEquipmentTalent Talent2 { get => talent2; set => talent2 = value; }
@@ -64,39 +64,37 @@ namespace SocketServer.Items
             this.itemController = itemController;
         }
 
-        EGunName gunName;
-        EGunType gunType;
-        float baseDMG;
-        float firingRate;
-        float currentFiringRatePerSecond;
-        int magazine;
-        int magazineCount;
-        EGunCoreProp coreProp;
-        float corePropValue;
-        ESubProp subProp1;
-        float subProp1Value;
-        ESubProp subProp2;
-        float subProp2Value;
-        ESubProp subProp3;
-        float subProp3Value;
+        string gunName;
+        string gunType;
+        float baseDMG = 0;
+        float firingRate = 0;
+        float currentFiringRatePerSecond = 0;
+        int magazine = 0;
+        string coreProp = EGunCoreProp.Null.ToString();
+        float corePropValue = 0;
+        string subProp1 = ESubProp.Null.ToString();
+        float subProp1Value = 0;
+        string subProp2 = ESubProp.Null.ToString();
+        float subProp2Value = 0;
+        string subProp3 = ESubProp.Null.ToString();
+        float subProp3Value = 0;
         EGunUid uid;
-        bool use;
-        bool block;
+        bool use = false;
+        bool block = true;
 
-        public EGunName GunName { get => gunName; set => gunName = value; }
-        public EGunType GunType { get => gunType; set => gunType = value; }
+        public string GunName { get => gunName; set => gunName = value; }
+        public string GunType { get => gunType; set => gunType = value; }
         public float BaseDMG { get => baseDMG; set => baseDMG = value; }
         public float FiringRate { get => firingRate; set => firingRate = value; }
         public float CurrentFiringRatePerSecond { get => currentFiringRatePerSecond; set => currentFiringRatePerSecond = value; }
         public int Magazine { get => magazine; set => magazine = value; }
-        public int MagazineCount { get => magazineCount; set => magazineCount = value; }
-        public EGunCoreProp CoreProp { get => coreProp; set => coreProp = value; }
+        public string CoreProp { get => coreProp; set => coreProp = value; }
         public float CorePropValue { get => corePropValue; set => corePropValue = value; }
-        public ESubProp SubProp1 { get => subProp1; set => subProp1 = value; }
+        public string SubProp1 { get => subProp1; set => subProp1 = value; }
         public float SubProp1Value { get => subProp1Value; set => subProp1Value = value; }
-        public ESubProp SubProp2 { get => subProp2; set => subProp2 = value; }
+        public string SubProp2 { get => subProp2; set => subProp2 = value; }
         public float SubProp2Value { get => subProp2Value; set => subProp2Value = value; }
-        public ESubProp SubProp3 { get => subProp3; set => subProp3 = value; }
+        public string SubProp3 { get => subProp3; set => subProp3 = value; }
         public float SubProp3Value { get => subProp3Value; set => subProp3Value = value; }
         public EGunUid Uid { get => uid; set => uid = value; }
         public bool Use { get => use; set => use = value; }

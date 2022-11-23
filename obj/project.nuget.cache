@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "FGlECOkt4pMJ0pxIXaffPyePVxmHnCjFcQYhnieCh5pL1v012PNs/f//uhZpwAStLFwQ+rtxQdv3wjp5erhXPw==",
+  "dgSpecHash": "brZW3Is+eI25kUxOgVa8JFttHmMZJqCAtsfxsQi7BTzbyLiJbuYUG23ONNinX6giG+KnXtCNEI4ePvPekS8wLQ==",
   "success": true,
   "projectFilePath": "D:\\Source\\Test\\SocketServer\\SocketServer\\SocketServer.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "C:\\Users\\28583\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\28583\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\28583\\.nuget\\packages\\mysql.data\\8.0.30\\mysql.data.8.0.30.nupkg.sha512",
+    "C:\\Users\\28583\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\28583\\.nuget\\packages\\portable.bouncycastle\\1.9.0\\portable.bouncycastle.1.9.0.nupkg.sha512",
     "C:\\Users\\28583\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\28583\\.nuget\\packages\\system.configuration.configurationmanager\\4.4.1\\system.configuration.configurationmanager.4.4.1.nupkg.sha512",
