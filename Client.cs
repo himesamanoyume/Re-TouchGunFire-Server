@@ -77,6 +77,7 @@ namespace SocketServer
             this.udpServer = udpServer;
             this.server = server;
             tcpSocket = clientSocket;
+
             StartReceive();
         }
 
@@ -120,7 +121,7 @@ namespace SocketServer
 
         public MainPack InitPlayerInfo(MainPack mainPack)
         {
-            mainPack = GetUserFunction.InitPlayerInfo(mainPack, connection);
+            mainPack = GetUserFunction.InitPlayerInfo(mainPack, connection, ItemController);
             PlayerInfo.Uid = mainPack.PlayerInfoPack.Uid;
             PlayerInfo.PlayerName = mainPack.PlayerInfoPack.PlayerName;
             PlayerInfo.Level = mainPack.PlayerInfoPack.Level;

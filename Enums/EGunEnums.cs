@@ -14,14 +14,14 @@ public enum EGunName
 public enum EGunCoreProp
 {
     Null,
-    AllDmgBonus,
-    ArDmgBonus,
-    DmrDmgBonus,
-    SmgDmgBonus,
-    SgDmgBonus,
-    SrDmgBonus,
-    MgDmgBonus,
-    HgDmgBonus
+    全武器伤害加成,
+    自动步枪伤害加成,
+    射手步枪伤害加成,
+    微型冲锋枪伤害加成,
+    霞弹枪伤害加成,
+    狙击步枪伤害加成,
+    轻机枪伤害加成,
+    手枪伤害加成
 }
 
 public enum EGunTalent

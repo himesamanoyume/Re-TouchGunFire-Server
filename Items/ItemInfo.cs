@@ -38,7 +38,7 @@ namespace SocketServer.Items
         float subProp3Value = 0;
         EEquipmentTalent talent1 = EEquipmentTalent.Null;
         EEquipmentTalent talent2 = EEquipmentTalent.Null;
-        EEquipmentUid uid;
+        EEquipmentUid equipmentId;
         bool use = false;
         bool block = true;
 
@@ -52,7 +52,7 @@ namespace SocketServer.Items
         public float SubProp3Value { get => subProp3Value; set => subProp3Value = value; }
         public EEquipmentTalent Talent1 { get => talent1; set => talent1 = value; }
         public EEquipmentTalent Talent2 { get => talent2; set => talent2 = value; }
-        public EEquipmentUid Uid { get => uid; set => uid = value; }
+        public EEquipmentUid EquipmentId { get => equipmentId; set => equipmentId = value; }
         public bool Use { get => use; set => use = value; }
         public bool Block { get => block; set => block = value; }
     }
@@ -78,7 +78,7 @@ namespace SocketServer.Items
         float subProp2Value = 0;
         string subProp3 = ESubProp.Null.ToString();
         float subProp3Value = 0;
-        EGunUid uid;
+        EGunUid gunId;
         bool use = false;
         bool block = true;
 
@@ -96,7 +96,7 @@ namespace SocketServer.Items
         public float SubProp2Value { get => subProp2Value; set => subProp2Value = value; }
         public string SubProp3 { get => subProp3; set => subProp3 = value; }
         public float SubProp3Value { get => subProp3Value; set => subProp3Value = value; }
-        public EGunUid Uid { get => uid; set => uid = value; }
+        public EGunUid GunId { get => gunId; set => gunId = value; }
         public bool Use { get => use; set => use = value; }
         public bool Block { get => block; set => block = value; }
     }

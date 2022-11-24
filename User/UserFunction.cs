@@ -68,7 +68,7 @@ namespace SocketServer.User
             }
         }
 
-        public MainPack InitPlayerInfo(MainPack mainPack, MySqlConnection mySqlConnection)
+        public MainPack InitPlayerInfo(MainPack mainPack, MySqlConnection mySqlConnection, ItemController itemController)
         {
             //登陆游戏时一次性查询完全部信息
             try
@@ -92,11 +92,11 @@ namespace SocketServer.User
                 }
                 else
                 {
-                    List<EquipmentPack> tempList = new List<EquipmentPack>();
-                    tempList = JsonConvert.DeserializeObject<List<EquipmentPack>>(equipmentPacksStr);
+                    List<EquipmentPack> tempList = JsonConvert.DeserializeObject<List<EquipmentPack>>(equipmentPacksStr);
                     foreach (EquipmentPack item in tempList)
                     {
                         playerInfoPack.EquipmentPacks.Add(item);
+                        itemController.UpdatePlayerEquipmentInfo(item);
                     }
                 }
                 
@@ -111,11 +111,23 @@ namespace SocketServer.User
                 }
                 else
                 {
-                    List<GunPack> tempList2 = new List<GunPack>();
-                    tempList2 = JsonConvert.DeserializeObject<List<GunPack>>(gunPacksStr);
+                    List<GunPack> tempList2 = JsonConvert.DeserializeObject<List<GunPack>>(gunPacksStr);
+                    
+                    //检查是否缺少新的武器json块
+                    //if (tempList2.Count < itemController.gunInfos.Count)
+                    //{
+                        
+                    //    int lastGunInfoUid = tempList2.Last().GunId;
+                    //    int gunInfosLastUid = itemController.gunInfos.Last().Key;
+                    //    for (int i = lastGunInfoUid + 1; i <= gunInfosLastUid; i++)
+                    //    {
+
+                    //    }
+                    //}
                     foreach (GunPack item in tempList2)
                     {
                         playerInfoPack.GunPacks.Add(item);
+                        itemController.UpdatePlayerGunInfo(item);
                     }
                 }
                 //end
