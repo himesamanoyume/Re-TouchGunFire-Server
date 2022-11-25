@@ -77,7 +77,8 @@ namespace SocketServer
             this.udpServer = udpServer;
             this.server = server;
             tcpSocket = clientSocket;
-
+            //ItemController.InitEquipmentInfo();
+            //ItemController.InitPlayerGunInfo();
             StartReceive();
         }
 

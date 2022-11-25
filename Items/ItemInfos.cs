@@ -53,6 +53,7 @@ namespace SocketServer.Items
                 SL7.FiringRate = 50f;
                 SL7.Magazine = 5;
                 SL7.CurrentFiringRatePerSecond = GetCurrentFiringRatePerSecond(SL7);
+                SL7.Price = 8050;
                 return SL7;
             });
 
@@ -66,6 +67,7 @@ namespace SocketServer.Items
                 MP5.FiringRate = 800f;
                 MP5.Magazine = 30;
                 MP5.CurrentFiringRatePerSecond = GetCurrentFiringRatePerSecond(MP5);
+                MP5.Price = 4500;
                 return MP5;
             });
 
@@ -79,6 +81,7 @@ namespace SocketServer.Items
                 M700.FiringRate = 30f;
                 M700.Magazine = 7;
                 M700.CurrentFiringRatePerSecond = GetCurrentFiringRatePerSecond(M700);
+                M700.Price = 10500;
                 return M700;
             });
 
@@ -92,6 +95,7 @@ namespace SocketServer.Items
                 M60.FiringRate = 500f;
                 M60.Magazine = 100;
                 M60.CurrentFiringRatePerSecond = GetCurrentFiringRatePerSecond(M60);
+                M60.Price = 3200;
                 return M60;
             });
 
@@ -233,7 +237,7 @@ namespace SocketServer.Items
         {
             //----------To Json
             string json = JsonConvert.SerializeObject(gunInfoList);
-            //Console.WriteLine(json);
+            Console.WriteLine(json);
             return json;
             //end
         }
@@ -241,7 +245,7 @@ namespace SocketServer.Items
         public string InitEquipmentInfo()
         {
             string json = JsonConvert.SerializeObject(equipmentInfoList);
-            //Console.WriteLine(json);
+            Console.WriteLine(json);
             return json;
         }
 

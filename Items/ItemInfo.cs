@@ -41,6 +41,7 @@ namespace SocketServer.Items
         EEquipmentUid equipmentId;
         bool use = false;
         bool block = true;
+        float price = 0;
 
         public string EquipmentSuit { get => equipmentSuit; set => equipmentSuit = value; }
         public string EquipmentName { get => equipmentName; set => equipmentName = value; }
@@ -55,6 +56,7 @@ namespace SocketServer.Items
         public EEquipmentUid EquipmentId { get => equipmentId; set => equipmentId = value; }
         public bool Use { get => use; set => use = value; }
         public bool Block { get => block; set => block = value; }
+        public float Price { get => price; set => price = value; }
     }
 
     public abstract class GunInfo : ItemInfo
@@ -81,6 +83,7 @@ namespace SocketServer.Items
         EGunUid gunId;
         bool use = false;
         bool block = true;
+        float price = 0;
 
         public string GunName { get => gunName; set => gunName = value; }
         public string GunType { get => gunType; set => gunType = value; }
@@ -99,6 +102,7 @@ namespace SocketServer.Items
         public EGunUid GunId { get => gunId; set => gunId = value; }
         public bool Use { get => use; set => use = value; }
         public bool Block { get => block; set => block = value; }
+        public float Price { get => price; set => price = value; }
     }
 
     public sealed class MainGunInfo : GunInfo
