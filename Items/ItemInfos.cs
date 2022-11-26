@@ -118,6 +118,7 @@ namespace SocketServer.Items
             initItemInfoDict.Add((int)EEquipmentUid.DefaultArmor, () =>
             {
                 ArmorInfo DefaultArmor = new ArmorInfo(this);
+                DefaultArmor.EquipmentType = EEquipmentType.Armor.ToString();
                 DefaultArmor.EquipmentId = EEquipmentUid.DefaultArmor;
                 DefaultArmor.EquipmentName = EEquipmentName.默认护甲.ToString();
                 DefaultArmor.EquipmentSuit = EEquipmentSuit.无套装效果.ToString();
@@ -130,6 +131,7 @@ namespace SocketServer.Items
             {
                 HeadInfo DefaultHead = new HeadInfo(this);
                 DefaultHead.EquipmentId = EEquipmentUid.DefaultHead;
+                DefaultHead.EquipmentType = EEquipmentType.Head.ToString();
                 DefaultHead.EquipmentName = EEquipmentName.默认头盔.ToString();
                 DefaultHead.EquipmentSuit = EEquipmentSuit.无套装效果.ToString();
                 DefaultHead.Use = true;
@@ -141,6 +143,7 @@ namespace SocketServer.Items
             {
                 HandInfo DefaultHand = new HandInfo(this);
                 DefaultHand.EquipmentId = EEquipmentUid.DefaultHand;
+                DefaultHand.EquipmentType = EEquipmentType.Hand.ToString();
                 DefaultHand.EquipmentName = EEquipmentName.默认手套.ToString();
                 DefaultHand.EquipmentSuit = EEquipmentSuit.无套装效果.ToString();
                 DefaultHand.Use = true;
@@ -152,6 +155,7 @@ namespace SocketServer.Items
             {
                 KneeInfo DefaultKnee = new KneeInfo(this);
                 DefaultKnee.EquipmentId = EEquipmentUid.DefaultKnee;
+                DefaultKnee.EquipmentType = EEquipmentType.Knee.ToString();
                 DefaultKnee.EquipmentName = EEquipmentName.默认护膝.ToString();
                 DefaultKnee.EquipmentSuit = EEquipmentSuit.无套装效果.ToString();
                 DefaultKnee.Use = true;
@@ -163,6 +167,7 @@ namespace SocketServer.Items
             {
                 LegInfo DefaultLeg = new LegInfo(this);
                 DefaultLeg.EquipmentId = EEquipmentUid.DefaultLeg;
+                DefaultLeg.EquipmentType = EEquipmentType.Leg.ToString();
                 DefaultLeg.EquipmentName = EEquipmentName.默认护腿.ToString();
                 DefaultLeg.EquipmentSuit = EEquipmentSuit.无套装效果.ToString();
                 DefaultLeg.Use = true;
@@ -174,6 +179,7 @@ namespace SocketServer.Items
             {
                 BootsInfo DefaultBoots = new BootsInfo(this);
                 DefaultBoots.EquipmentId = EEquipmentUid.DefaultBoots;
+                DefaultBoots.EquipmentType = EEquipmentType.Boots.ToString();
                 DefaultBoots.EquipmentName = EEquipmentName.默认鞋.ToString();
                 DefaultBoots.EquipmentSuit = EEquipmentSuit.无套装效果.ToString();
                 DefaultBoots.Use = true;

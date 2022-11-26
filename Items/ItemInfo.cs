@@ -30,6 +30,7 @@ namespace SocketServer.Items
 
         string equipmentSuit;
         string equipmentName;
+        string equipmentType;
         string subProp1 = ESubProp.Null.ToString();
         float subProp1Value = 0;
         string subProp2 = ESubProp.Null.ToString();
@@ -57,6 +58,7 @@ namespace SocketServer.Items
         public bool Use { get => use; set => use = value; }
         public bool Block { get => block; set => block = value; }
         public float Price { get => price; set => price = value; }
+        public string EquipmentType { get => equipmentType; set => equipmentType = value; }
     }
 
     public abstract class GunInfo : ItemInfo

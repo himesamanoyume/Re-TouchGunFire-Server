@@ -58,6 +58,16 @@ public enum EEquipmentSuit
     测试3套装
 }
 
+public enum EEquipmentType
+{
+    Armor,
+    Head,
+    Hand,
+    Leg,
+    Knee,
+    Boots
+}
+
 public enum ESubProp
 {
     Null,
