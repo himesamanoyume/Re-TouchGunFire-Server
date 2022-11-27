@@ -18,6 +18,8 @@ namespace SocketServer.Items
 
         public abstract void OnEquip();
         public abstract void OnRemove();
+        float price;
+        public float Price { get => price; set => price = value; }
     }
 
     public abstract class EquipmentInfo : ItemInfo
@@ -42,10 +44,9 @@ namespace SocketServer.Items
         EEquipmentUid equipmentId;
         bool use = false;
         bool block = true;
-        float price = 0;
 
         public string EquipmentSuit { get => equipmentSuit; set => equipmentSuit = value; }
-        public string EquipmentName { get => equipmentName; set => equipmentName = value; }
+
         public string SubProp1 { get => subProp1; set => subProp1 = value; }
         public float SubProp1Value { get => subProp1Value; set => subProp1Value = value; }
         public string SubProp2 { get => subProp2; set => subProp2 = value; }
@@ -57,8 +58,8 @@ namespace SocketServer.Items
         public EEquipmentUid EquipmentId { get => equipmentId; set => equipmentId = value; }
         public bool Use { get => use; set => use = value; }
         public bool Block { get => block; set => block = value; }
-        public float Price { get => price; set => price = value; }
         public string EquipmentType { get => equipmentType; set => equipmentType = value; }
+        public string EquipmentName { get => equipmentName; set => equipmentName = value; }
     }
 
     public abstract class GunInfo : ItemInfo
@@ -104,7 +105,7 @@ namespace SocketServer.Items
         public EGunUid GunId { get => gunId; set => gunId = value; }
         public bool Use { get => use; set => use = value; }
         public bool Block { get => block; set => block = value; }
-        public float Price { get => price; set => price = value; }
+        
     }
 
     public sealed class MainGunInfo : GunInfo
