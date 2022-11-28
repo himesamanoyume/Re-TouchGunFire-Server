@@ -127,12 +127,7 @@ namespace SocketServer
             PlayerInfo.PlayerName = mainPack.PlayerInfoPack.PlayerName;
             PlayerInfo.Level = mainPack.PlayerInfoPack.Level;
             PlayerInfo.CurrentExp = mainPack.PlayerInfoPack.CurrentExp;
-            //查装备
-
-            //end
-            //查武器
-
-            //end
+           
             return mainPack;
         }
 

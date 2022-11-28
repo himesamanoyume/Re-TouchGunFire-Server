@@ -113,6 +113,22 @@ namespace SocketServer.Items
                 M1911.Use = true;
                 return M1911;
             });
+
+            initItemInfoDict.Add((int)EGunUid.M4A1, () =>
+            {
+                MainGunInfo M4A1 = new MainGunInfo(this);
+                M4A1.GunId = EGunUid.M4A1;
+                M4A1.GunName = EGunName.M4A1.ToString();
+                M4A1.GunType = EGunType.AR.ToString();
+                M4A1.BaseDMG = 85f;
+                M4A1.FiringRate = 780f;
+                M4A1.Magazine = 30;
+                M4A1.CurrentFiringRatePerSecond = GetCurrentFiringRatePerSecond(M4A1);
+                M4A1.Price = 7700;
+                M4A1.Block = true;
+                M4A1.Use = false;
+                return M4A1;
+            });
             #endregion
             #region initEquipment
             initItemInfoDict.Add((int)EEquipmentUid.DefaultArmor, () =>
@@ -186,6 +202,72 @@ namespace SocketServer.Items
                 DefaultBoots.Block = false;
                 return DefaultBoots;
             });
+
+            initItemInfoDict.Add((int)EEquipmentUid.Test1Armor, () =>
+            {
+                ArmorInfo Test1Armor = new ArmorInfo(this);
+                Test1Armor.EquipmentId = EEquipmentUid.Test1Armor;
+                Test1Armor.EquipmentType = EEquipmentType.Armor.ToString();
+                Test1Armor.EquipmentName = EEquipmentName.测试1护甲.ToString();
+                Test1Armor.EquipmentSuit = EEquipmentSuit.测试1套装.ToString();
+                Test1Armor.Price = 3300;
+                return Test1Armor;
+            });
+
+            initItemInfoDict.Add((int)EEquipmentUid.Test1Head, () =>
+            {
+                HeadInfo Test1Head = new HeadInfo(this);
+                Test1Head.EquipmentId = EEquipmentUid.Test1Head;
+                Test1Head.EquipmentType = EEquipmentType.Head.ToString();
+                Test1Head.EquipmentName = EEquipmentName.测试1头盔.ToString();
+                Test1Head.EquipmentSuit = EEquipmentSuit.测试1套装.ToString();
+                Test1Head.Price = 3300;
+                return Test1Head;
+            });
+
+            initItemInfoDict.Add((int)EEquipmentUid.Test1Hand, () =>
+            {
+                HandInfo Test1Hand = new HandInfo(this);
+                Test1Hand.EquipmentId = EEquipmentUid.Test1Hand;
+                Test1Hand.EquipmentType = EEquipmentType.Hand.ToString();
+                Test1Hand.EquipmentName = EEquipmentName.测试1手套.ToString();
+                Test1Hand.EquipmentSuit = EEquipmentSuit.测试1套装.ToString();
+                Test1Hand.Price = 3300;
+                return Test1Hand;
+            });
+
+            initItemInfoDict.Add((int)EEquipmentUid.Test1Leg, () =>
+            {
+                LegInfo Test1Leg = new LegInfo(this);
+                Test1Leg.EquipmentId = EEquipmentUid.Test1Leg;
+                Test1Leg.EquipmentType = EEquipmentType.Hand.ToString();
+                Test1Leg.EquipmentName = EEquipmentName.测试1护腿.ToString();
+                Test1Leg.EquipmentSuit = EEquipmentSuit.测试1套装.ToString();
+                Test1Leg.Price = 3300;
+                return Test1Leg;
+            });
+
+            initItemInfoDict.Add((int)EEquipmentUid.Test1Knee, () =>
+            {
+                KneeInfo Test1Knee = new KneeInfo(this);
+                Test1Knee.EquipmentId = EEquipmentUid.Test1Knee;
+                Test1Knee.EquipmentType = EEquipmentType.Knee.ToString();
+                Test1Knee.EquipmentName = EEquipmentName.测试1护膝.ToString();
+                Test1Knee.EquipmentSuit = EEquipmentSuit.测试1套装.ToString();
+                Test1Knee.Price = 3300;
+                return Test1Knee;
+            });
+
+            initItemInfoDict.Add((int)EEquipmentUid.Test1Boots, () =>
+            {
+                BootsInfo Test1Boots = new BootsInfo(this);
+                Test1Boots.EquipmentId = EEquipmentUid.Test1Boots;
+                Test1Boots.EquipmentType = EEquipmentType.Boots.ToString();
+                Test1Boots.EquipmentName = EEquipmentName.测试1鞋.ToString();
+                Test1Boots.EquipmentSuit = EEquipmentSuit.测试1套装.ToString();
+                Test1Boots.Price = 3300;
+                return Test1Boots;
+            });
             #endregion
             #region addGun
             MainGunInfo AK47 = (MainGunInfo)initItemInfoDict[(int)EGunUid.AK47]();
@@ -211,6 +293,10 @@ namespace SocketServer.Items
             HandGunInfo M1911 = (HandGunInfo)initItemInfoDict[(int)EGunUid.M1911]();
             gunInfos.Add((int)M1911.GunId, M1911);
             gunInfoList.Add(M1911);
+
+            MainGunInfo M4A1 = (MainGunInfo)initItemInfoDict[(int)EGunUid.M4A1]();
+            gunInfos.Add((int)M4A1.GunId, M4A1);
+            gunInfoList.Add(M4A1);
             #endregion
             #region addEquipment
             ArmorInfo DefaultArmor = (ArmorInfo)initItemInfoDict[(int)EEquipmentUid.DefaultArmor]();
@@ -236,6 +322,30 @@ namespace SocketServer.Items
             BootsInfo DefaultBoots = (BootsInfo)initItemInfoDict[(int)EEquipmentUid.DefaultBoots]();
             equipmentInfos.Add((int)DefaultBoots.EquipmentId, DefaultBoots);
             equipmentInfoList.Add(DefaultBoots);
+
+            ArmorInfo Test1Armor = (ArmorInfo)initItemInfoDict[(int)EEquipmentUid.Test1Armor]();
+            equipmentInfos.Add((int)Test1Armor.EquipmentId, Test1Armor);
+            equipmentInfoList.Add(Test1Armor);
+
+            HeadInfo Test1Head = (HeadInfo)initItemInfoDict[(int)EEquipmentUid.Test1Head]();
+            equipmentInfos.Add((int)Test1Head.EquipmentId, Test1Head);
+            equipmentInfoList.Add(Test1Head);
+
+            HandInfo Test1Hand = (HandInfo)initItemInfoDict[(int)EEquipmentUid.Test1Hand]();
+            equipmentInfos.Add((int)Test1Hand.EquipmentId, Test1Hand);
+            equipmentInfoList.Add(Test1Hand);
+
+            KneeInfo Test1Knee = (KneeInfo)initItemInfoDict[(int)EEquipmentUid.Test1Knee]();
+            equipmentInfos.Add((int)Test1Knee.EquipmentId, Test1Knee);
+            equipmentInfoList.Add(Test1Knee);
+
+            LegInfo Test1Leg = (LegInfo)initItemInfoDict[(int)EEquipmentUid.Test1Leg]();
+            equipmentInfos.Add((int)Test1Leg.EquipmentId, Test1Leg);
+            equipmentInfoList.Add(Test1Leg);
+
+            BootsInfo Test1Boots = (BootsInfo)initItemInfoDict[(int)EEquipmentUid.Test1Boots]();
+            equipmentInfos.Add((int)Test1Boots.EquipmentId, Test1Boots);
+            equipmentInfoList.Add(Test1Boots);
             #endregion
         }
 
@@ -259,10 +369,11 @@ namespace SocketServer.Items
         {
             if (gunInfos.TryGetValue(gunPack.GunId,out GunInfo gunInfo))
             {
-                gunInfo.BaseDMG = gunPack.BaseDMG;
-                gunInfo.FiringRate = gunPack.FiringRate;
-                gunInfo.CurrentFiringRatePerSecond = gunPack.CurrentFiringRatePerSecond;
-                gunInfo.Magazine = gunPack.Magazine;
+                gunPack.BaseDMG = gunInfo.BaseDMG;
+                gunPack.FiringRate = gunInfo.FiringRate;
+                gunPack.CurrentFiringRatePerSecond = gunInfo.CurrentFiringRatePerSecond;
+                gunPack.Magazine = gunInfo.Magazine;
+                gunPack.Price = gunInfo.Price;
                 gunInfo.CoreProp = gunPack.CoreProp;
                 gunInfo.CorePropValue = gunPack.CorePropValue;
                 gunInfo.SubProp1 = gunPack.SubProp1;
@@ -288,6 +399,7 @@ namespace SocketServer.Items
                 equipmentInfo.SubProp3Value = equipmentPack.SubProp3Value;
                 equipmentInfo.Use = equipmentPack.Use;
                 equipmentInfo.Block = equipmentPack.Block;
+                equipmentPack.Price = equipmentInfo.Price;
             }
         }
 

@@ -8,7 +8,8 @@ public enum EGunName
     M700,
     M60,
     SPAS12,
-    M1911
+    M1911,
+    M4A1,
 }
 
 public enum EGunCoreProp
@@ -51,5 +52,6 @@ public enum EGunUid
     M60,
     SPAS12,
     M1911,
+    M4A1,
 
 }

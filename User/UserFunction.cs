@@ -84,8 +84,10 @@ namespace SocketServer.User
                 playerInfoPack.CurrentExp = mySqlDataReader.GetFloat(5);
                 playerInfoPack.Diamond = mySqlDataReader.GetInt64(6);
                 playerInfoPack.Coin = mySqlDataReader.GetInt64(7);
-                //查装备
                 string equipmentPacksStr = mySqlDataReader.GetString(8);
+                string gunPacksStr = mySqlDataReader.GetString(9);
+                //查装备
+                mySqlDataReader.Close();
                 if (equipmentPacksStr.Equals("") || equipmentPacksStr.Equals(null))
                 {
 
@@ -93,18 +95,36 @@ namespace SocketServer.User
                 else
                 {
                     List<EquipmentPack> tempList = JsonConvert.DeserializeObject<List<EquipmentPack>>(equipmentPacksStr);
+
+                    //检查是否缺少新的武器json块
+                    //if (tempList.Count < itemController.equipmentInfos.Count)
+                    //{
+
+                    //    int lastEquipmentInfoUid = tempList.Last().EquipmentId;
+                    //    int equipmentInfosLastUid = itemController.equipmentInfos.Last().Key;
+                    //    for (int i = lastEquipmentInfoUid + 1; i <= equipmentInfosLastUid; i++)
+                    //    {
+                    //        string tempJson = JsonConvert.SerializeObject(itemController.equipmentInfos[i]);
+                    //        EquipmentPack equipmentPack = JsonConvert.DeserializeObject<EquipmentPack>(tempJson);
+                    //        tempList.Add(equipmentPack);
+                    //    }
+                    //}
+
                     foreach (EquipmentPack item in tempList)
                     {
                         playerInfoPack.EquipmentPacks.Add(item);
                         itemController.UpdatePlayerEquipmentInfo(item);
                     }
+
+                    //string updateEquipmentJson = JsonConvert.SerializeObject(tempList);
+                    //sql = "update hime.user_info set equipment_packs = '" + updateEquipmentJson + "' where uid = " + mainPack.Uid;
+                    //cmd = new MySqlCommand(sql, mySqlConnection);
+                    //cmd.ExecuteNonQuery();
+                    //end
                 }
-                
-
-
                 //end
                 //查武器
-                string gunPacksStr = mySqlDataReader.GetString(9);
+
                 if (gunPacksStr.Equals("") || gunPacksStr.Equals(null))
                 {
 
@@ -112,16 +132,18 @@ namespace SocketServer.User
                 else
                 {
                     List<GunPack> tempList2 = JsonConvert.DeserializeObject<List<GunPack>>(gunPacksStr);
-                    
+
                     //检查是否缺少新的武器json块
                     //if (tempList2.Count < itemController.gunInfos.Count)
                     //{
-                        
+
                     //    int lastGunInfoUid = tempList2.Last().GunId;
                     //    int gunInfosLastUid = itemController.gunInfos.Last().Key;
                     //    for (int i = lastGunInfoUid + 1; i <= gunInfosLastUid; i++)
                     //    {
-
+                    //        string tempJson = JsonConvert.SerializeObject(itemController.gunInfos[i]);
+                    //        GunPack gunPack = JsonConvert.DeserializeObject<GunPack>(tempJson);
+                    //        tempList2.Add(gunPack);
                     //    }
                     //}
                     foreach (GunPack item in tempList2)
@@ -129,9 +151,14 @@ namespace SocketServer.User
                         playerInfoPack.GunPacks.Add(item);
                         itemController.UpdatePlayerGunInfo(item);
                     }
+                    //string updateGunJson = JsonConvert.SerializeObject(tempList2);
+                    //sql = "update hime.user_info set gun_packs = '" + updateGunJson +"' where uid = " + mainPack.Uid;
+                    //cmd = new MySqlCommand(sql, mySqlConnection);
+                    //cmd.ExecuteNonQuery();
+                    //end
                 }
                 //end
-                mySqlDataReader.Close();
+                //mySqlDataReader.Close();
                 mainPack.PlayerInfoPack = playerInfoPack;
                 return mainPack;
             }
