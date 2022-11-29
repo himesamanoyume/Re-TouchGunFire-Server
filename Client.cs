@@ -87,18 +87,62 @@ namespace SocketServer
             tcpSocket.BeginReceive(message.Buffer, message.StartIndex, message.Remsize, SocketFlags.None, ReceiveCallback, null);
         }
 
+        bool isFirst = true;
+        byte[] bigBuffer;
+        int progress = 0;
+
         void ReceiveCallback(IAsyncResult iar)
         {
             try
             {
                 if (tcpSocket == null || tcpSocket.Connected == false) return;
-                int length = tcpSocket.EndReceive(iar);
-                if (length == 0)
+                int bufferSize = tcpSocket.EndReceive(iar);
+                if (isFirst)
                 {
-                    Close();
-                    return;
+                    message.InitTotalDataSize();
                 }
-                message.ReadBuffer(length, HandleRequest);
+
+                if (message.TotalDataSize <= 1020)
+                {
+                    if (bufferSize == 0)
+                    {
+                        Close();
+                        return;
+                    }
+
+                    message.ReadBuffer(bufferSize, HandleRequest);
+                }
+                else
+                {
+                    // progress = dataSize + 4;
+                    if (isFirst)
+                    {
+                        isFirst = false;
+                        int dataSize = message.TotalDataSize;
+                        bigBuffer = new byte[dataSize + 4];
+                    }
+
+                    if (bufferSize > 0)
+                    {
+                        // bigBuffer.Concat(message.Buffer).ToArray();
+                        Array.Copy(message.Buffer, 0, bigBuffer, progress, bufferSize);
+                        progress += bufferSize;
+                        if (progress >= message.TotalDataSize + 4)
+                        {
+                            message.ReadBigBuffer(bigBuffer, HandleRequest);
+                            progress = 0;
+                            isFirst = true;
+                            bigBuffer = null;
+                        }
+                    }
+                }
+
+                //if (bufferSize == 0)
+                //{
+                //    Close();
+                //    return;
+                //}
+                //message.ReadBuffer(bufferSize, HandleRequest);
                 StartReceive();
             }
             catch
@@ -297,7 +341,8 @@ namespace SocketServer
             try
             {
                 Debug.Log(new StackFrame(true), "TCP发送至UID:"+ mainPack.Uid +",ActionCode:"+ mainPack.ActionCode);
-                tcpSocket.Send(Message.TcpPackData(mainPack));
+                byte[] temp = Message.TcpPackData(mainPack);
+                tcpSocket.Send(temp);
             }
             catch(Exception e)
             {
