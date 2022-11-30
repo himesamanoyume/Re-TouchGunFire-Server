@@ -10,6 +10,7 @@ using SocketServer.Utils;
 using SocketServer.Teammate;
 using SocketServer.Gaming;
 using SocketServer.Items;
+using Newtonsoft.Json;
 
 namespace SocketServer
 {
@@ -171,11 +172,23 @@ namespace SocketServer
             PlayerInfo.PlayerName = mainPack.PlayerInfoPack.PlayerName;
             PlayerInfo.Level = mainPack.PlayerInfoPack.Level;
             PlayerInfo.CurrentExp = mainPack.PlayerInfoPack.CurrentExp;
+            PlayerInfo.Diamond = mainPack.PlayerInfoPack.Diamond;
+            PlayerInfo.Coin = mainPack.PlayerInfoPack.Coin;
            
             return mainPack;
         }
 
-        public MainPack UpdatePlayerInfo(MainPack mainPack, Client client)
+        public int Shopping(MainPack mainPack)
+        {
+            return GetUserFunction.Shopping(mainPack, this, connection);
+        }
+
+        public bool GetItemInfo()
+        {
+            return GetUserFunction.GetItemInfo(this);
+        }
+
+        public MainPack UpdatePlayerInfo(MainPack mainPack)
         {
             return GetGameFunction.UpdatePlayerInfo(mainPack, this);
         }

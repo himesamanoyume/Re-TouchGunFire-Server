@@ -97,18 +97,18 @@ namespace SocketServer.User
                     List<EquipmentPack> tempList = JsonConvert.DeserializeObject<List<EquipmentPack>>(equipmentPacksStr);
 
                     //检查是否缺少新的武器json块
-                    //if (tempList.Count < itemController.equipmentInfos.Count)
-                    //{
+                    if (tempList.Count < itemController.equipmentInfos.Count)
+                    {
 
-                    //    int lastEquipmentInfoUid = tempList.Last().EquipmentId;
-                    //    int equipmentInfosLastUid = itemController.equipmentInfos.Last().Key;
-                    //    for (int i = lastEquipmentInfoUid + 1; i <= equipmentInfosLastUid; i++)
-                    //    {
-                    //        string tempJson = JsonConvert.SerializeObject(itemController.equipmentInfos[i]);
-                    //        EquipmentPack equipmentPack = JsonConvert.DeserializeObject<EquipmentPack>(tempJson);
-                    //        tempList.Add(equipmentPack);
-                    //    }
-                    //}
+                        int lastEquipmentInfoUid = tempList.Last().EquipmentId;
+                        int equipmentInfosLastUid = itemController.equipmentInfos.Last().Key;
+                        for (int i = lastEquipmentInfoUid + 1; i <= equipmentInfosLastUid; i++)
+                        {
+                            string tempJson = JsonConvert.SerializeObject(itemController.equipmentInfos[i]);
+                            EquipmentPack equipmentPack = JsonConvert.DeserializeObject<EquipmentPack>(tempJson);
+                            tempList.Add(equipmentPack);
+                        }
+                    }
 
                     foreach (EquipmentPack item in tempList)
                     {
@@ -116,10 +116,10 @@ namespace SocketServer.User
                         itemController.UpdatePlayerEquipmentInfo(item);
                     }
 
-                    //string updateEquipmentJson = JsonConvert.SerializeObject(tempList);
-                    //sql = "update hime.user_info set equipment_packs = '" + updateEquipmentJson + "' where uid = " + mainPack.Uid;
-                    //cmd = new MySqlCommand(sql, mySqlConnection);
-                    //cmd.ExecuteNonQuery();
+                    string updateEquipmentJson = JsonConvert.SerializeObject(tempList);
+                    sql = "update hime.user_info set equipment_packs = '" + updateEquipmentJson + "' where uid = " + mainPack.Uid;
+                    cmd = new MySqlCommand(sql, mySqlConnection);
+                    cmd.ExecuteNonQuery();
                     //end
                 }
                 //end
@@ -134,27 +134,27 @@ namespace SocketServer.User
                     List<GunPack> tempList2 = JsonConvert.DeserializeObject<List<GunPack>>(gunPacksStr);
 
                     //检查是否缺少新的武器json块
-                    //if (tempList2.Count < itemController.gunInfos.Count)
-                    //{
+                    if (tempList2.Count < itemController.gunInfos.Count)
+                    {
 
-                    //    int lastGunInfoUid = tempList2.Last().GunId;
-                    //    int gunInfosLastUid = itemController.gunInfos.Last().Key;
-                    //    for (int i = lastGunInfoUid + 1; i <= gunInfosLastUid; i++)
-                    //    {
-                    //        string tempJson = JsonConvert.SerializeObject(itemController.gunInfos[i]);
-                    //        GunPack gunPack = JsonConvert.DeserializeObject<GunPack>(tempJson);
-                    //        tempList2.Add(gunPack);
-                    //    }
-                    //}
+                        int lastGunInfoUid = tempList2.Last().GunId;
+                        int gunInfosLastUid = itemController.gunInfos.Last().Key;
+                        for (int i = lastGunInfoUid + 1; i <= gunInfosLastUid; i++)
+                        {
+                            string tempJson = JsonConvert.SerializeObject(itemController.gunInfos[i]);
+                            GunPack gunPack = JsonConvert.DeserializeObject<GunPack>(tempJson);
+                            tempList2.Add(gunPack);
+                        }
+                    }
                     foreach (GunPack item in tempList2)
                     {
                         playerInfoPack.GunPacks.Add(item);
                         itemController.UpdatePlayerGunInfo(item);
                     }
-                    //string updateGunJson = JsonConvert.SerializeObject(tempList2);
-                    //sql = "update hime.user_info set gun_packs = '" + updateGunJson +"' where uid = " + mainPack.Uid;
-                    //cmd = new MySqlCommand(sql, mySqlConnection);
-                    //cmd.ExecuteNonQuery();
+                    string updateGunJson = JsonConvert.SerializeObject(tempList2);
+                    sql = "update hime.user_info set gun_packs = '" + updateGunJson + "' where uid = " + mainPack.Uid;
+                    cmd = new MySqlCommand(sql, mySqlConnection);
+                    cmd.ExecuteNonQuery();
                     //end
                 }
                 //end
@@ -169,34 +169,156 @@ namespace SocketServer.User
             }
         }
 
-        //只查询玩家信息
-        public MainPack GetPlayerInfo(MainPack mainPack, MySqlConnection mySqlConnection)
+        public bool GetItemInfo(Client client)
         {
-            return null;
+            try
+            {
+                MainPack mainPack = new MainPack();
+                mainPack.Uid = client.PlayerInfo.Uid;
+                mainPack.ActionCode = ActionCode.GetItemInfo;
+                PlayerInfoPack playerInfoPack = new PlayerInfoPack();
+
+                List<GunInfo> tempGunInfos = new List<GunInfo>();
+                foreach (GunInfo item in client.ItemController.gunInfos.Values)
+                {
+                    tempGunInfos.Add(item);
+                }
+                List<EquipmentInfo> tempEquipmentInfos = new List<EquipmentInfo>();
+                foreach (EquipmentInfo item in client.ItemController.equipmentInfos.Values)
+                {
+                    tempEquipmentInfos.Add(item);
+                }
+                string tempGunJson = JsonConvert.SerializeObject(tempGunInfos);
+                string tempEquipmentJson = JsonConvert.SerializeObject(tempEquipmentInfos);
+                List<GunPack> tempGunPacks = JsonConvert.DeserializeObject<List<GunPack>>(tempGunJson);
+                List<EquipmentPack> tempEquipmentPacks = JsonConvert.DeserializeObject<List<EquipmentPack>>(tempEquipmentJson);
+                foreach (GunPack item in tempGunPacks)
+                {
+                    playerInfoPack.GunPacks.Add(item);
+                }
+                foreach (EquipmentPack item in tempEquipmentPacks)
+                {
+                    playerInfoPack.EquipmentPacks.Add(item);
+                }
+                mainPack.PlayerInfoPack = playerInfoPack;
+                mainPack.ReturnCode = ReturnCode.Success;
+                client.TcpSend(mainPack);
+                return true;
+            }
+            catch (Exception e)
+            {
+
+                Debug.Log(new StackFrame(true), e.Message);
+                MainPack mainPack = new MainPack();
+                mainPack.Uid = client.PlayerInfo.Uid;
+                mainPack.ActionCode = ActionCode.GetItemInfo;
+                mainPack.ReturnCode = ReturnCode.Fail;
+                client.TcpSend(mainPack);
+                return false;
+            }
+            
+
         }
 
-        //只更新装备信息
-        public MainPack UpdatePlayerEquipment(MainPack mainPack, MySqlConnection mySqlConnection)
+        public int Shopping(MainPack mainPack, Client client, MySqlConnection mySqlConnection)
         {
-            return null;
+            try
+            {
+                if (mainPack.Uid == mainPack.ShoppingPack.Uid)
+                {
+                    if (client.ItemController.gunInfos.TryGetValue(mainPack.ShoppingPack.ItemId, out GunInfo gunInfo))
+                    {
+                        int code = ShoppingFunc(mainPack, gunInfo, client);
+                        if (code == 1)
+                        {
+                            ShoppingSuccess(client, mySqlConnection);
+                        }
+                        return code;
+                    }
+                    else if (client.ItemController.equipmentInfos.TryGetValue(mainPack.ShoppingPack.ItemId, out EquipmentInfo equipmentInfo))
+                    {
+                        int code = ShoppingFunc(mainPack, equipmentInfo, client);
+                        if (code == 1)
+                        {
+                            ShoppingSuccess(client, mySqlConnection);
+                        }
+                        return code;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.Log(new StackFrame(true), e.Message);
+                return 0;
+            }
         }
 
-        //只查询装备信息
-        public MainPack GetPlayerEquipment(MainPack mainPack, MySqlConnection mySqlConnection)
+        int ShoppingFunc(MainPack mainPack, ItemInfo itemInfo, Client client)
         {
-            return null;
+            if (itemInfo.Block)
+            {
+                if (mainPack.ShoppingPack.IsDiamond == true)
+                {
+                    if (itemInfo.DiamondPrice <= client.PlayerInfo.Diamond && itemInfo.DiamondPrice == mainPack.ShoppingPack.DiamondPrice)
+                    {
+                        client.PlayerInfo.Diamond -= itemInfo.DiamondPrice;
+                        itemInfo.Block = false;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+                else
+                {
+                    if (itemInfo.Price <= client.PlayerInfo.Coin && itemInfo.Price == mainPack.ShoppingPack.Price)
+                    {
+                        client.PlayerInfo.Coin -= itemInfo.Price;
+                        itemInfo.Block = false;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+            else
+            {
+                return 2;//repeated
+            }
         }
 
-        //只更新武器信息
-        public MainPack UpdatePlayerGun(MainPack mainPack, MySqlConnection mySqlConnection)
+        void ShoppingSuccess(Client client, MySqlConnection mySqlConnection)
         {
-            return null;
-        }
-
-        //只查询武器信息
-        public MainPack GetPlayerGun(MainPack mainPack, MySqlConnection mySqlConnection)
-        {
-            return null;
+            string sql = "update hime.user_info set diamond = " + client.PlayerInfo.Diamond + " , coin = " + client.PlayerInfo.Coin + " where uid = " + client.PlayerInfo.Uid;
+            MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
+            cmd.ExecuteNonQuery();
+            List<GunInfo> tempGunInfos = new List<GunInfo>();
+            foreach (GunInfo item in client.ItemController.gunInfos.Values)
+            {
+                tempGunInfos.Add(item);
+            }
+            List<EquipmentInfo> tempEquipmentInfos = new List<EquipmentInfo>();
+            foreach (EquipmentInfo item in client.ItemController.equipmentInfos.Values)
+            {
+                tempEquipmentInfos.Add(item);
+            }
+            string tempGunJson = JsonConvert.SerializeObject(tempGunInfos);
+            string tempEquipmentJson = JsonConvert.SerializeObject(tempEquipmentInfos);
+            sql = "update hime.user_info set gun_packs = '" + tempGunJson + "' , equipment_packs = '" + tempEquipmentJson + "' where uid = " + client.PlayerInfo.Uid;
+            cmd = new MySqlCommand(sql, mySqlConnection);
+            cmd.ExecuteNonQuery();
+            client.GetItemInfo();
         }
 
         public MainPack GetPlayerBaseInfo(MainPack mainPack, MySqlConnection mySqlConnection)

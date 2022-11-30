@@ -30,7 +30,7 @@ namespace SocketServer.Gaming
 
         public MainPack UpdatePlayerInfo(Client client, MainPack mainPack)
         {
-            if (client.UpdatePlayerInfo(mainPack, client) != null)
+            if (client.UpdatePlayerInfo(mainPack) != null)
             {
                 //Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;

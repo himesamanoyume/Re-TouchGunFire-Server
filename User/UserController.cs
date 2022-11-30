@@ -72,6 +72,38 @@ namespace SocketServer.User
             return mainPack;
         }
 
+        public MainPack Shopping(Client client, MainPack mainPack)
+        {
+            int code = client.Shopping(mainPack);
+            if (code == 1)
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else if (code == 2)
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.RepeatedRequest.ToString());
+                mainPack.ReturnCode = ReturnCode.RepeatedRequest;
+            }else if(code == 0)
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            return mainPack;
+        }
+
+        public void GetItemInfo(Client client)
+        {
+            if (client.GetItemInfo())
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+            }
+            else
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+            }
+        }
+
         public MainPack GetPlayerBaseInfo(Client client, MainPack mainPack)
         {
             if (client.GetPlayerBaseInfo(mainPack) != null)

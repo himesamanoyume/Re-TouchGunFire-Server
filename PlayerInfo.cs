@@ -255,8 +255,8 @@ namespace SocketServer
                 hgDmgBonus = value;
             }
         }
-        long diamond;
-        public long Diamond
+        float diamond;
+        public float Diamond
         {
             get { return diamond; }
             set { diamond = value; }
@@ -294,6 +294,11 @@ namespace SocketServer
             hgDmgBonus = 0;
             diamond = 0;
             coin = 0;
+        }
+
+        public void UpdatePlayerInfoToDatabase()
+        {
+
         }
 
         //Buff List

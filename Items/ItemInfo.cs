@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,8 +19,39 @@ namespace SocketServer.Items
 
         public abstract void OnEquip();
         public abstract void OnRemove();
-        float price;
-        public float Price { get => price; set => price = value; }
+        long price;
+        public long Price { 
+            get => price;
+            set
+            {
+                price = value;
+                diamondPrice = price / 10000f;
+                unlockAllSubPropPrice = price / 4f;
+                refreshAllPropPrice = price / 10f;
+            }
+        }
+        float diamondPrice;
+        public float DiamondPrice { get => diamondPrice; set => diamondPrice = value; }
+        float unlockAllSubPropPrice;
+        public float UnlockAllSubPropPrice { get => unlockAllSubPropPrice; set => unlockAllSubPropPrice = value; }
+        public float RefreshAllPropPrice { get => refreshAllPropPrice; set => refreshAllPropPrice = value; }
+        float refreshAllPropPrice;
+        public bool Use { get => use; set => use = value; }
+        public bool Block { get => block; set => block = value; }
+        bool use = false;
+        bool block = true;
+        string subProp1 = ESubProp.Null.ToString();
+        float subProp1Value = 0;
+        string subProp2 = ESubProp.Null.ToString();
+        float subProp2Value = 0;
+        string subProp3 = ESubProp.Null.ToString();
+        float subProp3Value = 0;
+        public string SubProp1 { get => subProp1; set => subProp1 = value; }
+        public float SubProp1Value { get => subProp1Value; set => subProp1Value = value; }
+        public string SubProp2 { get => subProp2; set => subProp2 = value; }
+        public float SubProp2Value { get => subProp2Value; set => subProp2Value = value; }
+        public string SubProp3 { get => subProp3; set => subProp3 = value; }
+        public float SubProp3Value { get => subProp3Value; set => subProp3Value = value; }
     }
 
     public abstract class EquipmentInfo : ItemInfo
@@ -33,31 +65,18 @@ namespace SocketServer.Items
         string equipmentSuit;
         string equipmentName;
         string equipmentType;
-        string subProp1 = ESubProp.Null.ToString();
-        float subProp1Value = 0;
-        string subProp2 = ESubProp.Null.ToString();
-        float subProp2Value = 0;
-        string subProp3 = ESubProp.Null.ToString();
-        float subProp3Value = 0;
+        
         EEquipmentTalent talent1 = EEquipmentTalent.Null;
         EEquipmentTalent talent2 = EEquipmentTalent.Null;
         EEquipmentUid equipmentId;
-        bool use = false;
-        bool block = true;
+        
 
         public string EquipmentSuit { get => equipmentSuit; set => equipmentSuit = value; }
-
-        public string SubProp1 { get => subProp1; set => subProp1 = value; }
-        public float SubProp1Value { get => subProp1Value; set => subProp1Value = value; }
-        public string SubProp2 { get => subProp2; set => subProp2 = value; }
-        public float SubProp2Value { get => subProp2Value; set => subProp2Value = value; }
-        public string SubProp3 { get => subProp3; set => subProp3 = value; }
-        public float SubProp3Value { get => subProp3Value; set => subProp3Value = value; }
+        
         public EEquipmentTalent Talent1 { get => talent1; set => talent1 = value; }
         public EEquipmentTalent Talent2 { get => talent2; set => talent2 = value; }
         public EEquipmentUid EquipmentId { get => equipmentId; set => equipmentId = value; }
-        public bool Use { get => use; set => use = value; }
-        public bool Block { get => block; set => block = value; }
+        
         public string EquipmentType { get => equipmentType; set => equipmentType = value; }
         public string EquipmentName { get => equipmentName; set => equipmentName = value; }
     }
@@ -77,16 +96,7 @@ namespace SocketServer.Items
         int magazine = 0;
         string coreProp = EGunCoreProp.Null.ToString();
         float corePropValue = 0;
-        string subProp1 = ESubProp.Null.ToString();
-        float subProp1Value = 0;
-        string subProp2 = ESubProp.Null.ToString();
-        float subProp2Value = 0;
-        string subProp3 = ESubProp.Null.ToString();
-        float subProp3Value = 0;
         EGunUid gunId;
-        bool use = false;
-        bool block = true;
-        float price = 0;
 
         public string GunName { get => gunName; set => gunName = value; }
         public string GunType { get => gunType; set => gunType = value; }
@@ -96,15 +106,9 @@ namespace SocketServer.Items
         public int Magazine { get => magazine; set => magazine = value; }
         public string CoreProp { get => coreProp; set => coreProp = value; }
         public float CorePropValue { get => corePropValue; set => corePropValue = value; }
-        public string SubProp1 { get => subProp1; set => subProp1 = value; }
-        public float SubProp1Value { get => subProp1Value; set => subProp1Value = value; }
-        public string SubProp2 { get => subProp2; set => subProp2 = value; }
-        public float SubProp2Value { get => subProp2Value; set => subProp2Value = value; }
-        public string SubProp3 { get => subProp3; set => subProp3 = value; }
-        public float SubProp3Value { get => subProp3Value; set => subProp3Value = value; }
+        
         public EGunUid GunId { get => gunId; set => gunId = value; }
-        public bool Use { get => use; set => use = value; }
-        public bool Block { get => block; set => block = value; }
+
         
     }
 

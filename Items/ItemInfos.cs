@@ -25,6 +25,8 @@ namespace SocketServer.Items
         //end
         Dictionary<int, Func<ItemInfo>> initItemInfoDict = new Dictionary<int, Func<ItemInfo>>();
 
+        
+
         public ItemController()
         {
             #region initGun

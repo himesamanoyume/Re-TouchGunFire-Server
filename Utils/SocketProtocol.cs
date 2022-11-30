@@ -24,7 +24,7 @@ namespace SocketProtocol {
     static SocketProtocolReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChRTb2NrZXRQcm90b2NvbC5wcm90bxIOU29ja2V0UHJvdG9jb2wiswQKCE1h",
+            "ChRTb2NrZXRQcm90b2NvbC5wcm90bxIOU29ja2V0UHJvdG9jb2wi5wQKCE1h",
             "aW5QYWNrEjAKC1JlcXVlc3RDb2RlGAEgASgOMhsuU29ja2V0UHJvdG9jb2wu",
             "UmVxdWVzdENvZGUSLgoKQWN0aW9uQ29kZRgCIAEoDjIaLlNvY2tldFByb3Rv",
             "Y29sLkFjdGlvbkNvZGUSLgoKUmV0dXJuQ29kZRgDIAEoDjIaLlNvY2tldFBy",
@@ -37,107 +37,112 @@ namespace SocketProtocol {
             "Y2tldFByb3RvY29sLlNlbmRSZXF1ZXN0RnJpZW5kUGFjaxJCChRVcGRhdGVQ",
             "bGF5ZXJJbmZvUGFjaxgKIAMoCzIkLlNvY2tldFByb3RvY29sLlVwZGF0ZVBs",
             "YXllckluZm9QYWNrEjIKDFRlYW1tYXRlUGFjaxgLIAEoCzIcLlNvY2tldFBy",
-            "b3RvY29sLlRlYW1tYXRlUGFjayJFCgxSZWdpc3RlclBhY2sSDwoHQWNjb3Vu",
-            "dBgBIAEoCRIQCghQYXNzd29yZBgCIAEoCRISCgpQbGF5ZXJOYW1lGAMgASgJ",
-            "IjsKCUxvZ2luUGFjaxILCgNVaWQYASABKAUSDwoHQWNjb3VudBgCIAEoCRIQ",
-            "CghQYXNzd29yZBgDIAEoCSKhAgoOUGxheWVySW5mb1BhY2sSCwoDVWlkGAEg",
-            "ASgFEhIKClBsYXllck5hbWUYAiABKAkSDQoFTGV2ZWwYAyABKAUSEgoKQ3Vy",
-            "cmVudEV4cBgEIAEoAhI1Cg5FcXVpcG1lbnRQYWNrcxgFIAMoCzIdLlNvY2tl",
-            "dFByb3RvY29sLkVxdWlwbWVudFBhY2sSKQoIR3VuUGFja3MYBiADKAsyFy5T",
-            "b2NrZXRQcm90b2NvbC5HdW5QYWNrEhAKCElzT25saW5lGAcgASgIEg4KBklz",
-            "VGVhbRgIIAEoCBIUCgxJc1RlYW1NYXN0ZXIYCSABKAgSEgoKSXNTYW1lVGVh",
-            "bRgKIAEoCBIPCgdEaWFtb25kGAsgASgDEgwKBENvaW4YDCABKAMi5wEKDFRl",
-            "YW1tYXRlUGFjaxIRCglTZW5kZXJVaWQYASABKAUSEQoJVGFyZ2V0VWlkGAIg",
-            "ASgFEg0KBVN0YXRlGAMgASgFEhUKDVRlYW1NYXN0ZXJVaWQYBCABKAUSGgoS",
-            "TGVhdmVUZWFtUGxheWVyVWlkGAUgASgFEhkKEUpvaW5UZWFtUGxheWVyVWlk",
-            "GAYgASgFEhUKDVRlYW1tYXRlQ291bnQYByABKAUSEgoKU2VuZGVyTmFtZRgI",
-            "IAEoCRISCgpUYXJnZXROYW1lGAkgASgJEhUKDVRlYW1NZW1iZXJVaWQYCiAB",
-            "KAUi8wMKFFVwZGF0ZVBsYXllckluZm9QYWNrEgsKA1VpZBgBIAEoBRISCgpQ",
-            "bGF5ZXJOYW1lGAIgASgJEg0KBUxldmVsGAMgASgFEhEKCU1heEhlYWx0aBgE",
-            "IAEoAhIQCghNYXhBcm1vchgFIAEoAhIVCg1DdXJyZW50SGVhbHRoGAYgASgC",
-            "EhQKDEN1cnJlbnRBcm1vchgHIAEoAhIOCgZNYXhFeHAYCCABKAISEgoKQ3Vy",
-            "cmVudEV4cBgJIAEoAhIYChBCYXNlRG1nUmF0ZUJvbnVzGAogASgCEhgKEENy",
-            "aXREbWdSYXRlQm9udXMYCyABKAISGAoQSGVhZHNob3REbWdCb251cxgMIAEo",
-            "AhISCgpQUmF0ZUJvbnVzGA0gASgCEhAKCEFiZUJvbnVzGA4gASgCEhIKCkFy",
-            "RG1nQm9udXMYDyABKAISEwoLRG1yRG1nQm9udXMYECABKAISEwoLU21nRG1n",
-            "Qm9udXMYESABKAISEgoKU2dEbWdCb251cxgSIAEoAhISCgpNZ0RtZ0JvbnVz",
-            "GBMgASgCEhIKClNyRG1nQm9udXMYFCABKAISEgoKSGdEbWdCb251cxgVIAEo",
-            "AhIPCgdEaWFtb25kGBYgASgDEgwKBENvaW4YFyABKAMSFAoMQ3JpdERtZ0Jv",
-            "bnVzGBggASgCIvUCCg1FcXVpcG1lbnRQYWNrEhMKC0VxdWlwbWVudElkGAEg",
-            "ASgFEhUKDUVxdWlwbWVudE5hbWUYAiABKAkSFQoNRXF1aXBtZW50U3VpdBgD",
-            "IAEoCRIQCghTdWJQcm9wMRgEIAEoCRIVCg1TdWJQcm9wMVZhbHVlGAUgASgC",
-            "EhAKCFN1YlByb3AyGAYgASgJEhUKDVN1YlByb3AyVmFsdWUYByABKAISEAoI",
-            "U3ViUHJvcDMYCCABKAkSFQoNU3ViUHJvcDNWYWx1ZRgJIAEoAhIxCgdUYWxl",
-            "bnQxGAogASgOMiAuU29ja2V0UHJvdG9jb2wuRUVxdWlwbWVudFRhbGVudBIx",
-            "CgdUYWxlbnQyGAsgASgOMiAuU29ja2V0UHJvdG9jb2wuRUVxdWlwbWVudFRh",
-            "bGVudBILCgNVc2UYDCABKAgSDQoFQmxvY2sYDSABKAgSDQoFUHJpY2UYDiAB",
-            "KAISFQoNRXF1aXBtZW50VHlwZRgPIAEoCSLkAgoHR3VuUGFjaxINCgVHdW5J",
-            "ZBgBIAEoBRIPCgdHdW5OYW1lGAIgASgJEg8KB0d1blR5cGUYAyABKAkSDwoH",
-            "QmFzZURNRxgEIAEoAhISCgpGaXJpbmdSYXRlGAUgASgCEiIKGkN1cnJlbnRG",
-            "aXJpbmdSYXRlUGVyU2Vjb25kGAYgASgCEhAKCE1hZ2F6aW5lGAcgASgFEhAK",
-            "CENvcmVQcm9wGAggASgJEhUKDUNvcmVQcm9wVmFsdWUYCSABKAISEAoIU3Vi",
-            "UHJvcDEYCiABKAkSFQoNU3ViUHJvcDFWYWx1ZRgLIAEoAhIQCghTdWJQcm9w",
-            "MhgMIAEoCRIVCg1TdWJQcm9wMlZhbHVlGA0gASgCEhAKCFN1YlByb3AzGA4g",
-            "ASgJEhUKDVN1YlByb3AzVmFsdWUYDyABKAISCwoDVXNlGBAgASgIEg0KBUJs",
-            "b2NrGBEgASgIEg0KBVByaWNlGBIgASgCIkcKC0ZyaWVuZHNQYWNrEhIKClBs",
-            "YXllcjFVaWQYASABKAUSEgoKUGxheWVyMlVpZBgCIAEoBRIQCghJc0ZyaWVu",
-            "ZBgDIAEoBSIwChVTZW5kUmVxdWVzdEZyaWVuZFBhY2sSFwoPVGFyZ2V0UGxh",
-            "eWVyVWlkGAEgASgFKkoKC1JlcXVlc3RDb2RlEg8KC1JlcXVlc3ROb25lEAAS",
-            "CAoEVXNlchABEgoKBkdhbWluZxACEggKBFRlYW0QAxIKCgZGcmllbmQQBCrd",
-            "BQoKQWN0aW9uQ29kZRIOCgpBY3Rpb25Ob25lEAASDAoIUmVnaXN0ZXIQARIJ",
-            "CgVMb2dpbhACEhIKDkluaXRQbGF5ZXJJbmZvEAMSEgoOQWNjZXB0Sm9pblRl",
-            "YW0QBBIOCgpVcGRhdGVUZWFtEAUSDQoJTGVhdmVUZWFtEAYSFAoQVXBkYXRl",
-            "UGxheWVySW5mbxAHEg8KC1JlYWR5QXR0YWNrEAgSDwoLU3RhcnRBdHRhY2sQ",
-            "CRINCglOZXh0RW5lbXkQChINCglFbmRBdHRhY2sQCxIMCghFeGl0R2FtZRAM",
-            "Eg0KCUJyZWFrVGVhbRANEg4KCkdldEZyaWVuZHMQDhIUChBHZXRGcmllbmRS",
-            "ZXF1ZXN0EA8SEAoMU2VhcmNoRnJpZW5kEBASFQoRU2VuZFJlcXVlc3RGcmll",
-            "bmQQERIVChFHZXRQbGF5ZXJCYXNlSW5mbxASEhAKDERlbGV0ZUZyaWVuZBAT",
-            "EhcKE0FjY2VwdEZyaWVuZFJlcXVlc3QQFBIXChNSZWZ1c2VGcmllbmRSZXF1",
-            "ZXN0EBUSDgoKSW52aXRlVGVhbRAWEg8KC0ludml0ZWRUZWFtEBcSEwoPSm9p",
-            "blRlYW1SZXF1ZXN0EBgSFAoQQWNjZXB0SW52aXRlVGVhbRAZEhYKEkFjY2Vw",
-            "dGVkSW52aXRlVGVhbRAaEhQKEFJlZnVzZUludml0ZVRlYW0QGxIVChFSZWZ1",
-            "c2VkSW52aXRlVGVhbRAcEg4KCktpY2tQbGF5ZXIQHRIQCgxHZXRUZWFtbWF0",
-            "ZXMQHhIVChFUZWFtbWF0ZUxlYXZlVGVhbRAfEhIKDlBsYXllckpvaW5UZWFt",
-            "ECASFAoQQWNjZXB0ZWRKb2luVGVhbRAhEhIKDlJlZnVzZUpvaW5UZWFtECIS",
-            "EwoPUmVmdXNlZEpvaW5UZWFtECMSEwoPQmVLaWNrZWRPdXRUZWFtECQSEAoM",
-            "UmVnZW5lcmF0aW9uECUqZQoKUmV0dXJuQ29kZRIOCgpSZXR1cm5Ob25lEAAS",
-            "CwoHU3VjY2VzcxABEggKBEZhaWwQAhITCg9SZXBlYXRlZFJlcXVlc3QQAxIM",
-            "CghOb3RGb3VuZBAEEg0KCUluY29ycmVjdBAFKlAKCEVHdW5OYW1lEggKBEFL",
-            "NDcQABIHCgNTTDcQARIHCgNNUDUQAhIICgRNNzAwEAMSBwoDTTYwEAQSCgoG",
-            "U1BBUzEyEAUSCQoFTTE5MTEQBipECghFR3VuVHlwZRIGCgJBUhAAEgcKA0RN",
-            "UhABEgcKA1NNRxACEgYKAlNHEAMSBgoCU1IQBBIGCgJNRxAFEgYKAkhHEAYq",
-            "5wEKDEVHdW5Db3JlUHJvcBIXChNhbGxEbWdCb251c0NvcmVQcm9wEAASFgoS",
-            "YXJEbWdCb251c0NvcmVQcm9wEAESFwoTZG1yRG1nQm9udXNDb3JlUHJvcBAC",
-            "EhcKE3NtZ0RtZ0JvbnVzQ29yZVByb3AQAxIWChJzZ0RtZ0JvbnVzQ29yZVBy",
-            "b3AQBBIWChJzckRtZ0JvbnVzQ29yZVByb3AQBRIWChJtZ0RtZ0JvbnVzQ29y",
-            "ZVByb3AQBhIWChJoZ0RtZ0JvbnVzQ29yZVByb3AQBxIUChBFR3VuQ29yZVBy",
-            "b3BOdWxsEAgqSwoORUVxdWlwbWVudFN1aXQSDQoJVGVzdDFTdWl0EAASDQoJ",
-            "VGVzdDJTdWl0EAESDQoJVGVzdDNTdWl0EAISDAoITnVsbFN1aXQQAyqtAgoO",
-            "RUVxdWlwbWVudE5hbWUSEAoMRGVmYXVsdEFybW9yEAASDwoLRGVmYXVsdEhl",
-            "YWQQARIPCgtEZWZhdWx0SGFuZBACEg8KC0RlZmF1bHRLbmVlEAMSDgoKRGVm",
-            "YXVsdExlZxAEEhAKDERlZmF1bHRCb290cxAFEg4KClRlc3QxQXJtb3IQBhIN",
-            "CglUZXN0MUhlYWQQBxINCglUZXN0MUhhbmQQCBINCglUZXN0MUtuZWUQCRIM",
-            "CghUZXN0MUxlZxAKEg4KClRlc3QxQm9vdHMQCxIOCgpUZXN0MkFybW9yEAwS",
-            "DQoJVGVzdDJIZWFkEA0SDQoJVGVzdDJIYW5kEA4SDQoJVGVzdDJLbmVlEA8S",
-            "DAoIVGVzdDJMZWcQEBIOCgpUZXN0MkJvb3RzEBEq5AIKCEVTdWJQcm9wEhEK",
-            "DWhlYWx0aFN1YlByb3AQABIXChNiYXNlRG1nQm9udXNTdWJQcm9wEAESGAoU",
-            "Y0RtZ1JhdGVCb251c1N1YlByb3AQAhIUChBjRG1nQm9udXNTdWJQcm9wEAMS",
-            "GwoXaGVhZHNob3REbWdCb251c1N1YlByb3AQBBIVChFwUmF0ZUJvbnVzU3Vi",
-            "UHJvcBAFEhMKD2FiZUJvbnVzU3ViUHJvcBAGEhUKEWFyRG1nQm9udXNTdWJQ",
-            "cm9wEAcSFgoSZG1yRG1nQm9udXNTdWJQcm9wEAgSFgoSc21nRG1nQm9udXNT",
-            "dWJQcm9wEAkSFQoRc2dEbWdCb251c1N1YlByb3AQChIVChFzckRtZ0JvbnVz",
-            "U3ViUHJvcBALEhUKEW1nRG1nQm9udXNTdWJQcm9wEAwSFQoRaGdEbWdCb251",
-            "c1N1YlByb3AQDRIQCgxFU3ViUHJvcE51bGwQDipIChBFRXF1aXBtZW50VGFs",
-            "ZW50EhkKFVRlc3QxRXF1aXBtZW50VGFsZW50MRAAEhkKFVRlc3QxRXF1aXBt",
-            "ZW50VGFsZW50MhABYgZwcm90bzM="));
+            "b3RvY29sLlRlYW1tYXRlUGFjaxIyCgxTaG9wcGluZ1BhY2sYDCABKAsyHC5T",
+            "b2NrZXRQcm90b2NvbC5TaG9wcGluZ1BhY2siRQoMUmVnaXN0ZXJQYWNrEg8K",
+            "B0FjY291bnQYASABKAkSEAoIUGFzc3dvcmQYAiABKAkSEgoKUGxheWVyTmFt",
+            "ZRgDIAEoCSI7CglMb2dpblBhY2sSCwoDVWlkGAEgASgFEg8KB0FjY291bnQY",
+            "AiABKAkSEAoIUGFzc3dvcmQYAyABKAkioQIKDlBsYXllckluZm9QYWNrEgsK",
+            "A1VpZBgBIAEoBRISCgpQbGF5ZXJOYW1lGAIgASgJEg0KBUxldmVsGAMgASgF",
+            "EhIKCkN1cnJlbnRFeHAYBCABKAISNQoORXF1aXBtZW50UGFja3MYBSADKAsy",
+            "HS5Tb2NrZXRQcm90b2NvbC5FcXVpcG1lbnRQYWNrEikKCEd1blBhY2tzGAYg",
+            "AygLMhcuU29ja2V0UHJvdG9jb2wuR3VuUGFjaxIQCghJc09ubGluZRgHIAEo",
+            "CBIOCgZJc1RlYW0YCCABKAgSFAoMSXNUZWFtTWFzdGVyGAkgASgIEhIKCklz",
+            "U2FtZVRlYW0YCiABKAgSDwoHRGlhbW9uZBgLIAEoAhIMCgRDb2luGAwgASgD",
+            "IucBCgxUZWFtbWF0ZVBhY2sSEQoJU2VuZGVyVWlkGAEgASgFEhEKCVRhcmdl",
+            "dFVpZBgCIAEoBRINCgVTdGF0ZRgDIAEoBRIVCg1UZWFtTWFzdGVyVWlkGAQg",
+            "ASgFEhoKEkxlYXZlVGVhbVBsYXllclVpZBgFIAEoBRIZChFKb2luVGVhbVBs",
+            "YXllclVpZBgGIAEoBRIVCg1UZWFtbWF0ZUNvdW50GAcgASgFEhIKClNlbmRl",
+            "ck5hbWUYCCABKAkSEgoKVGFyZ2V0TmFtZRgJIAEoCRIVCg1UZWFtTWVtYmVy",
+            "VWlkGAogASgFImMKDFNob3BwaW5nUGFjaxILCgNVaWQYASABKAUSEQoJSXNE",
+            "aWFtb25kGAIgASgIEg0KBVByaWNlGAMgASgDEg4KBkl0ZW1JZBgEIAEoBRIU",
+            "CgxEaWFtb25kUHJpY2UYBSABKAIi8wMKFFVwZGF0ZVBsYXllckluZm9QYWNr",
+            "EgsKA1VpZBgBIAEoBRISCgpQbGF5ZXJOYW1lGAIgASgJEg0KBUxldmVsGAMg",
+            "ASgFEhEKCU1heEhlYWx0aBgEIAEoAhIQCghNYXhBcm1vchgFIAEoAhIVCg1D",
+            "dXJyZW50SGVhbHRoGAYgASgCEhQKDEN1cnJlbnRBcm1vchgHIAEoAhIOCgZN",
+            "YXhFeHAYCCABKAISEgoKQ3VycmVudEV4cBgJIAEoAhIYChBCYXNlRG1nUmF0",
+            "ZUJvbnVzGAogASgCEhgKEENyaXREbWdSYXRlQm9udXMYCyABKAISGAoQSGVh",
+            "ZHNob3REbWdCb251cxgMIAEoAhISCgpQUmF0ZUJvbnVzGA0gASgCEhAKCEFi",
+            "ZUJvbnVzGA4gASgCEhIKCkFyRG1nQm9udXMYDyABKAISEwoLRG1yRG1nQm9u",
+            "dXMYECABKAISEwoLU21nRG1nQm9udXMYESABKAISEgoKU2dEbWdCb251cxgS",
+            "IAEoAhISCgpNZ0RtZ0JvbnVzGBMgASgCEhIKClNyRG1nQm9udXMYFCABKAIS",
+            "EgoKSGdEbWdCb251cxgVIAEoAhIPCgdEaWFtb25kGBYgASgCEgwKBENvaW4Y",
+            "FyABKAMSFAoMQ3JpdERtZ0JvbnVzGBggASgCIvUCCg1FcXVpcG1lbnRQYWNr",
+            "EhMKC0VxdWlwbWVudElkGAEgASgFEhUKDUVxdWlwbWVudE5hbWUYAiABKAkS",
+            "FQoNRXF1aXBtZW50U3VpdBgDIAEoCRIQCghTdWJQcm9wMRgEIAEoCRIVCg1T",
+            "dWJQcm9wMVZhbHVlGAUgASgCEhAKCFN1YlByb3AyGAYgASgJEhUKDVN1YlBy",
+            "b3AyVmFsdWUYByABKAISEAoIU3ViUHJvcDMYCCABKAkSFQoNU3ViUHJvcDNW",
+            "YWx1ZRgJIAEoAhIxCgdUYWxlbnQxGAogASgOMiAuU29ja2V0UHJvdG9jb2wu",
+            "RUVxdWlwbWVudFRhbGVudBIxCgdUYWxlbnQyGAsgASgOMiAuU29ja2V0UHJv",
+            "dG9jb2wuRUVxdWlwbWVudFRhbGVudBILCgNVc2UYDCABKAgSDQoFQmxvY2sY",
+            "DSABKAgSDQoFUHJpY2UYDiABKAMSFQoNRXF1aXBtZW50VHlwZRgPIAEoCSLk",
+            "AgoHR3VuUGFjaxINCgVHdW5JZBgBIAEoBRIPCgdHdW5OYW1lGAIgASgJEg8K",
+            "B0d1blR5cGUYAyABKAkSDwoHQmFzZURNRxgEIAEoAhISCgpGaXJpbmdSYXRl",
+            "GAUgASgCEiIKGkN1cnJlbnRGaXJpbmdSYXRlUGVyU2Vjb25kGAYgASgCEhAK",
+            "CE1hZ2F6aW5lGAcgASgFEhAKCENvcmVQcm9wGAggASgJEhUKDUNvcmVQcm9w",
+            "VmFsdWUYCSABKAISEAoIU3ViUHJvcDEYCiABKAkSFQoNU3ViUHJvcDFWYWx1",
+            "ZRgLIAEoAhIQCghTdWJQcm9wMhgMIAEoCRIVCg1TdWJQcm9wMlZhbHVlGA0g",
+            "ASgCEhAKCFN1YlByb3AzGA4gASgJEhUKDVN1YlByb3AzVmFsdWUYDyABKAIS",
+            "CwoDVXNlGBAgASgIEg0KBUJsb2NrGBEgASgIEg0KBVByaWNlGBIgASgDIkcK",
+            "C0ZyaWVuZHNQYWNrEhIKClBsYXllcjFVaWQYASABKAUSEgoKUGxheWVyMlVp",
+            "ZBgCIAEoBRIQCghJc0ZyaWVuZBgDIAEoBSIwChVTZW5kUmVxdWVzdEZyaWVu",
+            "ZFBhY2sSFwoPVGFyZ2V0UGxheWVyVWlkGAEgASgFKkoKC1JlcXVlc3RDb2Rl",
+            "Eg8KC1JlcXVlc3ROb25lEAASCAoEVXNlchABEgoKBkdhbWluZxACEggKBFRl",
+            "YW0QAxIKCgZGcmllbmQQBCr8BQoKQWN0aW9uQ29kZRIOCgpBY3Rpb25Ob25l",
+            "EAASDAoIUmVnaXN0ZXIQARIJCgVMb2dpbhACEhIKDkluaXRQbGF5ZXJJbmZv",
+            "EAMSEgoOQWNjZXB0Sm9pblRlYW0QBBIOCgpVcGRhdGVUZWFtEAUSDQoJTGVh",
+            "dmVUZWFtEAYSFAoQVXBkYXRlUGxheWVySW5mbxAHEg8KC1JlYWR5QXR0YWNr",
+            "EAgSDwoLU3RhcnRBdHRhY2sQCRINCglOZXh0RW5lbXkQChINCglFbmRBdHRh",
+            "Y2sQCxIMCghFeGl0R2FtZRAMEg0KCUJyZWFrVGVhbRANEg4KCkdldEZyaWVu",
+            "ZHMQDhIUChBHZXRGcmllbmRSZXF1ZXN0EA8SEAoMU2VhcmNoRnJpZW5kEBAS",
+            "FQoRU2VuZFJlcXVlc3RGcmllbmQQERIVChFHZXRQbGF5ZXJCYXNlSW5mbxAS",
+            "EhAKDERlbGV0ZUZyaWVuZBATEhcKE0FjY2VwdEZyaWVuZFJlcXVlc3QQFBIX",
+            "ChNSZWZ1c2VGcmllbmRSZXF1ZXN0EBUSDgoKSW52aXRlVGVhbRAWEg8KC0lu",
+            "dml0ZWRUZWFtEBcSEwoPSm9pblRlYW1SZXF1ZXN0EBgSFAoQQWNjZXB0SW52",
+            "aXRlVGVhbRAZEhYKEkFjY2VwdGVkSW52aXRlVGVhbRAaEhQKEFJlZnVzZUlu",
+            "dml0ZVRlYW0QGxIVChFSZWZ1c2VkSW52aXRlVGVhbRAcEg4KCktpY2tQbGF5",
+            "ZXIQHRIQCgxHZXRUZWFtbWF0ZXMQHhIVChFUZWFtbWF0ZUxlYXZlVGVhbRAf",
+            "EhIKDlBsYXllckpvaW5UZWFtECASFAoQQWNjZXB0ZWRKb2luVGVhbRAhEhIK",
+            "DlJlZnVzZUpvaW5UZWFtECISEwoPUmVmdXNlZEpvaW5UZWFtECMSEwoPQmVL",
+            "aWNrZWRPdXRUZWFtECQSEAoMUmVnZW5lcmF0aW9uECUSDAoIU2hvcHBpbmcQ",
+            "JhIPCgtHZXRJdGVtSW5mbxAnKmUKClJldHVybkNvZGUSDgoKUmV0dXJuTm9u",
+            "ZRAAEgsKB1N1Y2Nlc3MQARIICgRGYWlsEAISEwoPUmVwZWF0ZWRSZXF1ZXN0",
+            "EAMSDAoITm90Rm91bmQQBBINCglJbmNvcnJlY3QQBSpQCghFR3VuTmFtZRII",
+            "CgRBSzQ3EAASBwoDU0w3EAESBwoDTVA1EAISCAoETTcwMBADEgcKA002MBAE",
+            "EgoKBlNQQVMxMhAFEgkKBU0xOTExEAYqRAoIRUd1blR5cGUSBgoCQVIQABIH",
+            "CgNETVIQARIHCgNTTUcQAhIGCgJTRxADEgYKAlNSEAQSBgoCTUcQBRIGCgJI",
+            "RxAGKucBCgxFR3VuQ29yZVByb3ASFwoTYWxsRG1nQm9udXNDb3JlUHJvcBAA",
+            "EhYKEmFyRG1nQm9udXNDb3JlUHJvcBABEhcKE2RtckRtZ0JvbnVzQ29yZVBy",
+            "b3AQAhIXChNzbWdEbWdCb251c0NvcmVQcm9wEAMSFgoSc2dEbWdCb251c0Nv",
+            "cmVQcm9wEAQSFgoSc3JEbWdCb251c0NvcmVQcm9wEAUSFgoSbWdEbWdCb251",
+            "c0NvcmVQcm9wEAYSFgoSaGdEbWdCb251c0NvcmVQcm9wEAcSFAoQRUd1bkNv",
+            "cmVQcm9wTnVsbBAIKksKDkVFcXVpcG1lbnRTdWl0Eg0KCVRlc3QxU3VpdBAA",
+            "Eg0KCVRlc3QyU3VpdBABEg0KCVRlc3QzU3VpdBACEgwKCE51bGxTdWl0EAMq",
+            "rQIKDkVFcXVpcG1lbnROYW1lEhAKDERlZmF1bHRBcm1vchAAEg8KC0RlZmF1",
+            "bHRIZWFkEAESDwoLRGVmYXVsdEhhbmQQAhIPCgtEZWZhdWx0S25lZRADEg4K",
+            "CkRlZmF1bHRMZWcQBBIQCgxEZWZhdWx0Qm9vdHMQBRIOCgpUZXN0MUFybW9y",
+            "EAYSDQoJVGVzdDFIZWFkEAcSDQoJVGVzdDFIYW5kEAgSDQoJVGVzdDFLbmVl",
+            "EAkSDAoIVGVzdDFMZWcQChIOCgpUZXN0MUJvb3RzEAsSDgoKVGVzdDJBcm1v",
+            "chAMEg0KCVRlc3QySGVhZBANEg0KCVRlc3QySGFuZBAOEg0KCVRlc3QyS25l",
+            "ZRAPEgwKCFRlc3QyTGVnEBASDgoKVGVzdDJCb290cxARKuQCCghFU3ViUHJv",
+            "cBIRCg1oZWFsdGhTdWJQcm9wEAASFwoTYmFzZURtZ0JvbnVzU3ViUHJvcBAB",
+            "EhgKFGNEbWdSYXRlQm9udXNTdWJQcm9wEAISFAoQY0RtZ0JvbnVzU3ViUHJv",
+            "cBADEhsKF2hlYWRzaG90RG1nQm9udXNTdWJQcm9wEAQSFQoRcFJhdGVCb251",
+            "c1N1YlByb3AQBRITCg9hYmVCb251c1N1YlByb3AQBhIVChFhckRtZ0JvbnVz",
+            "U3ViUHJvcBAHEhYKEmRtckRtZ0JvbnVzU3ViUHJvcBAIEhYKEnNtZ0RtZ0Jv",
+            "bnVzU3ViUHJvcBAJEhUKEXNnRG1nQm9udXNTdWJQcm9wEAoSFQoRc3JEbWdC",
+            "b251c1N1YlByb3AQCxIVChFtZ0RtZ0JvbnVzU3ViUHJvcBAMEhUKEWhnRG1n",
+            "Qm9udXNTdWJQcm9wEA0SEAoMRVN1YlByb3BOdWxsEA4qSAoQRUVxdWlwbWVu",
+            "dFRhbGVudBIZChVUZXN0MUVxdWlwbWVudFRhbGVudDEQABIZChVUZXN0MUVx",
+            "dWlwbWVudFRhbGVudDIQAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SocketProtocol.RequestCode), typeof(global::SocketProtocol.ActionCode), typeof(global::SocketProtocol.ReturnCode), typeof(global::SocketProtocol.EGunName), typeof(global::SocketProtocol.EGunType), typeof(global::SocketProtocol.EGunCoreProp), typeof(global::SocketProtocol.EEquipmentSuit), typeof(global::SocketProtocol.EEquipmentName), typeof(global::SocketProtocol.ESubProp), typeof(global::SocketProtocol.EEquipmentTalent), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.MainPack), global::SocketProtocol.MainPack.Parser, new[]{ "RequestCode", "ActionCode", "ReturnCode", "RegisterPack", "LoginPack", "Uid", "PlayerInfoPack", "FriendsPack", "SendRequestFriendPack", "UpdatePlayerInfoPack", "TeammatePack" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.MainPack), global::SocketProtocol.MainPack.Parser, new[]{ "RequestCode", "ActionCode", "ReturnCode", "RegisterPack", "LoginPack", "Uid", "PlayerInfoPack", "FriendsPack", "SendRequestFriendPack", "UpdatePlayerInfoPack", "TeammatePack", "ShoppingPack" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.RegisterPack), global::SocketProtocol.RegisterPack.Parser, new[]{ "Account", "Password", "PlayerName" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.LoginPack), global::SocketProtocol.LoginPack.Parser, new[]{ "Uid", "Account", "Password" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.PlayerInfoPack), global::SocketProtocol.PlayerInfoPack.Parser, new[]{ "Uid", "PlayerName", "Level", "CurrentExp", "EquipmentPacks", "GunPacks", "IsOnline", "IsTeam", "IsTeamMaster", "IsSameTeam", "Diamond", "Coin" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.TeammatePack), global::SocketProtocol.TeammatePack.Parser, new[]{ "SenderUid", "TargetUid", "State", "TeamMasterUid", "LeaveTeamPlayerUid", "JoinTeamPlayerUid", "TeammateCount", "SenderName", "TargetName", "TeamMemberUid" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.ShoppingPack), global::SocketProtocol.ShoppingPack.Parser, new[]{ "Uid", "IsDiamond", "Price", "ItemId", "DiamondPrice" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.UpdatePlayerInfoPack), global::SocketProtocol.UpdatePlayerInfoPack.Parser, new[]{ "Uid", "PlayerName", "Level", "MaxHealth", "MaxArmor", "CurrentHealth", "CurrentArmor", "MaxExp", "CurrentExp", "BaseDmgRateBonus", "CritDmgRateBonus", "HeadshotDmgBonus", "PRateBonus", "AbeBonus", "ArDmgBonus", "DmrDmgBonus", "SmgDmgBonus", "SgDmgBonus", "MgDmgBonus", "SrDmgBonus", "HgDmgBonus", "Diamond", "Coin", "CritDmgBonus" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.EquipmentPack), global::SocketProtocol.EquipmentPack.Parser, new[]{ "EquipmentId", "EquipmentName", "EquipmentSuit", "SubProp1", "SubProp1Value", "SubProp2", "SubProp2Value", "SubProp3", "SubProp3Value", "Talent1", "Talent2", "Use", "Block", "Price", "EquipmentType" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.GunPack), global::SocketProtocol.GunPack.Parser, new[]{ "GunId", "GunName", "GunType", "BaseDMG", "FiringRate", "CurrentFiringRatePerSecond", "Magazine", "CoreProp", "CorePropValue", "SubProp1", "SubProp1Value", "SubProp2", "SubProp2Value", "SubProp3", "SubProp3Value", "Use", "Block", "Price" }, null, null, null, null),
@@ -307,6 +312,14 @@ namespace SocketProtocol {
     ///生命恢复
     /// </summary>
     [pbr::OriginalName("Regeneration")] Regeneration = 37,
+    /// <summary>
+    ///购买物品
+    /// </summary>
+    [pbr::OriginalName("Shopping")] Shopping = 38,
+    /// <summary>
+    ///单独获取物品信息
+    /// </summary>
+    [pbr::OriginalName("GetItemInfo")] GetItemInfo = 39,
   }
 
   public enum ReturnCode {
@@ -440,6 +453,7 @@ namespace SocketProtocol {
       sendRequestFriendPack_ = other.sendRequestFriendPack_ != null ? other.sendRequestFriendPack_.Clone() : null;
       updatePlayerInfoPack_ = other.updatePlayerInfoPack_.Clone();
       teammatePack_ = other.teammatePack_ != null ? other.teammatePack_.Clone() : null;
+      shoppingPack_ = other.shoppingPack_ != null ? other.shoppingPack_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -567,6 +581,17 @@ namespace SocketProtocol {
       }
     }
 
+    /// <summary>Field number for the "ShoppingPack" field.</summary>
+    public const int ShoppingPackFieldNumber = 12;
+    private global::SocketProtocol.ShoppingPack shoppingPack_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::SocketProtocol.ShoppingPack ShoppingPack {
+      get { return shoppingPack_; }
+      set {
+        shoppingPack_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as MainPack);
@@ -591,6 +616,7 @@ namespace SocketProtocol {
       if (!object.Equals(SendRequestFriendPack, other.SendRequestFriendPack)) return false;
       if(!updatePlayerInfoPack_.Equals(other.updatePlayerInfoPack_)) return false;
       if (!object.Equals(TeammatePack, other.TeammatePack)) return false;
+      if (!object.Equals(ShoppingPack, other.ShoppingPack)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -608,6 +634,7 @@ namespace SocketProtocol {
       if (sendRequestFriendPack_ != null) hash ^= SendRequestFriendPack.GetHashCode();
       hash ^= updatePlayerInfoPack_.GetHashCode();
       if (teammatePack_ != null) hash ^= TeammatePack.GetHashCode();
+      if (shoppingPack_ != null) hash ^= ShoppingPack.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -659,6 +686,10 @@ namespace SocketProtocol {
         output.WriteRawTag(90);
         output.WriteMessage(TeammatePack);
       }
+      if (shoppingPack_ != null) {
+        output.WriteRawTag(98);
+        output.WriteMessage(ShoppingPack);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -695,6 +726,9 @@ namespace SocketProtocol {
       size += updatePlayerInfoPack_.CalculateSize(_repeated_updatePlayerInfoPack_codec);
       if (teammatePack_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(TeammatePack);
+      }
+      if (shoppingPack_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ShoppingPack);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -750,6 +784,12 @@ namespace SocketProtocol {
           TeammatePack = new global::SocketProtocol.TeammatePack();
         }
         TeammatePack.MergeFrom(other.TeammatePack);
+      }
+      if (other.shoppingPack_ != null) {
+        if (shoppingPack_ == null) {
+          ShoppingPack = new global::SocketProtocol.ShoppingPack();
+        }
+        ShoppingPack.MergeFrom(other.ShoppingPack);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -819,6 +859,13 @@ namespace SocketProtocol {
               TeammatePack = new global::SocketProtocol.TeammatePack();
             }
             input.ReadMessage(TeammatePack);
+            break;
+          }
+          case 98: {
+            if (shoppingPack_ == null) {
+              ShoppingPack = new global::SocketProtocol.ShoppingPack();
+            }
+            input.ReadMessage(ShoppingPack);
             break;
           }
         }
@@ -1352,9 +1399,9 @@ namespace SocketProtocol {
 
     /// <summary>Field number for the "Diamond" field.</summary>
     public const int DiamondFieldNumber = 11;
-    private long diamond_;
+    private float diamond_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long Diamond {
+    public float Diamond {
       get { return diamond_; }
       set {
         diamond_ = value;
@@ -1395,7 +1442,7 @@ namespace SocketProtocol {
       if (IsTeam != other.IsTeam) return false;
       if (IsTeamMaster != other.IsTeamMaster) return false;
       if (IsSameTeam != other.IsSameTeam) return false;
-      if (Diamond != other.Diamond) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Diamond, other.Diamond)) return false;
       if (Coin != other.Coin) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1413,7 +1460,7 @@ namespace SocketProtocol {
       if (IsTeam != false) hash ^= IsTeam.GetHashCode();
       if (IsTeamMaster != false) hash ^= IsTeamMaster.GetHashCode();
       if (IsSameTeam != false) hash ^= IsSameTeam.GetHashCode();
-      if (Diamond != 0L) hash ^= Diamond.GetHashCode();
+      if (Diamond != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Diamond);
       if (Coin != 0L) hash ^= Coin.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1462,9 +1509,9 @@ namespace SocketProtocol {
         output.WriteRawTag(80);
         output.WriteBool(IsSameTeam);
       }
-      if (Diamond != 0L) {
-        output.WriteRawTag(88);
-        output.WriteInt64(Diamond);
+      if (Diamond != 0F) {
+        output.WriteRawTag(93);
+        output.WriteFloat(Diamond);
       }
       if (Coin != 0L) {
         output.WriteRawTag(96);
@@ -1504,8 +1551,8 @@ namespace SocketProtocol {
       if (IsSameTeam != false) {
         size += 1 + 1;
       }
-      if (Diamond != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Diamond);
+      if (Diamond != 0F) {
+        size += 1 + 4;
       }
       if (Coin != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Coin);
@@ -1547,7 +1594,7 @@ namespace SocketProtocol {
       if (other.IsSameTeam != false) {
         IsSameTeam = other.IsSameTeam;
       }
-      if (other.Diamond != 0L) {
+      if (other.Diamond != 0F) {
         Diamond = other.Diamond;
       }
       if (other.Coin != 0L) {
@@ -1604,8 +1651,8 @@ namespace SocketProtocol {
             IsSameTeam = input.ReadBool();
             break;
           }
-          case 88: {
-            Diamond = input.ReadInt64();
+          case 93: {
+            Diamond = input.ReadFloat();
             break;
           }
           case 96: {
@@ -2002,6 +2049,247 @@ namespace SocketProtocol {
 
   }
 
+  public sealed partial class ShoppingPack : pb::IMessage<ShoppingPack> {
+    private static readonly pb::MessageParser<ShoppingPack> _parser = new pb::MessageParser<ShoppingPack>(() => new ShoppingPack());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ShoppingPack> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::SocketProtocol.SocketProtocolReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ShoppingPack() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ShoppingPack(ShoppingPack other) : this() {
+      uid_ = other.uid_;
+      isDiamond_ = other.isDiamond_;
+      price_ = other.price_;
+      itemId_ = other.itemId_;
+      diamondPrice_ = other.diamondPrice_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ShoppingPack Clone() {
+      return new ShoppingPack(this);
+    }
+
+    /// <summary>Field number for the "Uid" field.</summary>
+    public const int UidFieldNumber = 1;
+    private int uid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Uid {
+      get { return uid_; }
+      set {
+        uid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "IsDiamond" field.</summary>
+    public const int IsDiamondFieldNumber = 2;
+    private bool isDiamond_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool IsDiamond {
+      get { return isDiamond_; }
+      set {
+        isDiamond_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Price" field.</summary>
+    public const int PriceFieldNumber = 3;
+    private long price_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long Price {
+      get { return price_; }
+      set {
+        price_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ItemId" field.</summary>
+    public const int ItemIdFieldNumber = 4;
+    private int itemId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int ItemId {
+      get { return itemId_; }
+      set {
+        itemId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "DiamondPrice" field.</summary>
+    public const int DiamondPriceFieldNumber = 5;
+    private float diamondPrice_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float DiamondPrice {
+      get { return diamondPrice_; }
+      set {
+        diamondPrice_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ShoppingPack);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ShoppingPack other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Uid != other.Uid) return false;
+      if (IsDiamond != other.IsDiamond) return false;
+      if (Price != other.Price) return false;
+      if (ItemId != other.ItemId) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(DiamondPrice, other.DiamondPrice)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Uid != 0) hash ^= Uid.GetHashCode();
+      if (IsDiamond != false) hash ^= IsDiamond.GetHashCode();
+      if (Price != 0L) hash ^= Price.GetHashCode();
+      if (ItemId != 0) hash ^= ItemId.GetHashCode();
+      if (DiamondPrice != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(DiamondPrice);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Uid != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Uid);
+      }
+      if (IsDiamond != false) {
+        output.WriteRawTag(16);
+        output.WriteBool(IsDiamond);
+      }
+      if (Price != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(Price);
+      }
+      if (ItemId != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(ItemId);
+      }
+      if (DiamondPrice != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(DiamondPrice);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Uid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Uid);
+      }
+      if (IsDiamond != false) {
+        size += 1 + 1;
+      }
+      if (Price != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Price);
+      }
+      if (ItemId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ItemId);
+      }
+      if (DiamondPrice != 0F) {
+        size += 1 + 4;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ShoppingPack other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Uid != 0) {
+        Uid = other.Uid;
+      }
+      if (other.IsDiamond != false) {
+        IsDiamond = other.IsDiamond;
+      }
+      if (other.Price != 0L) {
+        Price = other.Price;
+      }
+      if (other.ItemId != 0) {
+        ItemId = other.ItemId;
+      }
+      if (other.DiamondPrice != 0F) {
+        DiamondPrice = other.DiamondPrice;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Uid = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            IsDiamond = input.ReadBool();
+            break;
+          }
+          case 24: {
+            Price = input.ReadInt64();
+            break;
+          }
+          case 32: {
+            ItemId = input.ReadInt32();
+            break;
+          }
+          case 45: {
+            DiamondPrice = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public sealed partial class UpdatePlayerInfoPack : pb::IMessage<UpdatePlayerInfoPack> {
     private static readonly pb::MessageParser<UpdatePlayerInfoPack> _parser = new pb::MessageParser<UpdatePlayerInfoPack>(() => new UpdatePlayerInfoPack());
     private pb::UnknownFieldSet _unknownFields;
@@ -2010,7 +2298,7 @@ namespace SocketProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SocketProtocol.SocketProtocolReflection.Descriptor.MessageTypes[5]; }
+      get { return global::SocketProtocol.SocketProtocolReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2298,9 +2586,9 @@ namespace SocketProtocol {
 
     /// <summary>Field number for the "Diamond" field.</summary>
     public const int DiamondFieldNumber = 22;
-    private long diamond_;
+    private float diamond_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long Diamond {
+    public float Diamond {
       get { return diamond_; }
       set {
         diamond_ = value;
@@ -2363,7 +2651,7 @@ namespace SocketProtocol {
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(MgDmgBonus, other.MgDmgBonus)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(SrDmgBonus, other.SrDmgBonus)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(HgDmgBonus, other.HgDmgBonus)) return false;
-      if (Diamond != other.Diamond) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Diamond, other.Diamond)) return false;
       if (Coin != other.Coin) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(CritDmgBonus, other.CritDmgBonus)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -2393,7 +2681,7 @@ namespace SocketProtocol {
       if (MgDmgBonus != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(MgDmgBonus);
       if (SrDmgBonus != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SrDmgBonus);
       if (HgDmgBonus != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(HgDmgBonus);
-      if (Diamond != 0L) hash ^= Diamond.GetHashCode();
+      if (Diamond != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Diamond);
       if (Coin != 0L) hash ^= Coin.GetHashCode();
       if (CritDmgBonus != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(CritDmgBonus);
       if (_unknownFields != null) {
@@ -2493,9 +2781,9 @@ namespace SocketProtocol {
         output.WriteRawTag(173, 1);
         output.WriteFloat(HgDmgBonus);
       }
-      if (Diamond != 0L) {
-        output.WriteRawTag(176, 1);
-        output.WriteInt64(Diamond);
+      if (Diamond != 0F) {
+        output.WriteRawTag(181, 1);
+        output.WriteFloat(Diamond);
       }
       if (Coin != 0L) {
         output.WriteRawTag(184, 1);
@@ -2576,8 +2864,8 @@ namespace SocketProtocol {
       if (HgDmgBonus != 0F) {
         size += 2 + 4;
       }
-      if (Diamond != 0L) {
-        size += 2 + pb::CodedOutputStream.ComputeInt64Size(Diamond);
+      if (Diamond != 0F) {
+        size += 2 + 4;
       }
       if (Coin != 0L) {
         size += 2 + pb::CodedOutputStream.ComputeInt64Size(Coin);
@@ -2659,7 +2947,7 @@ namespace SocketProtocol {
       if (other.HgDmgBonus != 0F) {
         HgDmgBonus = other.HgDmgBonus;
       }
-      if (other.Diamond != 0L) {
+      if (other.Diamond != 0F) {
         Diamond = other.Diamond;
       }
       if (other.Coin != 0L) {
@@ -2763,8 +3051,8 @@ namespace SocketProtocol {
             HgDmgBonus = input.ReadFloat();
             break;
           }
-          case 176: {
-            Diamond = input.ReadInt64();
+          case 181: {
+            Diamond = input.ReadFloat();
             break;
           }
           case 184: {
@@ -2789,7 +3077,7 @@ namespace SocketProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SocketProtocol.SocketProtocolReflection.Descriptor.MessageTypes[6]; }
+      get { return global::SocketProtocol.SocketProtocolReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2974,9 +3262,9 @@ namespace SocketProtocol {
 
     /// <summary>Field number for the "Price" field.</summary>
     public const int PriceFieldNumber = 14;
-    private float price_;
+    private long price_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float Price {
+    public long Price {
       get { return price_; }
       set {
         price_ = value;
@@ -3020,7 +3308,7 @@ namespace SocketProtocol {
       if (Talent2 != other.Talent2) return false;
       if (Use != other.Use) return false;
       if (Block != other.Block) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Price, other.Price)) return false;
+      if (Price != other.Price) return false;
       if (EquipmentType != other.EquipmentType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -3041,7 +3329,7 @@ namespace SocketProtocol {
       if (Talent2 != global::SocketProtocol.EEquipmentTalent.Test1EquipmentTalent1) hash ^= Talent2.GetHashCode();
       if (Use != false) hash ^= Use.GetHashCode();
       if (Block != false) hash ^= Block.GetHashCode();
-      if (Price != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Price);
+      if (Price != 0L) hash ^= Price.GetHashCode();
       if (EquipmentType.Length != 0) hash ^= EquipmentType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -3108,9 +3396,9 @@ namespace SocketProtocol {
         output.WriteRawTag(104);
         output.WriteBool(Block);
       }
-      if (Price != 0F) {
-        output.WriteRawTag(117);
-        output.WriteFloat(Price);
+      if (Price != 0L) {
+        output.WriteRawTag(112);
+        output.WriteInt64(Price);
       }
       if (EquipmentType.Length != 0) {
         output.WriteRawTag(122);
@@ -3163,8 +3451,8 @@ namespace SocketProtocol {
       if (Block != false) {
         size += 1 + 1;
       }
-      if (Price != 0F) {
-        size += 1 + 4;
+      if (Price != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Price);
       }
       if (EquipmentType.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(EquipmentType);
@@ -3219,7 +3507,7 @@ namespace SocketProtocol {
       if (other.Block != false) {
         Block = other.Block;
       }
-      if (other.Price != 0F) {
+      if (other.Price != 0L) {
         Price = other.Price;
       }
       if (other.EquipmentType.Length != 0) {
@@ -3288,8 +3576,8 @@ namespace SocketProtocol {
             Block = input.ReadBool();
             break;
           }
-          case 117: {
-            Price = input.ReadFloat();
+          case 112: {
+            Price = input.ReadInt64();
             break;
           }
           case 122: {
@@ -3310,7 +3598,7 @@ namespace SocketProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SocketProtocol.SocketProtocolReflection.Descriptor.MessageTypes[7]; }
+      get { return global::SocketProtocol.SocketProtocolReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3542,9 +3830,9 @@ namespace SocketProtocol {
 
     /// <summary>Field number for the "Price" field.</summary>
     public const int PriceFieldNumber = 18;
-    private float price_;
+    private long price_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float Price {
+    public long Price {
       get { return price_; }
       set {
         price_ = value;
@@ -3581,7 +3869,7 @@ namespace SocketProtocol {
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(SubProp3Value, other.SubProp3Value)) return false;
       if (Use != other.Use) return false;
       if (Block != other.Block) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Price, other.Price)) return false;
+      if (Price != other.Price) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3605,7 +3893,7 @@ namespace SocketProtocol {
       if (SubProp3Value != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SubProp3Value);
       if (Use != false) hash ^= Use.GetHashCode();
       if (Block != false) hash ^= Block.GetHashCode();
-      if (Price != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Price);
+      if (Price != 0L) hash ^= Price.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3687,9 +3975,9 @@ namespace SocketProtocol {
         output.WriteRawTag(136, 1);
         output.WriteBool(Block);
       }
-      if (Price != 0F) {
-        output.WriteRawTag(149, 1);
-        output.WriteFloat(Price);
+      if (Price != 0L) {
+        output.WriteRawTag(144, 1);
+        output.WriteInt64(Price);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -3750,8 +4038,8 @@ namespace SocketProtocol {
       if (Block != false) {
         size += 2 + 1;
       }
-      if (Price != 0F) {
-        size += 2 + 4;
+      if (Price != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(Price);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3815,7 +4103,7 @@ namespace SocketProtocol {
       if (other.Block != false) {
         Block = other.Block;
       }
-      if (other.Price != 0F) {
+      if (other.Price != 0L) {
         Price = other.Price;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -3897,8 +4185,8 @@ namespace SocketProtocol {
             Block = input.ReadBool();
             break;
           }
-          case 149: {
-            Price = input.ReadFloat();
+          case 144: {
+            Price = input.ReadInt64();
             break;
           }
         }
@@ -3915,7 +4203,7 @@ namespace SocketProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SocketProtocol.SocketProtocolReflection.Descriptor.MessageTypes[8]; }
+      get { return global::SocketProtocol.SocketProtocolReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4100,7 +4388,7 @@ namespace SocketProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SocketProtocol.SocketProtocolReflection.Descriptor.MessageTypes[9]; }
+      get { return global::SocketProtocol.SocketProtocolReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
