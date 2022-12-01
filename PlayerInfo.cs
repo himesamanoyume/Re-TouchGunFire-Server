@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SocketServer
 {
-    internal class PlayerInfo
+    public class PlayerInfo
     {
         int uid;
         public int Uid {
@@ -294,26 +294,77 @@ namespace SocketServer
             hgDmgBonus = 0;
             diamond = 0;
             coin = 0;
+
+
+            EquipGunCorePropFuncs.Add(EGunCoreProp.全武器伤害加成, (value) =>
+            {
+                arDmgBonus += value;
+                dmrDmgBonus += value;
+                smgDmgBonus +=value;
+                sgDmgBonus += value;
+                mgDmgBonus += value;
+                srDmgBonus += value;
+                hgDmgBonus += value;
+            });
+            RemoveGunCorePropFuncs.Add(EGunCoreProp.全武器伤害加成, (value) =>
+            {
+                arDmgBonus -= value;
+                dmrDmgBonus -= value;
+                smgDmgBonus -= value;
+                sgDmgBonus -= value;
+                mgDmgBonus -= value;
+                srDmgBonus -= value;
+                hgDmgBonus -= value;
+            });
+
+            EquipGunCorePropFuncs.Add(EGunCoreProp.自动步枪伤害加成, (value) =>
+            {
+                arDmgBonus += value;
+            });
+            RemoveGunCorePropFuncs.Add(EGunCoreProp.自动步枪伤害加成, (value) =>
+            {
+                arDmgBonus -= value;
+            });
+
+            EquipGunCorePropFuncs.Add(EGunCoreProp.手枪伤害加成, (value) =>
+            {
+                hgDmgBonus += value;
+            });
+            RemoveGunCorePropFuncs.Add(EGunCoreProp.手枪伤害加成, (value) =>
+            {
+                hgDmgBonus -= value;
+            });
+
         }
 
         public void UpdatePlayerInfoToDatabase()
         {
-
+            //改为离线后再一次性刷新
         }
+
+        public Dictionary<EGunCoreProp, Action<float>> EquipGunCorePropFuncs = new Dictionary<EGunCoreProp, Action<float>>();
+        public Dictionary<EGunCoreProp, Action<float>> RemoveGunCorePropFuncs = new Dictionary<EGunCoreProp, Action<float>>();
+
+        public Dictionary<ESubProp, Action<float>> EquipSubPropFuncs = new Dictionary<ESubProp, Action<float>>();
+        public Dictionary<ESubProp, Action<float>> RemoveSubPropFuncs = new Dictionary<ESubProp, Action<float>>();
+
+        public Dictionary<EEquipmentTalent, Action> EquipEquipmentTalentFuncs = new Dictionary<EEquipmentTalent, Action>();
 
         //Buff List
-        public void TempGunBuff1(PlayerInfo playerInfo)
-        {
-            playerInfo.BaseDmgBonus += 0.01f;
-        }
+        //public void TempGunBuff1(PlayerInfo playerInfo)
+        //{
+        //    playerInfo.BaseDmgBonus += 0.01f;
+        //}
 
-        public void TempGunBuff2(PlayerInfo playerInfo)
-        {
-            playerInfo.MaxHealth += 300;
-            playerInfo.CurrentHealth -= 900;
-            playerInfo.CurrentArmor -= 900;
-        }
+        //public void TempGunBuff2(PlayerInfo playerInfo)
+        //{
+        //    playerInfo.MaxHealth += 300;
+        //    playerInfo.CurrentHealth -= 900;
+        //    playerInfo.CurrentArmor -= 900;
+        //}
 
     //end
 }
+
+
 }

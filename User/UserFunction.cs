@@ -113,7 +113,7 @@ namespace SocketServer.User
                     foreach (EquipmentPack item in tempList)
                     {
                         playerInfoPack.EquipmentPacks.Add(item);
-                        itemController.UpdatePlayerEquipmentInfo(item);
+                        itemController.UpdatePlayerEquipmentInfo(item, true);
                     }
 
                     string updateEquipmentJson = JsonConvert.SerializeObject(tempList);
@@ -149,7 +149,7 @@ namespace SocketServer.User
                     foreach (GunPack item in tempList2)
                     {
                         playerInfoPack.GunPacks.Add(item);
-                        itemController.UpdatePlayerGunInfo(item);
+                        itemController.UpdatePlayerGunInfo(item, true);
                     }
                     string updateGunJson = JsonConvert.SerializeObject(tempList2);
                     sql = "update hime.user_info set gun_packs = '" + updateGunJson + "' where uid = " + mainPack.Uid;
@@ -216,8 +216,6 @@ namespace SocketServer.User
                 client.TcpSend(mainPack);
                 return false;
             }
-            
-
         }
 
         public int Shopping(MainPack mainPack, Client client, MySqlConnection mySqlConnection)
@@ -334,7 +332,6 @@ namespace SocketServer.User
                 mainPack.PlayerInfoPack.Level = mySqlDataReader.GetInt32(4);
                 mySqlDataReader.Close();
                 return mainPack;
-
             }
             catch (Exception e)
             {

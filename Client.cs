@@ -56,13 +56,18 @@ namespace SocketServer
         public ItemController ItemController;
         public delegate void Buff(PlayerInfo playerInfo);
         public Buff buff;
-        public void ChangePlayerInfo()
+
+        public void InitDefaultPlayerInfo()
         {
             PlayerInfo defaultPlayerInfo = new PlayerInfo();
             buff?.Invoke(defaultPlayerInfo);
             PlayerInfo = defaultPlayerInfo;
         }
-        //public int clientPlayerUid;
+
+        public void ChangePlayerInfoBuff()
+        {
+            buff?.Invoke(PlayerInfo);
+        }
 
         public Client(Socket clientSocket, Server server, UdpServer udpServer)
         {
@@ -74,7 +79,7 @@ namespace SocketServer
             connection = new MySqlConnection(connectStr);
             connection.Open();
             PlayerInfo = new PlayerInfo();
-            ItemController = new ItemController();
+            ItemController = new ItemController(PlayerInfo);
             this.udpServer = udpServer;
             this.server = server;
             tcpSocket = clientSocket;
@@ -115,7 +120,6 @@ namespace SocketServer
                 }
                 else
                 {
-                    // progress = dataSize + 4;
                     if (isFirst)
                     {
                         isFirst = false;
@@ -125,7 +129,6 @@ namespace SocketServer
 
                     if (bufferSize > 0)
                     {
-                        // bigBuffer.Concat(message.Buffer).ToArray();
                         Array.Copy(message.Buffer, 0, bigBuffer, progress, bufferSize);
                         progress += bufferSize;
                         if (progress >= message.TotalDataSize + 4)
@@ -137,13 +140,6 @@ namespace SocketServer
                         }
                     }
                 }
-
-                //if (bufferSize == 0)
-                //{
-                //    Close();
-                //    return;
-                //}
-                //message.ReadBuffer(bufferSize, HandleRequest);
                 StartReceive();
             }
             catch
