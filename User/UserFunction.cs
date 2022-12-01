@@ -100,7 +100,7 @@ namespace SocketServer.User
                     if (tempList.Count < itemController.equipmentInfos.Count)
                     {
 
-                        int lastEquipmentInfoUid = tempList.Last().EquipmentId;
+                        int lastEquipmentInfoUid = tempList.Last().ItemId;
                         int equipmentInfosLastUid = itemController.equipmentInfos.Last().Key;
                         for (int i = lastEquipmentInfoUid + 1; i <= equipmentInfosLastUid; i++)
                         {
@@ -137,7 +137,7 @@ namespace SocketServer.User
                     if (tempList2.Count < itemController.gunInfos.Count)
                     {
 
-                        int lastGunInfoUid = tempList2.Last().GunId;
+                        int lastGunInfoUid = tempList2.Last().ItemId;
                         int gunInfosLastUid = itemController.gunInfos.Last().Key;
                         for (int i = lastGunInfoUid + 1; i <= gunInfosLastUid; i++)
                         {
@@ -166,6 +166,28 @@ namespace SocketServer.User
             {
                 Debug.Log(new StackFrame(true), e.Message);
                 return null;
+            }
+        }
+
+        public int EquipItem(MainPack mainPack, Client client)
+        {
+            try
+            {
+                if (mainPack.Uid == client.PlayerInfo.Uid && mainPack.EquipItemPack.Uid == client.PlayerInfo.Uid)
+                {
+                    client.ItemController.itemsDict.TryGetValue(mainPack.EquipItemPack.ItemId, out ItemInfo itemInfo);
+                    //to be continue
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.Log(new StackFrame(true), e.Message);
+                return 0;
             }
         }
 

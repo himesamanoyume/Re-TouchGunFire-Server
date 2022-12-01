@@ -77,6 +77,7 @@ namespace SocketServer.Items
                 refreshAllPropPrice = price / 10f;
             }
         }
+        
         float diamondPrice;
         public float DiamondPrice { get => diamondPrice; set => diamondPrice = value; }
         float unlockAllSubPropPrice;
@@ -105,9 +106,13 @@ namespace SocketServer.Items
         public ESubProp SubProp1Type { get => subProp1Type; set => subProp1Type = value; }
         public ESubProp SubProp2Type { get => subProp2Type; set => subProp2Type = value; }
         public ESubProp SubProp3Type { get => subProp3Type; set => subProp3Type = value; }
+        string itemType;
+        int itemId;
+        public string ItemType { get => itemType; set => itemType = value; }
+        public int ItemId { get => itemId; set => itemId = value; }
     }
 
-    public abstract class EquipmentInfo : ItemInfo
+    public sealed class EquipmentInfo : ItemInfo
     {
 
         public EquipmentInfo(PlayerInfo playerInfo) : base(playerInfo)
@@ -117,7 +122,7 @@ namespace SocketServer.Items
 
         string equipmentSuit;
         string equipmentName;
-        string equipmentType;
+        
 
         public override void OnEquip(bool isFirst = false)
         {
@@ -130,19 +135,16 @@ namespace SocketServer.Items
 
         EEquipmentTalent talent1 = EEquipmentTalent.Null;
         EEquipmentTalent talent2 = EEquipmentTalent.Null;
-        EEquipmentUid equipmentId;
 
         public string EquipmentSuit { get => equipmentSuit; set => equipmentSuit = value; }
         
         public EEquipmentTalent Talent1 { get => talent1; set => talent1 = value; }
         public EEquipmentTalent Talent2 { get => talent2; set => talent2 = value; }
-        public EEquipmentUid EquipmentId { get => equipmentId; set => equipmentId = value; }
         
-        public string EquipmentType { get => equipmentType; set => equipmentType = value; }
         public string EquipmentName { get => equipmentName; set => equipmentName = value; }
     }
 
-    public abstract class GunInfo : ItemInfo
+    public sealed class GunInfo : ItemInfo
     {
         public GunInfo(PlayerInfo playerInfo) : base(playerInfo)
         {
@@ -150,14 +152,12 @@ namespace SocketServer.Items
         }
 
         string gunName;
-        string gunType;
         float baseDMG = 0;
         float firingRate = 0;
         float currentFiringRatePerSecond = 0;
         int magazine = 0;
         string coreProp = EGunCoreProp.Null.ToString();
         float corePropValue = 0;
-        EGunUid gunId;
         EGunCoreProp corePropType;
 
         protected override void EquipFunc()
@@ -179,64 +179,61 @@ namespace SocketServer.Items
         }
 
         public string GunName { get => gunName; set => gunName = value; }
-        public string GunType { get => gunType; set => gunType = value; }
         public float BaseDMG { get => baseDMG; set => baseDMG = value; }
         public float FiringRate { get => firingRate; set => firingRate = value; }
         public float CurrentFiringRatePerSecond { get => currentFiringRatePerSecond; set => currentFiringRatePerSecond = value; }
         public int Magazine { get => magazine; set => magazine = value; }
         public string CoreProp { get => coreProp; set => coreProp = value; }
         public float CorePropValue { get => corePropValue; set => corePropValue = value; }
-        
-        public EGunUid GunId { get => gunId; set => gunId = value; }
         public EGunCoreProp CorePropType { get => corePropType; set => corePropType = value; }
     }
 
-    public sealed class MainGunInfo : GunInfo
-    {
-        public MainGunInfo(PlayerInfo playerInfo) : base(playerInfo)
-        {
-            this.playerInfo = playerInfo;
-        }
-    }
+    //public sealed class MainGunInfo<TItemId> : GunInfo<TItemId>
+    //{
+    //    public MainGunInfo(PlayerInfo playerInfo) : base(playerInfo)
+    //    {
+    //        this.playerInfo = playerInfo;
+    //    }
+    //}
 
-    public sealed class HandGunInfo : GunInfo
-    {
-        public HandGunInfo(PlayerInfo playerInfo) : base(playerInfo)
-        {
-            this.playerInfo = playerInfo;
-        }
-    }
+    //public sealed class HandGunInfo<TItemId> : GunInfo<TItemId>
+    //{
+    //    public HandGunInfo(PlayerInfo playerInfo) : base(playerInfo)
+    //    {
+    //        this.playerInfo = playerInfo;
+    //    }
+    //}
 
-    public sealed class ArmorInfo : EquipmentInfo
-    {
-        public ArmorInfo(PlayerInfo playerInfo) : base(playerInfo) 
-        { 
-            this.playerInfo = playerInfo;
-        }
-    }
+    //public sealed class ArmorInfo<TItemId> : EquipmentInfo<TItemId>
+    //{
+    //    public ArmorInfo(PlayerInfo playerInfo) : base(playerInfo) 
+    //    { 
+    //        this.playerInfo = playerInfo;
+    //    }
+    //}
 
-    public sealed class HeadInfo : EquipmentInfo
-    {
-        public HeadInfo(PlayerInfo playerInfo) : base(playerInfo) { this.playerInfo = playerInfo; }
-    }
+    //public sealed class HeadInfo<TItemId> : EquipmentInfo<TItemId>
+    //{
+    //    public HeadInfo(PlayerInfo playerInfo) : base(playerInfo) { this.playerInfo = playerInfo; }
+    //}
 
-    public sealed class HandInfo : EquipmentInfo
-    {
-        public HandInfo(PlayerInfo playerInfo) : base(playerInfo) { this.playerInfo = playerInfo; }
-    }
+    //public sealed class HandInfo<TItemId> : EquipmentInfo<TItemId>
+    //{
+    //    public HandInfo(PlayerInfo playerInfo) : base(playerInfo) { this.playerInfo = playerInfo; }
+    //}
 
-    public sealed class KneeInfo : EquipmentInfo
-    {
-        public KneeInfo(PlayerInfo playerInfo) : base(playerInfo) { this.playerInfo = playerInfo; }
-    }
+    //public sealed class KneeInfo<TItemId> : EquipmentInfo<TItemId>
+    //{
+    //    public KneeInfo(PlayerInfo playerInfo) : base(playerInfo) { this.playerInfo = playerInfo; }
+    //}
 
-    public sealed class LegInfo : EquipmentInfo
-    {
-        public LegInfo(PlayerInfo playerInfo) : base(playerInfo) { this.playerInfo = playerInfo; }
-    }
+    //public sealed class LegInfo<TItemId> : EquipmentInfo<TItemId>
+    //{
+    //    public LegInfo(PlayerInfo playerInfo) : base(playerInfo) { this.playerInfo = playerInfo; }
+    //}
 
-    public sealed class BootsInfo : EquipmentInfo
-    {
-        public BootsInfo(PlayerInfo playerInfo) : base(playerInfo) { this.playerInfo = playerInfo;  }
-    }
+    //public sealed class BootsInfo<TItemId> : EquipmentInfo<TItemId>
+    //{
+    //    public BootsInfo(PlayerInfo playerInfo) : base(playerInfo) { this.playerInfo = playerInfo;  }
+    //}
 }
