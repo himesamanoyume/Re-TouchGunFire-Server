@@ -12,14 +12,6 @@ namespace SocketServer.Items
 {
     public partial class ItemController
     {
-        //private MainGunInfo mainGunInfo = null;
-        //private HandGunInfo handGunInfo = null;
-        //private ArmorInfo armorInfo = null;
-        //private HeadInfo headInfo = null;
-        //private HandInfo handInfo = null;
-        //private KneeInfo kneeInfo = null;
-        //private LegInfo legInfo = null;
-        //private BootsInfo bootsInfo = null;
         private GunInfo mainGunInfo = null;
         private GunInfo handGunInfo = null;
         private EquipmentInfo armorInfo = null;
@@ -43,21 +35,62 @@ namespace SocketServer.Items
             itemsDict.Remove(uid);
         }
 
-        public void InitAllProp(int uid)
+        public bool RefreshAllSubProp(int uid)
         {
+            if (itemsDict.TryGetValue(uid, out ItemInfo itemInfo))
+            {
+                if (itemInfo.SubProp1Type.Equals(ESubProp.Null) && itemInfo.SubProp2Type.Equals(ESubProp.Null) && itemInfo.SubProp3Type.Equals(ESubProp.Null))
+                {
+                    return false;
+                }
+                if(itemInfo.SubProp1Type != ESubProp.Null)
+                {
+                    SetRandomSubProp(itemInfo.SubProp1Type, itemInfo.SubProp1Value, itemInfo.SubProp1);
+                }
+                if (itemInfo.SubProp2Type != ESubProp.Null)
+                {
+                    SetRandomSubProp(itemInfo.SubProp2Type, itemInfo.SubProp2Value, itemInfo.SubProp2);
+                }
+                if (itemInfo.SubProp3Type != ESubProp.Null)
+                {
+                    SetRandomSubProp(itemInfo.SubProp3Type, itemInfo.SubProp3Value, itemInfo.SubProp3);
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
+        void SetRandomSubProp(ESubProp subPropType, float subPropValue, string subProp)
+        {
+            Random random = new Random();
+            subPropType = (ESubProp)random.Next((int)ESubProp.health, (int)ESubProp.hgDmgBonus);
+            int per = random.Next(1, 100);
+            subPropValue = per / 1000f;
+            subProp = subPropType.ToString();
+        }
+
+        public bool RefreshCoreProp(int uid)
+        {
+            if (itemsDict.TryGetValue(uid, out ItemInfo itemInfo))
+            {
+                Random random = new Random();
+                int per = random.Next(1, 150);
+                (itemInfo as GunInfo).CorePropValue = per / 1000f;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void SetItemEquip(int itemId, string itemType, bool isFirst = false)
         {
             if (itemsDict.TryGetValue(itemId, out ItemInfo itemInfo))
             {
-                //if (mainGunInfo != null)
-                //{
-                //    mainGunInfo.OnRemove();
-                //}
-                //mainGunInfo = (MainGunInfo)itemInfo;
-                //mainGunInfo.OnEquip(isFirst);
                 switch (itemType)
                 {
                     case "Armor":
@@ -127,109 +160,5 @@ namespace SocketServer.Items
                 }
             }
         }
-
-        //public void SetMainGun(EGunUid eGunUid, bool isFirst = false)
-        //{
-        //    if (itemsDict.TryGetValue((int)eGunUid, out ItemInfo itemInfo))
-        //    {
-        //        if (mainGunInfo != null)
-        //        {
-        //            mainGunInfo.OnRemove();
-        //        }
-        //        mainGunInfo = (MainGunInfo)itemInfo;
-        //        mainGunInfo.OnEquip(isFirst);
-        //    }
-        //}
-
-        //public void SetHandGun(EGunUid eGunUid, bool isFirst = false)
-        //{
-        //    if (itemsDict.TryGetValue((int)eGunUid, out ItemInfo itemInfo))
-        //    {
-        //        if (handGunInfo != null)
-        //        {
-        //            handGunInfo.OnRemove();
-        //        }
-        //        handGunInfo = (HandGunInfo)itemInfo;
-        //        handGunInfo.OnEquip(isFirst);
-        //    }
-        //}
-
-        //public void SetArmor(EEquipmentUid eEquipmentUid, bool isFirst = false)
-        //{
-        //    if (itemsDict.TryGetValue((int)eEquipmentUid, out ItemInfo itemInfo))
-        //    {
-        //        if (armorInfo != null)
-        //        {
-        //            armorInfo.OnRemove();
-        //        }
-        //        armorInfo = (ArmorInfo)itemInfo;
-        //        armorInfo.OnEquip(isFirst);
-        //    }
-        //}
-
-        //public void SetHead(EEquipmentUid eEquipmentUid, bool isFirst = false)
-        //{
-        //    if (itemsDict.TryGetValue((int)eEquipmentUid, out ItemInfo itemInfo))
-        //    {
-        //        if (headInfo != null)
-        //        {
-        //            headInfo.OnRemove();
-        //        }
-        //        headInfo = (HeadInfo)itemInfo;
-        //        headInfo.OnEquip(isFirst);
-        //    }
-        //}
-
-        //public void SetHand(EEquipmentUid eEquipmentUid, bool isFirst = false)
-        //{
-        //    if (itemsDict.TryGetValue((int)eEquipmentUid, out ItemInfo itemInfo))
-        //    {
-        //        if (handInfo != null)
-        //        {
-        //            handInfo.OnRemove();
-        //        }
-        //        handInfo = (HandInfo)itemInfo;
-        //        handInfo.OnEquip(isFirst);
-        //    }
-        //}
-
-        //public void SetLeg(EEquipmentUid eEquipmentUid, bool isFirst = false)
-        //{
-        //    if (itemsDict.TryGetValue((int)eEquipmentUid, out ItemInfo itemInfo))
-        //    {
-        //        if (legInfo != null)
-        //        {
-        //            legInfo.OnRemove();
-        //        }
-        //        legInfo = (LegInfo)itemInfo;
-        //        legInfo.OnEquip(isFirst);
-        //    }
-        //}
-
-        //public void SetKnee(EEquipmentUid eEquipmentUid , bool isFirst = false)
-        //{
-        //    if (itemsDict.TryGetValue((int)eEquipmentUid, out ItemInfo itemInfo))
-        //    {
-        //        if (kneeInfo != null)
-        //        {
-        //            kneeInfo.OnRemove();
-        //        }
-        //        kneeInfo = (KneeInfo)itemInfo;
-        //        kneeInfo.OnEquip(isFirst);
-        //    }
-        //}
-
-        //public void SetBoots(EEquipmentUid eEquipmentUid, bool isFirst = false)
-        //{
-        //    if (itemsDict.TryGetValue((int)eEquipmentUid, out ItemInfo itemInfo))
-        //    {
-        //        if (bootsInfo != null)
-        //        {
-        //            bootsInfo.OnRemove();
-        //        }
-        //        bootsInfo = (BootsInfo)itemInfo;
-        //        bootsInfo.OnEquip(isFirst);
-        //    }
-        //}
     }
 }

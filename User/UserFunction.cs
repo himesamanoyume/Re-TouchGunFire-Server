@@ -175,9 +175,16 @@ namespace SocketServer.User
             {
                 if (mainPack.Uid == client.PlayerInfo.Uid && mainPack.EquipItemPack.Uid == client.PlayerInfo.Uid)
                 {
-                    client.ItemController.itemsDict.TryGetValue(mainPack.EquipItemPack.ItemId, out ItemInfo itemInfo);
-                    //to be continue
-                    return 1;
+                    if (client.ItemController.itemsDict.TryGetValue(mainPack.EquipItemPack.ItemId, out ItemInfo itemInfo))
+                    {
+                        client.ItemController.SetItemEquip(itemInfo.ItemId, itemInfo.ItemType);
+                        client.GetItemInfo();
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
                 else
                 {

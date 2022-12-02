@@ -56,6 +56,9 @@ namespace SocketServer.Items
                 SL7.ItemId = (int)EGunUid.SL7;
                 SL7.GunName = EGunName.SL7.ToString();
                 SL7.ItemType = EGunType.DMR.ToString();
+                SL7.CoreProp = EGunCoreProp.射手步枪伤害加成.ToString();
+                SL7.CorePropType = EGunCoreProp.射手步枪伤害加成;
+                SL7.CorePropValue = 0.03f;
                 SL7.BaseDMG = 280f;
                 SL7.FiringRate = 50f;
                 SL7.Magazine = 5;
@@ -70,6 +73,9 @@ namespace SocketServer.Items
                 MP5.ItemId = (int)EGunUid.MP5;
                 MP5.GunName = EGunName.MP5.ToString();
                 MP5.ItemType = EGunType.SMG.ToString();
+                MP5.CoreProp = EGunCoreProp.微型冲锋枪伤害加成.ToString();
+                MP5.CorePropType = EGunCoreProp.微型冲锋枪伤害加成;
+                MP5.CorePropValue = 0.03f;
                 MP5.BaseDMG = 70f;
                 MP5.FiringRate = 800f;
                 MP5.Magazine = 30;
@@ -84,6 +90,9 @@ namespace SocketServer.Items
                 M700.ItemId = (int)EGunUid.M700;
                 M700.GunName = EGunName.M700.ToString();
                 M700.ItemType = EGunType.SG.ToString();
+                M700.CoreProp = EGunCoreProp.狙击步枪伤害加成.ToString();
+                M700.CorePropType = EGunCoreProp.狙击步枪伤害加成;
+                M700.CorePropValue = 0.03f;
                 M700.BaseDMG = 300f;
                 M700.FiringRate = 30f;
                 M700.Magazine = 7;
@@ -98,6 +107,9 @@ namespace SocketServer.Items
                 M60.ItemId = (int)EGunUid.M60;
                 M60.GunName = EGunName.M60.ToString();
                 M60.ItemType = EGunType.MG.ToString();
+                M60.CoreProp = EGunCoreProp.轻机枪伤害加成.ToString();
+                M60.CorePropType = EGunCoreProp.轻机枪伤害加成;
+                M60.CorePropValue = 0.03f;
                 M60.BaseDMG = 130f;
                 M60.FiringRate = 500f;
                 M60.Magazine = 100;
@@ -131,6 +143,9 @@ namespace SocketServer.Items
                 M4A1.ItemId = (int)EGunUid.M4A1;
                 M4A1.GunName = EGunName.M4A1.ToString();
                 M4A1.ItemType = EGunType.AR.ToString();
+                M4A1.CoreProp = EGunCoreProp.自动步枪伤害加成.ToString();
+                M4A1.CorePropType = EGunCoreProp.自动步枪伤害加成;
+                M4A1.CorePropValue = 0.03f;
                 M4A1.BaseDMG = 85f;
                 M4A1.FiringRate = 780f;
                 M4A1.Magazine = 30;
@@ -407,15 +422,6 @@ namespace SocketServer.Items
                 if (gunInfo.Use)
                 {
                     SetItemEquip(gunInfo.ItemId, gunInfo.ItemType, isFirst);
-                    //switch (gunInfo.ItemType)
-                    //{
-                    //    default:
-                    //        SetMainGun(gunInfo.ItemId, isFirst);
-                    //        break;
-                    //    case "HG":
-                    //        SetHandGun(gunInfo.ItemId, isFirst);
-                    //        break;
-                    //}
                 }
             }
         }
@@ -436,27 +442,6 @@ namespace SocketServer.Items
                 if (equipmentInfo.Use)
                 {
                     SetItemEquip(equipmentInfo.ItemId, equipmentInfo.ItemType, isFirst); 
-                    //switch (equipmentInfo.ItemType)
-                    //{
-                        //case "Armor":
-                        //    SetArmor(equipmentInfo.EquipmentId, isFirst);
-                        //    break;
-                        //case "Head":
-                        //    SetHead(equipmentInfo.EquipmentId, isFirst);
-                        //    break;
-                        //case "Hand":
-                        //    SetHand(equipmentInfo.EquipmentId, isFirst);
-                        //    break;
-                        //case "Leg":
-                        //    SetLeg(equipmentInfo.EquipmentId, isFirst);
-                        //    break;
-                        //case "Knee":
-                        //    SetKnee(equipmentInfo.EquipmentId, isFirst);
-                        //    break;
-                        //case "Boots":
-                        //    SetBoots(equipmentInfo.EquipmentId, isFirst);
-                        //    break;
-                    //}
                 }
             }
         }

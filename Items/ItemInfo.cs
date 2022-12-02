@@ -159,6 +159,14 @@ namespace SocketServer.Items
         string coreProp = EGunCoreProp.Null.ToString();
         float corePropValue = 0;
         EGunCoreProp corePropType;
+        float health = 0;
+        float baseDmgBonus = 0;
+        float cDmgRateBonus = 0;
+        float cDmgBonus = 0;
+        float headshotDmgBonus = 0;
+        float pRateBonus = 0;
+        float abeBonus = 0;
+
 
         protected override void EquipFunc()
         {
@@ -186,54 +194,13 @@ namespace SocketServer.Items
         public string CoreProp { get => coreProp; set => coreProp = value; }
         public float CorePropValue { get => corePropValue; set => corePropValue = value; }
         public EGunCoreProp CorePropType { get => corePropType; set => corePropType = value; }
+        public float Health { get => health; set => health = value; }
+        public float BaseDmgBonus { get => baseDmgBonus; set => baseDmgBonus = value; }
+        public float CDmgRateBonus { get => cDmgRateBonus; set => cDmgRateBonus = value; }
+        public float CDmgBonus { get => cDmgBonus; set => cDmgBonus = value; }
+        public float HeadshotDmgBonus { get => headshotDmgBonus; set => headshotDmgBonus = value; }
+        public float PRateBonus { get => pRateBonus; set => pRateBonus = value; }
+        public float AbeBonus { get => abeBonus; set => abeBonus = value; }
     }
 
-    //public sealed class MainGunInfo<TItemId> : GunInfo<TItemId>
-    //{
-    //    public MainGunInfo(PlayerInfo playerInfo) : base(playerInfo)
-    //    {
-    //        this.playerInfo = playerInfo;
-    //    }
-    //}
-
-    //public sealed class HandGunInfo<TItemId> : GunInfo<TItemId>
-    //{
-    //    public HandGunInfo(PlayerInfo playerInfo) : base(playerInfo)
-    //    {
-    //        this.playerInfo = playerInfo;
-    //    }
-    //}
-
-    //public sealed class ArmorInfo<TItemId> : EquipmentInfo<TItemId>
-    //{
-    //    public ArmorInfo(PlayerInfo playerInfo) : base(playerInfo) 
-    //    { 
-    //        this.playerInfo = playerInfo;
-    //    }
-    //}
-
-    //public sealed class HeadInfo<TItemId> : EquipmentInfo<TItemId>
-    //{
-    //    public HeadInfo(PlayerInfo playerInfo) : base(playerInfo) { this.playerInfo = playerInfo; }
-    //}
-
-    //public sealed class HandInfo<TItemId> : EquipmentInfo<TItemId>
-    //{
-    //    public HandInfo(PlayerInfo playerInfo) : base(playerInfo) { this.playerInfo = playerInfo; }
-    //}
-
-    //public sealed class KneeInfo<TItemId> : EquipmentInfo<TItemId>
-    //{
-    //    public KneeInfo(PlayerInfo playerInfo) : base(playerInfo) { this.playerInfo = playerInfo; }
-    //}
-
-    //public sealed class LegInfo<TItemId> : EquipmentInfo<TItemId>
-    //{
-    //    public LegInfo(PlayerInfo playerInfo) : base(playerInfo) { this.playerInfo = playerInfo; }
-    //}
-
-    //public sealed class BootsInfo<TItemId> : EquipmentInfo<TItemId>
-    //{
-    //    public BootsInfo(PlayerInfo playerInfo) : base(playerInfo) { this.playerInfo = playerInfo;  }
-    //}
 }

@@ -72,6 +72,27 @@ namespace SocketServer.User
             return mainPack;
         }
 
+        public MainPack EquipItem(Client client, MainPack mainPack)
+        {
+            int code = client.EquipItem(mainPack);
+            if (code == 1)
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else if(code == 0)
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            else
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.NotFound.ToString());
+                mainPack.ReturnCode = ReturnCode.NotFound;
+            }
+            return mainPack;
+        }
+
         public MainPack Shopping(Client client, MainPack mainPack)
         {
             int code = client.Shopping(mainPack);

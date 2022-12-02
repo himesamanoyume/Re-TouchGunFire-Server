@@ -335,6 +335,41 @@ namespace SocketServer
                 hgDmgBonus -= value;
             });
 
+            EquipGunCorePropFuncs.Add(EGunCoreProp.射手步枪伤害加成, (value) =>
+            {
+                dmrDmgBonus += value;
+            });
+            RemoveGunCorePropFuncs.Add(EGunCoreProp.射手步枪伤害加成, (value) =>
+            {
+                dmrDmgBonus -= value;
+            });
+
+            EquipGunCorePropFuncs.Add(EGunCoreProp.轻机枪伤害加成, (value) =>
+            {
+                mgDmgBonus += value;
+            });
+            RemoveGunCorePropFuncs.Add(EGunCoreProp.轻机枪伤害加成, (value) =>
+            {
+                mgDmgBonus -= value;
+            });
+
+            EquipGunCorePropFuncs.Add(EGunCoreProp.微型冲锋枪伤害加成, (value) =>
+            {
+                smgDmgBonus += value;
+            });
+            RemoveGunCorePropFuncs.Add(EGunCoreProp.微型冲锋枪伤害加成, (value) =>
+            {
+                smgDmgBonus -= value;
+            });
+
+            EquipGunCorePropFuncs.Add(EGunCoreProp.狙击步枪伤害加成, (value) =>
+            {
+                srDmgBonus += value;
+            });
+            RemoveGunCorePropFuncs.Add(EGunCoreProp.狙击步枪伤害加成, (value) =>
+            {
+                srDmgBonus -= value;
+            });
         }
 
         public void UpdatePlayerInfoToDatabase()

@@ -184,6 +184,11 @@ namespace SocketServer
             return GetUserFunction.GetItemInfo(this);
         }
 
+        public int EquipItem(MainPack mainPack)
+        {
+            return GetUserFunction.EquipItem(mainPack, this);
+        }
+
         public MainPack UpdatePlayerInfo(MainPack mainPack)
         {
             return GetGameFunction.UpdatePlayerInfo(mainPack, this);
