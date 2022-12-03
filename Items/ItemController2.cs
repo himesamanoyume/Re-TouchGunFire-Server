@@ -32,266 +32,287 @@ namespace SocketServer.Items
             #region initGun
             initItemInfoDict.Add((int)EGunUid.AK47, () =>
             {
-                //MainGunInfo<EGunUid> AK47 = new MainGunInfo<EGunUid>(playerInfo);
-                GunInfo AK47 = new GunInfo(playerInfo);
-                AK47.ItemId = (int)EGunUid.AK47;
-                AK47.GunName = EGunName.AK47.ToString();
-                AK47.ItemType = EGunType.AR.ToString();
-                AK47.CoreProp = EGunCoreProp.自动步枪伤害加成.ToString();
-                AK47.CorePropType = EGunCoreProp.自动步枪伤害加成;
-                AK47.CorePropValue = 0.03f;
-                AK47.BaseDMG = 100f;
-                AK47.FiringRate = 600f;
-                AK47.Magazine = 30;
-                AK47.CurrentFiringRatePerSecond = GetCurrentFiringRatePerSecond(AK47);
-                AK47.Price = 1000;
-                AK47.Block = false;
-                AK47.Use = true;
+                GunInfo AK47 = new GunInfo(
+                    playerInfo,
+                    eGunUid: EGunUid.AK47,
+                    eGunName: EGunName.AK47,
+                    eGunType: EGunType.AR,
+                    eGunCoreProp:EGunCoreProp.自动步枪伤害加成,
+                    baseDmg:100f,
+                    firingRate:600f,
+                    magazine:30,
+                    currentFiringRatePerSecond: GetCurrentFiringRatePerSecond(600f),
+                    price:1000,
+                    block:false,
+                    use:true
+                 );
                 return AK47;
             });
 
             initItemInfoDict.Add((int)EGunUid.SL7, () =>
             {
-                GunInfo SL7 = new GunInfo(playerInfo);
-                SL7.ItemId = (int)EGunUid.SL7;
-                SL7.GunName = EGunName.SL7.ToString();
-                SL7.ItemType = EGunType.DMR.ToString();
-                SL7.CoreProp = EGunCoreProp.射手步枪伤害加成.ToString();
-                SL7.CorePropType = EGunCoreProp.射手步枪伤害加成;
-                SL7.CorePropValue = 0.03f;
-                SL7.BaseDMG = 280f;
-                SL7.FiringRate = 50f;
-                SL7.Magazine = 5;
-                SL7.CurrentFiringRatePerSecond = GetCurrentFiringRatePerSecond(SL7);
-                SL7.Price = 8050;
+                GunInfo SL7 = new GunInfo(
+                    playerInfo,
+                    eGunUid: EGunUid.SL7,
+                    eGunName: EGunName.SL7,
+                    eGunType: EGunType.DMR,
+                    eGunCoreProp: EGunCoreProp.射手步枪伤害加成,
+                    baseDmg: 280f,
+                    firingRate: 50f,
+                    magazine: 5,
+                    currentFiringRatePerSecond: GetCurrentFiringRatePerSecond(50f),
+                    price: 8050
+                 );
                 return SL7;
             });
 
             initItemInfoDict.Add((int)EGunUid.MP5, () =>
             {
-                GunInfo MP5 = new GunInfo(playerInfo);
-                MP5.ItemId = (int)EGunUid.MP5;
-                MP5.GunName = EGunName.MP5.ToString();
-                MP5.ItemType = EGunType.SMG.ToString();
-                MP5.CoreProp = EGunCoreProp.微型冲锋枪伤害加成.ToString();
-                MP5.CorePropType = EGunCoreProp.微型冲锋枪伤害加成;
-                MP5.CorePropValue = 0.03f;
-                MP5.BaseDMG = 70f;
-                MP5.FiringRate = 800f;
-                MP5.Magazine = 30;
-                MP5.CurrentFiringRatePerSecond = GetCurrentFiringRatePerSecond(MP5);
-                MP5.Price = 4500;
+                GunInfo MP5 = new GunInfo(
+                    playerInfo,
+                    eGunUid: EGunUid.MP5,
+                    eGunName: EGunName.MP5,
+                    eGunType: EGunType.SMG,
+                    eGunCoreProp: EGunCoreProp.微型冲锋枪伤害加成,
+                    baseDmg: 70f,
+                    firingRate: 800f,
+                    magazine: 30,
+                    currentFiringRatePerSecond: GetCurrentFiringRatePerSecond(800f),
+                    price: 4500
+                 );
                 return MP5;
             });
 
             initItemInfoDict.Add((int)EGunUid.M700, () =>
             {
-                GunInfo M700 = new GunInfo(playerInfo);
-                M700.ItemId = (int)EGunUid.M700;
-                M700.GunName = EGunName.M700.ToString();
-                M700.ItemType = EGunType.SG.ToString();
-                M700.CoreProp = EGunCoreProp.狙击步枪伤害加成.ToString();
-                M700.CorePropType = EGunCoreProp.狙击步枪伤害加成;
-                M700.CorePropValue = 0.03f;
-                M700.BaseDMG = 300f;
-                M700.FiringRate = 30f;
-                M700.Magazine = 7;
-                M700.CurrentFiringRatePerSecond = GetCurrentFiringRatePerSecond(M700);
-                M700.Price = 10500;
+                GunInfo M700 = new GunInfo(
+                    playerInfo,
+                    eGunUid: EGunUid.M700,
+                    eGunName: EGunName.M700,
+                    eGunType: EGunType.SG,
+                    eGunCoreProp: EGunCoreProp.狙击步枪伤害加成,
+                    baseDmg: 300f,
+                    firingRate: 30f,
+                    magazine: 7,
+                    currentFiringRatePerSecond: GetCurrentFiringRatePerSecond(30f),
+                    price: 10500
+                 );
                 return M700;
             });
 
             initItemInfoDict.Add((int)EGunUid.M60, () =>
             {
-                GunInfo M60 = new GunInfo(playerInfo);
-                M60.ItemId = (int)EGunUid.M60;
-                M60.GunName = EGunName.M60.ToString();
-                M60.ItemType = EGunType.MG.ToString();
-                M60.CoreProp = EGunCoreProp.轻机枪伤害加成.ToString();
-                M60.CorePropType = EGunCoreProp.轻机枪伤害加成;
-                M60.CorePropValue = 0.03f;
-                M60.BaseDMG = 130f;
-                M60.FiringRate = 500f;
-                M60.Magazine = 100;
-                M60.CurrentFiringRatePerSecond = GetCurrentFiringRatePerSecond(M60);
-                M60.Price = 3200;
+                GunInfo M60 = new GunInfo(
+                    playerInfo,
+                    eGunUid: EGunUid.M60,
+                    eGunName: EGunName.M60,
+                    eGunType: EGunType.MG,
+                    eGunCoreProp: EGunCoreProp.轻机枪伤害加成,
+                    baseDmg: 130f,
+                    firingRate: 500f,
+                    magazine: 100,
+                    currentFiringRatePerSecond: GetCurrentFiringRatePerSecond(500f),
+                    price: 3200
+                 );
                 return M60;
             });
 
             initItemInfoDict.Add((int)EGunUid.M1911, () =>
             {
-                GunInfo M1911 = new GunInfo(playerInfo);
-                M1911.ItemId = (int)EGunUid.M1911;
-                M1911.GunName = EGunName.M1911.ToString();
-                M1911.ItemType = EGunType.HG.ToString();
-                M1911.CoreProp = EGunCoreProp.手枪伤害加成.ToString();
-                M1911.CorePropType = EGunCoreProp.手枪伤害加成;
-                M1911.CorePropValue = 0.03f;
-                M1911.BaseDMG = 90f;
-                M1911.FiringRate = 100f;
-                M1911.Magazine = 7;
-                M1911.CurrentFiringRatePerSecond = GetCurrentFiringRatePerSecond(M1911);
-                M1911.Price = 500;
-                M1911.Block = false;
-                M1911.Use = true;
+                GunInfo M1911 = new GunInfo(
+                    playerInfo,
+                    eGunUid: EGunUid.M1911,
+                    eGunName: EGunName.M1911,
+                    eGunType: EGunType.HG,
+                    eGunCoreProp: EGunCoreProp.手枪伤害加成,
+                    baseDmg: 90f,
+                    firingRate: 100f,
+                    magazine: 7,
+                    currentFiringRatePerSecond: GetCurrentFiringRatePerSecond(100f),
+                    price: 500,
+                    block:false,
+                    use:true
+                 );
                 return M1911;
             });
 
             initItemInfoDict.Add((int)EGunUid.M4A1, () =>
             {
-                GunInfo M4A1 = new GunInfo(playerInfo);
-                M4A1.ItemId = (int)EGunUid.M4A1;
-                M4A1.GunName = EGunName.M4A1.ToString();
-                M4A1.ItemType = EGunType.AR.ToString();
-                M4A1.CoreProp = EGunCoreProp.自动步枪伤害加成.ToString();
-                M4A1.CorePropType = EGunCoreProp.自动步枪伤害加成;
-                M4A1.CorePropValue = 0.03f;
-                M4A1.BaseDMG = 85f;
-                M4A1.FiringRate = 780f;
-                M4A1.Magazine = 30;
-                M4A1.CurrentFiringRatePerSecond = GetCurrentFiringRatePerSecond(M4A1);
-                M4A1.Price = 7700;
-                M4A1.Block = true;
-                M4A1.Use = false;
+                GunInfo M4A1 = new GunInfo(
+                    playerInfo,
+                    eGunUid: EGunUid.M4A1,
+                    eGunName: EGunName.M4A1,
+                    eGunType: EGunType.AR,
+                    eGunCoreProp: EGunCoreProp.自动步枪伤害加成,
+                    baseDmg: 85f,
+                    firingRate: 780f,
+                    magazine: 30,
+                    currentFiringRatePerSecond: GetCurrentFiringRatePerSecond(780f),
+                    price: 7700
+                 );
                 return M4A1;
             });
             #endregion
             #region initEquipment
             initItemInfoDict.Add((int)EEquipmentUid.DefaultArmor, () =>
             {
-                EquipmentInfo DefaultArmor = new EquipmentInfo(playerInfo);
-                DefaultArmor.ItemType = EEquipmentType.Armor.ToString();
-                DefaultArmor.ItemId = (int)EEquipmentUid.DefaultArmor;
-                DefaultArmor.EquipmentName = EEquipmentName.默认护甲.ToString();
-                DefaultArmor.EquipmentSuit = EEquipmentSuit.无套装效果.ToString();
-                DefaultArmor.Use = true;
-                DefaultArmor.Block = false;
+                EquipmentInfo DefaultArmor = new EquipmentInfo(
+                    playerInfo,
+                    eEquipmentUid: EEquipmentUid.DefaultArmor,
+                    eEquipmentType: EEquipmentType.Armor,
+                    eEquipmentName: EEquipmentName.默认护甲,
+                    eEquipmentSuit: EEquipmentSuit.无套装效果,
+                    block: false,
+                    use: true
+                );
                 return DefaultArmor;
             });
 
             initItemInfoDict.Add((int)EEquipmentUid.DefaultHead, () =>
             {
-                EquipmentInfo DefaultHead = new EquipmentInfo(playerInfo);
-                DefaultHead.ItemId = (int)EEquipmentUid.DefaultHead;
-                DefaultHead.ItemType = EEquipmentType.Head.ToString();
-                DefaultHead.EquipmentName = EEquipmentName.默认头盔.ToString();
-                DefaultHead.EquipmentSuit = EEquipmentSuit.无套装效果.ToString();
-                DefaultHead.Use = true;
-                DefaultHead.Block = false;
+                EquipmentInfo DefaultHead = new EquipmentInfo(
+                    playerInfo,
+                    eEquipmentUid: EEquipmentUid.DefaultHead,
+                    eEquipmentType: EEquipmentType.Head,
+                    eEquipmentName: EEquipmentName.默认头盔,
+                    eEquipmentSuit: EEquipmentSuit.无套装效果,
+                    block: false,
+                    use: true
+                );
                 return DefaultHead;
             });
 
             initItemInfoDict.Add((int)EEquipmentUid.DefaultHand, () =>
             {
-                EquipmentInfo DefaultHand = new EquipmentInfo(playerInfo);
-                DefaultHand.ItemId = (int)EEquipmentUid.DefaultHand;
-                DefaultHand.ItemType = EEquipmentType.Hand.ToString();
-                DefaultHand.EquipmentName = EEquipmentName.默认手套.ToString();
-                DefaultHand.EquipmentSuit = EEquipmentSuit.无套装效果.ToString();
-                DefaultHand.Use = true;
-                DefaultHand.Block = false;
+                EquipmentInfo DefaultHand = new EquipmentInfo(
+                    playerInfo,
+                    eEquipmentUid: EEquipmentUid.DefaultHand,
+                    eEquipmentType: EEquipmentType.Hand,
+                    eEquipmentName: EEquipmentName.默认手套,
+                    eEquipmentSuit: EEquipmentSuit.无套装效果,
+                    block: false,
+                    use: true
+                );
                 return DefaultHand;
             });
 
             initItemInfoDict.Add((int)EEquipmentUid.DefaultKnee, () =>
             {
-                EquipmentInfo DefaultKnee = new EquipmentInfo(playerInfo);
-                DefaultKnee.ItemId = (int)EEquipmentUid.DefaultKnee;
-                DefaultKnee.ItemType = EEquipmentType.Knee.ToString();
-                DefaultKnee.EquipmentName = EEquipmentName.默认护膝.ToString();
-                DefaultKnee.EquipmentSuit = EEquipmentSuit.无套装效果.ToString();
-                DefaultKnee.Use = true;
-                DefaultKnee.Block = false;
+                EquipmentInfo DefaultKnee = new EquipmentInfo(
+                    playerInfo,
+                    eEquipmentUid: EEquipmentUid.DefaultKnee,
+                    eEquipmentType: EEquipmentType.Knee,
+                    eEquipmentName: EEquipmentName.默认护膝,
+                    eEquipmentSuit: EEquipmentSuit.无套装效果,
+                    block: false,
+                    use: true
+                );
                 return DefaultKnee;
             });
 
             initItemInfoDict.Add((int)EEquipmentUid.DefaultLeg, () =>
             {
-                EquipmentInfo DefaultLeg = new EquipmentInfo(playerInfo);
-                DefaultLeg.ItemId = (int)EEquipmentUid.DefaultLeg;
-                DefaultLeg.ItemType = EEquipmentType.Leg.ToString();
-                DefaultLeg.EquipmentName = EEquipmentName.默认护腿.ToString();
-                DefaultLeg.EquipmentSuit = EEquipmentSuit.无套装效果.ToString();
-                DefaultLeg.Use = true;
-                DefaultLeg.Block = false;
+                EquipmentInfo DefaultLeg = new EquipmentInfo(
+                    playerInfo,
+                    eEquipmentUid: EEquipmentUid.DefaultLeg,
+                    eEquipmentType: EEquipmentType.Leg,
+                    eEquipmentName: EEquipmentName.默认护腿,
+                    eEquipmentSuit: EEquipmentSuit.无套装效果,
+                    block: false,
+                    use: true
+                );
                 return DefaultLeg;
             });
 
             initItemInfoDict.Add((int)EEquipmentUid.DefaultBoots, () =>
             {
-                EquipmentInfo DefaultBoots = new EquipmentInfo(playerInfo);
-                DefaultBoots.ItemId = (int)EEquipmentUid.DefaultBoots;
-                DefaultBoots.ItemType = EEquipmentType.Boots.ToString();
-                DefaultBoots.EquipmentName = EEquipmentName.默认鞋.ToString();
-                DefaultBoots.EquipmentSuit = EEquipmentSuit.无套装效果.ToString();
-                DefaultBoots.Use = true;
-                DefaultBoots.Block = false;
+                EquipmentInfo DefaultBoots = new EquipmentInfo(
+                    playerInfo,
+                    eEquipmentUid: EEquipmentUid.DefaultBoots,
+                    eEquipmentType: EEquipmentType.Boots,
+                    eEquipmentName: EEquipmentName.默认鞋,
+                    eEquipmentSuit: EEquipmentSuit.无套装效果,
+                    block: false,
+                    use: true
+                );
                 return DefaultBoots;
             });
 
             initItemInfoDict.Add((int)EEquipmentUid.Test1Armor, () =>
             {
-                EquipmentInfo Test1Armor = new EquipmentInfo(playerInfo);
-                Test1Armor.ItemId = (int)EEquipmentUid.Test1Armor;
-                Test1Armor.ItemType = EEquipmentType.Armor.ToString();
-                Test1Armor.EquipmentName = EEquipmentName.测试1护甲.ToString();
-                Test1Armor.EquipmentSuit = EEquipmentSuit.测试1套装.ToString();
-                Test1Armor.Price = 3300;
+                EquipmentInfo Test1Armor = new EquipmentInfo(
+                    playerInfo,
+                    eEquipmentUid: EEquipmentUid.Test1Armor,
+                    eEquipmentType: EEquipmentType.Armor,
+                    eEquipmentName: EEquipmentName.测试1护甲,
+                    eEquipmentSuit: EEquipmentSuit.测试1套装,
+                    price: 3300
+                );
                 return Test1Armor;
             });
 
             initItemInfoDict.Add((int)EEquipmentUid.Test1Head, () =>
             {
-                EquipmentInfo Test1Head = new EquipmentInfo(playerInfo);
-                Test1Head.ItemId = (int)EEquipmentUid.Test1Head;
-                Test1Head.ItemType = EEquipmentType.Head.ToString();
-                Test1Head.EquipmentName = EEquipmentName.测试1头盔.ToString();
-                Test1Head.EquipmentSuit = EEquipmentSuit.测试1套装.ToString();
-                Test1Head.Price = 3300;
+                EquipmentInfo Test1Head = new EquipmentInfo(
+                    playerInfo,
+                    eEquipmentUid: EEquipmentUid.Test1Head,
+                    eEquipmentType: EEquipmentType.Head,
+                    eEquipmentName: EEquipmentName.测试1头盔,
+                    eEquipmentSuit: EEquipmentSuit.测试1套装,
+                    price: 3300
+                );
                 return Test1Head;
             });
 
             initItemInfoDict.Add((int)EEquipmentUid.Test1Hand, () =>
             {
-                EquipmentInfo Test1Hand = new EquipmentInfo(playerInfo);
-                Test1Hand.ItemId = (int)EEquipmentUid.Test1Hand;
-                Test1Hand.ItemType = EEquipmentType.Hand.ToString();
-                Test1Hand.EquipmentName = EEquipmentName.测试1手套.ToString();
-                Test1Hand.EquipmentSuit = EEquipmentSuit.测试1套装.ToString();
-                Test1Hand.Price = 3300;
+                EquipmentInfo Test1Hand = new EquipmentInfo(
+                    playerInfo,
+                    eEquipmentUid: EEquipmentUid.Test1Hand,
+                    eEquipmentType: EEquipmentType.Hand,
+                    eEquipmentName: EEquipmentName.测试1手套,
+                    eEquipmentSuit: EEquipmentSuit.测试1套装,
+                    price: 3300
+                );
                 return Test1Hand;
             });
 
             initItemInfoDict.Add((int)EEquipmentUid.Test1Leg, () =>
             {
-                EquipmentInfo Test1Leg = new EquipmentInfo(playerInfo);
-                Test1Leg.ItemId = (int)EEquipmentUid.Test1Leg;
-                Test1Leg.ItemType = EEquipmentType.Hand.ToString();
-                Test1Leg.EquipmentName = EEquipmentName.测试1护腿.ToString();
-                Test1Leg.EquipmentSuit = EEquipmentSuit.测试1套装.ToString();
-                Test1Leg.Price = 3300;
+                EquipmentInfo Test1Leg = new EquipmentInfo(
+                    playerInfo,
+                    eEquipmentUid: EEquipmentUid.Test1Leg,
+                    eEquipmentType: EEquipmentType.Leg,
+                    eEquipmentName: EEquipmentName.测试1护腿,
+                    eEquipmentSuit: EEquipmentSuit.测试1套装,
+                    price: 3300
+                );
                 return Test1Leg;
             });
 
             initItemInfoDict.Add((int)EEquipmentUid.Test1Knee, () =>
             {
-                EquipmentInfo Test1Knee = new EquipmentInfo(playerInfo);
-                Test1Knee.ItemId = (int)EEquipmentUid.Test1Knee;
-                Test1Knee.ItemType = EEquipmentType.Knee.ToString();
-                Test1Knee.EquipmentName = EEquipmentName.测试1护膝.ToString();
-                Test1Knee.EquipmentSuit = EEquipmentSuit.测试1套装.ToString();
-                Test1Knee.Price = 3300;
+                EquipmentInfo Test1Knee = new EquipmentInfo(
+                    playerInfo,
+                    eEquipmentUid: EEquipmentUid.Test1Knee,
+                    eEquipmentType: EEquipmentType.Knee,
+                    eEquipmentName: EEquipmentName.测试1护膝,
+                    eEquipmentSuit: EEquipmentSuit.测试1套装,
+                    price: 3300
+                );
                 return Test1Knee;
             });
 
             initItemInfoDict.Add((int)EEquipmentUid.Test1Boots, () =>
             {
-                EquipmentInfo Test1Boots = new EquipmentInfo(playerInfo);
-                Test1Boots.ItemId = (int)EEquipmentUid.Test1Boots;
-                Test1Boots.ItemType = EEquipmentType.Boots.ToString();
-                Test1Boots.EquipmentName = EEquipmentName.测试1鞋.ToString();
-                Test1Boots.EquipmentSuit = EEquipmentSuit.测试1套装.ToString();
-                Test1Boots.Price = 3300;
+                EquipmentInfo Test1Boots = new EquipmentInfo(
+                    playerInfo,
+                    eEquipmentUid: EEquipmentUid.Test1Boots,
+                    eEquipmentType: EEquipmentType.Boots,
+                    eEquipmentName: EEquipmentName.测试1鞋,
+                    eEquipmentSuit: EEquipmentSuit.测试1套装,
+                    price: 3300
+                );
                 return Test1Boots;
             });
             #endregion
@@ -446,9 +467,9 @@ namespace SocketServer.Items
             }
         }
 
-        float GetCurrentFiringRatePerSecond(GunInfo gunInfo)
+        float GetCurrentFiringRatePerSecond(float firingRate)
         {
-            return 1/(gunInfo.FiringRate / 60f);
+            return 1 / (firingRate / 60f);
         }
 
 

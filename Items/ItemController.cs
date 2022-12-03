@@ -72,9 +72,9 @@ namespace SocketServer.Items
             subProp = subPropType.ToString();
         }
 
-        public bool RefreshCoreProp(int uid)
+        public bool RefreshCoreProp(int itemId)
         {
-            if (itemsDict.TryGetValue(uid, out ItemInfo itemInfo))
+            if (itemsDict.TryGetValue(itemId, out ItemInfo itemInfo))
             {
                 Random random = new Random();
                 int per = random.Next(1, 150);
@@ -84,6 +84,36 @@ namespace SocketServer.Items
             else
             {
                 return false;
+            }
+        }
+
+        public int UnlockItemSubProp(int itemId)
+        {
+            if (itemsDict.TryGetValue(itemId, out ItemInfo itemInfo))
+            {
+                if (itemInfo.SubProp1Type == ESubProp.Null && itemInfo.SubProp2Type == ESubProp.Null && itemInfo.SubProp3Type == ESubProp.Null)
+                {
+                    SetRandomSubProp(itemInfo.SubProp1Type, itemInfo.SubProp1Value, itemInfo.SubProp1);
+                    return 1;//成功
+                }else if (itemInfo.SubProp1Type != ESubProp.Null && itemInfo.SubProp2Type == ESubProp.Null && itemInfo.SubProp3Type == ESubProp.Null)
+                {
+                    SetRandomSubProp(itemInfo.SubProp2Type, itemInfo.SubProp2Value, itemInfo.SubProp2);
+                    return 1;
+                }
+                else if (itemInfo.SubProp1Type != ESubProp.Null && itemInfo.SubProp2Type != ESubProp.Null && itemInfo.SubProp3Type == ESubProp.Null)
+                {
+                    SetRandomSubProp(itemInfo.SubProp3Type, itemInfo.SubProp3Value, itemInfo.SubProp3);
+                    return 1;
+                }
+                else if(itemInfo.SubProp1Type != ESubProp.Null && itemInfo.SubProp2Type != ESubProp.Null && itemInfo.SubProp3Type != ESubProp.Null)
+                {
+                    return 2;//重复
+                }
+                return 3;//不正常
+            }
+            else
+            {
+                return 4;//未找到
             }
         }
 

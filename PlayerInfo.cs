@@ -261,8 +261,8 @@ namespace SocketServer
             get { return diamond; }
             set { diamond = value; }
         }
-        long coin;
-        public long Coin
+        float coin;
+        public float Coin
         {
             get { return coin; }
             set { coin = value; }

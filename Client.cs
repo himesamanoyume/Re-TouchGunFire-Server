@@ -174,6 +174,21 @@ namespace SocketServer
             return mainPack;
         }
 
+        public int UnlockItemSubProp(MainPack mainPack)
+        {
+            return GetUserFunction.UnlockItemSubProp(mainPack, this);
+        }
+
+        public bool RefreshItemSubProp(MainPack mainPack)
+        {
+            return GetUserFunction.RefreshItemSubProp(mainPack, this);
+        }
+
+        public bool RefreshGunCoreProp(MainPack mainPack)
+        {
+            return GetUserFunction.RefreshGunCoreProp(mainPack, this);
+        }
+
         public int Shopping(MainPack mainPack)
         {
             return GetUserFunction.Shopping(mainPack, this, connection);

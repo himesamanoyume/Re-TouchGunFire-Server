@@ -73,17 +73,17 @@ namespace SocketServer.Items
             {
                 price = value;
                 diamondPrice = price / 10000f;
-                unlockAllSubPropPrice = price / 4f;
-                refreshAllPropPrice = price / 10f;
+                unlockItemSubPropPrice = price / 4f;
+                refreshItemPropPrice = price / 10f;
             }
         }
         
         float diamondPrice;
         public float DiamondPrice { get => diamondPrice; set => diamondPrice = value; }
-        float unlockAllSubPropPrice;
-        public float UnlockAllSubPropPrice { get => unlockAllSubPropPrice; set => unlockAllSubPropPrice = value; }
-        public float RefreshAllPropPrice { get => refreshAllPropPrice; set => refreshAllPropPrice = value; }
-        float refreshAllPropPrice;
+        float unlockItemSubPropPrice;
+        public float UnlockItemSubPropPrice { get => unlockItemSubPropPrice; set => unlockItemSubPropPrice = value; }
+        public float RefreshItemPropPrice { get => refreshItemPropPrice; set => refreshItemPropPrice = value; }
+        float refreshItemPropPrice;
         public bool Use { get => use; set => use = value; }
         public bool Block { get => block; set => block = value; }
         bool use = false;
@@ -115,9 +115,16 @@ namespace SocketServer.Items
     public sealed class EquipmentInfo : ItemInfo
     {
 
-        public EquipmentInfo(PlayerInfo playerInfo) : base(playerInfo)
+        public EquipmentInfo(PlayerInfo playerInfo, EEquipmentUid eEquipmentUid, EEquipmentType eEquipmentType, EEquipmentName eEquipmentName, EEquipmentSuit eEquipmentSuit, long price = 0, bool block = true, bool use = false) : base(playerInfo)
         {
             this.playerInfo = playerInfo;
+            ItemId = (int)eEquipmentUid;
+            ItemType = eEquipmentType.ToString();
+            EquipmentName = eEquipmentName.ToString();
+            EquipmentSuit = eEquipmentSuit.ToString();
+            Price = price;
+            Block = block;
+            Use = use;
         }
 
         string equipmentSuit;
@@ -146,9 +153,23 @@ namespace SocketServer.Items
 
     public sealed class GunInfo : ItemInfo
     {
-        public GunInfo(PlayerInfo playerInfo) : base(playerInfo)
+        public GunInfo(PlayerInfo playerInfo, EGunUid eGunUid, EGunName eGunName, EGunType eGunType, EGunCoreProp eGunCoreProp, float baseDmg, float firingRate, int magazine, float currentFiringRatePerSecond, long price, bool block = true, bool use = false ) : base(playerInfo)
         {
             this.playerInfo = playerInfo;
+            ItemId = (int)eGunUid;
+            GunName = eGunName.ToString();
+            ItemType = eGunType.ToString();
+            CoreProp = eGunCoreProp.ToString();
+            CorePropType = eGunCoreProp;
+            CorePropValue = 0.03f;
+            BaseDMG = baseDmg;
+            FiringRate = firingRate;
+            Magazine = magazine;
+            CurrentFiringRatePerSecond = currentFiringRatePerSecond;
+            Price = price;
+            Block = block;
+            Use = use;
+
         }
 
         string gunName;
