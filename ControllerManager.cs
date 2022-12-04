@@ -42,7 +42,7 @@ namespace SocketServer
             {
                 if (!isUDP)
                 {
-                    Debug.Log(new StackFrame(true), "接收到UID" + mainPack.Uid + "的" + mainPack.ActionCode + "消息,处理中");
+                    Debug.Log(new StackFrame(true), "【接收到UID" + mainPack.Uid + "的" + mainPack.ActionCode + "消息,处理中】");
                 }
                 string methodName = mainPack.ActionCode.ToString();
                 MethodInfo method = controller.GetType().GetMethod(methodName);

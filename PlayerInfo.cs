@@ -172,6 +172,10 @@ namespace SocketServer
             set
             {
                 headshotDmgBonus = value;
+                if (headshotDmgBonus <= 0)
+                {
+                    headshotDmgBonus = 0;
+                }
             }
         }
         float pRateBonus;//穿透率加成
@@ -181,6 +185,10 @@ namespace SocketServer
             set
             {
                 pRateBonus = value;
+                if (pRateBonus <= 0)
+                {
+                    pRateBonus = 0;
+                }
             }
         }
         float abeBonus;//破甲效率加成
@@ -190,6 +198,10 @@ namespace SocketServer
             set
             {
                 abeBonus = value;
+                if (abeBonus <= 0)
+                {
+                    abeBonus = 0;
+                }
             }
         }
         float arDmgBonus;
@@ -199,6 +211,10 @@ namespace SocketServer
             set
             {
                 arDmgBonus = value;
+                if (arDmgBonus<=0)
+                {
+                    arDmgBonus=0;
+                }
             }
         }
         float dmrDmgBonus;
@@ -208,6 +224,10 @@ namespace SocketServer
             set
             {
                 dmrDmgBonus = value;
+                if (dmrDmgBonus <= 0)
+                {
+                    dmrDmgBonus = 0;
+                }
             }
         }
         float smgDmgBonus;
@@ -217,6 +237,10 @@ namespace SocketServer
             set
             {
                 smgDmgBonus = value;
+                if (smgDmgBonus <= 0)
+                {
+                    smgDmgBonus = 0;
+                }
             }
         }
         float sgDmgBonus;
@@ -226,6 +250,10 @@ namespace SocketServer
             set
             {
                 sgDmgBonus = value;
+                if (sgDmgBonus <= 0)
+                {
+                    sgDmgBonus = 0;
+                }
             }
         }
         float mgDmgBonus;
@@ -235,6 +263,10 @@ namespace SocketServer
             set
             {
                 mgDmgBonus = value;
+                if (mgDmgBonus <= 0)
+                {
+                    mgDmgBonus = 0;
+                }
             }
         }
         float srDmgBonus;
@@ -244,6 +276,10 @@ namespace SocketServer
             set
             {
                 srDmgBonus = value;
+                if (srDmgBonus <= 0)
+                {
+                    srDmgBonus = 0;
+                }
             }
         }
         float hgDmgBonus;
@@ -253,6 +289,10 @@ namespace SocketServer
             set
             {
                 hgDmgBonus = value;
+                if (hgDmgBonus <= 0)
+                {
+                    hgDmgBonus = 0;
+                }
             }
         }
         float diamond;
@@ -370,6 +410,135 @@ namespace SocketServer
             {
                 srDmgBonus -= value;
             });
+
+            EquipSubPropFuncs.Add(ESubProp.Null, null);
+            RemoveSubPropFuncs.Add(ESubProp.Null, null);
+
+            EquipSubPropFuncs.Add(ESubProp.基础伤害加成, (value) =>
+            {
+                baseDmgBonus += value;
+            });
+            RemoveSubPropFuncs.Add(ESubProp.基础伤害加成, (value) =>
+            {
+                baseDmgBonus -= value;
+            });
+
+            EquipSubPropFuncs.Add(ESubProp.生命值百分比加成, (value) =>
+            {
+                maxHealth += (1 + value)*maxHealth;
+            });
+            RemoveSubPropFuncs.Add(ESubProp.生命值百分比加成, (value) =>
+            {
+                maxHealth -= (1 + value) * maxHealth;
+            });
+
+            EquipSubPropFuncs.Add(ESubProp.暴击率加成, (value) =>
+            {
+                critDmgRateBonus += value;
+            });
+            RemoveSubPropFuncs.Add(ESubProp.暴击率加成, (value) =>
+            {
+                critDmgRateBonus -= value;
+            });
+
+            EquipSubPropFuncs.Add(ESubProp.暴击伤害加成, (value) =>
+            {
+                critDmgBonus += value;
+            });
+            RemoveSubPropFuncs.Add(ESubProp.暴击伤害加成, (value) =>
+            {
+                critDmgBonus -= value;
+            });
+
+            EquipSubPropFuncs.Add(ESubProp.爆头伤害加成, (value) =>
+            {
+                headshotDmgBonus += value;
+            });
+            RemoveSubPropFuncs.Add(ESubProp.爆头伤害加成, (value) =>
+            {
+                headshotDmgBonus -= value;
+            });
+
+            EquipSubPropFuncs.Add(ESubProp.穿透率加成, (value) =>
+            {
+                pRateBonus += value;
+            });
+            RemoveSubPropFuncs.Add(ESubProp.穿透率加成, (value) =>
+            {
+                pRateBonus -= value;
+            });
+
+            EquipSubPropFuncs.Add(ESubProp.破甲效率加成, (value) =>
+            {
+                abeBonus += value;
+            });
+            RemoveSubPropFuncs.Add(ESubProp.破甲效率加成, (value) =>
+            {
+                abeBonus -= value;
+            });
+
+            EquipSubPropFuncs.Add(ESubProp.自动步枪伤害加成, (value) =>
+            {
+                arDmgBonus += value;
+            });
+            RemoveSubPropFuncs.Add(ESubProp.自动步枪伤害加成, (value) =>
+            {
+                arDmgBonus -= value;
+            });
+
+            EquipSubPropFuncs.Add(ESubProp.精确射手步枪伤害加成, (value) =>
+            {
+                dmrDmgBonus += value;
+            });
+            RemoveSubPropFuncs.Add(ESubProp.精确射手步枪伤害加成, (value) =>
+            {
+                dmrDmgBonus -= value;
+            });
+
+            EquipSubPropFuncs.Add(ESubProp.微型冲锋枪伤害加成, (value) =>
+            {
+                smgDmgBonus += value;
+            });
+            RemoveSubPropFuncs.Add(ESubProp.微型冲锋枪伤害加成, (value) =>
+            {
+                smgDmgBonus -= value;
+            });
+
+            EquipSubPropFuncs.Add(ESubProp.霰弹枪伤害加成, (value) =>
+            {
+                sgDmgBonus += value;
+            });
+            RemoveSubPropFuncs.Add(ESubProp.霰弹枪伤害加成, (value) =>
+            {
+                sgDmgBonus -= value;
+            });
+
+            EquipSubPropFuncs.Add(ESubProp.狙击步枪伤害加成, (value) =>
+            {
+                srDmgBonus += value;
+            });
+            RemoveSubPropFuncs.Add(ESubProp.狙击步枪伤害加成, (value) =>
+            {
+                srDmgBonus -= value;
+            });
+
+            EquipSubPropFuncs.Add(ESubProp.轻机枪伤害加成, (value) =>
+            {
+                mgDmgBonus += value;
+            });
+            RemoveSubPropFuncs.Add(ESubProp.轻机枪伤害加成, (value) =>
+            {
+                mgDmgBonus -= value;
+            });
+
+            EquipSubPropFuncs.Add(ESubProp.手枪伤害加成, (value) =>
+            {
+                hgDmgBonus += value;
+            });
+            RemoveSubPropFuncs.Add(ESubProp.手枪伤害加成, (value) =>
+            {
+                hgDmgBonus -= value;
+            });
         }
 
         public void UpdatePlayerInfoToDatabase()
@@ -384,22 +553,5 @@ namespace SocketServer
         public Dictionary<ESubProp, Action<float>> RemoveSubPropFuncs = new Dictionary<ESubProp, Action<float>>();
 
         public Dictionary<EEquipmentTalent, Action> EquipEquipmentTalentFuncs = new Dictionary<EEquipmentTalent, Action>();
-
-        //Buff List
-        //public void TempGunBuff1(PlayerInfo playerInfo)
-        //{
-        //    playerInfo.BaseDmgBonus += 0.01f;
-        //}
-
-        //public void TempGunBuff2(PlayerInfo playerInfo)
-        //{
-        //    playerInfo.MaxHealth += 300;
-        //    playerInfo.CurrentHealth -= 900;
-        //    playerInfo.CurrentArmor -= 900;
-        //}
-
-    //end
-}
-
-
+    }
 }

@@ -255,7 +255,7 @@ namespace SocketServer.User
                 {
                     if (client.ItemController.gunInfos.TryGetValue(mainPack.ShoppingPack.ItemId, out GunInfo gunInfo))
                     {
-                        if (gunInfo.Block == false) return false;
+                        if (gunInfo.Block != false) return false;
                         if (CheckPlayerMoney(mainPack, gunInfo, client))
                         {
                             client.ItemController.RefreshAllSubProp(gunInfo.ItemId);
@@ -304,7 +304,7 @@ namespace SocketServer.User
                 {
                     if (client.ItemController.gunInfos.TryGetValue(mainPack.ShoppingPack.ItemId, out GunInfo gunInfo))
                     {
-                        if (gunInfo.Block == false) return false;
+                        if (gunInfo.Block != false) return false;
                         if (CheckPlayerMoney(mainPack, gunInfo, client))
                         {
                             client.ItemController.RefreshCoreProp(gunInfo.ItemId);
@@ -345,7 +345,7 @@ namespace SocketServer.User
                             int code = client.ItemController.UnlockItemSubProp(mainPack.ShoppingPack.ItemId);
                             if (code == 1)
                             {
-                                client.GetItemInfo();
+                                //client.GetItemInfo();
                                 return code;//成功
                             }
                             else
@@ -403,7 +403,7 @@ namespace SocketServer.User
                 if (mainPack.ShoppingPack.IsDiamond == true)
                 {
                     if (itemInfo.DiamondPrice * mainPack.ShoppingPack.Percent <= client.PlayerInfo.Diamond &&
-                        itemInfo.DiamondPrice *mainPack.ShoppingPack.Percent == mainPack.ShoppingPack.DiamondPrice * mainPack.ShoppingPack.Percent &&
+                        (float)Math.Round((double)(itemInfo.DiamondPrice *mainPack.ShoppingPack.Percent), 3) == mainPack.ShoppingPack.DiamondPrice &&
                         mainPack.ShoppingPack.Percent >= 0 && mainPack.ShoppingPack.Percent <= 1)
                     {
                         client.PlayerInfo.Diamond -= itemInfo.DiamondPrice * mainPack.ShoppingPack.Percent;
@@ -418,7 +418,7 @@ namespace SocketServer.User
                 else
                 {
                     if (itemInfo.Price <= client.PlayerInfo.Coin &&
-                        itemInfo.Price * mainPack.ShoppingPack.Percent == mainPack.ShoppingPack.Price &&
+                        (float)Math.Round((double)(itemInfo.Price * mainPack.ShoppingPack.Percent),3) == mainPack.ShoppingPack.Price * mainPack.ShoppingPack.Percent &&
                         mainPack.ShoppingPack.Percent >= 0 && mainPack.ShoppingPack.Percent <= 1)
                     {
                         client.PlayerInfo.Coin -= itemInfo.Price * mainPack.ShoppingPack.Percent;

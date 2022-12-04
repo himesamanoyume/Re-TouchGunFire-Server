@@ -26,19 +26,25 @@ namespace SocketServer.Items
             }
         }
 
+        public virtual void UpdateItemPropFunc()
+        {
+            RemoveFunc();
+            EquipFunc();
+        }
+
         protected virtual void EquipFunc()
         {
             if (playerInfo.EquipSubPropFuncs.TryGetValue(SubProp1Type, out Action<float> action1))
             {
-                action1(SubProp1Value);
+                action1?.Invoke(SubProp1Value);
             }
             if (playerInfo.EquipSubPropFuncs.TryGetValue(SubProp2Type, out Action<float> action2))
             {
-                action2(SubProp2Value);
+                action2?.Invoke(SubProp2Value);
             }
             if (playerInfo.EquipSubPropFuncs.TryGetValue(SubProp3Type, out Action<float> action3))
             {
-                action3(SubProp3Value);
+                action3?.Invoke(SubProp3Value);
             }
         }
 
@@ -46,15 +52,15 @@ namespace SocketServer.Items
         {
             if (playerInfo.RemoveSubPropFuncs.TryGetValue(SubProp1Type, out Action<float> action1))
             {
-                action1(SubProp1Value);
+                action1?.Invoke(SubProp1Value);
             }
             if (playerInfo.RemoveSubPropFuncs.TryGetValue(SubProp2Type, out Action<float> action2))
             {
-                action2(SubProp2Value);
+                action2?.Invoke(SubProp2Value);
             }
             if (playerInfo.RemoveSubPropFuncs.TryGetValue(SubProp3Type, out Action<float> action3))
             {
-                action3(SubProp3Value);
+                action3?.Invoke(SubProp3Value);
             }
         }
 
@@ -77,7 +83,6 @@ namespace SocketServer.Items
                 refreshItemPropPrice = price / 10f;
             }
         }
-        
         float diamondPrice;
         public float DiamondPrice { get => diamondPrice; set => diamondPrice = value; }
         float unlockItemSubPropPrice;
@@ -129,16 +134,6 @@ namespace SocketServer.Items
 
         string equipmentSuit;
         string equipmentName;
-        
-
-        public override void OnEquip(bool isFirst = false)
-        {
-            base.OnEquip();
-            if (Use)
-            {
-
-            }
-        }
 
         EEquipmentTalent talent1 = EEquipmentTalent.Null;
         EEquipmentTalent talent2 = EEquipmentTalent.Null;
@@ -161,7 +156,7 @@ namespace SocketServer.Items
             ItemType = eGunType.ToString();
             CoreProp = eGunCoreProp.ToString();
             CorePropType = eGunCoreProp;
-            CorePropValue = 0.03f;
+            CorePropValue = 0.003f;
             BaseDMG = baseDmg;
             FiringRate = firingRate;
             Magazine = magazine;

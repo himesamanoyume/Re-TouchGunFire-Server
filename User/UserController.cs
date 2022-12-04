@@ -78,6 +78,8 @@ namespace SocketServer.User
             {
                 Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
+                client.GetItemInfo();
+                //client.ItemController.UpdateItemProp();
             }
             else
             {
@@ -93,6 +95,8 @@ namespace SocketServer.User
             {
                 Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
+                client.GetItemInfo();
+                //client.ItemController.UpdateItemProp();
             }
             else
             {
@@ -109,7 +113,10 @@ namespace SocketServer.User
             {
                 Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
-            }else if (code == 2)
+                client.GetItemInfo();
+                //client.ItemController.UpdateItemProp();
+            }
+            else if (code == 2)
             {
                 Debug.Log(new StackFrame(true), ReturnCode.RepeatedRequest.ToString());
                 mainPack.ReturnCode = ReturnCode.RepeatedRequest;
