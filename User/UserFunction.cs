@@ -178,7 +178,6 @@ namespace SocketServer.User
                     if (client.ItemController.itemsDict.TryGetValue(mainPack.EquipItemPack.ItemId, out ItemInfo itemInfo))
                     {
                         client.ItemController.SetItemEquip(itemInfo);
-                        client.GetItemInfo();
                         ShoppingSuccess(client, mySqlConnection);
                         return 1;
                     }

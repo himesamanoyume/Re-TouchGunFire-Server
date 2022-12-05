@@ -42,10 +42,11 @@ namespace SocketServer.Items
                     firingRate:600f,
                     magazine:30,
                     currentFiringRatePerSecond: GetCurrentFiringRatePerSecond(600f),
+                    reloadingTime: 4f,
                     price:1000,
                     block:false,
                     use:true
-                 );
+                 );;
                 return AK47;
             });
 
@@ -61,6 +62,7 @@ namespace SocketServer.Items
                     firingRate: 50f,
                     magazine: 5,
                     currentFiringRatePerSecond: GetCurrentFiringRatePerSecond(50f),
+                    reloadingTime: 4f,
                     price: 8050
                  );
                 return SL7;
@@ -78,6 +80,7 @@ namespace SocketServer.Items
                     firingRate: 800f,
                     magazine: 30,
                     currentFiringRatePerSecond: GetCurrentFiringRatePerSecond(800f),
+                    reloadingTime: 4f,
                     price: 4500
                  );
                 return MP5;
@@ -95,6 +98,7 @@ namespace SocketServer.Items
                     firingRate: 30f,
                     magazine: 7,
                     currentFiringRatePerSecond: GetCurrentFiringRatePerSecond(30f),
+                    reloadingTime: 4f,
                     price: 10500
                  );
                 return M700;
@@ -112,6 +116,7 @@ namespace SocketServer.Items
                     firingRate: 500f,
                     magazine: 100,
                     currentFiringRatePerSecond: GetCurrentFiringRatePerSecond(500f),
+                    reloadingTime: 4f,
                     price: 3200
                  );
                 return M60;
@@ -129,6 +134,7 @@ namespace SocketServer.Items
                     firingRate: 100f,
                     magazine: 7,
                     currentFiringRatePerSecond: GetCurrentFiringRatePerSecond(100f),
+                    reloadingTime: 4f,
                     price: 500,
                     block:false,
                     use:true
@@ -148,6 +154,7 @@ namespace SocketServer.Items
                     firingRate: 780f,
                     magazine: 30,
                     currentFiringRatePerSecond: GetCurrentFiringRatePerSecond(780f),
+                    reloadingTime: 4f,
                     price: 7700
                  );
                 return M4A1;
@@ -435,6 +442,7 @@ namespace SocketServer.Items
                 gunPack.FiringRate = gunInfo.FiringRate;
                 gunPack.CurrentFiringRatePerSecond = gunInfo.CurrentFiringRatePerSecond;
                 gunPack.Magazine = gunInfo.Magazine;
+                gunPack.ReloadingTime = gunInfo.ReloadingTime;
                 gunPack.Price = gunInfo.Price;
                 gunInfo.CoreProp = gunPack.CoreProp;
                 gunInfo.CorePropValue = gunPack.CorePropValue;

@@ -169,7 +169,7 @@ namespace SocketServer.Items
 
     public sealed class GunInfo : ItemInfo
     {
-        public GunInfo(PlayerInfo playerInfo, EGunUid eGunUid, EGunName eGunName, EGunType eGunType, EGunCoreProp eGunCoreProp, float baseDmg, float firingRate, int magazine, float currentFiringRatePerSecond, long price, bool block = true, bool use = false ) : base(playerInfo)
+        public GunInfo(PlayerInfo playerInfo, EGunUid eGunUid, EGunName eGunName, EGunType eGunType, EGunCoreProp eGunCoreProp, float baseDmg, float firingRate, int magazine, float currentFiringRatePerSecond, float reloadingTime, long price, bool block = true, bool use = false ) : base(playerInfo)
         {
             this.playerInfo = playerInfo;
             ItemId = (int)eGunUid;
@@ -182,6 +182,7 @@ namespace SocketServer.Items
             FiringRate = firingRate;
             Magazine = magazine;
             CurrentFiringRatePerSecond = currentFiringRatePerSecond;
+            ReloadingTime = reloadingTime;
             Price = price;
             Block = block;
             Use = use;
@@ -192,6 +193,7 @@ namespace SocketServer.Items
         float firingRate = 0;
         float currentFiringRatePerSecond = 0;
         int magazine = 0;
+        float reloadingTime = 0;
         string coreProp = EGunCoreProp.Null.ToString();
         float corePropValue = 0;
         EGunCoreProp corePropType;
@@ -222,6 +224,7 @@ namespace SocketServer.Items
         public string CoreProp { get => coreProp; set => coreProp = value; }
         public float CorePropValue { get => corePropValue; set => corePropValue = value; }
         public EGunCoreProp CorePropType { get => corePropType; set => corePropType = value; }
+        public float ReloadingTime { get => reloadingTime; set => reloadingTime = value; }
     }
 
 }
