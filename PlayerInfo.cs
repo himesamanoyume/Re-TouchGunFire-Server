@@ -72,7 +72,7 @@ namespace SocketServer
         }
         float currentHealth;
         float maxHealth;
-        float currentAmor;
+        float currentArmor;
         float maxArmor;
         public float CurrentHealth
         {
@@ -94,20 +94,20 @@ namespace SocketServer
         }
         public float CurrentArmor
         {
-            get { return currentAmor; }
+            get { return currentArmor; }
             set
             {
                 if (value >= 0 && value <= maxArmor)
                 {
-                    currentAmor = value;
+                    currentArmor = value;
                 }
                 else if (value < 0)
                 {
-                    currentAmor = 0;
+                    currentArmor = 0;
                 }
                 else if (value > maxArmor)
                 {
-                    currentAmor = maxArmor;
+                    currentArmor = maxArmor;
                 }
             }
         }
@@ -307,6 +307,17 @@ namespace SocketServer
             get { return coin; }
             set { coin = value; }
         }
+        public float BaseMaxHealth { 
+            get => baseMaxHealth; 
+            set => baseMaxHealth = value; 
+        }
+        float baseMaxHealth;
+        float baseMaxArmor;
+        public float BaseMaxArmor
+        {
+            get => baseMaxArmor;
+            set => baseMaxArmor = value;
+        }
 
         public PlayerInfo()
         {
@@ -316,9 +327,11 @@ namespace SocketServer
             currentExp = 0;
             maxExp = 1000f;
             currentHealth = 1000f;
+            baseMaxHealth = 1000f;
             maxHealth = 1000f;
-            currentAmor = 1000f;
+            currentArmor = 1000f;
             maxArmor = 1000f;
+            baseMaxArmor = 1000f;
             baseDmgBonus = 0;
             critDmgRateBonus = 0.05f;
             critDmgBonus = 0.5f;
@@ -422,16 +435,29 @@ namespace SocketServer
             {
                 baseDmgBonus -= value;
             });
-
+            
             EquipSubPropFuncs.Add(ESubProp.生命值百分比加成, (value) =>
             {
-                maxHealth += (1 + value)*maxHealth;
+                maxHealth = (1 + value)* baseMaxHealth;
+                CurrentHealth = CurrentHealth;
             });
             RemoveSubPropFuncs.Add(ESubProp.生命值百分比加成, (value) =>
             {
-                maxHealth -= (1 + value) * maxHealth;
+                maxHealth = maxHealth / (1 + value);
+                CurrentHealth = CurrentHealth;
             });
 
+            EquipSubPropFuncs.Add(ESubProp.护甲值百分比加成, (value) =>
+            {
+                maxArmor = (1 + value) * baseMaxArmor;
+                CurrentArmor = CurrentArmor;
+            });
+            RemoveSubPropFuncs.Add(ESubProp.护甲值百分比加成, (value) =>
+            {
+                maxArmor = baseMaxArmor / (1 + value);
+                CurrentArmor = CurrentArmor;
+            });
+            
             EquipSubPropFuncs.Add(ESubProp.暴击率加成, (value) =>
             {
                 critDmgRateBonus += value;

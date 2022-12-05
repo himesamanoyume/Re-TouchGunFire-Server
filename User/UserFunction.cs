@@ -169,7 +169,7 @@ namespace SocketServer.User
             }
         }
 
-        public int EquipItem(MainPack mainPack, Client client)
+        public int EquipItem(MainPack mainPack, Client client, MySqlConnection mySqlConnection)
         {
             try
             {
@@ -177,8 +177,9 @@ namespace SocketServer.User
                 {
                     if (client.ItemController.itemsDict.TryGetValue(mainPack.EquipItemPack.ItemId, out ItemInfo itemInfo))
                     {
-                        client.ItemController.SetItemEquip(itemInfo.ItemId, itemInfo.ItemType);
+                        client.ItemController.SetItemEquip(itemInfo);
                         client.GetItemInfo();
+                        ShoppingSuccess(client, mySqlConnection);
                         return 1;
                     }
                     else
@@ -247,7 +248,7 @@ namespace SocketServer.User
             }
         }
 
-        public bool RefreshItemSubProp(MainPack mainPack, Client client)
+        public bool RefreshItemSubProp(MainPack mainPack, Client client, MySqlConnection mySqlConnection)
         {
             try
             {
@@ -256,9 +257,10 @@ namespace SocketServer.User
                     if (client.ItemController.gunInfos.TryGetValue(mainPack.ShoppingPack.ItemId, out GunInfo gunInfo))
                     {
                         if (gunInfo.Block != false) return false;
-                        if (CheckPlayerMoney(mainPack, gunInfo, client))
+                        if (CheckUnlockPlayerMoney(mainPack, gunInfo, client))
                         {
                             client.ItemController.RefreshAllSubProp(gunInfo.ItemId);
+                            ShoppingSuccess(client, mySqlConnection);
                             return true;
                         }
                         else
@@ -268,8 +270,8 @@ namespace SocketServer.User
                     }
                     else if (client.ItemController.equipmentInfos.TryGetValue(mainPack.ShoppingPack.ItemId, out EquipmentInfo equipmentInfo))
                     {
-                        if (equipmentInfo.Block == false) return false;
-                        if (CheckPlayerMoney(mainPack, equipmentInfo, client))
+                        if (equipmentInfo.Block != false) return false;
+                        if (CheckUnlockPlayerMoney(mainPack, equipmentInfo, client))
                         {
                             client.ItemController.RefreshAllSubProp(equipmentInfo.ItemId);
                             return true;
@@ -296,7 +298,7 @@ namespace SocketServer.User
             }
         }
 
-        public bool RefreshGunCoreProp(MainPack mainPack, Client client)
+        public bool RefreshGunCoreProp(MainPack mainPack, Client client, MySqlConnection mySqlConnection)
         {
             try
             {
@@ -305,9 +307,10 @@ namespace SocketServer.User
                     if (client.ItemController.gunInfos.TryGetValue(mainPack.ShoppingPack.ItemId, out GunInfo gunInfo))
                     {
                         if (gunInfo.Block != false) return false;
-                        if (CheckPlayerMoney(mainPack, gunInfo, client))
+                        if (CheckUnlockPlayerMoney(mainPack, gunInfo, client))
                         {
                             client.ItemController.RefreshCoreProp(gunInfo.ItemId);
+                            ShoppingSuccess(client, mySqlConnection);
                             return true;
                         }
                         else
@@ -332,7 +335,7 @@ namespace SocketServer.User
             }
         }
 
-        public int UnlockItemSubProp(MainPack mainPack, Client client)
+        public int UnlockItemSubProp(MainPack mainPack, Client client, MySqlConnection mySqlConnection)
         {
             try
             {
@@ -340,12 +343,12 @@ namespace SocketServer.User
                 {
                     if (client.ItemController.gunInfos.TryGetValue(mainPack.ShoppingPack.ItemId, out GunInfo gunInfo))
                     {
-                        if (CheckPlayerMoney(mainPack, gunInfo, client))
+                        if (CheckUnlockPlayerMoney(mainPack, gunInfo, client))
                         {
                             int code = client.ItemController.UnlockItemSubProp(mainPack.ShoppingPack.ItemId);
                             if (code == 1)
                             {
-                                //client.GetItemInfo();
+                                ShoppingSuccess(client, mySqlConnection);
                                 return code;//成功
                             }
                             else
@@ -360,12 +363,12 @@ namespace SocketServer.User
                     }
                     else if(client.ItemController.equipmentInfos.TryGetValue(mainPack.ShoppingPack.ItemId, out EquipmentInfo equipmentInfo))
                     {
-                        if (CheckPlayerMoney(mainPack, equipmentInfo, client))
+                        if (CheckUnlockPlayerMoney(mainPack, equipmentInfo, client))
                         {
                             int code = client.ItemController.UnlockItemSubProp(mainPack.ShoppingPack.ItemId);
                             if (code == 1)
                             {
-                                client.GetItemInfo();
+                                ShoppingSuccess(client, mySqlConnection);
                                 return code;//成功
                             }
                             else
@@ -396,9 +399,64 @@ namespace SocketServer.User
             }
         }
 
-        bool CheckPlayerMoney(MainPack mainPack, ItemInfo itemInfo, Client client)
+        /// <summary>
+        /// 对未解锁的装备的检测
+        /// </summary>
+        /// <param name="mainPack"></param>
+        /// <param name="itemInfo"></param>
+        /// <param name="client"></param>
+        /// <returns></returns>
+        bool CheckUnlockPlayerMoney(MainPack mainPack, ItemInfo itemInfo, Client client)
         {
             if (itemInfo.Block == false)
+            {
+                if (mainPack.ShoppingPack.IsDiamond == true)
+                {
+                    if (itemInfo.DiamondPrice * mainPack.ShoppingPack.Percent <= client.PlayerInfo.Diamond &&
+                        (float)Math.Round((double)(itemInfo.DiamondPrice * mainPack.ShoppingPack.Percent), 3) == mainPack.ShoppingPack.DiamondPrice &&
+                        mainPack.ShoppingPack.Percent >= 0 && mainPack.ShoppingPack.Percent <= 1)
+                    {
+                        client.PlayerInfo.Diamond -= itemInfo.DiamondPrice * mainPack.ShoppingPack.Percent;
+                        itemInfo.Block = false;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    if (itemInfo.Price <= client.PlayerInfo.Coin &&
+                        (float)Math.Round((double)(itemInfo.Price * mainPack.ShoppingPack.Percent), 3) == mainPack.ShoppingPack.Price &&
+                        mainPack.ShoppingPack.Percent >= 0 && mainPack.ShoppingPack.Percent <= 1)
+                    {
+                        client.PlayerInfo.Coin -= itemInfo.Price * mainPack.ShoppingPack.Percent;
+                        itemInfo.Block = false;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                return false;//repeated
+            }
+        }
+
+        /// <summary>
+        /// 对已解锁的装备的检测
+        /// </summary>
+        /// <param name="mainPack"></param>
+        /// <param name="itemInfo"></param>
+        /// <param name="client"></param>
+        /// <returns></returns>
+        bool CheckLockPlayerMoney(MainPack mainPack, ItemInfo itemInfo, Client client)
+        {
+            if (itemInfo.Block == true)
             {
                 if (mainPack.ShoppingPack.IsDiamond == true)
                 {
@@ -446,7 +504,7 @@ namespace SocketServer.User
                     if (client.ItemController.gunInfos.TryGetValue(mainPack.ShoppingPack.ItemId, out GunInfo gunInfo))
                     {
                         if (gunInfo.Block == false) return 2;
-                        if (CheckPlayerMoney(mainPack, gunInfo, client))
+                        if (CheckLockPlayerMoney(mainPack, gunInfo, client))
                         {
                             ShoppingSuccess(client, mySqlConnection);
                             return 1;
@@ -459,7 +517,7 @@ namespace SocketServer.User
                     else if (client.ItemController.equipmentInfos.TryGetValue(mainPack.ShoppingPack.ItemId, out EquipmentInfo equipmentInfo))
                     {
                         if (equipmentInfo.Block == false) return 2;
-                        if (CheckPlayerMoney(mainPack, equipmentInfo, client))
+                        if (CheckLockPlayerMoney(mainPack, equipmentInfo, client))
                         {
                             ShoppingSuccess(client, mySqlConnection);
                             return 1;

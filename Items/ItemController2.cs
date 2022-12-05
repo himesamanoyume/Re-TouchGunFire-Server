@@ -162,6 +162,7 @@ namespace SocketServer.Items
                     eEquipmentType: EEquipmentType.Armor,
                     eEquipmentName: EEquipmentName.默认护甲,
                     eEquipmentSuit: EEquipmentSuit.无套装效果,
+                    price: 1000,
                     block: false,
                     use: true
                 );
@@ -176,6 +177,7 @@ namespace SocketServer.Items
                     eEquipmentType: EEquipmentType.Head,
                     eEquipmentName: EEquipmentName.默认头盔,
                     eEquipmentSuit: EEquipmentSuit.无套装效果,
+                    price: 1000,
                     block: false,
                     use: true
                 );
@@ -190,6 +192,7 @@ namespace SocketServer.Items
                     eEquipmentType: EEquipmentType.Hand,
                     eEquipmentName: EEquipmentName.默认手套,
                     eEquipmentSuit: EEquipmentSuit.无套装效果,
+                    price: 1000,
                     block: false,
                     use: true
                 );
@@ -204,6 +207,7 @@ namespace SocketServer.Items
                     eEquipmentType: EEquipmentType.Knee,
                     eEquipmentName: EEquipmentName.默认护膝,
                     eEquipmentSuit: EEquipmentSuit.无套装效果,
+                    price: 1000,
                     block: false,
                     use: true
                 );
@@ -218,6 +222,7 @@ namespace SocketServer.Items
                     eEquipmentType: EEquipmentType.Leg,
                     eEquipmentName: EEquipmentName.默认护腿,
                     eEquipmentSuit: EEquipmentSuit.无套装效果,
+                    price: 1000,
                     block: false,
                     use: true
                 );
@@ -232,6 +237,7 @@ namespace SocketServer.Items
                     eEquipmentType: EEquipmentType.Boots,
                     eEquipmentName: EEquipmentName.默认鞋,
                     eEquipmentSuit: EEquipmentSuit.无套装效果,
+                    price: 1000,
                     block: false,
                     use: true
                 );
@@ -425,24 +431,28 @@ namespace SocketServer.Items
         {
             if (gunInfos.TryGetValue(gunPack.ItemId,out GunInfo gunInfo))
             {
-                gunPack.BaseDMG = gunInfo.BaseDMG;
+                gunPack.BaseDmg = gunInfo.BaseDmg;
                 gunPack.FiringRate = gunInfo.FiringRate;
                 gunPack.CurrentFiringRatePerSecond = gunInfo.CurrentFiringRatePerSecond;
                 gunPack.Magazine = gunInfo.Magazine;
                 gunPack.Price = gunInfo.Price;
                 gunInfo.CoreProp = gunPack.CoreProp;
                 gunInfo.CorePropValue = gunPack.CorePropValue;
+                gunInfo.CorePropType = (EGunCoreProp)gunPack.CorePropType;
                 gunInfo.SubProp1 = gunPack.SubProp1;
                 gunInfo.SubProp1Value = gunPack.SubProp1Value;
+                gunInfo.SubProp1Type = (ESubProp)gunPack.SubProp1Type;
                 gunInfo.SubProp2 = gunPack.SubProp2;
                 gunInfo.SubProp2Value = gunPack.SubProp2Value;
+                gunInfo.SubProp2Type = (ESubProp)gunPack.SubProp2Type;
                 gunInfo.SubProp3 = gunPack.SubProp3;
                 gunInfo.SubProp3Value = gunPack.SubProp3Value;
+                gunInfo.SubProp3Type = (ESubProp)gunPack.SubProp3Type;
                 gunInfo.Use = gunPack.Use;
                 gunInfo.Block = gunPack.Block;
                 if (gunInfo.Use)
                 {
-                    SetItemEquip(gunInfo.ItemId, gunInfo.ItemType, isFirst);
+                    SetItemEquip(gunInfo, isFirst);
                 }
             }
         }
@@ -453,16 +463,19 @@ namespace SocketServer.Items
             {
                 equipmentInfo.SubProp1 = equipmentPack.SubProp1;
                 equipmentInfo.SubProp1Value = equipmentPack.SubProp1Value;
+                equipmentInfo.SubProp1Type = (ESubProp)equipmentPack.SubProp1Type;
                 equipmentInfo.SubProp2 = equipmentPack.SubProp2;
                 equipmentInfo.SubProp2Value = equipmentPack.SubProp2Value;
+                equipmentInfo.SubProp2Type = (ESubProp)equipmentPack.SubProp2Type;
                 equipmentInfo.SubProp3 = equipmentPack.SubProp3;
                 equipmentInfo.SubProp3Value = equipmentPack.SubProp3Value;
+                equipmentInfo.SubProp3Type = (ESubProp)equipmentPack.SubProp3Type;
                 equipmentInfo.Use = equipmentPack.Use;
                 equipmentInfo.Block = equipmentPack.Block;
                 equipmentPack.Price = equipmentInfo.Price;
                 if (equipmentInfo.Use)
                 {
-                    SetItemEquip(equipmentInfo.ItemId, equipmentInfo.ItemType, isFirst); 
+                    SetItemEquip(equipmentInfo, isFirst); 
                 }
             }
         }

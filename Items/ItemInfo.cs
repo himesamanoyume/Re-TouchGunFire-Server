@@ -115,7 +115,28 @@ namespace SocketServer.Items
         int itemId;
         public string ItemType { get => itemType; set => itemType = value; }
         public int ItemId { get => itemId; set => itemId = value; }
-    }
+        public float HealthBonus { get => healthBonus; set => healthBonus = value; }
+        public float BaseDmgBonus { get => baseDmgBonus; set => baseDmgBonus = value; }
+        public float CDmgRateBonus { get => cDmgRateBonus; set => cDmgRateBonus = value; }
+        public float CDmgBonus { get => cDmgBonus; set => cDmgBonus = value; }
+        public float HeadshotDmgBonus { get => headshotDmgBonus; set => headshotDmgBonus = value; }
+        public float PRateBonus { get => pRateBonus; set => pRateBonus = value; }
+        public float AbeBonus { get => abeBonus; set => abeBonus = value; }
+        public float ArmorBonus { get => armorBonus; set => armorBonus = value; }
+        public float ItemHealth { get => itemHealth; set => itemHealth = value; }
+        public float ItemArmor { get => itemArmor; set => itemArmor = value; }
+
+        float healthBonus = 0;
+        float baseDmgBonus = 0;
+        float cDmgRateBonus = 0;
+        float cDmgBonus = 0;
+        float headshotDmgBonus = 0;
+        float pRateBonus = 0;
+        float abeBonus = 0;
+        float armorBonus = 0;
+        float itemHealth = 0;
+        float itemArmor = 0;
+    }  
 
     public sealed class EquipmentInfo : ItemInfo
     {
@@ -157,32 +178,23 @@ namespace SocketServer.Items
             CoreProp = eGunCoreProp.ToString();
             CorePropType = eGunCoreProp;
             CorePropValue = 0.003f;
-            BaseDMG = baseDmg;
+            BaseDmg = baseDmg;
             FiringRate = firingRate;
             Magazine = magazine;
             CurrentFiringRatePerSecond = currentFiringRatePerSecond;
             Price = price;
             Block = block;
             Use = use;
-
         }
 
         string gunName;
-        float baseDMG = 0;
+        float baseDmg = 0;
         float firingRate = 0;
         float currentFiringRatePerSecond = 0;
         int magazine = 0;
         string coreProp = EGunCoreProp.Null.ToString();
         float corePropValue = 0;
         EGunCoreProp corePropType;
-        float health = 0;
-        float baseDmgBonus = 0;
-        float cDmgRateBonus = 0;
-        float cDmgBonus = 0;
-        float headshotDmgBonus = 0;
-        float pRateBonus = 0;
-        float abeBonus = 0;
-
 
         protected override void EquipFunc()
         {
@@ -203,20 +215,13 @@ namespace SocketServer.Items
         }
 
         public string GunName { get => gunName; set => gunName = value; }
-        public float BaseDMG { get => baseDMG; set => baseDMG = value; }
+        public float BaseDmg { get => baseDmg; set => baseDmg = value; }
         public float FiringRate { get => firingRate; set => firingRate = value; }
         public float CurrentFiringRatePerSecond { get => currentFiringRatePerSecond; set => currentFiringRatePerSecond = value; }
         public int Magazine { get => magazine; set => magazine = value; }
         public string CoreProp { get => coreProp; set => coreProp = value; }
         public float CorePropValue { get => corePropValue; set => corePropValue = value; }
         public EGunCoreProp CorePropType { get => corePropType; set => corePropType = value; }
-        public float Health { get => health; set => health = value; }
-        public float BaseDmgBonus { get => baseDmgBonus; set => baseDmgBonus = value; }
-        public float CDmgRateBonus { get => cDmgRateBonus; set => cDmgRateBonus = value; }
-        public float CDmgBonus { get => cDmgBonus; set => cDmgBonus = value; }
-        public float HeadshotDmgBonus { get => headshotDmgBonus; set => headshotDmgBonus = value; }
-        public float PRateBonus { get => pRateBonus; set => pRateBonus = value; }
-        public float AbeBonus { get => abeBonus; set => abeBonus = value; }
     }
 
 }

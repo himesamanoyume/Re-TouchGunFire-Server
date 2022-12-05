@@ -176,17 +176,17 @@ namespace SocketServer
 
         public int UnlockItemSubProp(MainPack mainPack)
         {
-            return GetUserFunction.UnlockItemSubProp(mainPack, this);
+            return GetUserFunction.UnlockItemSubProp(mainPack, this, connection);
         }
 
         public bool RefreshItemSubProp(MainPack mainPack)
         {
-            return GetUserFunction.RefreshItemSubProp(mainPack, this);
+            return GetUserFunction.RefreshItemSubProp(mainPack, this, connection);
         }
 
         public bool RefreshGunCoreProp(MainPack mainPack)
         {
-            return GetUserFunction.RefreshGunCoreProp(mainPack, this);
+            return GetUserFunction.RefreshGunCoreProp(mainPack, this, connection);
         }
 
         public int Shopping(MainPack mainPack)
@@ -201,7 +201,7 @@ namespace SocketServer
 
         public int EquipItem(MainPack mainPack)
         {
-            return GetUserFunction.EquipItem(mainPack, this);
+            return GetUserFunction.EquipItem(mainPack, this, connection);
         }
 
         public MainPack UpdatePlayerInfo(MainPack mainPack)

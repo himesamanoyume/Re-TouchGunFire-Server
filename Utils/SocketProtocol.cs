@@ -69,7 +69,7 @@ namespace SocketProtocol {
             "Qm9udXMYESABKAISEgoKU2dEbWdCb251cxgSIAEoAhISCgpNZ0RtZ0JvbnVz",
             "GBMgASgCEhIKClNyRG1nQm9udXMYFCABKAISEgoKSGdEbWdCb251cxgVIAEo",
             "AhIPCgdEaWFtb25kGBYgASgCEgwKBENvaW4YFyABKAISFAoMQ3JpdERtZ0Jv",
-            "bnVzGBggASgCIq0DCg1FcXVpcG1lbnRQYWNrEg4KBkl0ZW1JZBgBIAEoBRIV",
+            "bnVzGBggASgCIqoFCg1FcXVpcG1lbnRQYWNrEg4KBkl0ZW1JZBgBIAEoBRIV",
             "Cg1FcXVpcG1lbnROYW1lGAIgASgJEhUKDUVxdWlwbWVudFN1aXQYAyABKAkS",
             "EAoIU3ViUHJvcDEYBCABKAkSFQoNU3ViUHJvcDFWYWx1ZRgFIAEoAhIQCghT",
             "dWJQcm9wMhgGIAEoCRIVCg1TdWJQcm9wMlZhbHVlGAcgASgCEhAKCFN1YlBy",
@@ -78,70 +78,81 @@ namespace SocketProtocol {
             "ZW50MhgLIAEoDjIgLlNvY2tldFByb3RvY29sLkVFcXVpcG1lbnRUYWxlbnQS",
             "CwoDVXNlGAwgASgIEg0KBUJsb2NrGA0gASgIEg0KBVByaWNlGA4gASgCEhAK",
             "CEl0ZW1UeXBlGA8gASgJEhQKDFN1YlByb3AxVHlwZRgQIAEoBRIUCgxTdWJQ",
-            "cm9wMlR5cGUYESABKAUSFAoMU3ViUHJvcDNUeXBlGBIgASgFIr4DCgdHdW5Q",
-            "YWNrEg4KBkl0ZW1JZBgBIAEoBRIPCgdHdW5OYW1lGAIgASgJEhAKCEl0ZW1U",
-            "eXBlGAMgASgJEg8KB0Jhc2VETUcYBCABKAISEgoKRmlyaW5nUmF0ZRgFIAEo",
-            "AhIiChpDdXJyZW50RmlyaW5nUmF0ZVBlclNlY29uZBgGIAEoAhIQCghNYWdh",
-            "emluZRgHIAEoBRIQCghDb3JlUHJvcBgIIAEoCRIVCg1Db3JlUHJvcFZhbHVl",
-            "GAkgASgCEhAKCFN1YlByb3AxGAogASgJEhUKDVN1YlByb3AxVmFsdWUYCyAB",
-            "KAISEAoIU3ViUHJvcDIYDCABKAkSFQoNU3ViUHJvcDJWYWx1ZRgNIAEoAhIQ",
-            "CghTdWJQcm9wMxgOIAEoCRIVCg1TdWJQcm9wM1ZhbHVlGA8gASgCEgsKA1Vz",
-            "ZRgQIAEoCBINCgVCbG9jaxgRIAEoCBINCgVQcmljZRgSIAEoAhIUCgxTdWJQ",
-            "cm9wMVR5cGUYEyABKAUSFAoMU3ViUHJvcDJUeXBlGBQgASgFEhQKDFN1YlBy",
-            "b3AzVHlwZRgVIAEoBRIUCgxDb3JlUHJvcFR5cGUYFiABKAUiRwoLRnJpZW5k",
-            "c1BhY2sSEgoKUGxheWVyMVVpZBgBIAEoBRISCgpQbGF5ZXIyVWlkGAIgASgF",
-            "EhAKCElzRnJpZW5kGAMgASgFIjAKFVNlbmRSZXF1ZXN0RnJpZW5kUGFjaxIX",
-            "Cg9UYXJnZXRQbGF5ZXJVaWQYASABKAUqSgoLUmVxdWVzdENvZGUSDwoLUmVx",
-            "dWVzdE5vbmUQABIICgRVc2VyEAESCgoGR2FtaW5nEAISCAoEVGVhbRADEgoK",
-            "BkZyaWVuZBAEKtIGCgpBY3Rpb25Db2RlEg4KCkFjdGlvbk5vbmUQABIMCghS",
-            "ZWdpc3RlchABEgkKBUxvZ2luEAISEgoOSW5pdFBsYXllckluZm8QAxISCg5B",
-            "Y2NlcHRKb2luVGVhbRAEEg4KClVwZGF0ZVRlYW0QBRINCglMZWF2ZVRlYW0Q",
-            "BhIUChBVcGRhdGVQbGF5ZXJJbmZvEAcSDwoLUmVhZHlBdHRhY2sQCBIPCgtT",
-            "dGFydEF0dGFjaxAJEg0KCU5leHRFbmVteRAKEg0KCUVuZEF0dGFjaxALEgwK",
-            "CEV4aXRHYW1lEAwSDQoJQnJlYWtUZWFtEA0SDgoKR2V0RnJpZW5kcxAOEhQK",
-            "EEdldEZyaWVuZFJlcXVlc3QQDxIQCgxTZWFyY2hGcmllbmQQEBIVChFTZW5k",
-            "UmVxdWVzdEZyaWVuZBAREhUKEUdldFBsYXllckJhc2VJbmZvEBISEAoMRGVs",
-            "ZXRlRnJpZW5kEBMSFwoTQWNjZXB0RnJpZW5kUmVxdWVzdBAUEhcKE1JlZnVz",
-            "ZUZyaWVuZFJlcXVlc3QQFRIOCgpJbnZpdGVUZWFtEBYSDwoLSW52aXRlZFRl",
-            "YW0QFxITCg9Kb2luVGVhbVJlcXVlc3QQGBIUChBBY2NlcHRJbnZpdGVUZWFt",
-            "EBkSFgoSQWNjZXB0ZWRJbnZpdGVUZWFtEBoSFAoQUmVmdXNlSW52aXRlVGVh",
-            "bRAbEhUKEVJlZnVzZWRJbnZpdGVUZWFtEBwSDgoKS2lja1BsYXllchAdEhAK",
-            "DEdldFRlYW1tYXRlcxAeEhUKEVRlYW1tYXRlTGVhdmVUZWFtEB8SEgoOUGxh",
-            "eWVySm9pblRlYW0QIBIUChBBY2NlcHRlZEpvaW5UZWFtECESEgoOUmVmdXNl",
-            "Sm9pblRlYW0QIhITCg9SZWZ1c2VkSm9pblRlYW0QIxITCg9CZUtpY2tlZE91",
-            "dFRlYW0QJBIQCgxSZWdlbmVyYXRpb24QJRIMCghTaG9wcGluZxAmEg8KC0dl",
-            "dEl0ZW1JbmZvECcSFgoSUmVmcmVzaEl0ZW1TdWJQcm9wECgSDQoJRXF1aXBJ",
-            "dGVtECkSFgoSUmVmcmVzaEd1bkNvcmVQcm9wECoSFQoRVW5sb2NrSXRlbVN1",
-            "YlByb3AQKyplCgpSZXR1cm5Db2RlEg4KClJldHVybk5vbmUQABILCgdTdWNj",
-            "ZXNzEAESCAoERmFpbBACEhMKD1JlcGVhdGVkUmVxdWVzdBADEgwKCE5vdEZv",
-            "dW5kEAQSDQoJSW5jb3JyZWN0EAUqUAoIRUd1bk5hbWUSCAoEQUs0NxAAEgcK",
-            "A1NMNxABEgcKA01QNRACEggKBE03MDAQAxIHCgNNNjAQBBIKCgZTUEFTMTIQ",
-            "BRIJCgVNMTkxMRAGKkQKCEVHdW5UeXBlEgYKAkFSEAASBwoDRE1SEAESBwoD",
-            "U01HEAISBgoCU0cQAxIGCgJTUhAEEgYKAk1HEAUSBgoCSEcQBirnAQoMRUd1",
-            "bkNvcmVQcm9wEhcKE2FsbERtZ0JvbnVzQ29yZVByb3AQABIWChJhckRtZ0Jv",
-            "bnVzQ29yZVByb3AQARIXChNkbXJEbWdCb251c0NvcmVQcm9wEAISFwoTc21n",
-            "RG1nQm9udXNDb3JlUHJvcBADEhYKEnNnRG1nQm9udXNDb3JlUHJvcBAEEhYK",
-            "EnNyRG1nQm9udXNDb3JlUHJvcBAFEhYKEm1nRG1nQm9udXNDb3JlUHJvcBAG",
-            "EhYKEmhnRG1nQm9udXNDb3JlUHJvcBAHEhQKEEVHdW5Db3JlUHJvcE51bGwQ",
-            "CCpLCg5FRXF1aXBtZW50U3VpdBINCglUZXN0MVN1aXQQABINCglUZXN0MlN1",
-            "aXQQARINCglUZXN0M1N1aXQQAhIMCghOdWxsU3VpdBADKq0CCg5FRXF1aXBt",
-            "ZW50TmFtZRIQCgxEZWZhdWx0QXJtb3IQABIPCgtEZWZhdWx0SGVhZBABEg8K",
-            "C0RlZmF1bHRIYW5kEAISDwoLRGVmYXVsdEtuZWUQAxIOCgpEZWZhdWx0TGVn",
-            "EAQSEAoMRGVmYXVsdEJvb3RzEAUSDgoKVGVzdDFBcm1vchAGEg0KCVRlc3Qx",
-            "SGVhZBAHEg0KCVRlc3QxSGFuZBAIEg0KCVRlc3QxS25lZRAJEgwKCFRlc3Qx",
-            "TGVnEAoSDgoKVGVzdDFCb290cxALEg4KClRlc3QyQXJtb3IQDBINCglUZXN0",
-            "MkhlYWQQDRINCglUZXN0MkhhbmQQDhINCglUZXN0MktuZWUQDxIMCghUZXN0",
-            "MkxlZxAQEg4KClRlc3QyQm9vdHMQESrkAgoIRVN1YlByb3ASEQoNaGVhbHRo",
-            "U3ViUHJvcBAAEhcKE2Jhc2VEbWdCb251c1N1YlByb3AQARIYChRjRG1nUmF0",
-            "ZUJvbnVzU3ViUHJvcBACEhQKEGNEbWdCb251c1N1YlByb3AQAxIbChdoZWFk",
-            "c2hvdERtZ0JvbnVzU3ViUHJvcBAEEhUKEXBSYXRlQm9udXNTdWJQcm9wEAUS",
-            "EwoPYWJlQm9udXNTdWJQcm9wEAYSFQoRYXJEbWdCb251c1N1YlByb3AQBxIW",
-            "ChJkbXJEbWdCb251c1N1YlByb3AQCBIWChJzbWdEbWdCb251c1N1YlByb3AQ",
-            "CRIVChFzZ0RtZ0JvbnVzU3ViUHJvcBAKEhUKEXNyRG1nQm9udXNTdWJQcm9w",
-            "EAsSFQoRbWdEbWdCb251c1N1YlByb3AQDBIVChFoZ0RtZ0JvbnVzU3ViUHJv",
-            "cBANEhAKDEVTdWJQcm9wTnVsbBAOKkgKEEVFcXVpcG1lbnRUYWxlbnQSGQoV",
-            "VGVzdDFFcXVpcG1lbnRUYWxlbnQxEAASGQoVVGVzdDFFcXVpcG1lbnRUYWxl",
-            "bnQyEAFiBnByb3RvMw=="));
+            "cm9wMlR5cGUYESABKAUSFAoMU3ViUHJvcDNUeXBlGBIgASgFEhMKC0hlYWx0",
+            "aEJvbnVzGBMgASgCEhQKDEJhc2VEbWdCb251cxgUIAEoAhIYChBDcml0RG1n",
+            "UmF0ZUJvbnVzGBUgASgCEhQKDENyaXREbWdCb251cxgWIAEoAhIYChBIZWFk",
+            "c2hvdERtZ0JvbnVzGBcgASgCEhIKClBSYXRlQm9udXMYGCABKAISEAoIQWJl",
+            "Qm9udXMYGSABKAISEgoKQXJtb3JCb251cxgaIAEoAhIYChBTdWJQcm9wMU1h",
+            "eFZhbHVlGBsgASgCEhgKEFN1YlByb3AyTWF4VmFsdWUYHCABKAISGAoQU3Vi",
+            "UHJvcDNNYXhWYWx1ZRgdIAEoAiK7BQoHR3VuUGFjaxIOCgZJdGVtSWQYASAB",
+            "KAUSDwoHR3VuTmFtZRgCIAEoCRIQCghJdGVtVHlwZRgDIAEoCRIPCgdCYXNl",
+            "RG1nGAQgASgCEhIKCkZpcmluZ1JhdGUYBSABKAISIgoaQ3VycmVudEZpcmlu",
+            "Z1JhdGVQZXJTZWNvbmQYBiABKAISEAoITWFnYXppbmUYByABKAUSEAoIQ29y",
+            "ZVByb3AYCCABKAkSFQoNQ29yZVByb3BWYWx1ZRgJIAEoAhIQCghTdWJQcm9w",
+            "MRgKIAEoCRIVCg1TdWJQcm9wMVZhbHVlGAsgASgCEhAKCFN1YlByb3AyGAwg",
+            "ASgJEhUKDVN1YlByb3AyVmFsdWUYDSABKAISEAoIU3ViUHJvcDMYDiABKAkS",
+            "FQoNU3ViUHJvcDNWYWx1ZRgPIAEoAhILCgNVc2UYECABKAgSDQoFQmxvY2sY",
+            "ESABKAgSDQoFUHJpY2UYEiABKAISFAoMU3ViUHJvcDFUeXBlGBMgASgFEhQK",
+            "DFN1YlByb3AyVHlwZRgUIAEoBRIUCgxTdWJQcm9wM1R5cGUYFSABKAUSFAoM",
+            "Q29yZVByb3BUeXBlGBYgASgFEhMKC0hlYWx0aEJvbnVzGBcgASgCEhQKDEJh",
+            "c2VEbWdCb251cxgYIAEoAhIYChBDcml0RG1nUmF0ZUJvbnVzGBkgASgCEhQK",
+            "DENyaXREbWdCb251cxgaIAEoAhIYChBIZWFkc2hvdERtZ0JvbnVzGBsgASgC",
+            "EhIKClBSYXRlQm9udXMYHCABKAISEAoIQWJlQm9udXMYHSABKAISEgoKQXJt",
+            "b3JCb251cxgeIAEoAhIYChBTdWJQcm9wMU1heFZhbHVlGB8gASgCEhgKEFN1",
+            "YlByb3AyTWF4VmFsdWUYICABKAISGAoQU3ViUHJvcDNNYXhWYWx1ZRghIAEo",
+            "AiJHCgtGcmllbmRzUGFjaxISCgpQbGF5ZXIxVWlkGAEgASgFEhIKClBsYXll",
+            "cjJVaWQYAiABKAUSEAoISXNGcmllbmQYAyABKAUiMAoVU2VuZFJlcXVlc3RG",
+            "cmllbmRQYWNrEhcKD1RhcmdldFBsYXllclVpZBgBIAEoBSpKCgtSZXF1ZXN0",
+            "Q29kZRIPCgtSZXF1ZXN0Tm9uZRAAEggKBFVzZXIQARIKCgZHYW1pbmcQAhII",
+            "CgRUZWFtEAMSCgoGRnJpZW5kEAQq0gYKCkFjdGlvbkNvZGUSDgoKQWN0aW9u",
+            "Tm9uZRAAEgwKCFJlZ2lzdGVyEAESCQoFTG9naW4QAhISCg5Jbml0UGxheWVy",
+            "SW5mbxADEhIKDkFjY2VwdEpvaW5UZWFtEAQSDgoKVXBkYXRlVGVhbRAFEg0K",
+            "CUxlYXZlVGVhbRAGEhQKEFVwZGF0ZVBsYXllckluZm8QBxIPCgtSZWFkeUF0",
+            "dGFjaxAIEg8KC1N0YXJ0QXR0YWNrEAkSDQoJTmV4dEVuZW15EAoSDQoJRW5k",
+            "QXR0YWNrEAsSDAoIRXhpdEdhbWUQDBINCglCcmVha1RlYW0QDRIOCgpHZXRG",
+            "cmllbmRzEA4SFAoQR2V0RnJpZW5kUmVxdWVzdBAPEhAKDFNlYXJjaEZyaWVu",
+            "ZBAQEhUKEVNlbmRSZXF1ZXN0RnJpZW5kEBESFQoRR2V0UGxheWVyQmFzZUlu",
+            "Zm8QEhIQCgxEZWxldGVGcmllbmQQExIXChNBY2NlcHRGcmllbmRSZXF1ZXN0",
+            "EBQSFwoTUmVmdXNlRnJpZW5kUmVxdWVzdBAVEg4KCkludml0ZVRlYW0QFhIP",
+            "CgtJbnZpdGVkVGVhbRAXEhMKD0pvaW5UZWFtUmVxdWVzdBAYEhQKEEFjY2Vw",
+            "dEludml0ZVRlYW0QGRIWChJBY2NlcHRlZEludml0ZVRlYW0QGhIUChBSZWZ1",
+            "c2VJbnZpdGVUZWFtEBsSFQoRUmVmdXNlZEludml0ZVRlYW0QHBIOCgpLaWNr",
+            "UGxheWVyEB0SEAoMR2V0VGVhbW1hdGVzEB4SFQoRVGVhbW1hdGVMZWF2ZVRl",
+            "YW0QHxISCg5QbGF5ZXJKb2luVGVhbRAgEhQKEEFjY2VwdGVkSm9pblRlYW0Q",
+            "IRISCg5SZWZ1c2VKb2luVGVhbRAiEhMKD1JlZnVzZWRKb2luVGVhbRAjEhMK",
+            "D0JlS2lja2VkT3V0VGVhbRAkEhAKDFJlZ2VuZXJhdGlvbhAlEgwKCFNob3Bw",
+            "aW5nECYSDwoLR2V0SXRlbUluZm8QJxIWChJSZWZyZXNoSXRlbVN1YlByb3AQ",
+            "KBINCglFcXVpcEl0ZW0QKRIWChJSZWZyZXNoR3VuQ29yZVByb3AQKhIVChFV",
+            "bmxvY2tJdGVtU3ViUHJvcBArKmUKClJldHVybkNvZGUSDgoKUmV0dXJuTm9u",
+            "ZRAAEgsKB1N1Y2Nlc3MQARIICgRGYWlsEAISEwoPUmVwZWF0ZWRSZXF1ZXN0",
+            "EAMSDAoITm90Rm91bmQQBBINCglJbmNvcnJlY3QQBSpQCghFR3VuTmFtZRII",
+            "CgRBSzQ3EAASBwoDU0w3EAESBwoDTVA1EAISCAoETTcwMBADEgcKA002MBAE",
+            "EgoKBlNQQVMxMhAFEgkKBU0xOTExEAYqRAoIRUd1blR5cGUSBgoCQVIQABIH",
+            "CgNETVIQARIHCgNTTUcQAhIGCgJTRxADEgYKAlNSEAQSBgoCTUcQBRIGCgJI",
+            "RxAGKucBCgxFR3VuQ29yZVByb3ASFwoTYWxsRG1nQm9udXNDb3JlUHJvcBAA",
+            "EhYKEmFyRG1nQm9udXNDb3JlUHJvcBABEhcKE2RtckRtZ0JvbnVzQ29yZVBy",
+            "b3AQAhIXChNzbWdEbWdCb251c0NvcmVQcm9wEAMSFgoSc2dEbWdCb251c0Nv",
+            "cmVQcm9wEAQSFgoSc3JEbWdCb251c0NvcmVQcm9wEAUSFgoSbWdEbWdCb251",
+            "c0NvcmVQcm9wEAYSFgoSaGdEbWdCb251c0NvcmVQcm9wEAcSFAoQRUd1bkNv",
+            "cmVQcm9wTnVsbBAIKksKDkVFcXVpcG1lbnRTdWl0Eg0KCVRlc3QxU3VpdBAA",
+            "Eg0KCVRlc3QyU3VpdBABEg0KCVRlc3QzU3VpdBACEgwKCE51bGxTdWl0EAMq",
+            "rQIKDkVFcXVpcG1lbnROYW1lEhAKDERlZmF1bHRBcm1vchAAEg8KC0RlZmF1",
+            "bHRIZWFkEAESDwoLRGVmYXVsdEhhbmQQAhIPCgtEZWZhdWx0S25lZRADEg4K",
+            "CkRlZmF1bHRMZWcQBBIQCgxEZWZhdWx0Qm9vdHMQBRIOCgpUZXN0MUFybW9y",
+            "EAYSDQoJVGVzdDFIZWFkEAcSDQoJVGVzdDFIYW5kEAgSDQoJVGVzdDFLbmVl",
+            "EAkSDAoIVGVzdDFMZWcQChIOCgpUZXN0MUJvb3RzEAsSDgoKVGVzdDJBcm1v",
+            "chAMEg0KCVRlc3QySGVhZBANEg0KCVRlc3QySGFuZBAOEg0KCVRlc3QyS25l",
+            "ZRAPEgwKCFRlc3QyTGVnEBASDgoKVGVzdDJCb290cxARKuQCCghFU3ViUHJv",
+            "cBIRCg1oZWFsdGhTdWJQcm9wEAASFwoTYmFzZURtZ0JvbnVzU3ViUHJvcBAB",
+            "EhgKFGNEbWdSYXRlQm9udXNTdWJQcm9wEAISFAoQY0RtZ0JvbnVzU3ViUHJv",
+            "cBADEhsKF2hlYWRzaG90RG1nQm9udXNTdWJQcm9wEAQSFQoRcFJhdGVCb251",
+            "c1N1YlByb3AQBRITCg9hYmVCb251c1N1YlByb3AQBhIVChFhckRtZ0JvbnVz",
+            "U3ViUHJvcBAHEhYKEmRtckRtZ0JvbnVzU3ViUHJvcBAIEhYKEnNtZ0RtZ0Jv",
+            "bnVzU3ViUHJvcBAJEhUKEXNnRG1nQm9udXNTdWJQcm9wEAoSFQoRc3JEbWdC",
+            "b251c1N1YlByb3AQCxIVChFtZ0RtZ0JvbnVzU3ViUHJvcBAMEhUKEWhnRG1n",
+            "Qm9udXNTdWJQcm9wEA0SEAoMRVN1YlByb3BOdWxsEA4qSAoQRUVxdWlwbWVu",
+            "dFRhbGVudBIZChVUZXN0MUVxdWlwbWVudFRhbGVudDEQABIZChVUZXN0MUVx",
+            "dWlwbWVudFRhbGVudDIQAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SocketProtocol.RequestCode), typeof(global::SocketProtocol.ActionCode), typeof(global::SocketProtocol.ReturnCode), typeof(global::SocketProtocol.EGunName), typeof(global::SocketProtocol.EGunType), typeof(global::SocketProtocol.EGunCoreProp), typeof(global::SocketProtocol.EEquipmentSuit), typeof(global::SocketProtocol.EEquipmentName), typeof(global::SocketProtocol.ESubProp), typeof(global::SocketProtocol.EEquipmentTalent), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -153,8 +164,8 @@ namespace SocketProtocol {
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.ShoppingPack), global::SocketProtocol.ShoppingPack.Parser, new[]{ "Uid", "IsDiamond", "Price", "ItemId", "DiamondPrice", "Percent" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.EquipItemPack), global::SocketProtocol.EquipItemPack.Parser, new[]{ "Uid", "ItemId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.UpdatePlayerInfoPack), global::SocketProtocol.UpdatePlayerInfoPack.Parser, new[]{ "Uid", "PlayerName", "Level", "MaxHealth", "MaxArmor", "CurrentHealth", "CurrentArmor", "MaxExp", "CurrentExp", "BaseDmgRateBonus", "CritDmgRateBonus", "HeadshotDmgBonus", "PRateBonus", "AbeBonus", "ArDmgBonus", "DmrDmgBonus", "SmgDmgBonus", "SgDmgBonus", "MgDmgBonus", "SrDmgBonus", "HgDmgBonus", "Diamond", "Coin", "CritDmgBonus" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.EquipmentPack), global::SocketProtocol.EquipmentPack.Parser, new[]{ "ItemId", "EquipmentName", "EquipmentSuit", "SubProp1", "SubProp1Value", "SubProp2", "SubProp2Value", "SubProp3", "SubProp3Value", "Talent1", "Talent2", "Use", "Block", "Price", "ItemType", "SubProp1Type", "SubProp2Type", "SubProp3Type" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.GunPack), global::SocketProtocol.GunPack.Parser, new[]{ "ItemId", "GunName", "ItemType", "BaseDMG", "FiringRate", "CurrentFiringRatePerSecond", "Magazine", "CoreProp", "CorePropValue", "SubProp1", "SubProp1Value", "SubProp2", "SubProp2Value", "SubProp3", "SubProp3Value", "Use", "Block", "Price", "SubProp1Type", "SubProp2Type", "SubProp3Type", "CorePropType" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.EquipmentPack), global::SocketProtocol.EquipmentPack.Parser, new[]{ "ItemId", "EquipmentName", "EquipmentSuit", "SubProp1", "SubProp1Value", "SubProp2", "SubProp2Value", "SubProp3", "SubProp3Value", "Talent1", "Talent2", "Use", "Block", "Price", "ItemType", "SubProp1Type", "SubProp2Type", "SubProp3Type", "HealthBonus", "BaseDmgBonus", "CritDmgRateBonus", "CritDmgBonus", "HeadshotDmgBonus", "PRateBonus", "AbeBonus", "ArmorBonus", "SubProp1MaxValue", "SubProp2MaxValue", "SubProp3MaxValue" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.GunPack), global::SocketProtocol.GunPack.Parser, new[]{ "ItemId", "GunName", "ItemType", "BaseDmg", "FiringRate", "CurrentFiringRatePerSecond", "Magazine", "CoreProp", "CorePropValue", "SubProp1", "SubProp1Value", "SubProp2", "SubProp2Value", "SubProp3", "SubProp3Value", "Use", "Block", "Price", "SubProp1Type", "SubProp2Type", "SubProp3Type", "CorePropType", "HealthBonus", "BaseDmgBonus", "CritDmgRateBonus", "CritDmgBonus", "HeadshotDmgBonus", "PRateBonus", "AbeBonus", "ArmorBonus", "SubProp1MaxValue", "SubProp2MaxValue", "SubProp3MaxValue" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.FriendsPack), global::SocketProtocol.FriendsPack.Parser, new[]{ "Player1Uid", "Player2Uid", "IsFriend" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SocketProtocol.SendRequestFriendPack), global::SocketProtocol.SendRequestFriendPack.Parser, new[]{ "TargetPlayerUid" }, null, null, null, null)
           }));
@@ -3356,6 +3367,17 @@ namespace SocketProtocol {
       subProp1Type_ = other.subProp1Type_;
       subProp2Type_ = other.subProp2Type_;
       subProp3Type_ = other.subProp3Type_;
+      healthBonus_ = other.healthBonus_;
+      baseDmgBonus_ = other.baseDmgBonus_;
+      critDmgRateBonus_ = other.critDmgRateBonus_;
+      critDmgBonus_ = other.critDmgBonus_;
+      headshotDmgBonus_ = other.headshotDmgBonus_;
+      pRateBonus_ = other.pRateBonus_;
+      abeBonus_ = other.abeBonus_;
+      armorBonus_ = other.armorBonus_;
+      subProp1MaxValue_ = other.subProp1MaxValue_;
+      subProp2MaxValue_ = other.subProp2MaxValue_;
+      subProp3MaxValue_ = other.subProp3MaxValue_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3562,6 +3584,127 @@ namespace SocketProtocol {
       }
     }
 
+    /// <summary>Field number for the "HealthBonus" field.</summary>
+    public const int HealthBonusFieldNumber = 19;
+    private float healthBonus_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float HealthBonus {
+      get { return healthBonus_; }
+      set {
+        healthBonus_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "BaseDmgBonus" field.</summary>
+    public const int BaseDmgBonusFieldNumber = 20;
+    private float baseDmgBonus_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float BaseDmgBonus {
+      get { return baseDmgBonus_; }
+      set {
+        baseDmgBonus_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "CritDmgRateBonus" field.</summary>
+    public const int CritDmgRateBonusFieldNumber = 21;
+    private float critDmgRateBonus_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float CritDmgRateBonus {
+      get { return critDmgRateBonus_; }
+      set {
+        critDmgRateBonus_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "CritDmgBonus" field.</summary>
+    public const int CritDmgBonusFieldNumber = 22;
+    private float critDmgBonus_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float CritDmgBonus {
+      get { return critDmgBonus_; }
+      set {
+        critDmgBonus_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "HeadshotDmgBonus" field.</summary>
+    public const int HeadshotDmgBonusFieldNumber = 23;
+    private float headshotDmgBonus_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float HeadshotDmgBonus {
+      get { return headshotDmgBonus_; }
+      set {
+        headshotDmgBonus_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "PRateBonus" field.</summary>
+    public const int PRateBonusFieldNumber = 24;
+    private float pRateBonus_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float PRateBonus {
+      get { return pRateBonus_; }
+      set {
+        pRateBonus_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "AbeBonus" field.</summary>
+    public const int AbeBonusFieldNumber = 25;
+    private float abeBonus_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float AbeBonus {
+      get { return abeBonus_; }
+      set {
+        abeBonus_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ArmorBonus" field.</summary>
+    public const int ArmorBonusFieldNumber = 26;
+    private float armorBonus_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float ArmorBonus {
+      get { return armorBonus_; }
+      set {
+        armorBonus_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SubProp1MaxValue" field.</summary>
+    public const int SubProp1MaxValueFieldNumber = 27;
+    private float subProp1MaxValue_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float SubProp1MaxValue {
+      get { return subProp1MaxValue_; }
+      set {
+        subProp1MaxValue_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SubProp2MaxValue" field.</summary>
+    public const int SubProp2MaxValueFieldNumber = 28;
+    private float subProp2MaxValue_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float SubProp2MaxValue {
+      get { return subProp2MaxValue_; }
+      set {
+        subProp2MaxValue_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SubProp3MaxValue" field.</summary>
+    public const int SubProp3MaxValueFieldNumber = 29;
+    private float subProp3MaxValue_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float SubProp3MaxValue {
+      get { return subProp3MaxValue_; }
+      set {
+        subProp3MaxValue_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as EquipmentPack);
@@ -3593,6 +3736,17 @@ namespace SocketProtocol {
       if (SubProp1Type != other.SubProp1Type) return false;
       if (SubProp2Type != other.SubProp2Type) return false;
       if (SubProp3Type != other.SubProp3Type) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(HealthBonus, other.HealthBonus)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(BaseDmgBonus, other.BaseDmgBonus)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(CritDmgRateBonus, other.CritDmgRateBonus)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(CritDmgBonus, other.CritDmgBonus)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(HeadshotDmgBonus, other.HeadshotDmgBonus)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(PRateBonus, other.PRateBonus)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(AbeBonus, other.AbeBonus)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(ArmorBonus, other.ArmorBonus)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(SubProp1MaxValue, other.SubProp1MaxValue)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(SubProp2MaxValue, other.SubProp2MaxValue)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(SubProp3MaxValue, other.SubProp3MaxValue)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3617,6 +3771,17 @@ namespace SocketProtocol {
       if (SubProp1Type != 0) hash ^= SubProp1Type.GetHashCode();
       if (SubProp2Type != 0) hash ^= SubProp2Type.GetHashCode();
       if (SubProp3Type != 0) hash ^= SubProp3Type.GetHashCode();
+      if (HealthBonus != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(HealthBonus);
+      if (BaseDmgBonus != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(BaseDmgBonus);
+      if (CritDmgRateBonus != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(CritDmgRateBonus);
+      if (CritDmgBonus != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(CritDmgBonus);
+      if (HeadshotDmgBonus != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(HeadshotDmgBonus);
+      if (PRateBonus != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(PRateBonus);
+      if (AbeBonus != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(AbeBonus);
+      if (ArmorBonus != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(ArmorBonus);
+      if (SubProp1MaxValue != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SubProp1MaxValue);
+      if (SubProp2MaxValue != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SubProp2MaxValue);
+      if (SubProp3MaxValue != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SubProp3MaxValue);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3702,6 +3867,50 @@ namespace SocketProtocol {
         output.WriteRawTag(144, 1);
         output.WriteInt32(SubProp3Type);
       }
+      if (HealthBonus != 0F) {
+        output.WriteRawTag(157, 1);
+        output.WriteFloat(HealthBonus);
+      }
+      if (BaseDmgBonus != 0F) {
+        output.WriteRawTag(165, 1);
+        output.WriteFloat(BaseDmgBonus);
+      }
+      if (CritDmgRateBonus != 0F) {
+        output.WriteRawTag(173, 1);
+        output.WriteFloat(CritDmgRateBonus);
+      }
+      if (CritDmgBonus != 0F) {
+        output.WriteRawTag(181, 1);
+        output.WriteFloat(CritDmgBonus);
+      }
+      if (HeadshotDmgBonus != 0F) {
+        output.WriteRawTag(189, 1);
+        output.WriteFloat(HeadshotDmgBonus);
+      }
+      if (PRateBonus != 0F) {
+        output.WriteRawTag(197, 1);
+        output.WriteFloat(PRateBonus);
+      }
+      if (AbeBonus != 0F) {
+        output.WriteRawTag(205, 1);
+        output.WriteFloat(AbeBonus);
+      }
+      if (ArmorBonus != 0F) {
+        output.WriteRawTag(213, 1);
+        output.WriteFloat(ArmorBonus);
+      }
+      if (SubProp1MaxValue != 0F) {
+        output.WriteRawTag(221, 1);
+        output.WriteFloat(SubProp1MaxValue);
+      }
+      if (SubProp2MaxValue != 0F) {
+        output.WriteRawTag(229, 1);
+        output.WriteFloat(SubProp2MaxValue);
+      }
+      if (SubProp3MaxValue != 0F) {
+        output.WriteRawTag(237, 1);
+        output.WriteFloat(SubProp3MaxValue);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -3763,6 +3972,39 @@ namespace SocketProtocol {
       }
       if (SubProp3Type != 0) {
         size += 2 + pb::CodedOutputStream.ComputeInt32Size(SubProp3Type);
+      }
+      if (HealthBonus != 0F) {
+        size += 2 + 4;
+      }
+      if (BaseDmgBonus != 0F) {
+        size += 2 + 4;
+      }
+      if (CritDmgRateBonus != 0F) {
+        size += 2 + 4;
+      }
+      if (CritDmgBonus != 0F) {
+        size += 2 + 4;
+      }
+      if (HeadshotDmgBonus != 0F) {
+        size += 2 + 4;
+      }
+      if (PRateBonus != 0F) {
+        size += 2 + 4;
+      }
+      if (AbeBonus != 0F) {
+        size += 2 + 4;
+      }
+      if (ArmorBonus != 0F) {
+        size += 2 + 4;
+      }
+      if (SubProp1MaxValue != 0F) {
+        size += 2 + 4;
+      }
+      if (SubProp2MaxValue != 0F) {
+        size += 2 + 4;
+      }
+      if (SubProp3MaxValue != 0F) {
+        size += 2 + 4;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3828,6 +4070,39 @@ namespace SocketProtocol {
       }
       if (other.SubProp3Type != 0) {
         SubProp3Type = other.SubProp3Type;
+      }
+      if (other.HealthBonus != 0F) {
+        HealthBonus = other.HealthBonus;
+      }
+      if (other.BaseDmgBonus != 0F) {
+        BaseDmgBonus = other.BaseDmgBonus;
+      }
+      if (other.CritDmgRateBonus != 0F) {
+        CritDmgRateBonus = other.CritDmgRateBonus;
+      }
+      if (other.CritDmgBonus != 0F) {
+        CritDmgBonus = other.CritDmgBonus;
+      }
+      if (other.HeadshotDmgBonus != 0F) {
+        HeadshotDmgBonus = other.HeadshotDmgBonus;
+      }
+      if (other.PRateBonus != 0F) {
+        PRateBonus = other.PRateBonus;
+      }
+      if (other.AbeBonus != 0F) {
+        AbeBonus = other.AbeBonus;
+      }
+      if (other.ArmorBonus != 0F) {
+        ArmorBonus = other.ArmorBonus;
+      }
+      if (other.SubProp1MaxValue != 0F) {
+        SubProp1MaxValue = other.SubProp1MaxValue;
+      }
+      if (other.SubProp2MaxValue != 0F) {
+        SubProp2MaxValue = other.SubProp2MaxValue;
+      }
+      if (other.SubProp3MaxValue != 0F) {
+        SubProp3MaxValue = other.SubProp3MaxValue;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -3912,6 +4187,50 @@ namespace SocketProtocol {
             SubProp3Type = input.ReadInt32();
             break;
           }
+          case 157: {
+            HealthBonus = input.ReadFloat();
+            break;
+          }
+          case 165: {
+            BaseDmgBonus = input.ReadFloat();
+            break;
+          }
+          case 173: {
+            CritDmgRateBonus = input.ReadFloat();
+            break;
+          }
+          case 181: {
+            CritDmgBonus = input.ReadFloat();
+            break;
+          }
+          case 189: {
+            HeadshotDmgBonus = input.ReadFloat();
+            break;
+          }
+          case 197: {
+            PRateBonus = input.ReadFloat();
+            break;
+          }
+          case 205: {
+            AbeBonus = input.ReadFloat();
+            break;
+          }
+          case 213: {
+            ArmorBonus = input.ReadFloat();
+            break;
+          }
+          case 221: {
+            SubProp1MaxValue = input.ReadFloat();
+            break;
+          }
+          case 229: {
+            SubProp2MaxValue = input.ReadFloat();
+            break;
+          }
+          case 237: {
+            SubProp3MaxValue = input.ReadFloat();
+            break;
+          }
         }
       }
     }
@@ -3946,7 +4265,7 @@ namespace SocketProtocol {
       itemId_ = other.itemId_;
       gunName_ = other.gunName_;
       itemType_ = other.itemType_;
-      baseDMG_ = other.baseDMG_;
+      baseDmg_ = other.baseDmg_;
       firingRate_ = other.firingRate_;
       currentFiringRatePerSecond_ = other.currentFiringRatePerSecond_;
       magazine_ = other.magazine_;
@@ -3965,6 +4284,17 @@ namespace SocketProtocol {
       subProp2Type_ = other.subProp2Type_;
       subProp3Type_ = other.subProp3Type_;
       corePropType_ = other.corePropType_;
+      healthBonus_ = other.healthBonus_;
+      baseDmgBonus_ = other.baseDmgBonus_;
+      critDmgRateBonus_ = other.critDmgRateBonus_;
+      critDmgBonus_ = other.critDmgBonus_;
+      headshotDmgBonus_ = other.headshotDmgBonus_;
+      pRateBonus_ = other.pRateBonus_;
+      abeBonus_ = other.abeBonus_;
+      armorBonus_ = other.armorBonus_;
+      subProp1MaxValue_ = other.subProp1MaxValue_;
+      subProp2MaxValue_ = other.subProp2MaxValue_;
+      subProp3MaxValue_ = other.subProp3MaxValue_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -4006,14 +4336,14 @@ namespace SocketProtocol {
       }
     }
 
-    /// <summary>Field number for the "BaseDMG" field.</summary>
-    public const int BaseDMGFieldNumber = 4;
-    private float baseDMG_;
+    /// <summary>Field number for the "BaseDmg" field.</summary>
+    public const int BaseDmgFieldNumber = 4;
+    private float baseDmg_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float BaseDMG {
-      get { return baseDMG_; }
+    public float BaseDmg {
+      get { return baseDmg_; }
       set {
-        baseDMG_ = value;
+        baseDmg_ = value;
       }
     }
 
@@ -4215,6 +4545,127 @@ namespace SocketProtocol {
       }
     }
 
+    /// <summary>Field number for the "HealthBonus" field.</summary>
+    public const int HealthBonusFieldNumber = 23;
+    private float healthBonus_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float HealthBonus {
+      get { return healthBonus_; }
+      set {
+        healthBonus_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "BaseDmgBonus" field.</summary>
+    public const int BaseDmgBonusFieldNumber = 24;
+    private float baseDmgBonus_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float BaseDmgBonus {
+      get { return baseDmgBonus_; }
+      set {
+        baseDmgBonus_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "CritDmgRateBonus" field.</summary>
+    public const int CritDmgRateBonusFieldNumber = 25;
+    private float critDmgRateBonus_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float CritDmgRateBonus {
+      get { return critDmgRateBonus_; }
+      set {
+        critDmgRateBonus_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "CritDmgBonus" field.</summary>
+    public const int CritDmgBonusFieldNumber = 26;
+    private float critDmgBonus_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float CritDmgBonus {
+      get { return critDmgBonus_; }
+      set {
+        critDmgBonus_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "HeadshotDmgBonus" field.</summary>
+    public const int HeadshotDmgBonusFieldNumber = 27;
+    private float headshotDmgBonus_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float HeadshotDmgBonus {
+      get { return headshotDmgBonus_; }
+      set {
+        headshotDmgBonus_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "PRateBonus" field.</summary>
+    public const int PRateBonusFieldNumber = 28;
+    private float pRateBonus_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float PRateBonus {
+      get { return pRateBonus_; }
+      set {
+        pRateBonus_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "AbeBonus" field.</summary>
+    public const int AbeBonusFieldNumber = 29;
+    private float abeBonus_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float AbeBonus {
+      get { return abeBonus_; }
+      set {
+        abeBonus_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ArmorBonus" field.</summary>
+    public const int ArmorBonusFieldNumber = 30;
+    private float armorBonus_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float ArmorBonus {
+      get { return armorBonus_; }
+      set {
+        armorBonus_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SubProp1MaxValue" field.</summary>
+    public const int SubProp1MaxValueFieldNumber = 31;
+    private float subProp1MaxValue_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float SubProp1MaxValue {
+      get { return subProp1MaxValue_; }
+      set {
+        subProp1MaxValue_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SubProp2MaxValue" field.</summary>
+    public const int SubProp2MaxValueFieldNumber = 32;
+    private float subProp2MaxValue_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float SubProp2MaxValue {
+      get { return subProp2MaxValue_; }
+      set {
+        subProp2MaxValue_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SubProp3MaxValue" field.</summary>
+    public const int SubProp3MaxValueFieldNumber = 33;
+    private float subProp3MaxValue_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float SubProp3MaxValue {
+      get { return subProp3MaxValue_; }
+      set {
+        subProp3MaxValue_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as GunPack);
@@ -4231,7 +4682,7 @@ namespace SocketProtocol {
       if (ItemId != other.ItemId) return false;
       if (GunName != other.GunName) return false;
       if (ItemType != other.ItemType) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(BaseDMG, other.BaseDMG)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(BaseDmg, other.BaseDmg)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(FiringRate, other.FiringRate)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(CurrentFiringRatePerSecond, other.CurrentFiringRatePerSecond)) return false;
       if (Magazine != other.Magazine) return false;
@@ -4250,6 +4701,17 @@ namespace SocketProtocol {
       if (SubProp2Type != other.SubProp2Type) return false;
       if (SubProp3Type != other.SubProp3Type) return false;
       if (CorePropType != other.CorePropType) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(HealthBonus, other.HealthBonus)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(BaseDmgBonus, other.BaseDmgBonus)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(CritDmgRateBonus, other.CritDmgRateBonus)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(CritDmgBonus, other.CritDmgBonus)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(HeadshotDmgBonus, other.HeadshotDmgBonus)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(PRateBonus, other.PRateBonus)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(AbeBonus, other.AbeBonus)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(ArmorBonus, other.ArmorBonus)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(SubProp1MaxValue, other.SubProp1MaxValue)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(SubProp2MaxValue, other.SubProp2MaxValue)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(SubProp3MaxValue, other.SubProp3MaxValue)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -4259,7 +4721,7 @@ namespace SocketProtocol {
       if (ItemId != 0) hash ^= ItemId.GetHashCode();
       if (GunName.Length != 0) hash ^= GunName.GetHashCode();
       if (ItemType.Length != 0) hash ^= ItemType.GetHashCode();
-      if (BaseDMG != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(BaseDMG);
+      if (BaseDmg != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(BaseDmg);
       if (FiringRate != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(FiringRate);
       if (CurrentFiringRatePerSecond != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(CurrentFiringRatePerSecond);
       if (Magazine != 0) hash ^= Magazine.GetHashCode();
@@ -4278,6 +4740,17 @@ namespace SocketProtocol {
       if (SubProp2Type != 0) hash ^= SubProp2Type.GetHashCode();
       if (SubProp3Type != 0) hash ^= SubProp3Type.GetHashCode();
       if (CorePropType != 0) hash ^= CorePropType.GetHashCode();
+      if (HealthBonus != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(HealthBonus);
+      if (BaseDmgBonus != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(BaseDmgBonus);
+      if (CritDmgRateBonus != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(CritDmgRateBonus);
+      if (CritDmgBonus != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(CritDmgBonus);
+      if (HeadshotDmgBonus != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(HeadshotDmgBonus);
+      if (PRateBonus != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(PRateBonus);
+      if (AbeBonus != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(AbeBonus);
+      if (ArmorBonus != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(ArmorBonus);
+      if (SubProp1MaxValue != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SubProp1MaxValue);
+      if (SubProp2MaxValue != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SubProp2MaxValue);
+      if (SubProp3MaxValue != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SubProp3MaxValue);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -4303,9 +4776,9 @@ namespace SocketProtocol {
         output.WriteRawTag(26);
         output.WriteString(ItemType);
       }
-      if (BaseDMG != 0F) {
+      if (BaseDmg != 0F) {
         output.WriteRawTag(37);
-        output.WriteFloat(BaseDMG);
+        output.WriteFloat(BaseDmg);
       }
       if (FiringRate != 0F) {
         output.WriteRawTag(45);
@@ -4379,6 +4852,50 @@ namespace SocketProtocol {
         output.WriteRawTag(176, 1);
         output.WriteInt32(CorePropType);
       }
+      if (HealthBonus != 0F) {
+        output.WriteRawTag(189, 1);
+        output.WriteFloat(HealthBonus);
+      }
+      if (BaseDmgBonus != 0F) {
+        output.WriteRawTag(197, 1);
+        output.WriteFloat(BaseDmgBonus);
+      }
+      if (CritDmgRateBonus != 0F) {
+        output.WriteRawTag(205, 1);
+        output.WriteFloat(CritDmgRateBonus);
+      }
+      if (CritDmgBonus != 0F) {
+        output.WriteRawTag(213, 1);
+        output.WriteFloat(CritDmgBonus);
+      }
+      if (HeadshotDmgBonus != 0F) {
+        output.WriteRawTag(221, 1);
+        output.WriteFloat(HeadshotDmgBonus);
+      }
+      if (PRateBonus != 0F) {
+        output.WriteRawTag(229, 1);
+        output.WriteFloat(PRateBonus);
+      }
+      if (AbeBonus != 0F) {
+        output.WriteRawTag(237, 1);
+        output.WriteFloat(AbeBonus);
+      }
+      if (ArmorBonus != 0F) {
+        output.WriteRawTag(245, 1);
+        output.WriteFloat(ArmorBonus);
+      }
+      if (SubProp1MaxValue != 0F) {
+        output.WriteRawTag(253, 1);
+        output.WriteFloat(SubProp1MaxValue);
+      }
+      if (SubProp2MaxValue != 0F) {
+        output.WriteRawTag(133, 2);
+        output.WriteFloat(SubProp2MaxValue);
+      }
+      if (SubProp3MaxValue != 0F) {
+        output.WriteRawTag(141, 2);
+        output.WriteFloat(SubProp3MaxValue);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -4396,7 +4913,7 @@ namespace SocketProtocol {
       if (ItemType.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(ItemType);
       }
-      if (BaseDMG != 0F) {
+      if (BaseDmg != 0F) {
         size += 1 + 4;
       }
       if (FiringRate != 0F) {
@@ -4453,6 +4970,39 @@ namespace SocketProtocol {
       if (CorePropType != 0) {
         size += 2 + pb::CodedOutputStream.ComputeInt32Size(CorePropType);
       }
+      if (HealthBonus != 0F) {
+        size += 2 + 4;
+      }
+      if (BaseDmgBonus != 0F) {
+        size += 2 + 4;
+      }
+      if (CritDmgRateBonus != 0F) {
+        size += 2 + 4;
+      }
+      if (CritDmgBonus != 0F) {
+        size += 2 + 4;
+      }
+      if (HeadshotDmgBonus != 0F) {
+        size += 2 + 4;
+      }
+      if (PRateBonus != 0F) {
+        size += 2 + 4;
+      }
+      if (AbeBonus != 0F) {
+        size += 2 + 4;
+      }
+      if (ArmorBonus != 0F) {
+        size += 2 + 4;
+      }
+      if (SubProp1MaxValue != 0F) {
+        size += 2 + 4;
+      }
+      if (SubProp2MaxValue != 0F) {
+        size += 2 + 4;
+      }
+      if (SubProp3MaxValue != 0F) {
+        size += 2 + 4;
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -4473,8 +5023,8 @@ namespace SocketProtocol {
       if (other.ItemType.Length != 0) {
         ItemType = other.ItemType;
       }
-      if (other.BaseDMG != 0F) {
-        BaseDMG = other.BaseDMG;
+      if (other.BaseDmg != 0F) {
+        BaseDmg = other.BaseDmg;
       }
       if (other.FiringRate != 0F) {
         FiringRate = other.FiringRate;
@@ -4530,6 +5080,39 @@ namespace SocketProtocol {
       if (other.CorePropType != 0) {
         CorePropType = other.CorePropType;
       }
+      if (other.HealthBonus != 0F) {
+        HealthBonus = other.HealthBonus;
+      }
+      if (other.BaseDmgBonus != 0F) {
+        BaseDmgBonus = other.BaseDmgBonus;
+      }
+      if (other.CritDmgRateBonus != 0F) {
+        CritDmgRateBonus = other.CritDmgRateBonus;
+      }
+      if (other.CritDmgBonus != 0F) {
+        CritDmgBonus = other.CritDmgBonus;
+      }
+      if (other.HeadshotDmgBonus != 0F) {
+        HeadshotDmgBonus = other.HeadshotDmgBonus;
+      }
+      if (other.PRateBonus != 0F) {
+        PRateBonus = other.PRateBonus;
+      }
+      if (other.AbeBonus != 0F) {
+        AbeBonus = other.AbeBonus;
+      }
+      if (other.ArmorBonus != 0F) {
+        ArmorBonus = other.ArmorBonus;
+      }
+      if (other.SubProp1MaxValue != 0F) {
+        SubProp1MaxValue = other.SubProp1MaxValue;
+      }
+      if (other.SubProp2MaxValue != 0F) {
+        SubProp2MaxValue = other.SubProp2MaxValue;
+      }
+      if (other.SubProp3MaxValue != 0F) {
+        SubProp3MaxValue = other.SubProp3MaxValue;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -4554,7 +5137,7 @@ namespace SocketProtocol {
             break;
           }
           case 37: {
-            BaseDMG = input.ReadFloat();
+            BaseDmg = input.ReadFloat();
             break;
           }
           case 45: {
@@ -4627,6 +5210,50 @@ namespace SocketProtocol {
           }
           case 176: {
             CorePropType = input.ReadInt32();
+            break;
+          }
+          case 189: {
+            HealthBonus = input.ReadFloat();
+            break;
+          }
+          case 197: {
+            BaseDmgBonus = input.ReadFloat();
+            break;
+          }
+          case 205: {
+            CritDmgRateBonus = input.ReadFloat();
+            break;
+          }
+          case 213: {
+            CritDmgBonus = input.ReadFloat();
+            break;
+          }
+          case 221: {
+            HeadshotDmgBonus = input.ReadFloat();
+            break;
+          }
+          case 229: {
+            PRateBonus = input.ReadFloat();
+            break;
+          }
+          case 237: {
+            AbeBonus = input.ReadFloat();
+            break;
+          }
+          case 245: {
+            ArmorBonus = input.ReadFloat();
+            break;
+          }
+          case 253: {
+            SubProp1MaxValue = input.ReadFloat();
+            break;
+          }
+          case 261: {
+            SubProp2MaxValue = input.ReadFloat();
+            break;
+          }
+          case 269: {
+            SubProp3MaxValue = input.ReadFloat();
             break;
           }
         }
