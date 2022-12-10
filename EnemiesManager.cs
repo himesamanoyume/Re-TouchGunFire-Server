@@ -58,26 +58,54 @@ namespace SocketServer
             new EnemyInfo(EFloor.Floor3, EFloorPos.Pos3_5, 2000, 500),
         };
 
-        public AttackArea attackArea1;
-        
+        public AttackArea attackArea;
+        List<EnemyInfo[]> attackArea1List;
         public EnemiesManager()
         {
-            List<EnemyInfo[]> attackArea1List = new List<EnemyInfo[]>();
+            attackArea1List = new List<EnemyInfo[]>();
             attackArea1List.Add(enemiesType1);
             attackArea1List.Add(enemiesType5);
             attackArea1List.Add(enemiesType4);
-            attackArea1 = new AttackArea(attackArea1List);
+            
         }
 
+        public void InitAttackArea(int areaNumber)
+        {
+            switch (areaNumber)
+            {
+                case 1:
+                    attackArea = new AttackArea(attackArea1List, 1);
+                    break;
+            }
+            attackArea.NextWave();
+
+        }
     }
 
     public class AttackArea
     {
         public List<EnemyInfo[]> enemyWaves;
+        public Dictionary<int, EnemyInfo> currentWaveEnemiesDict = new Dictionary<int, EnemyInfo>();
+        public int areaNumber;
+        public int currentWave = -1;
 
-        public AttackArea(List<EnemyInfo[]> enemyWaves)
+        public AttackArea(List<EnemyInfo[]> enemyWaves, int areaNumber)
         {
             this.enemyWaves = enemyWaves;
+            this.areaNumber = areaNumber;
+        }
+
+        public void NextWave()
+        {
+            if (currentWaveEnemiesDict!=null)
+            {
+                currentWaveEnemiesDict.Clear();
+            }
+            currentWave++;
+            foreach (EnemyInfo item in enemyWaves[currentWave])
+            {
+                currentWaveEnemiesDict.Add((int)item.Floor * 100 + (int)item.Pos, item);
+            }
         }
     }
 

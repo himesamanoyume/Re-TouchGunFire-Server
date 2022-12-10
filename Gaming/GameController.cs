@@ -31,6 +31,21 @@ namespace SocketServer.Gaming
         //    return mainPack;
         //}
 
+        public MainPack AttackLeave(Client client, MainPack mainPack)
+        {
+            if (client.AttackLeave(mainPack))
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            return mainPack;
+        }
+
         public MainPack UpdatePlayerInfo(Client client, MainPack mainPack)
         {
             if (client.UpdatePlayerInfo(mainPack) != null)
@@ -50,6 +65,21 @@ namespace SocketServer.Gaming
             if (client.Regeneration(mainPack))
             {
                 //Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            return mainPack;
+        }
+
+        public MainPack UpdateAttackingInfo(Client client, MainPack mainPack)
+        {
+            if (client.UpdateAttackingInfo(mainPack))
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else

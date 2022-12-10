@@ -41,6 +41,11 @@ namespace SocketServer.Gaming
                 updatePlayerInfoPack.MgDmgBonus = client.PlayerInfo.MgDmgBonus;
                 updatePlayerInfoPack.SrDmgBonus = client.PlayerInfo.SrDmgBonus;
                 updatePlayerInfoPack.HgDmgBonus = client.PlayerInfo.HgDmgBonus;
+                if (client.team!=null)
+                {
+                    updatePlayerInfoPack.TeamMasterUid = client.team.GetTeamMasterClient.PlayerInfo.Uid;
+                }
+                
                 mainPack.UpdatePlayerInfoPack.Add(updatePlayerInfoPack);
 
                 if (client.IsInTheTeam)
@@ -101,15 +106,17 @@ namespace SocketServer.Gaming
             }
         }
 
-        public bool StartAttack(MainPack mainPack, Client client, bool isTeam = false)
+        public bool StartAttack(MainPack mainPack, Client client)
         {
             try
             {
-                if (isTeam)
+
+                if (client.IsInTheTeam)
                 {
                     client.team.Broadcast(client, mainPack);
                 }
                 mainPack.ReturnCode = ReturnCode.Success;
+                client.EnemiesManager.InitAttackArea(mainPack.AttackAreaPack.AreaNumber);
                 client.TcpSend(mainPack);
                 return true;
             }
@@ -118,6 +125,81 @@ namespace SocketServer.Gaming
                 Debug.Log(new StackFrame(true), e.Message);
                 mainPack.ReturnCode = ReturnCode.Fail;
                 client.TcpSend(mainPack);
+                return false;
+            }
+        }
+
+        public bool AttackLeave(MainPack mainPack, Client client)
+        {
+            try
+            {
+                if (client.IsInTheTeam)
+                {
+                    MainPack mainPack1 = new MainPack();
+                    mainPack1.Uid = mainPack.Uid;
+                    mainPack1.ActionCode = ActionCode.LeaveTeam;
+                    mainPack1.RequestCode = RequestCode.Team;
+                    client.LeaveTeam(mainPack1);
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.Log(new StackFrame(true), e.Message);
+                return false;
+            }
+        }
+
+        public bool UpdateAttackingInfo(MainPack mainPack, Client client)
+        {
+            try
+            {
+                if (mainPack.Uid == client.PlayerInfo.Uid)
+                {
+                    AttackAreaPack attackAreaPack = new AttackAreaPack();
+                    mainPack.AttackAreaPack = attackAreaPack;
+                    if (client.EnemiesManager.attackArea.currentWave == -1)
+                    {
+                        mainPack.AttackAreaPack.Wave = 0;
+                    }
+                    else
+                    {
+                        mainPack.AttackAreaPack.Wave = client.EnemiesManager.attackArea.currentWave;
+                    }
+                    mainPack.AttackAreaPack.AreaNumber = client.EnemiesManager.attackArea.areaNumber;
+
+                    foreach (EnemyInfo item in client.EnemiesManager.attackArea.currentWaveEnemiesDict.Values)
+                    {
+                        EnemyPack enemyPack = new EnemyPack();
+                        enemyPack.EnemyName = item.EnemyName;
+                        enemyPack.Floor = (int)item.Floor;
+                        enemyPack.Pos = (int)item.Pos;
+                        enemyPack.MaxHealth = item.MaxHealth;
+                        enemyPack.MaxArmor = item.MaxArmor;
+                        enemyPack.CurrentHealth = item.CurrentHealth;
+                        enemyPack.CurrentArmor = item.CurrentArmor;
+                        mainPack.AttackAreaPack.EnemyPack.Add(enemyPack);
+                    }
+                    if (client.IsInTheTeam)
+                    {
+                        MainPack mainPack1 = new MainPack();
+                        mainPack1.ActionCode = mainPack.ActionCode;
+                        mainPack1.RequestCode = mainPack.RequestCode;
+                        mainPack1.AttackAreaPack = mainPack.AttackAreaPack;
+                        client.team.Broadcast(client, mainPack1, true);
+                    }
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                
+
+            }
+            catch (Exception e)
+            {
+                Debug.Log(new StackFrame(true), e.Message);
                 return false;
             }
         }

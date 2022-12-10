@@ -374,9 +374,19 @@ namespace SocketServer
             return GetTeamFunction.GetTeammates(mainPack, this);
         }
 
+        public bool UpdateAttackingInfo(MainPack mainPack)
+        {
+            return GetGameFunction.UpdateAttackingInfo(mainPack, this);
+        }
+
         public MainPack LeaveTeam(MainPack mainPack)
         {
             return GetTeamFunction.LeaveTeam(mainPack, this);
+        }
+
+        public bool AttackLeave(MainPack mainPack)
+        {
+            return GetGameFunction.AttackLeave(mainPack, this);
         }
 
         public int JoinTeamRequest(MainPack mainPack)
