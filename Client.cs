@@ -54,6 +54,7 @@ namespace SocketServer
 
         public PlayerInfo PlayerInfo;
         public ItemController ItemController;
+        public EnemiesManager EnemiesManager;
         public delegate void Buff(PlayerInfo playerInfo);
         public Buff buff;
 
@@ -80,6 +81,7 @@ namespace SocketServer
             connection.Open();
             PlayerInfo = new PlayerInfo();
             ItemController = new ItemController(PlayerInfo);
+            EnemiesManager = new EnemiesManager();
             this.udpServer = udpServer;
             this.server = server;
             tcpSocket = clientSocket;
@@ -148,6 +150,24 @@ namespace SocketServer
             }
         }
 
+        public bool isReadyAttack = false;
+        public void CheckTeammateAttackReady()
+        {
+            if (team.GetTeamMasterClient.PlayerInfo.Uid == PlayerInfo.Uid)
+            {
+                foreach (Client c in team.Teammates)
+                {
+                    if (!c.isReadyAttack)
+                    {
+                        break;
+                    }
+                }
+                //调用发起小队全员出击
+
+                //end
+            }
+        }
+
         public bool Register(MainPack mainPack)
         {
             return GetUserFunction.Reigster(mainPack, connection, ItemController);
@@ -192,6 +212,36 @@ namespace SocketServer
         public int Shopping(MainPack mainPack)
         {
             return GetUserFunction.Shopping(mainPack, this, connection);
+        }
+
+        public bool StartAttack(MainPack mainPack)
+        {
+            return GetGameFunction.StartAttack(mainPack, this);
+        }
+
+        public bool AttackInvite(MainPack mainPack)
+        {
+            return GetTeamFunction.AttackInvite(mainPack, team, this);
+        }
+
+        public int AttackInvited(MainPack mainPack)
+        {
+            return GetTeamFunction.AttackInvited(mainPack, server, this, team);
+        }
+
+        public bool RefusedAttack(MainPack mainPack)
+        {
+            return GetTeamFunction.RefusedAttack(mainPack, this);
+        }
+
+        public bool RefuseAttack(MainPack mainPack)
+        {
+            return GetTeamFunction.RefuseAttack(mainPack, this);
+        }
+
+        public bool AcceptedAttackInvite(MainPack mainPack)
+        {
+            return GetTeamFunction.AcceptedAttackInvite(mainPack, this);
         }
 
         public bool GetItemInfo()

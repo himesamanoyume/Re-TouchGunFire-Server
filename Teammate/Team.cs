@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 using SocketProtocol;
 
-namespace SocketServer.Teammate
+namespace SocketServer
 {
-    internal class Team
+     class Team
     {
         Server server;
         Client masterClient = null;

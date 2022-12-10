@@ -101,5 +101,25 @@ namespace SocketServer.Gaming
             }
         }
 
+        public bool StartAttack(MainPack mainPack, Client client, bool isTeam = false)
+        {
+            try
+            {
+                if (isTeam)
+                {
+                    client.team.Broadcast(client, mainPack);
+                }
+                mainPack.ReturnCode = ReturnCode.Success;
+                client.TcpSend(mainPack);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.Log(new StackFrame(true), e.Message);
+                mainPack.ReturnCode = ReturnCode.Fail;
+                client.TcpSend(mainPack);
+                return false;
+            }
+        }
     }
 }

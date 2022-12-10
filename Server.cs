@@ -18,7 +18,6 @@ namespace SocketServer
         List<Client> clientList = new List<Client>();
         ControllerManager controllerManager;
         Dictionary<int, Client> clientDict = new Dictionary<int, Client>();
-        
 
         public Server(int port)
         {

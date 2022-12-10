@@ -31,6 +31,35 @@ namespace SocketServer.Teammate
             return mainPack;
         }
 
+        public MainPack AttackInvite(Client client, MainPack mainPack)
+        {
+            if (client.AttackInvite(mainPack))
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            return mainPack;
+        }
+
+        public MainPack AttackInvited(Client client, MainPack mainPack)
+        {
+            int code = client.AttackInvited(mainPack);
+            if (code == 1)
+            {
+
+            }
+            else
+            {
+
+            }
+            return mainPack;
+        }
+
         public MainPack BreakTeam(Client client, MainPack mainPack)
         {
             mainPack = client.GetTeamFunction.BreakTeam(client, mainPack);

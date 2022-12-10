@@ -16,23 +16,25 @@ namespace SocketServer.Gaming
             requestCode = RequestCode.Gaming;
         }
 
-        /// <summary>
-        /// 有Server参数说明为TCP
-        /// </summary>
-        /// <param name="server"></param>
-        /// <param name="client"></param>
-        /// <param name="mainPack"></param>
-        /// <returns></returns>
-        public MainPack StartAttack(Server server, Client client, MainPack mainPack)
-        {
-            return null;
-        }
+        //public MainPack StartAttack(Client client, MainPack mainPack)
+        //{
+        //    if (client.StartAttack(mainPack))
+        //    {
+        //        Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+        //        mainPack.ReturnCode = ReturnCode.Success;
+        //    }
+        //    else
+        //    {
+        //        Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+        //        mainPack.ReturnCode = ReturnCode.Fail;
+        //    }
+        //    return mainPack;
+        //}
 
         public MainPack UpdatePlayerInfo(Client client, MainPack mainPack)
         {
             if (client.UpdatePlayerInfo(mainPack) != null)
             {
-                //Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else

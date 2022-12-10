@@ -5,12 +5,60 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Asn1.X509;
+
 using SocketProtocol;
 
 namespace SocketServer.Teammate
 {
     internal class TeamFunction
     {
+        public bool AttackInvite(MainPack mainPack, Team team, Client client)
+        {
+            if (mainPack.TeammatePack.SenderUid == mainPack.Uid && mainPack.TeammatePack.State == 0)
+            {
+                try
+                {
+                    if (team != null)
+                    {
+                        foreach (Client c in team.Teammates)
+                        {
+                            MainPack mainPack1 = new MainPack();
+                            mainPack1.ActionCode = ActionCode.AttackInvited;
+                            mainPack1.AttackAreaPack = mainPack.AttackAreaPack;
+                            TeammatePack teammatePack = new TeammatePack();
+                            teammatePack.SenderUid = mainPack.TeammatePack.SenderUid;
+                            teammatePack.TargetUid = c.PlayerInfo.Uid;
+                            mainPack1.TeammatePack = teammatePack;
+                            c.AttackInvited(mainPack1);
+                        }
+                        return true;
+                    }
+                    else
+                    {
+                        //单人出击
+                        MainPack mainPack2 = new MainPack();
+                        mainPack2.RequestCode = RequestCode.Gaming;
+                        mainPack2.ActionCode = ActionCode.StartAttack;
+                        mainPack2.Uid = client.PlayerInfo.Uid;
+                        mainPack2.AttackAreaPack = mainPack.AttackAreaPack;
+                        client.StartAttack(mainPack2);
+                        return true;
+                    }
+                    
+                }
+                catch (Exception e)
+                {
+                    Debug.Log(new StackFrame(true), e.Message);
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public int InviteTeam(MainPack mainPack, Server server, Team team)
         {
             if (mainPack.TeammatePack.SenderUid == mainPack.Uid && team == null && mainPack.TeammatePack.State == 0)
@@ -36,6 +84,47 @@ namespace SocketServer.Teammate
             else
             {
                 return 0;//失败
+            }
+        }
+
+        public int AttackInvited(MainPack mainPack, Server server, Client client, Team team)
+        {
+            if (mainPack.TeammatePack.SenderUid == team.GetTeamMasterClient.PlayerInfo.Uid && mainPack.TeammatePack.State == 0)
+            {
+                if (team != null)
+                {
+                    mainPack.TeammatePack.State = 2;
+                    mainPack.Uid = mainPack.TeammatePack.SenderUid;
+                    Client teamMaster = team.GetTeamMasterClient;
+                    mainPack.ActionCode = ActionCode.RefusedAttackInvite;
+                    teamMaster.RefusedAttack(mainPack);
+                    return 2;
+                }
+                else
+                {
+                    try
+                    {
+                        MainPack mainPack1 = new MainPack();
+                        mainPack1.Uid = mainPack.TeammatePack.TargetUid;
+                        mainPack1.ActionCode = ActionCode.AttackInvited;
+                        mainPack1.ReturnCode = ReturnCode.Success;
+                        mainPack1.TeammatePack = mainPack.TeammatePack;
+                        client.TcpSend(mainPack1);
+                        return 1;//成功接收消息
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.Log(new StackFrame(true), e.Message);
+                        mainPack.ReturnCode = ReturnCode.Fail;
+                        client.TcpSend(mainPack);
+                        return 0;
+                    }
+                }
+            }
+            else
+            {
+                Debug.Log(new StackFrame(true), "失败");
+                return 0;
             }
         }
 
@@ -202,6 +291,7 @@ namespace SocketServer.Teammate
                     teamMaster.team.Teammates.Add(client);
                     client.team = teamMaster.team;
                     client.IsInTheTeam = true;
+                    client.EnemiesManager = null;
                     mainPack.ReturnCode = ReturnCode.Success;
                     client.TcpSend(mainPack);
                     return true;
@@ -275,6 +365,26 @@ namespace SocketServer.Teammate
             }
         }
 
+        public bool AcceptAttackInvite(MainPack mainPack, Client client)
+        {
+            if (mainPack.TeammatePack.State == 1 && mainPack.TeammatePack.TargetUid == mainPack.Uid)
+            {
+                Client teamMaster = client.team.GetTeamMasterClient;
+                MainPack mainPack1 = new MainPack();
+                mainPack1.ActionCode = ActionCode.AcceptedAttackInvite;
+                mainPack1.Uid = mainPack.TeammatePack.SenderUid;
+                mainPack1.TeammatePack = mainPack.TeammatePack;
+                client.isReadyAttack = true;
+                teamMaster.AcceptedAttackInvite(mainPack1);
+                teamMaster.CheckTeammateAttackReady();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public bool AcceptedInviteTeam(MainPack mainPack, Client client, UdpServer udpServer, Server server)
         {
             if (mainPack.TeammatePack.State == 1 && mainPack.TeammatePack.SenderUid == mainPack.Uid)
@@ -287,6 +397,7 @@ namespace SocketServer.Teammate
                     target.team = client.team;
                     client.IsInTheTeam = true;
                     target.IsInTheTeam = true;
+                    target.EnemiesManager = null;
                     mainPack.ReturnCode = ReturnCode.Success;
                     client.TcpSend(mainPack);
                 }
@@ -295,11 +406,27 @@ namespace SocketServer.Teammate
                     Client target = server.GetClientFromDictByUid(mainPack.TeammatePack.TargetUid);
                     client.team.Teammates.Add(target);
                     target.team = client.team;
-                    client.IsInTheTeam = true;
                     target.IsInTheTeam = true;
+                    target.EnemiesManager = null;
                     mainPack.ReturnCode = ReturnCode.Success;
                     client.TcpSend(mainPack);
                 }
+                return true;
+            }
+            else
+            {
+                mainPack.ReturnCode = ReturnCode.Fail;
+                client.TcpSend(mainPack);
+                return false;
+            }
+        }
+
+        public bool AcceptedAttackInvite(MainPack mainPack, Client client)
+        {
+            if (mainPack.TeammatePack.State == 1 && mainPack.TeammatePack.SenderUid == mainPack.Uid)
+            {
+                mainPack.ReturnCode = ReturnCode.Success;
+                client.TcpSend(mainPack);
                 return true;
             }
             else
@@ -329,7 +456,40 @@ namespace SocketServer.Teammate
             }
         }
 
+        public bool RefuseAttack(MainPack mainPack, Client client)
+        {
+            if (mainPack.TeammatePack.State == 2 && mainPack.Uid == mainPack.TeammatePack.TargetUid)
+            {
+                Client teamMaster = client.team.GetTeamMasterClient;
+                MainPack mainPack1 = new MainPack();
+                mainPack1.ActionCode = ActionCode.RefusedInviteTeam;
+                mainPack1.Uid = mainPack.TeammatePack.SenderUid;
+                mainPack1.TeammatePack = mainPack.TeammatePack;
+                teamMaster.RefusedAttack(mainPack1);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public bool RefusedInviteTeam(MainPack mainPack, Client client)
+        {
+            if (mainPack.TeammatePack.State == 2 && mainPack.Uid == mainPack.TeammatePack.SenderUid)
+            {
+                mainPack.ReturnCode = ReturnCode.Success;
+                client.TcpSend(mainPack);
+                return true;
+            }
+            else
+            {
+                Debug.Log(new StackFrame(true), "失败");
+                return false;
+            }
+        }
+
+        public bool RefusedAttack(MainPack mainPack, Client client)
         {
             if (mainPack.TeammatePack.State == 2 && mainPack.Uid == mainPack.TeammatePack.SenderUid)
             {
@@ -414,6 +574,7 @@ namespace SocketServer.Teammate
 
                 client.IsInTheTeam = false;
                 client.team = null;
+                client.EnemiesManager = new EnemiesManager();
                 return mainPack;
             }
             catch (Exception e)
@@ -457,6 +618,7 @@ namespace SocketServer.Teammate
             {
                 client.IsInTheTeam = false;
                 client.team = null;
+                client.EnemiesManager = new EnemiesManager();
                 return mainPack;
             }
             catch (Exception e)
