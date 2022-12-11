@@ -79,7 +79,6 @@ namespace SocketServer.Gaming
         {
             if (client.UpdateAttackingInfo(mainPack))
             {
-                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;
             }
             else

@@ -32,6 +32,8 @@ namespace SocketServer
             this.pos = pos;
             this.maxHealth = maxHealth;
             this.maxArmor = maxArmor;
+            currentHealth = this.maxHealth;
+            currentArmor = this.maxArmor;
             enemyName = name;
         }
     }
