@@ -80,6 +80,18 @@ namespace SocketServer
             attackArea.NextWave();
 
         }
+
+        public EnemyInfo GetEnemy(EFloor floor, EFloorPos floorPos)
+        {
+            if (attackArea.currentWaveEnemiesDict.TryGetValue((int)floor * 100 + (int)floorPos, out EnemyInfo enemyInfo))
+            {
+                return enemyInfo;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 
     public class AttackArea

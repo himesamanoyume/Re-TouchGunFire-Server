@@ -88,5 +88,18 @@ namespace SocketServer.Gaming
             }
             return mainPack;
         }
+
+        public MainPack HitReg(Client client, MainPack mainPack)
+        {
+            if (client.HitReg(mainPack))
+            {
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            return mainPack;
+        }
     }
 }

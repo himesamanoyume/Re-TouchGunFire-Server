@@ -25,8 +25,6 @@ namespace SocketServer.Items
         //end
         Dictionary<int, Func<ItemInfo>> initItemInfoDict = new Dictionary<int, Func<ItemInfo>>();
 
-        
-
         public ItemController(PlayerInfo playerInfo)
         {
             #region initGun
@@ -159,6 +157,7 @@ namespace SocketServer.Items
                  );
                 return M4A1;
             });
+
             #endregion
             #region initEquipment
             initItemInfoDict.Add((int)EEquipmentUid.DefaultArmor, () =>

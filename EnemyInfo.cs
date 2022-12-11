@@ -21,9 +21,43 @@ namespace SocketServer
         public EFloor Floor { get => floor; set => floor = value; }
         public EFloorPos Pos { get => pos; set => pos = value; }
         public string EnemyName { get => enemyName; set => enemyName = value; }
-        public float CurrentHealth { get => currentHealth; set => currentHealth = value; }
+        public float CurrentHealth { 
+            get => currentHealth;
+            set
+            {
+                if (value>=MaxHealth)
+                {
+                    currentHealth = maxHealth;
+                }
+                else if(value <= 0)
+                {
+                    currentHealth = 0;
+                }
+                else
+                {
+                    currentHealth = value;
+                }
+            }
+        }
         public float MaxHealth { get => maxHealth; set => maxHealth = value; }
-        public float CurrentArmor { get => currentArmor; set => currentArmor = value; }
+        public float CurrentArmor { 
+            get => currentArmor;
+            set
+            {
+                if (value >= MaxArmor)
+                {
+                    currentArmor = maxArmor;
+                }
+                else if (value <= 0)
+                {
+                    currentArmor = 0;
+                }
+                else
+                {
+                    currentArmor = value;
+                }
+            }
+        }
         public float MaxArmor { get => maxArmor; set => maxArmor = value; }
 
         public EnemyInfo(EFloor floor, EFloorPos pos, float maxHealth, float maxArmor, string name = "佣兵")
@@ -35,6 +69,23 @@ namespace SocketServer
             currentHealth = this.maxHealth;
             currentArmor = this.maxArmor;
             enemyName = name;
+        }
+
+        public void HitToken(float dmg)
+        {
+            if (dmg>= CurrentArmor)
+            {
+                dmg -= CurrentArmor;
+                CurrentArmor = 0;
+                CurrentHealth -= dmg;
+            }
+            else if(dmg <= CurrentArmor)
+            {
+                CurrentArmor -= dmg;
+            }else
+            {
+                CurrentHealth -= dmg;
+            }
         }
     }
 

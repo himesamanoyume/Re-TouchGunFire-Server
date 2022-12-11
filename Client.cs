@@ -95,6 +95,150 @@ namespace SocketServer
             tcpSocket.BeginReceive(message.Buffer, message.StartIndex, message.Remsize, SocketFlags.None, ReceiveCallback, null);
         }
 
+        public float CalcDamage(EFloor floor, EFloorPos floorPos, bool isMainGun, bool isStrike)
+        {
+            EnemyInfo enemyInfo = EnemiesManager.GetEnemy(floor, floorPos);
+            if (isMainGun)
+            {
+                GunInfo mainGun = ItemController.mainGunInfo;
+                switch (mainGun.ItemType)
+                {
+                    case "AR":
+                        return SubCalcDamage(mainGun, enemyInfo, PlayerInfo.ArDmgBonus, isStrike);
+                    case "DMR":
+                        return SubCalcDamage(mainGun, enemyInfo, PlayerInfo.DmrDmgBonus, isStrike);
+                    case "SMG":
+                        return SubCalcDamage(mainGun, enemyInfo, PlayerInfo.SmgDmgBonus, isStrike);
+                    case "SG":
+                        return SubCalcDamage(mainGun, enemyInfo, PlayerInfo.SgDmgBonus, isStrike);
+                    case "MG":
+                        return SubCalcDamage(mainGun, enemyInfo, PlayerInfo.MgDmgBonus, isStrike);
+                    case "SR":
+                        return SubCalcDamage(mainGun, enemyInfo, PlayerInfo.SrDmgBonus, isStrike);
+                }
+                return 0;
+            }
+            else
+            {
+                GunInfo handGun = ItemController.handGunInfo;
+                return SubCalcDamage(handGun, enemyInfo, PlayerInfo.HgDmgBonus, isStrike);
+            }
+        }
+
+        float SubCalcDamage(GunInfo gunInfo, EnemyInfo enemyInfo, float dmgBonus, bool isStrike)
+        {
+            //武器基础伤害*基础伤害加成
+            float gunDmg1 = gunInfo.BaseDmg * (1 + PlayerInfo.BaseDmgBonus);
+            //武器基础伤害*对应武器伤害加成
+            float gunDmg2 = gunDmg1 * (1 + dmgBonus);
+            //是否爆头 固定50%几率
+            float gunDmg3;
+            Random random = new Random();
+            float r1 = (float)random.NextDouble();
+            if (r1<= 0.5f && r1 >= 0)
+            {
+                gunDmg3 = gunDmg2 * (1 + PlayerInfo.HeadshotDmgRateBonus);
+                //是否破甲
+                float gunDmg4;
+                if (enemyInfo.CurrentArmor > 0)
+                {
+                    gunDmg4 = gunDmg3 * (1 + PlayerInfo.AbeBonus);
+                    //是否isStrike 为(0.5+pRateBonus)
+                    float gunDmg5 = gunDmg4 * (0.5f + PlayerInfo.PRateBonus);
+                    //是否暴击
+                    float r2 = (float)random.NextDouble();
+                    if (r2 <= PlayerInfo.CritDmgBonus && r2 >= 0)
+                    {
+                        //最终伤害
+                        float damageFin = gunDmg5 * (1 + PlayerInfo.CritDmgBonus);
+                        enemyInfo.HitToken(damageFin);
+                        return damageFin;
+                    }
+                    else
+                    {
+                        //最终伤害
+                        float damageFin = gunDmg5;
+                        enemyInfo.HitToken(damageFin);
+                        return damageFin;
+                    }
+                }
+                else
+                {
+                    gunDmg4 = gunDmg3;
+                    //是否isStrike 为(0.5+pRateBonus)
+                    float gunDmg5 = gunDmg4 * (0.5f + PlayerInfo.PRateBonus);
+                    //是否暴击
+                    float r2 = (float)random.NextDouble();
+                    if (r2 <= PlayerInfo.CritDmgBonus && r2 >= 0)
+                    {
+                        //最终伤害
+                        float damageFin = gunDmg5 * (1 + PlayerInfo.CritDmgBonus);
+                        enemyInfo.HitToken(damageFin);
+                        return damageFin;
+                    }
+                    else
+                    {
+                        //最终伤害
+                        float damageFin = gunDmg5;
+                        enemyInfo.HitToken(damageFin);
+                        return damageFin;
+                    }
+                }
+            }
+            else
+            {
+                gunDmg3 = gunDmg2;
+                //是否破甲
+                float gunDmg4;
+                if (enemyInfo.CurrentArmor > 0)
+                {
+                    gunDmg4 = gunDmg3 * (1 + PlayerInfo.AbeBonus);
+                    //是否isStrike 为(0.5+pRateBonus)
+                    float gunDmg5 = gunDmg4 * (0.5f + PlayerInfo.PRateBonus);
+                    //是否暴击
+                    float r2 = (float)random.NextDouble();
+                    if (r2 <= PlayerInfo.CritDmgBonus && r2 >= 0)
+                    {
+                        //最终伤害
+                        float damageFin = gunDmg5 * (1 + PlayerInfo.CritDmgBonus);
+                        enemyInfo.HitToken(damageFin);
+                        return damageFin;
+                    }
+                    else
+                    {
+                        //最终伤害
+                        float damageFin = gunDmg5;
+                        enemyInfo.HitToken(damageFin);
+                        return damageFin;
+                    }
+                }
+                else
+                {
+                    gunDmg4 = gunDmg3;
+                    //是否isStrike 为(0.5+pRateBonus)
+                    float gunDmg5 = gunDmg4 * (0.5f + PlayerInfo.PRateBonus);
+                    //是否暴击
+                    float r2 = (float)random.NextDouble();
+                    if (r2 <= PlayerInfo.CritDmgBonus && r2 >= 0)
+                    {
+                        //最终伤害
+                        float damageFin = gunDmg5 * (1 + PlayerInfo.CritDmgBonus);
+                        enemyInfo.HitToken(damageFin);
+                        return damageFin;
+                    }
+                    else
+                    {
+                        //最终伤害
+                        float damageFin = gunDmg5;
+                        enemyInfo.HitToken(damageFin);
+                        return damageFin;
+                    }
+                }
+            }
+            
+            
+        }
+
         bool isFirst = true;
         byte[] bigBuffer;
         int progress = 0;
@@ -171,6 +315,11 @@ namespace SocketServer
         public bool Register(MainPack mainPack)
         {
             return GetUserFunction.Reigster(mainPack, connection, ItemController);
+        }
+
+        public bool HitReg(MainPack mainPack)
+        {
+            return GetGameFunction.HitReg(mainPack, this);
         }
 
         public MainPack Login(MainPack mainPack)

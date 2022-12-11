@@ -13,15 +13,14 @@ namespace SocketServer.Items
 {
     public partial class ItemController
     {
-        private GunInfo mainGunInfo = null;
-        private GunInfo handGunInfo = null;
+        public GunInfo mainGunInfo = null;
+        public GunInfo handGunInfo = null;
         private EquipmentInfo armorInfo = null;
         private EquipmentInfo headInfo = null;
         private EquipmentInfo handInfo = null;
         private EquipmentInfo kneeInfo = null;
         private EquipmentInfo legInfo = null;
         private EquipmentInfo bootsInfo = null;
-
 
         //用于不分类存储玩家武器和装备信息的字典
         public Dictionary<int, ItemInfo> itemsDict = new Dictionary<int, ItemInfo>();

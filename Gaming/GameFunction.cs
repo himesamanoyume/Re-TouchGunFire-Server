@@ -203,5 +203,23 @@ namespace SocketServer.Gaming
                 return false;
             }
         }
+
+        public bool HitReg(MainPack mainPack, Client client)
+        {
+            try
+            {
+                mainPack.HitRegPack.Damage = client.CalcDamage((EFloor)mainPack.HitRegPack.Floor, (EFloorPos)mainPack.HitRegPack.Pos, mainPack.HitRegPack.IsMainGun, mainPack.HitRegPack.IsStrike);
+                if (client.IsInTheTeam)
+                {
+                    client.team.Broadcast(client, mainPack, true);
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.Log(new StackFrame(true), e.Message);
+                return false;
+            }
+        }
     }
 }
