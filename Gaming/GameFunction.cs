@@ -133,6 +133,10 @@ namespace SocketServer.Gaming
         {
             try
             {
+                if (client.EnemiesManager != null)
+                {
+                    client.EnemiesManager.attackArea = null;
+                }
                 if (client.IsInTheTeam)
                 {
                     MainPack mainPack1 = new MainPack();
@@ -158,13 +162,21 @@ namespace SocketServer.Gaming
                 {
                     AttackAreaPack attackAreaPack = new AttackAreaPack();
                     mainPack.AttackAreaPack = attackAreaPack;
-                    if (client.EnemiesManager.attackArea.currentWave == -1)
+                    if (client.EnemiesManager.attackArea != null && client.EnemiesManager.attackArea.currentWave == -1)
                     {
                         mainPack.AttackAreaPack.Wave = 0;
                     }
                     else
                     {
-                        mainPack.AttackAreaPack.Wave = client.EnemiesManager.attackArea.currentWave;
+                        if (client.EnemiesManager.attackArea == null)
+                        {
+                            return false;
+                        }
+                        else
+                        {
+                            mainPack.AttackAreaPack.Wave = client.EnemiesManager.attackArea.currentWave;
+                        }
+                        
                     }
                     mainPack.AttackAreaPack.AreaNumber = client.EnemiesManager.attackArea.areaNumber;
 
@@ -219,6 +231,22 @@ namespace SocketServer.Gaming
             {
                 Debug.Log(new StackFrame(true), e.Message);
                 return false;
+            }
+        }
+
+        public void BeatEnemy(MainPack mainPack, Client client)
+        {
+            try
+            {
+                client.TcpSend(mainPack);
+                if (client.IsInTheTeam)
+                {
+                    client.team.Broadcast(client, mainPack, true);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.Log(new StackFrame(true), e.Message);
             }
         }
     }

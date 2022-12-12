@@ -1,4 +1,6 @@
-﻿using SocketServer.Teammate;
+﻿using SocketProtocol;
+
+using SocketServer.Teammate;
 
 using System;
 using System.Collections.Generic;
@@ -71,7 +73,7 @@ namespace SocketServer
             enemyName = name;
         }
 
-        public void HitToken(float dmg)
+        public bool HitToken(float dmg)
         {
             if (dmg>= CurrentArmor)
             {
@@ -85,6 +87,14 @@ namespace SocketServer
             }else
             {
                 CurrentHealth -= dmg;
+            }
+            if (CurrentHealth <= 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
