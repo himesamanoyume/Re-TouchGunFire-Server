@@ -95,7 +95,7 @@ namespace SocketServer
             tcpSocket.BeginReceive(message.Buffer, message.StartIndex, message.Remsize, SocketFlags.None, ReceiveCallback, null);
         }
 
-        public float CalcDamage(EFloor floor, EFloorPos floorPos, bool isMainGun, bool isStrike)
+        public float CalcDamage(EFloor floor, EFloorPos floorPos, bool isMainGun, bool isStrike, out bool isHeadshot, out bool isCrit)
         {
             EnemyInfo enemyInfo = EnemiesManager.GetEnemy(floor, floorPos);
             if (isMainGun)
@@ -104,25 +104,32 @@ namespace SocketServer
                 switch (mainGun.ItemType)
                 {
                     case "AR":
-                        return SubCalcDamage(mainGun, enemyInfo, PlayerInfo.ArDmgBonus, isStrike);
+                        return SubCalcDamage(mainGun, enemyInfo, PlayerInfo.ArDmgBonus, isStrike, out isHeadshot, out isCrit);
                     case "DMR":
-                        return SubCalcDamage(mainGun, enemyInfo, PlayerInfo.DmrDmgBonus, isStrike);
+                        return SubCalcDamage(mainGun, enemyInfo, PlayerInfo.DmrDmgBonus, isStrike, out isHeadshot, out isCrit);
                     case "SMG":
-                        return SubCalcDamage(mainGun, enemyInfo, PlayerInfo.SmgDmgBonus, isStrike);
+                        return SubCalcDamage(mainGun, enemyInfo, PlayerInfo.SmgDmgBonus, isStrike, out isHeadshot, out isCrit);
                     case "SG":
-                        return SubCalcDamage(mainGun, enemyInfo, PlayerInfo.SgDmgBonus, isStrike);
+                        return SubCalcDamage(mainGun, enemyInfo, PlayerInfo.SgDmgBonus, isStrike, out isHeadshot, out isCrit);
                     case "MG":
-                        return SubCalcDamage(mainGun, enemyInfo, PlayerInfo.MgDmgBonus, isStrike);
+                        return SubCalcDamage(mainGun, enemyInfo, PlayerInfo.MgDmgBonus, isStrike, out isHeadshot, out isCrit);
                     case "SR":
-                        return SubCalcDamage(mainGun, enemyInfo, PlayerInfo.SrDmgBonus, isStrike);
+                        return SubCalcDamage(mainGun, enemyInfo, PlayerInfo.SrDmgBonus, isStrike, out isHeadshot, out isCrit);
                 }
+                isCrit = false;
+                isHeadshot = false;
                 return 0;
             }
             else
             {
                 GunInfo handGun = ItemController.handGunInfo;
-                return SubCalcDamage(handGun, enemyInfo, PlayerInfo.HgDmgBonus, isStrike);
+                return SubCalcDamage(handGun, enemyInfo, PlayerInfo.HgDmgBonus, isStrike, out isHeadshot, out isCrit);
             }
+        }
+
+        void AttackEnd(MainPack mainPack)
+        {
+            GetGameFunction.AttackEnd(mainPack, this);
         }
 
         void BeatEnemy(EnemyInfo enemyInfo)
@@ -146,272 +153,95 @@ namespace SocketServer
                 if (EnemiesManager.CheckCurrentWave())
                 {
                     //战斗结束
+                    MainPack mainPack1 = new MainPack();
+                    mainPack1.Uid = PlayerInfo.Uid;
+                    mainPack1.ActionCode = ActionCode.AttackEnd;
+                    mainPack1.RequestCode = RequestCode.Gaming;
+                    mainPack1.ReturnCode = ReturnCode.Success;
+                    AttackAreaPack attackAreaPack = new AttackAreaPack();
+                    attackAreaPack.IsEnd = true;
+                    mainPack1.AttackAreaPack = attackAreaPack;
+                    AttackEnd(mainPack1);
                 }
             }
         }
 
-        float SubCalcDamage(GunInfo gunInfo, EnemyInfo enemyInfo, float dmgBonus, bool isStrike)
+        float CalcDmg3(float gunDmg2, EnemyInfo enemyInfo, bool isStrike, out bool isHeadshot, out bool isCrit)
         {
-            //try
-            //{
+            //是否爆头
+            Random random = new Random();
+            float r1 = (float)random.NextDouble();
+            if (r1 <= 0.2f && r1 >= 0)
+            {
+                isHeadshot = true;
+                return CalcDmg4(gunDmg2 * (1 + PlayerInfo.HeadshotDmgRateBonus), enemyInfo, isStrike, out isCrit);
+            }
+            else
+            {
+                isHeadshot = false;
+                return CalcDmg4(gunDmg2, enemyInfo, isStrike, out isCrit);
 
-            //}
-            //catch (Exception)
-            //{
+            }
+        }
 
-            //    throw;
-            //}
+        float CalcDmg4(float gunDmg3, EnemyInfo enemyInfo, bool isStrike, out bool isCrit)
+        {
+            if (enemyInfo.CurrentArmor > 0)
+            {
+                return CalcDmg5(gunDmg3 * (1 + PlayerInfo.AbeBonus), isStrike, out isCrit);
+            }
+            else
+            {
+                return CalcDmg5(gunDmg3, isStrike, out isCrit);
+            }
+        }
+
+        float CalcDmg5(float gunDmg4, bool isStrike, out bool isCrit)
+        {
+            if (isStrike)
+            {
+                return CalcFinDmg(gunDmg4 * (0.5f + PlayerInfo.PRateBonus), out isCrit);
+            }
+            else
+            {
+                return CalcFinDmg(gunDmg4, out isCrit);
+            }
+        }
+
+        float CalcFinDmg(float gunDmg5, out bool isCrit)
+        {
+            //是否暴击
+            Random random = new Random();
+            float r2 = (float)random.NextDouble();
+            if (r2 <= PlayerInfo.CritDmgBonus && r2 >= 0)
+            {
+                //最终伤害
+                isCrit = true;
+                return gunDmg5 * (1 + PlayerInfo.CritDmgBonus);
+                
+            }
+            else
+            {
+                //最终伤害
+                isCrit=false;
+                return gunDmg5;
+            }
+        }
+
+        float SubCalcDamage(GunInfo gunInfo, EnemyInfo enemyInfo, float dmgBonus, bool isStrike, out bool isHeadshot, out bool isCrit)
+        {
 
             //武器基础伤害*基础伤害加成
             float gunDmg1 = gunInfo.BaseDmg * (1 + PlayerInfo.BaseDmgBonus);
             //武器基础伤害*对应武器伤害加成
             float gunDmg2 = gunDmg1 * (1 + dmgBonus);
             //是否爆头 固定50%几率
-            float gunDmg3;
-            Random random = new Random();
-            float r1 = (float)random.NextDouble();
-            if (r1<= 0.5f && r1 >= 0)
+            float dmgFin = CalcDmg3(gunDmg2, enemyInfo, isStrike, out isHeadshot, out isCrit);
+            if (enemyInfo.HitToken(dmgFin))
             {
-                gunDmg3 = gunDmg2 * (1 + PlayerInfo.HeadshotDmgRateBonus);
-                //是否破甲
-                float gunDmg4;
-                if (enemyInfo.CurrentArmor > 0)
-                {
-                    gunDmg4 = gunDmg3 * (1 + PlayerInfo.AbeBonus);
-                    //是否isStrike 为(0.5+pRateBonus)
-                    if (isStrike)
-                    {
-                        float gunDmg5 = gunDmg4 * (0.5f + PlayerInfo.PRateBonus);
-                        //是否暴击
-                        float r2 = (float)random.NextDouble();
-                        if (r2 <= PlayerInfo.CritDmgBonus && r2 >= 0)
-                        {
-                            //最终伤害
-                            float damageFin = gunDmg5 * (1 + PlayerInfo.CritDmgBonus);
-                            if (enemyInfo.HitToken(damageFin))
-                            {
-                                BeatEnemy(enemyInfo);
-                            }
-                            return damageFin;
-                        }
-                        else
-                        {
-                            //最终伤害
-                            float damageFin = gunDmg5;
-                            if (enemyInfo.HitToken(damageFin))
-                            {
-                                BeatEnemy(enemyInfo);
-                            }
-                            return damageFin;
-                        }
-                    }
-                    else
-                    {
-                        float gunDmg5 = gunDmg4;
-                        //是否暴击
-                        float r2 = (float)random.NextDouble();
-                        if (r2 <= PlayerInfo.CritDmgBonus && r2 >= 0)
-                        {
-                            //最终伤害
-                            float damageFin = gunDmg5 * (1 + PlayerInfo.CritDmgBonus);
-                            if (enemyInfo.HitToken(damageFin))
-                            {
-                                BeatEnemy(enemyInfo);
-                            }
-                            return damageFin;
-                        }
-                        else
-                        {
-                            //最终伤害
-                            float damageFin = gunDmg5;
-                            if (enemyInfo.HitToken(damageFin))
-                            {
-                                BeatEnemy(enemyInfo);
-                            }
-                            return damageFin;
-                        }
-                    }
-                }
-                else
-                {
-                    gunDmg4 = gunDmg3;
-                    //是否isStrike 为(0.5+pRateBonus)
-                    if (isStrike)
-                    {
-                        float gunDmg5 = gunDmg4 * (0.5f + PlayerInfo.PRateBonus);
-                        //是否暴击
-                        float r2 = (float)random.NextDouble();
-                        if (r2 <= PlayerInfo.CritDmgBonus && r2 >= 0)
-                        {
-                            //最终伤害
-                            float damageFin = gunDmg5 * (1 + PlayerInfo.CritDmgBonus);
-                            if (enemyInfo.HitToken(damageFin))
-                            {
-                                BeatEnemy(enemyInfo);
-                            }
-                            return damageFin;
-                        }
-                        else
-                        {
-                            //最终伤害
-                            float damageFin = gunDmg5;
-                            if (enemyInfo.HitToken(damageFin))
-                            {
-                                BeatEnemy(enemyInfo);
-                            }
-                            return damageFin;
-                        }
-                    }
-                    else
-                    {
-                        float gunDmg5 = gunDmg4;
-                        //是否暴击
-                        float r2 = (float)random.NextDouble();
-                        if (r2 <= PlayerInfo.CritDmgBonus && r2 >= 0)
-                        {
-                            //最终伤害
-                            float damageFin = gunDmg5 * (1 + PlayerInfo.CritDmgBonus);
-                            if (enemyInfo.HitToken(damageFin))
-                            {
-                                BeatEnemy(enemyInfo);
-                            }
-                            return damageFin;
-                        }
-                        else
-                        {
-                            //最终伤害
-                            float damageFin = gunDmg5;
-                            if (enemyInfo.HitToken(damageFin))
-                            {
-                                BeatEnemy(enemyInfo);
-                            }
-                            return damageFin;
-                        }
-                    }
-                }
+                BeatEnemy(enemyInfo);
             }
-            else
-            {
-                gunDmg3 = gunDmg2;
-                //是否破甲
-                float gunDmg4;
-                if (enemyInfo.CurrentArmor > 0)
-                {
-                    gunDmg4 = gunDmg3 * (1 + PlayerInfo.AbeBonus);
-                    //是否isStrike 为(0.5+pRateBonus)
-                    if (isStrike)
-                    {
-                        float gunDmg5 = gunDmg4 * (0.5f + PlayerInfo.PRateBonus);
-                        //是否暴击
-                        float r2 = (float)random.NextDouble();
-                        if (r2 <= PlayerInfo.CritDmgBonus && r2 >= 0)
-                        {
-                            //最终伤害
-                            float damageFin = gunDmg5 * (1 + PlayerInfo.CritDmgBonus);
-                            if (enemyInfo.HitToken(damageFin))
-                            {
-                                BeatEnemy(enemyInfo);
-                            }
-                            return damageFin;
-                        }
-                        else
-                        {
-                            //最终伤害
-                            float damageFin = gunDmg5;
-                            if (enemyInfo.HitToken(damageFin))
-                            {
-                                BeatEnemy(enemyInfo);
-                            }
-                            return damageFin;
-                        }
-                    }
-                    else
-                    {
-                        float gunDmg5 = gunDmg4;
-                        //是否暴击
-                        float r2 = (float)random.NextDouble();
-                        if (r2 <= PlayerInfo.CritDmgBonus && r2 >= 0)
-                        {
-                            //最终伤害
-                            float damageFin = gunDmg5 * (1 + PlayerInfo.CritDmgBonus);
-                            if (enemyInfo.HitToken(damageFin))
-                            {
-                                BeatEnemy(enemyInfo);
-                            }
-                            return damageFin;
-                        }
-                        else
-                        {
-                            //最终伤害
-                            float damageFin = gunDmg5;
-                            if (enemyInfo.HitToken(damageFin))
-                            {
-                                BeatEnemy(enemyInfo);
-                            }
-                            return damageFin;
-                        }
-                    }
-                }
-                else
-                {
-                    gunDmg4 = gunDmg3;
-                    //是否isStrike 为(0.5+pRateBonus)
-                    if (isStrike)
-                    {
-                        float gunDmg5 = gunDmg4 * (0.5f + PlayerInfo.PRateBonus);
-                        //是否暴击
-                        float r2 = (float)random.NextDouble();
-                        if (r2 <= PlayerInfo.CritDmgBonus && r2 >= 0)
-                        {
-                            //最终伤害
-                            float damageFin = gunDmg5 * (1 + PlayerInfo.CritDmgBonus);
-                            if (enemyInfo.HitToken(damageFin))
-                            {
-                                BeatEnemy(enemyInfo);
-                            }
-                            return damageFin;
-                        }
-                        else
-                        {
-                            //最终伤害
-                            float damageFin = gunDmg5;
-                            if (enemyInfo.HitToken(damageFin))
-                            {
-                                BeatEnemy(enemyInfo);
-                            }
-                            return damageFin;
-                        }
-                    }
-                    else
-                    {
-                        float gunDmg5 = gunDmg4;
-                        //是否暴击
-                        float r2 = (float)random.NextDouble();
-                        if (r2 <= PlayerInfo.CritDmgBonus && r2 >= 0)
-                        {
-                            //最终伤害
-                            float damageFin = gunDmg5 * (1 + PlayerInfo.CritDmgBonus);
-                            if (enemyInfo.HitToken(damageFin))
-                            {
-                                BeatEnemy(enemyInfo);
-                            }
-                            return damageFin;
-                        }
-                        else
-                        {
-                            //最终伤害
-                            float damageFin = gunDmg5;
-                            if (enemyInfo.HitToken(damageFin))
-                            {
-                                BeatEnemy(enemyInfo);
-                            }
-                            return damageFin;
-                        }
-                    }
-                }
-            }
-            return 0;
-            
+            return dmgFin; 
         }
 
         bool isFirst = true;

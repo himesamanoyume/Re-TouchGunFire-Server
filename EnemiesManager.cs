@@ -169,7 +169,7 @@ namespace SocketServer
             {
                 currentWaveEnemiesDict.Clear();
             }
-            if (currentWave > enemyWaves.Count)
+            if (currentWave >= enemyWaves.Count - 1)
             {
                 return true;
             }

@@ -220,7 +220,9 @@ namespace SocketServer.Gaming
         {
             try
             {
-                mainPack.HitRegPack.Damage = client.CalcDamage((EFloor)mainPack.HitRegPack.Floor, (EFloorPos)mainPack.HitRegPack.Pos, mainPack.HitRegPack.IsMainGun, mainPack.HitRegPack.IsStrike);
+                mainPack.HitRegPack.Damage = client.CalcDamage((EFloor)mainPack.HitRegPack.Floor, (EFloorPos)mainPack.HitRegPack.Pos, mainPack.HitRegPack.IsMainGun, mainPack.HitRegPack.IsStrike, out bool isHeadshot, out bool isCrit);
+                mainPack.HitRegPack.IsHeadshot = isHeadshot;
+                mainPack.HitRegPack.IsCrit = isCrit;
                 if (client.IsInTheTeam)
                 {
                     client.team.Broadcast(client, mainPack, true);
@@ -248,6 +250,28 @@ namespace SocketServer.Gaming
             {
                 Debug.Log(new StackFrame(true), e.Message);
             }
+        }
+
+        public void AttackEnd(MainPack mainPack, Client client)
+        {
+            try
+            {
+                if (client.EnemiesManager != null)
+                {
+                    client.EnemiesManager.attackArea = null;
+                }
+                client.TcpSend(mainPack);
+                if (client.IsInTheTeam)
+                {
+                    client.team.Broadcast(client, mainPack, true);
+                }
+            }
+            catch (Exception e) 
+            {
+                Debug.Log(new StackFrame(true), e.Message);
+            }
+            
+
         }
     }
 }
