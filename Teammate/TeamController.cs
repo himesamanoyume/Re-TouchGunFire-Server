@@ -49,20 +49,22 @@ namespace SocketServer.Teammate
         public MainPack AttackInvited(Client client, MainPack mainPack)
         {
             int code = client.AttackInvited(mainPack);
-            if (code == 1)
+            if (code == 1 || code == 2)
             {
-
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
             }
             else
             {
-
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
             }
             return mainPack;
         }
 
         public MainPack BreakTeam(Client client, MainPack mainPack)
         {
-            mainPack = client.GetTeamFunction.BreakTeam(client, mainPack);
+            mainPack = client.GetTeamFunction.BreakTeam(mainPack, client);
             if (mainPack != null)
             {
                 Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
@@ -311,6 +313,21 @@ namespace SocketServer.Teammate
         public MainPack KickPlayer(Client client, MainPack mainPack)
         {
             if (client.KickPlayer(mainPack))
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            return mainPack;
+        }
+
+        public MainPack TeamMasterAttackNotify(Client client, MainPack mainPack)
+        {
+            if (client.TeamMasterAttackNotify(mainPack))
             {
                 Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
                 mainPack.ReturnCode = ReturnCode.Success;

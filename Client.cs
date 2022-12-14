@@ -97,7 +97,9 @@ namespace SocketServer
 
         public float CalcDamage(EFloor floor, EFloorPos floorPos, bool isMainGun, bool isStrike, out bool isHeadshot, out bool isCrit)
         {
-            EnemyInfo enemyInfo = EnemiesManager.GetEnemy(floor, floorPos);
+
+            EnemyInfo enemyInfo = IsInTheTeam == true? team.GetTeamMasterClient.EnemiesManager.GetEnemy(floor, floorPos): EnemiesManager.GetEnemy(floor, floorPos);
+
             if (isMainGun)
             {
                 GunInfo mainGun = ItemController.mainGunInfo;
@@ -136,7 +138,8 @@ namespace SocketServer
         {
             EFloor eFloor = enemyInfo.Floor;
             EFloorPos eFloorPos = enemyInfo.Pos;
-            if (EnemiesManager.BeatEnemy(eFloor, eFloorPos))
+            
+            if (IsInTheTeam == true ? team.GetTeamMasterClient.EnemiesManager.BeatEnemy(eFloor, eFloorPos) : EnemiesManager.BeatEnemy(eFloor, eFloorPos))
             {
                 MainPack mainPack = new MainPack();
                 mainPack.Uid = PlayerInfo.Uid;
@@ -150,7 +153,7 @@ namespace SocketServer
                 hitRegPack.IsDead = true;
                 mainPack.HitRegPack = hitRegPack;
                 GetGameFunction.BeatEnemy(mainPack, this);
-                if (EnemiesManager.CheckCurrentWave())
+                if (IsInTheTeam == true ? team.GetTeamMasterClient.EnemiesManager.CheckCurrentWave(): EnemiesManager.CheckCurrentWave())
                 {
                     //战斗结束
                     MainPack mainPack1 = new MainPack();
@@ -481,6 +484,21 @@ namespace SocketServer
                 mainPack.PlayerInfoPack.IsOnline = true;
             }
             return mainPack;
+        }
+
+        public bool ReadyAttack(MainPack mainPack)
+        {
+            return GetGameFunction.ReadyAttack(mainPack, this);
+        }
+
+        public bool CancelReadyAttack(MainPack mainPack)
+        {
+            return GetGameFunction.CancelReadyAttack(mainPack, this);
+        }
+
+        public bool TeamMasterAttackNotify(MainPack mainPack)
+        {
+            return GetTeamFunction.TeamMasterAttackNotify(mainPack, this);
         }
 
         public int RefuseFriendRequest(MainPack mainPack)

@@ -101,5 +101,35 @@ namespace SocketServer.Gaming
             }
             return mainPack;
         }
+
+        public MainPack ReadyAttack(Client client, MainPack mainPack)
+        {
+            if (client.ReadyAttack(mainPack))
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            return mainPack;
+        }
+
+        public MainPack CancelReadyAttack(Client client, MainPack mainPack)
+        {
+            if (client.CancelReadyAttack(mainPack))
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+            return mainPack;
+        }
     }
 }

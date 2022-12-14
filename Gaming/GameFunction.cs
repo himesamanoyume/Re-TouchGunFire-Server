@@ -273,5 +273,62 @@ namespace SocketServer.Gaming
             
 
         }
+
+        public bool ReadyAttack(MainPack mainPack, Client client)
+        {
+            try
+            {
+                if (mainPack.TeammatePack.TeamMasterUid == client.team.GetTeamMasterClient.PlayerInfo.Uid && mainPack.TeammatePack.SenderUid != client.team.GetTeamMasterClient.PlayerInfo.Uid)
+                {
+                    if (client.IsInTheTeam)
+                    {
+                        client.team.Broadcast(client, mainPack);
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+                
+            }
+            catch (Exception e)
+            {
+                Debug.Log(new StackFrame(true), e.Message);
+                return false;
+            }
+        }
+
+        public bool CancelReadyAttack(MainPack mainPack, Client client)
+        {
+            try
+            {
+                if (mainPack.TeammatePack.TeamMasterUid == client.team.GetTeamMasterClient.PlayerInfo.Uid && mainPack.TeammatePack.SenderUid != client.team.GetTeamMasterClient.PlayerInfo.Uid)
+                {
+                    if (client.IsInTheTeam)
+                    {
+                        client.team.Broadcast(client, mainPack);
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.Log(new StackFrame(true), e.Message);
+                return false;
+            }
+        }
     }
 }
