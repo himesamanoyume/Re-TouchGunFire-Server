@@ -19,32 +19,6 @@ namespace SocketServer.Teammate
             {
                 try
                 {
-                    //if (team != null)
-                    //{
-                    //    foreach (Client c in team.Teammates)
-                    //    {
-                            //MainPack mainPack1 = new MainPack();
-                            //mainPack1.ActionCode = ActionCode.AttackInvited;
-                            //mainPack1.AttackAreaPack = mainPack.AttackAreaPack;
-                            //TeammatePack teammatePack = new TeammatePack();
-                            //teammatePack.SenderUid = mainPack.TeammatePack.SenderUid;
-                            //teammatePack.TargetUid = c.PlayerInfo.Uid;
-                            //mainPack1.TeammatePack = teammatePack;
-                    //        c.AttackInvited(mainPack1);
-                    //    }
-                    //    return true;
-                    //}
-                    //else
-                    //{
-                    //    //单人出击
-                    //    MainPack mainPack2 = new MainPack();
-                    //    mainPack2.RequestCode = RequestCode.Gaming;
-                    //    mainPack2.ActionCode = ActionCode.StartAttack;
-                    //    mainPack2.Uid = client.PlayerInfo.Uid;
-                    //    mainPack2.AttackAreaPack = mainPack.AttackAreaPack;
-                    //    client.StartAttack(mainPack2);
-                    //    return true;
-                    //}
 
                     MainPack mainPack2 = new MainPack();
                     mainPack2.RequestCode = RequestCode.Gaming;
@@ -100,11 +74,7 @@ namespace SocketServer.Teammate
             {
                 if (team != null)
                 {
-                    //mainPack.TeammatePack.State = 2;
-                    //mainPack.Uid = mainPack.TeammatePack.SenderUid;
-                    //Client teamMaster = team.GetTeamMasterClient;
-                    //mainPack.ActionCode = ActionCode.RefusedAttackInvite;
-                    //teamMaster.RefusedAttack(mainPack);
+                    
                     return 2;
                 }
                 else
@@ -371,26 +341,6 @@ namespace SocketServer.Teammate
                 return false;
             }
         }
-
-        //public bool AcceptAttackInvite(MainPack mainPack, Client client)
-        //{
-        //    if (mainPack.TeammatePack.State == 1 && mainPack.TeammatePack.TargetUid == mainPack.Uid)
-        //    {
-        //        Client teamMaster = client.team.GetTeamMasterClient;
-        //        MainPack mainPack1 = new MainPack();
-        //        mainPack1.ActionCode = ActionCode.AcceptedAttackInvite;
-        //        mainPack1.Uid = mainPack.TeammatePack.SenderUid;
-        //        mainPack1.TeammatePack = mainPack.TeammatePack;
-        //        client.isReadyAttack = true;
-        //        teamMaster.AcceptedAttackInvite(mainPack1);
-        //        teamMaster.CheckTeammateAttackReady();
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
 
         public bool AcceptedInviteTeam(MainPack mainPack, Client client, UdpServer udpServer, Server server)
         {

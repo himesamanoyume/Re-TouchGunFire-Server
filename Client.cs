@@ -302,23 +302,7 @@ namespace SocketServer
             }
         }
 
-        public bool isReadyAttack = false;
-        public void CheckTeammateAttackReady()
-        {
-            if (team.GetTeamMasterClient.PlayerInfo.Uid == PlayerInfo.Uid)
-            {
-                foreach (Client c in team.Teammates)
-                {
-                    if (!c.isReadyAttack)
-                    {
-                        break;
-                    }
-                }
-                //调用发起小队全员出击
-
-                //end
-            }
-        }
+        //public bool isReadyAttack = false;
 
         public bool Register(MainPack mainPack)
         {
