@@ -616,8 +616,9 @@ namespace SocketServer
 
         void Close()
         {
-            server.RemoveClient(this);
+            
             Debug.Log(new StackFrame(true), "断开连接");
+
             if (IsInTheTeam && team != null)
             {
                 MainPack mainPack = new MainPack();
@@ -625,6 +626,15 @@ namespace SocketServer
                 mainPack.ActionCode = ActionCode.LeaveTeam;
                 GetTeamFunction.LeaveTeam(mainPack, this);
             }
+
+            if (connection != null)
+            {
+                string sql = "update hime.user_info set diamond = " + PlayerInfo.Diamond + " , coin = " + PlayerInfo.Coin + " , current_exp = " + PlayerInfo.CurrentExp + " , level = " + PlayerInfo.Level + "  where uid = " + PlayerInfo.Uid;
+                MySqlCommand cmd = new MySqlCommand(sql, connection);
+                cmd.ExecuteNonQuery();
+            }
+            
+            server.RemoveClient(this);
             tcpSocket.Close();
             connection.Close();
         }

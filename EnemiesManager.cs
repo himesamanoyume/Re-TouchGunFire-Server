@@ -17,8 +17,8 @@ namespace SocketServer
         {
             attackArea1List = new List<EnemyInfo[]>();
             attackArea1List.Add(InitEnemiesType4());
-            //attackArea1List.Add(InitEnemiesType5());
-            //attackArea1List.Add(InitEnemiesType4());
+            attackArea1List.Add(InitEnemiesType5());
+            attackArea1List.Add(InitEnemiesType4());
         }
         #endregion
         #region InitEnemiesType

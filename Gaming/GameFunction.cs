@@ -258,7 +258,6 @@ namespace SocketServer.Gaming
                 float coin = r.Next(30, 200) * per;
                 if (client.IsInTheTeam)
                 {
-
                     foreach (Client item in client.team.Teammates)
                     {
                         item.PlayerInfo.CurrentExp += exp;
