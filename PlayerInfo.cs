@@ -53,7 +53,8 @@ namespace SocketServer
             {
                 if (value >= 1000f)
                 {
-                    currentExp = 1000f;
+                    Level++;
+                    currentExp = 0;
                 }
                 else if(value<= 0)
                 {

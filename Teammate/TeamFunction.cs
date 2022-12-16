@@ -575,7 +575,10 @@ namespace SocketServer.Teammate
             {
                 client.IsInTheTeam = false;
                 client.team = null;
-                client.EnemiesManager = new EnemiesManager();
+                if (client.EnemiesManager == null)
+                {
+                    client.EnemiesManager = new EnemiesManager();
+                }
                 return mainPack;
             }
             catch (Exception e)

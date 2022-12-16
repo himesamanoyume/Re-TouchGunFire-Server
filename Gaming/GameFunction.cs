@@ -137,13 +137,23 @@ namespace SocketServer.Gaming
                 {
                     client.EnemiesManager.attackArea = null;
                 }
-                if (client.IsInTheTeam)
-                {
+
+                if (client.IsInTheTeam && mainPack.Uid != client.team.GetTeamMasterClient.PlayerInfo.Uid)
+                {//在队伍中,且不是队长时
                     MainPack mainPack1 = new MainPack();
                     mainPack1.Uid = mainPack.Uid;
                     mainPack1.ActionCode = ActionCode.LeaveTeam;
                     mainPack1.RequestCode = RequestCode.Team;
+                    mainPack1.ReturnCode = ReturnCode.Success;
                     client.LeaveTeam(mainPack1);
+                    client.TcpSend(mainPack1);
+                }
+                else if(client.IsInTheTeam &&mainPack.Uid == client.team.GetTeamMasterClient.PlayerInfo.Uid)
+                {//在队伍中,且是队长时
+                    MainPack mainPack2 = new MainPack();
+                    mainPack2.ActionCode = ActionCode.AttackLeave;
+                    mainPack2.RequestCode = RequestCode.Gaming;
+                    client.team.Broadcast(client, mainPack2);
                 }
                 return true;
             }
@@ -240,6 +250,26 @@ namespace SocketServer.Gaming
         {
             try
             {
+                Random r = new Random();
+                float per = (float)r.NextDouble();
+                float exp = r.Next(1, 120) * per;
+
+                float per2 = (float)r.NextDouble();
+                float coin = r.Next(30, 200) * per;
+                if (client.IsInTheTeam)
+                {
+
+                    foreach (Client item in client.team.Teammates)
+                    {
+                        item.PlayerInfo.CurrentExp += exp;
+                        item.PlayerInfo.Coin += coin;
+                    }
+                }
+                else
+                {
+                    client.PlayerInfo.CurrentExp += exp;
+                    client.PlayerInfo.Coin += coin;
+                }
                 client.TcpSend(mainPack);
                 if (client.IsInTheTeam)
                 {
