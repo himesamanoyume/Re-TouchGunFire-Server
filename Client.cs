@@ -30,7 +30,7 @@ namespace SocketServer
         Server server;
         MySqlConnection connection;
         
-        string connectStr = "database=hime; data source=47.106.183.112; user=lzp; password=lzp19990510; pooling=false;charset=utf8;port=3306";
+        string connectStr = "database=hime; data source=47.106.183.112; user=lzp; password=lzp19990510; pooling=false;charset=utf8;port=3306; Connect Timeout=999999";
 
         public UserFunction GetUserFunction
         {

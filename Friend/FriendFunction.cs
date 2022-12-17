@@ -41,6 +41,7 @@ namespace SocketServer.Friend
         {
             try
             {
+                
                 string sql = "select * from hime.user_friends where player1_uid = " + mainPack.Uid + " and is_friend = 1";
                 MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
                 MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
