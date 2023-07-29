@@ -12,6 +12,58 @@ namespace SocketServer
         public AttackArea attackArea;
         List<EnemyInfo[]> attackArea1List;
 
+        //public enum EEnemySpawnType
+        //{
+        //    Mercenary,
+        //    SeniorOfficer,
+        //    BOSS
+        //}
+
+        /// <summary>
+        /// 佣兵
+        /// </summary>
+        /// <param name="maxHealth"></param>
+        /// <param name="maxArmor"></param>
+        /// <param name="attack"></param>
+        /// <param name="name"></param>
+        void EnemySpawnMercenaryType(out float maxHealth, out float maxArmor, out float attack, out string name)
+        {
+            maxHealth = 2000;
+            maxArmor = 500;
+            attack = 10;
+            name = "佣兵";
+        }
+
+        /// <summary>
+        /// 高级军官
+        /// </summary>
+        /// <param name="maxHealth"></param>
+        /// <param name="maxArmor"></param>
+        /// <param name="attack"></param>
+        /// <param name="name"></param>
+        void EnemySpawnSeniorOfficerType(out float maxHealth, out float maxArmor, out float attack, out string name)
+        {
+            maxHealth = 5000;
+            maxArmor = 2500;
+            attack = 30;
+            name = "高级军官";
+        }
+
+        /// <summary>
+        /// BOSS
+        /// </summary>
+        /// <param name="maxHealth"></param>
+        /// <param name="maxArmor"></param>
+        /// <param name="attack"></param>
+        /// <param name="name"></param>
+        void EnemySpawnBOSSType(out float maxHealth, out float maxArmor, out float attack, out string name)
+        {
+            maxHealth = 8000;
+            maxArmor = 7000;
+            attack = 50;
+            name = "BOSS";
+        }
+
         #region InitAttackAreaList
         void InitAttackArea1List()
         {
@@ -25,65 +77,65 @@ namespace SocketServer
         EnemyInfo[] InitEnemiesType1()
         {
             EnemyInfo[] enemiesType = new EnemyInfo[] {
-                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos1_1, 2000, 500),
-                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos1_3, 2000, 500),
-                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos1_5, 2000, 500),
-                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos2_2, 2000, 500),
-                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos2_4, 2000, 500),
-                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos3_1, 2000, 500),
-                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos3_5, 2000, 500),
+                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos1_1, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos1_3, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos1_5, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos2_2, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos2_4, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos3_1, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos3_5, EnemySpawnMercenaryType),
             };
             return enemiesType;
         }
         EnemyInfo[] InitEnemiesType2()
         {
             EnemyInfo[] enemiesType = new EnemyInfo[] {
-                new EnemyInfo(EFloor.Floor1, EFloorPos.Pos1_1, 2000, 500),
-                new EnemyInfo(EFloor.Floor1, EFloorPos.Pos1_3, 2000, 500),
-                new EnemyInfo(EFloor.Floor1, EFloorPos.Pos1_5, 2000, 500),
-                new EnemyInfo(EFloor.Floor1, EFloorPos.Pos2_2, 2000, 500),
-                new EnemyInfo(EFloor.Floor1, EFloorPos.Pos2_4, 2000, 500),
-                new EnemyInfo(EFloor.Floor1, EFloorPos.Pos3_1, 2000, 500),
-                new EnemyInfo(EFloor.Floor1, EFloorPos.Pos3_5, 2000, 500),
+                new EnemyInfo(EFloor.Floor1, EFloorPos.Pos1_1, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor1, EFloorPos.Pos1_3, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor1, EFloorPos.Pos1_5, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor1, EFloorPos.Pos2_2, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor1, EFloorPos.Pos2_4, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor1, EFloorPos.Pos3_1, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor1, EFloorPos.Pos3_5, EnemySpawnMercenaryType),
             };
             return enemiesType;
         }
         EnemyInfo[] InitEnemiesType3()
         {
             EnemyInfo[] enemiesType = new EnemyInfo[] {
-                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos1_1, 2000, 500),
-                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos1_3, 2000, 500),
-                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos1_5, 2000, 500),
-                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos2_2, 2000, 500),
-                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos2_4, 2000, 500),
-                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos3_1, 2000, 500),
-                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos3_5, 2000, 500),
+                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos1_1, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos1_3, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos1_5, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos2_2, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos2_4, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos3_1, EnemySpawnSeniorOfficerType),
+                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos3_5, EnemySpawnMercenaryType),
             };
             return enemiesType;
         }
         EnemyInfo[] InitEnemiesType4()
         {
             EnemyInfo[] enemiesType = new EnemyInfo[] {
-                new EnemyInfo(EFloor.Floor1, EFloorPos.Pos1_1, 2000, 500),
-                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos1_3, 2000, 500),
-                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos1_5, 2000, 500),
-                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos2_2, 2000, 500),
-                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos2_4, 2000, 500),
-                new EnemyInfo(EFloor.Floor1, EFloorPos.Pos3_1, 2000, 500),
-                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos3_5, 2000, 500),
+                new EnemyInfo(EFloor.Floor1, EFloorPos.Pos1_1, EnemySpawnSeniorOfficerType),
+                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos1_3, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos1_5, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos2_2, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos2_4, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor1, EFloorPos.Pos3_1, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos3_5, EnemySpawnMercenaryType),
             };
             return enemiesType;
         }
         EnemyInfo[] InitEnemiesType5()
         {
             EnemyInfo[] enemiesType = new EnemyInfo[] {
-                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos1_1, 2000, 500),
-                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos1_3, 2000, 500),
-                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos1_5, 2000, 500),
-                new EnemyInfo(EFloor.Floor1, EFloorPos.Pos2_2, 2000, 500),
-                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos2_4, 2000, 500),
-                new EnemyInfo(EFloor.Floor1, EFloorPos.Pos3_1, 2000, 500),
-                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos3_5, 2000, 500),
+                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos1_1, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos1_3, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos1_5, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor1, EFloorPos.Pos2_2, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor2, EFloorPos.Pos2_4, EnemySpawnBOSSType),
+                new EnemyInfo(EFloor.Floor1, EFloorPos.Pos3_1, EnemySpawnMercenaryType),
+                new EnemyInfo(EFloor.Floor3, EFloorPos.Pos3_5, EnemySpawnMercenaryType),
             };
             return enemiesType;
         }

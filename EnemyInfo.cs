@@ -19,6 +19,9 @@ namespace SocketServer
         float maxHealth;
         float currentArmor;
         float maxArmor;
+        float attack;
+
+        public delegate void EnemySpawnTypeDel(out float maxHealth, out float maxArmor, out float attack, out string name);
 
         public EFloor Floor { get => floor; set => floor = value; }
         public EFloorPos Pos { get => pos; set => pos = value; }
@@ -61,15 +64,20 @@ namespace SocketServer
             }
         }
         public float MaxArmor { get => maxArmor; set => maxArmor = value; }
+        public float Attack { get => attack; set => attack = value; }
 
-        public EnemyInfo(EFloor floor, EFloorPos pos, float maxHealth, float maxArmor, string name = "佣兵")
+        //float maxHealth = 2000, float maxArmor = 500, float attack = 10, string name = "佣兵"
+
+        public EnemyInfo(EFloor floor, EFloorPos pos, EnemySpawnTypeDel enemySpawnTypeDel)
         {
             this.floor = floor;
             this.pos = pos;
+            enemySpawnTypeDel(out float maxHealth, out float maxArmor, out float attack, out string name);
             this.maxHealth = maxHealth;
             this.maxArmor = maxArmor;
             currentHealth = this.maxHealth;
             currentArmor = this.maxArmor;
+            this.attack = attack;
             enemyName = name;
         }
 
