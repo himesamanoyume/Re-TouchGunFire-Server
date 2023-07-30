@@ -41,6 +41,8 @@ namespace SocketServer.Gaming
                 updatePlayerInfoPack.MgDmgBonus = client.PlayerInfo.MgDmgBonus;
                 updatePlayerInfoPack.SrDmgBonus = client.PlayerInfo.SrDmgBonus;
                 updatePlayerInfoPack.HgDmgBonus = client.PlayerInfo.HgDmgBonus;
+                updatePlayerInfoPack.IsDead = client.PlayerInfo.IsDead;
+                
                 if (client.team!=null)
                 {
                     updatePlayerInfoPack.TeamMasterUid = client.team.GetTeamMasterClient.PlayerInfo.Uid;
@@ -64,6 +66,7 @@ namespace SocketServer.Gaming
                         updatePlayerInfoPack1.CurrentHealth = c.PlayerInfo.CurrentHealth;
                         updatePlayerInfoPack1.MaxArmor = c.PlayerInfo.MaxArmor;
                         updatePlayerInfoPack1.CurrentArmor = c.PlayerInfo.CurrentArmor;
+                        updatePlayerInfoPack1.IsDead = c.PlayerInfo.IsDead;
                         mainPack.UpdatePlayerInfoPack.Add(updatePlayerInfoPack1);
                     }
                 }
@@ -76,8 +79,34 @@ namespace SocketServer.Gaming
             }
         }
 
+        public bool PlayerRevive(MainPack mainPack, Client client, Server server)
+        {
+            try
+            {
+                if (mainPack.Uid == client.PlayerInfo.Uid)
+                {
+                    if (mainPack.TeammatePack.SenderUid == mainPack.Uid && mainPack.TeammatePack.SenderUid == client.PlayerInfo.Uid && client.IsInTheTeam)
+                    {
+                        server.GetClientFromDictByUid(mainPack.TeammatePack.TargetUid).PlayerInfo.IsDead = false;
+                        return true;
+                    }
+                    return false;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.Log(new StackFrame(true), e.Message);
+                return false;
+            }
+        }
+
         public bool Regeneration(MainPack mainPack, Client client)
         {
+            Debug.Log(new StackFrame(true),"Regeneration");
             try
             {
                 if (mainPack.Uid == client.PlayerInfo.Uid)
@@ -87,7 +116,7 @@ namespace SocketServer.Gaming
                         float hp = (client.PlayerInfo.MaxHealth / 20) / 10;
                         client.PlayerInfo.CurrentHealth += hp;
                     }
-                    if (client.PlayerInfo.CurrentArmor < client.PlayerInfo.MaxArmor && client.PlayerInfo.CurrentArmor > 0)
+                    if (client.PlayerInfo.CurrentArmor < client.PlayerInfo.MaxArmor && client.PlayerInfo.CurrentArmor >= 0 && client.PlayerInfo.CurrentHealth > 0)
                     {
                         float armor = (client.PlayerInfo.MaxArmor / 40) / 10;
                         client.PlayerInfo.CurrentArmor += armor;
@@ -110,7 +139,6 @@ namespace SocketServer.Gaming
         {
             try
             {
-
                 if (client.IsInTheTeam)
                 {
                     client.team.Broadcast(client, mainPack);
@@ -281,7 +309,7 @@ namespace SocketServer.Gaming
             }
         }
 
-        public void AttackEnd(MainPack mainPack, Client client)
+        public void AttackEnd(MainPack mainPack, Client client, Server server)
         {
             try
             {
@@ -289,9 +317,19 @@ namespace SocketServer.Gaming
                 {
                     client.EnemiesManager.attackArea = null;
                 }
+
+                client.PlayerInfo.Revive();
                 client.TcpSend(mainPack);
                 if (client.IsInTheTeam)
                 {
+                    foreach (var c in client.team.Teammates)
+                    {
+                        if (c.PlayerInfo.Uid == client.PlayerInfo.Uid)
+                        {
+                            continue;
+                        }
+                        c.PlayerInfo.Revive();
+                    }
                     client.team.Broadcast(client, mainPack, true);
                 }
             }

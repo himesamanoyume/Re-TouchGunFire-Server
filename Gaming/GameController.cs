@@ -131,5 +131,21 @@ namespace SocketServer.Gaming
             }
             return mainPack;
         }
+
+        public MainPack PlayerRevive(Client client, MainPack mainPack)
+        {
+            if (client.PlayerRevive(mainPack))
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Success.ToString());
+                mainPack.ReturnCode = ReturnCode.Success;
+            }
+            else
+            {
+                Debug.Log(new StackFrame(true), ReturnCode.Fail.ToString());
+                mainPack.ReturnCode = ReturnCode.Fail;
+            }
+
+            return mainPack;
+        }
     }
 }

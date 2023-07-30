@@ -85,6 +85,7 @@ namespace SocketServer
             this.udpServer = udpServer;
             this.server = server;
             tcpSocket = clientSocket;
+            PlayerInfo.onPlayerDead = AttackEnd;
             //ItemController.InitEquipmentInfo();
             //ItemController.InitPlayerGunInfo();
             StartReceive();
@@ -99,7 +100,7 @@ namespace SocketServer
         {
 
             EnemyInfo enemyInfo = IsInTheTeam == true? team.GetTeamMasterClient.EnemiesManager.GetEnemy(floor, floorPos): EnemiesManager.GetEnemy(floor, floorPos);
-
+            PlayerInfo.HitToken(enemyInfo.Attack);
             if (isMainGun)
             {
                 GunInfo mainGun = ItemController.mainGunInfo;
@@ -131,7 +132,17 @@ namespace SocketServer
 
         void AttackEnd(MainPack mainPack)
         {
-            GetGameFunction.AttackEnd(mainPack, this);
+            GetGameFunction.AttackEnd(mainPack, this, server);
+        }
+
+        public void AttackEnd()
+        {
+            MainPack mainPack = new MainPack();
+            mainPack.Uid = PlayerInfo.Uid;
+            mainPack.RequestCode = RequestCode.Gaming;
+            mainPack.ActionCode = ActionCode.AttackEnd;
+            mainPack.ReturnCode = ReturnCode.Success;
+            GetGameFunction.AttackEnd(mainPack, this, server);
         }
 
         void BeatEnemy(EnemyInfo enemyInfo)
@@ -312,6 +323,11 @@ namespace SocketServer
         public bool HitReg(MainPack mainPack)
         {
             return GetGameFunction.HitReg(mainPack, this);
+        }
+
+        public bool PlayerRevive(MainPack mainPack)
+        {
+            return GetGameFunction.PlayerRevive(mainPack, this, server);
         }
 
         public MainPack Login(MainPack mainPack)

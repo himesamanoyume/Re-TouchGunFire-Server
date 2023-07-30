@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,13 @@ namespace SocketServer
 {
     public class PlayerInfo
     {
+        
+        public delegate void OnPlayerDead();
+
+        public OnPlayerDead onPlayerDead;
+        
         int uid;
+        
         public int Uid {
             get { return uid; }
             set
@@ -75,11 +82,29 @@ namespace SocketServer
         float maxHealth;
         float currentArmor;
         float maxArmor;
+        bool isDead;
+
+        public bool IsDead
+        {
+            get
+            {
+                return isDead;
+            }
+            set
+            {
+                isDead = value;
+            }
+        }
+
         public float CurrentHealth
         {
             get { return currentHealth; }
             set
             {
+                if (isDead)
+                {
+                    return;
+                }
                 if (value>=0 && value <= maxHealth)
                 {
                     currentHealth = value;
@@ -87,6 +112,9 @@ namespace SocketServer
                 else if(value < 0)
                 {
                     currentHealth = 0;
+                    onPlayerDead();
+                    IsDead = true;
+
                 }else if (value > maxHealth)
                 {
                     currentHealth = maxHealth;
@@ -98,6 +126,10 @@ namespace SocketServer
             get { return currentArmor; }
             set
             {
+                if (isDead)
+                {
+                    return;
+                }
                 if (value >= 0 && value <= maxArmor)
                 {
                     currentArmor = value;
@@ -320,6 +352,13 @@ namespace SocketServer
             set => baseMaxArmor = value;
         }
 
+        public void Revive()
+        {
+            currentArmor = MaxArmor;
+            currentHealth = MaxHealth;
+            isDead = false;
+        }
+
         public PlayerInfo()
         {
             uid = 0;
@@ -348,7 +387,7 @@ namespace SocketServer
             hgDmgBonus = 0;
             diamond = 0;
             coin = 0;
-
+            isDead = false;
 
             EquipGunCorePropFuncs.Add(EGunCoreProp.全武器伤害加成, (value) =>
             {
@@ -580,5 +619,22 @@ namespace SocketServer
         public Dictionary<ESubProp, Action<float>> RemoveSubPropFuncs = new Dictionary<ESubProp, Action<float>>();
 
         public Dictionary<EEquipmentTalent, Action> EquipEquipmentTalentFuncs = new Dictionary<EEquipmentTalent, Action>();
+
+        public void HitToken(float attack)
+        {
+            if (CurrentArmor>=attack)
+            {
+                CurrentArmor -= attack;
+            }else if (CurrentArmor > 0 && CurrentArmor < attack)
+            {
+                attack -= CurrentArmor;
+                CurrentArmor = 0;
+                CurrentHealth -= attack;
+                if (CurrentHealth == 0)
+                {
+                    Debug.Log(new StackFrame(true),PlayerName+"死亡");
+                }
+            }
+        }
     }
 }
